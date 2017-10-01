@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <cstdint>
 
 #include <ESAT/window.h>
 #include <ESAT/draw.h>
@@ -11,20 +12,20 @@
 
 class Enemy {
   public:
-    int lifes_;
     ESAT::SpriteHandle sprite_;
-    int isAlive_;
     ESAT::Vec2 position_;
+    uint8_t isAlive_;
+    uint16_t lifes_;   
     Enemy(void);
-    Enemy(int elifes, ESAT::SpriteHandle esprite, ESAT::Vec2 eposition);
+    Enemy(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     ESAT::SpriteHandle getSprite(void);
 };
 
 Enemy::Enemy(void){}
 
-Enemy::Enemy(int elifes, ESAT::SpriteHandle esprite, ESAT::Vec2 eposition)
-    : lifes_(elifes), sprite_(esprite), position_(eposition){
+Enemy::Enemy(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+    : lifes_(lifes), sprite_(sprite), position_(position){
   isAlive_ = 1;
 }
 
@@ -38,20 +39,20 @@ ESAT::SpriteHandle Enemy::getSprite(void){
 
 class Shield {
   public:
-    int lifes_;
     ESAT::SpriteHandle sprite_;
-    int isAlive_;
     ESAT::Vec2 position_;
+    uint8_t isAlive_;
+    uint16_t lifes_;          
     Shield(void);
-    Shield(int elifes, ESAT::SpriteHandle esprite, ESAT::Vec2 eposition);
+    Shield(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     ESAT::SpriteHandle getSprite(void);
 };
 
 Shield::Shield(void){}
 
-Shield::Shield(int elifes, ESAT::SpriteHandle esprite, ESAT::Vec2 eposition)
-    : lifes_(elifes), sprite_(esprite), position_(eposition){
+Shield::Shield(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+    : lifes_(lifes), sprite_(sprite), position_(position){
   isAlive_ = 1;
 }
 
@@ -65,10 +66,10 @@ ESAT::SpriteHandle Shield::getSprite(void){
 
 class EnemySet {
   public:
-    int row_;
-    int col_;
-    ESAT::Vec2 position_;
     Enemy *enemies_[3][4];
+    ESAT::Vec2 position_;
+    uint8_t row_;
+    uint8_t col_;
     float speed_;
     EnemySet(void);
     int getRow(void);
@@ -162,7 +163,7 @@ class Shoot {
     ESAT::Vec2 position_;
     float speed_;
     Shoot(void);
-    Shoot(ESAT::SpriteHandle esprite, ESAT::Vec2 eposition);
+    Shoot(ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void setPosition(ESAT::Vec2 p);
@@ -171,8 +172,8 @@ class Shoot {
     ESAT::SpriteHandle getSprite(void);
 };
 
-Shoot::Shoot(ESAT::SpriteHandle esprite, ESAT::Vec2 eposition)
-    : sprite_(esprite), position_(eposition){
+Shoot::Shoot(ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+    : sprite_(sprite), position_(position){
   speed_ = 10;
 }
 
