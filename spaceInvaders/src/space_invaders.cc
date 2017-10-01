@@ -14,6 +14,7 @@ const int kRowEnemies = 3;
 const int kColEnemies = 3;
 const float kDistanceEnemies = 50;
 const float kShootSpeed = 10;
+const float kEnemiesSpeed = 5;
 const float kSpaceShipSpeed = 5;
 const uint16_t kEnemyLifes = 1;
 const uint16_t kSpaceShipLifes = 1;
@@ -215,7 +216,7 @@ void SpaceInvaders() {
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
   double current_time, last_time;
   last_time = ESAT::Time();
-  EnemySet set(5, {300,0});
+  EnemySet set(kEnemiesSpeed, {300,0});
   int direction = 1;
   SpaceShip mainCharacter(kSpaceShipLifes,
                           ESAT::SpriteFromFile("spaceShip.png"), {300,450});
