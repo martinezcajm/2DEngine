@@ -10,6 +10,15 @@
 #include <ESAT/input.h>
 #include <ESAT/time.h>
 
+const int kRowEnemies = 3;
+const int kColEnemies = 3;
+const float kDistanceEnemies = 50;
+const float kShootSpeed = 10;
+const float kSpaceShipSpeed = 5;
+const uint16_t kEnemyLifes = 1;
+const uint16_t kSpaceShipLifes = 1;
+const uint16_t kShieldLifes = 3;
+
 class Enemy {
   public:
     ESAT::SpriteHandle sprite_;
@@ -66,41 +75,23 @@ ESAT::SpriteHandle Shield::getSprite(void){
 
 class EnemySet {
   public:
-    Enemy *enemies_[3][4];
-    ESAT::Vec2 position_;
-    uint8_t row_;
-    uint8_t col_;
     float speed_;
-    EnemySet(void);
-    int getRow(void);
-    int getCol(void);
+    Enemy *enemies_[kRowEnemies][kColEnemies];
+    ESAT::Vec2 position_;
+    EnemySet(float speed, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void addPosition(ESAT::Vec2 p);
 };
 
-EnemySet::EnemySet(void){
-  int i,j = 1;
-  int distance = 50;
-  speed_ = 5;
-  position_.x = 300;
-  position_.y = 0;
-  row_ = 3;
-  col_ = 3;
-  for(i = 1; i <= row_; ++i){
-    for (j = 1; j<= col_; ++j){
-      enemies_[i][j] = new Enemy(1, ESAT::SpriteFromFile("enemy.png"),
-        {(float)i * distance,(float)j * distance});
+EnemySet::EnemySet(float speed, ESAT::Vec2 position) 
+    : speed_(speed), position_(position){
+  for(int i = 0; i < kRowEnemies; ++i){
+    for (int j = 0; j< kColEnemies; ++j){
+      enemies_[i][j] = new Enemy(kEnemyLifes,ESAT::SpriteFromFile("enemy.png"),
+        {i * kDistanceEnemies,j * kDistanceEnemies});
     }
   }
-}
-
-int EnemySet::getRow(void){
-  return row_;
-}
-
-int EnemySet::getCol(void){
-  return col_;
 }
 
 float EnemySet::getSpeed(void){
@@ -118,26 +109,26 @@ void EnemySet::addPosition(ESAT::Vec2 p){
 
 class SpaceShip {
   public:
-    int lifes_;
     ESAT::SpriteHandle sprite_;
-    int isAlive_;
     ESAT::Vec2 position_;
-    int isShooting_;
+    uint8_t isAlive_;
+    uint8_t isShooting_;
+    uint16_t lifes_;     
     float speed_;
     SpaceShip(void);
-    SpaceShip(int elifes, ESAT::SpriteHandle esprite, ESAT::Vec2 eposition);
+    SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void addPosition(ESAT::Vec2 p);
     ESAT::SpriteHandle getSprite(void);
 };
 
-SpaceShip::SpaceShip(int elifes, ESAT::SpriteHandle esprite,
-    ESAT::Vec2 eposition)
-    :lifes_(elifes), sprite_(esprite), position_(eposition){
+SpaceShip::SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, 
+                    ESAT::Vec2 position)
+    :lifes_(lifes), sprite_(sprite), position_(position){
   isAlive_ = 1;
   isShooting_ = 0;
-  speed_ = 5;
+  speed_ = kSpaceShipSpeed;
 }
 
 ESAT::Vec2 SpaceShip::getPosition(void){
@@ -174,7 +165,7 @@ class Shoot {
 
 Shoot::Shoot(ESAT::SpriteHandle sprite, ESAT::Vec2 position)
     : sprite_(sprite), position_(position){
-  speed_ = 10;
+  speed_ = kShootSpeed;
 }
 
 /*Checks if the shoot has colided with an element in a position using the 
@@ -217,34 +208,36 @@ ESAT::SpriteHandle Shoot::getSprite(void){
 }
 
 void SpaceInvaders() {
-  ESAT::WindowInit(640, 480);
+  const unsigned int kScreenWidth = 640;
+  const unsigned int kScreenHeight = 480;
   const float kShieldsYPosition = 350;
-  const float kfps = 60;
+  const float kFps = 60;
+  ESAT::WindowInit(kScreenWidth, kScreenHeight);
   double current_time, last_time;
   last_time = ESAT::Time();
-  EnemySet set;
+  EnemySet set(5, {300,0});
   int direction = 1;
-  SpaceShip mainCharacter(3, ESAT::SpriteFromFile("spaceShip.png"), {300,450});
+  SpaceShip mainCharacter(kSpaceShipLifes,
+                          ESAT::SpriteFromFile("spaceShip.png"), {300,450});
   Shoot spaceShipShoot(ESAT::SpriteFromFile("shoot.png"), {0,0});
   ESAT::Vec2 relativePositionEnemy;
-  Shield leftShield (3, ESAT::SpriteFromFile("shield.png"),
+  Shield leftShield (kShieldLifes, ESAT::SpriteFromFile("shield.png"),
                     {100,kShieldsYPosition});
-  Shield middleShield (3, ESAT::SpriteFromFile("shield.png"),
+  Shield middleShield (kShieldLifes, ESAT::SpriteFromFile("shield.png"),
                     {300, kShieldsYPosition});
-  Shield rightShield (3, ESAT::SpriteFromFile("shield.png"),
+  Shield rightShield (kShieldLifes, ESAT::SpriteFromFile("shield.png"),
                     {500,kShieldsYPosition});
   while (ESAT::WindowIsOpened() &&
         !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
     ESAT::DrawBegin();
     ESAT::DrawClear(0,0,0);
-    int i, j = 1;
-    if(set.getPosition().x < -30 || set.getPosition().x > 450){
+    if(set.getPosition().x < 0 || set.getPosition().x > 480){
       direction = -direction;
       set.addPosition({0,set.getSpeed()});
     } 
     set.addPosition({(float)direction,0});
-    for(i = 1; i <= set.getRow(); ++i){
-      for (j = 1; j<= set.getCol(); ++j){
+    for(int i = 0; i < kRowEnemies; ++i){
+      for (int j = 0; j < kColEnemies; ++j){
         relativePositionEnemy.x = set.enemies_[i][j]->getPosition().x +
           set.getPosition().x;
         relativePositionEnemy.y = set.enemies_[i][j]->getPosition().y +
@@ -313,7 +306,7 @@ void SpaceInvaders() {
     }
     do{
           current_time = ESAT::Time();
-      }while((current_time-last_time)<=1000.0/kfps);
+      }while((current_time-last_time)<=1000.0/kFps);
       last_time = current_time; 
     ESAT::DrawEnd();
     // End of current frame
