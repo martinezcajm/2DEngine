@@ -249,7 +249,10 @@ void SpaceInvaders() {
           set.enemies_[i][j]->getSprite())){
           mainCharacter.isShooting_ = 0;
           set.enemies_[i][j]->lifes_ -= 1;
-          if(set.enemies_[i][j]->lifes_ == 0)set.enemies_[i][j]->isAlive_ = 0;
+          if(set.enemies_[i][j]->lifes_ == 0){
+            set.enemies_[i][j]->isAlive_ = 0;
+            ESAT::SpriteRelease(set.enemies_[i][j]->getSprite());
+          }
         }
         if(set.enemies_[i][j]->isAlive_ == 1){
           ESAT::DrawSprite(set.enemies_[i][j]->getSprite(),
@@ -264,19 +267,28 @@ void SpaceInvaders() {
         leftShield.getSprite())&& leftShield.isAlive_ == 1){
         leftShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(leftShield.lifes_ == 0) leftShield.isAlive_ = 0;
+        if(leftShield.lifes_ == 0){
+          leftShield.isAlive_ = 0;
+          ESAT::SpriteRelease(leftShield.getSprite());
+        } 
       }
       if(spaceShipShoot.checkCollision(rightShield.getPosition(),
         rightShield.getSprite()) && rightShield.isAlive_ == 1){
         rightShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(rightShield.lifes_ == 0) rightShield.isAlive_ = 0;
+        if(rightShield.lifes_ == 0){
+          rightShield.isAlive_ = 0;
+          ESAT::SpriteRelease(rightShield.getSprite());
+        } 
       }
       if(spaceShipShoot.checkCollision(middleShield.getPosition(),
         middleShield.getSprite()) && middleShield.isAlive_ == 1){
         middleShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(middleShield.lifes_ == 0) middleShield.isAlive_ = 0;
+        if(middleShield.lifes_ == 0){
+          middleShield.isAlive_ = 0;
+          ESAT::SpriteRelease(middleShield.getSprite());
+        } 
       }
     }
     if(leftShield.isAlive_ == 1)ESAT::DrawSprite(leftShield.getSprite(),
