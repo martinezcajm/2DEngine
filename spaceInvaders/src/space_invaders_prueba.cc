@@ -19,6 +19,14 @@ const float kSpaceShipSpeed = 5;
 const uint16_t kEnemyLifes = 1;
 const uint16_t kSpaceShipLifes = 1;
 const uint16_t kShieldLifes = 3;
+const ESAT::SpriteHandle kShieldSprite = ESAT::SpriteFromFile(
+                                              "../data/shield.png");
+const ESAT::SpriteHandle kSpaceShipSprite = ESAT::SpriteFromFile(
+                                              "../data/spaceShip.png");
+const ESAT::SpriteHandle kShootSprite = ESAT::SpriteFromFile(
+                                              "../data/shoot.png");
+const ESAT::SpriteHandle kEnemySprite = ESAT::SpriteFromFile(
+                                              "../data/enemy.png");
 
 class Enemy {
   public:
@@ -89,9 +97,8 @@ EnemySet::EnemySet(float speed, ESAT::Vec2 position)
     : speed_(speed), position_(position){
   for(int i = 0; i < kRowEnemies; ++i){
     for (int j = 0; j< kColEnemies; ++j){
-      enemies_[i][j] = new Enemy(kEnemyLifes,
-                                 ESAT::SpriteFromFile("../data/enemy.png"),
-                                 {i * kDistanceEnemies,j * kDistanceEnemies});
+      enemies_[i][j] = new Enemy(kEnemyLifes,kEnemySprite,
+        {i * kDistanceEnemies,j * kDistanceEnemies});
     }
   }
 }
@@ -219,17 +226,12 @@ void SpaceInvaders() {
   last_time = ESAT::Time();
   EnemySet set(kEnemiesSpeed, {300,0});
   int direction = 1;
-  SpaceShip mainCharacter(kSpaceShipLifes,
-                          ESAT::SpriteFromFile("../data/spaceShip.png"),
-                          {300,450});
-  Shoot spaceShipShoot(ESAT::SpriteFromFile("../data/shoot.png"), {0,0});
+  SpaceShip mainCharacter(kSpaceShipLifes, kSpaceShipSprite, {300,450});
+  Shoot spaceShipShoot(kShootSprite, {0,0});
   ESAT::Vec2 relativePositionEnemy;
-  Shield leftShield (kShieldLifes,ESAT::SpriteFromFile("../data/shield.png"),
-                    {100,kShieldsYPosition});
-  Shield middleShield (kShieldLifes,ESAT::SpriteFromFile("../data/shield.png"),
-                      {300, kShieldsYPosition});
-  Shield rightShield (kShieldLifes,ESAT::SpriteFromFile("../data/shield.png"),
-                      {500,kShieldsYPosition});
+  Shield leftShield (kShieldLifes, kShieldSprite, {100,kShieldsYPosition});
+  Shield middleShield (kShieldLifes, kShieldSprite, {300, kShieldsYPosition});
+  Shield rightShield (kShieldLifes, kShieldSprite, {500,kShieldsYPosition});
   while (ESAT::WindowIsOpened() &&
         !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
     ESAT::DrawBegin();
@@ -251,10 +253,7 @@ void SpaceInvaders() {
           set.enemies_[i][j]->getSprite())){
           mainCharacter.isShooting_ = 0;
           set.enemies_[i][j]->lifes_ -= 1;
-          if(set.enemies_[i][j]->lifes_ == 0){
-            set.enemies_[i][j]->isAlive_ = 0;
-            ESAT::SpriteRelease(set.enemies_[i][j]->getSprite());
-          }
+          if(set.enemies_[i][j]->lifes_ == 0) set.enemies_[i][j]->isAlive_ = 0;
         }
         if(set.enemies_[i][j]->isAlive_ == 1){
           ESAT::DrawSprite(set.enemies_[i][j]->getSprite(),
@@ -269,28 +268,20 @@ void SpaceInvaders() {
         leftShield.getSprite())&& leftShield.isAlive_ == 1){
         leftShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(leftShield.lifes_ == 0){
-          leftShield.isAlive_ = 0;
-          ESAT::SpriteRelease(leftShield.getSprite());
-        } 
+        if(leftShield.lifes_ == 0) leftShield.isAlive_ = 0;
       }
       if(spaceShipShoot.checkCollision(rightShield.getPosition(),
         rightShield.getSprite()) && rightShield.isAlive_ == 1){
         rightShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(rightShield.lifes_ == 0){
-          rightShield.isAlive_ = 0;
-          ESAT::SpriteRelease(rightShield.getSprite());
-        } 
+        if(rightShield.lifes_ == 0) rightShield.isAlive_ = 0;
+
       }
       if(spaceShipShoot.checkCollision(middleShield.getPosition(),
         middleShield.getSprite()) && middleShield.isAlive_ == 1){
         middleShield.lifes_ -= 1;
         mainCharacter.isShooting_ = 0;
-        if(middleShield.lifes_ == 0){
-          middleShield.isAlive_ = 0;
-          ESAT::SpriteRelease(middleShield.getSprite());
-        } 
+        if(middleShield.lifes_ == 0) middleShield.isAlive_ = 0; 
       }
     }
     if(leftShield.isAlive_ == 1)ESAT::DrawSprite(leftShield.getSprite(),
@@ -327,8 +318,10 @@ void SpaceInvaders() {
     // End of current frame
     ESAT::WindowFrame();
   }
-  ESAT::SpriteRelease(spaceShipShoot.getSprite());
-  ESAT::SpriteRelease(mainCharacter.getSprite());
+  ESAT::SpriteRelease(kSpaceShipSprite);
+  ESAT::SpriteRelease(kShootSprite);
+  ESAT::SpriteRelease(kEnemySprite);
+  ESAT::SpriteRelease(kShieldSprite);
   ESAT::WindowDestroy();
 }
 
