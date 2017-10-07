@@ -2,6 +2,6 @@
 @cls
 
 
-cl /nologo /GR- /EHs /MD %1 -I .\deps\ESAT_rev196_vs2015\include .\deps\ESAT_rev196_vs2015\bin\ESAT.lib  .\deps\ESAT_rev196_vs2015\bin\ESAT_extra.lib opengl32.lib user32.lib gdi32.lib shell32.lib Ws2_32.lib
+cl /nologo /GR- /EHs /MD %1 -I ..\deps\ESAT_rev196_vs2015\include ..\deps\ESAT_rev196_vs2015\bin\ESAT.lib  ..\deps\ESAT_rev196_vs2015\bin\ESAT_extra.lib opengl32.lib user32.lib gdi32.lib shell32.lib Ws2_32.lib
 @echo  Proceso por lotes finalizado.
 @echo -------------------------------

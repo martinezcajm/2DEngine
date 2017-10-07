@@ -36,7 +36,7 @@ class Shoot {
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void setPosition(ESAT::Vec2 p);
-    void addPosition(ESAT::Vec2 p);
+    void move(ESAT::Vec2 p);
     bool checkCollision(ESAT::Vec2 spritePosition, ESAT::SpriteHandle element);
     ESAT::SpriteHandle getSprite(void);
     uint8_t is_alive(void);
@@ -83,7 +83,7 @@ void Shoot::setPosition(ESAT::Vec2 p){
   position_.y = p.y;
 }
 
-void Shoot::addPosition(ESAT::Vec2 p){
+void Shoot::move(ESAT::Vec2 p){
   position_.x = position_.x + p.x;
   position_.y = position_.y + p.y;
 }
@@ -215,7 +215,7 @@ class EnemySet {
              uint8_t enemies_by_col);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
-    void addPosition(ESAT::Vec2 p);
+    void move(ESAT::Vec2 p);
     uint8_t Init();
     void Dispose();
     void Draw(Shoot *shoot);
@@ -276,7 +276,7 @@ ESAT::Vec2 EnemySet::getPosition(void){
   return position_;
 }
 
-void EnemySet::addPosition(ESAT::Vec2 p){
+void EnemySet::move(ESAT::Vec2 p){
   position_.x = position_.x + p.x;
   position_.y = position_.y + p.y;
 }
@@ -292,7 +292,7 @@ class SpaceShip {
     SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
-    void addPosition(ESAT::Vec2 p);
+    void move(ESAT::Vec2 p);
     ESAT::SpriteHandle getSprite(void);
 };
 
@@ -311,7 +311,7 @@ float SpaceShip::getSpeed(void){
   return speed_;
 }
 
-void SpaceShip::addPosition(ESAT::Vec2 p){
+void SpaceShip::move(ESAT::Vec2 p){
   position_.x = position_.x + p.x;
   position_.y = position_.y + p.y;
 }
@@ -343,28 +343,28 @@ void SpaceInvaders() {
            !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
       ESAT::DrawBegin();
       ESAT::DrawClear(0,0,0);
-      if(enemy_set.getPosition().x < 0 || enemy_set.getPosition().x > 480){
-        direction = -direction;
-        enemy_set.addPosition({0,enemy_set.getSpeed()});
-      } 
-      enemy_set.addPosition({(float)direction,0});
-      enemy_set.Draw(&spaceShipShoot);
-      shield_set.Draw(&spaceShipShoot);
       if (ESAT::IsKeyPressed('A') && mainCharacter.getPosition().x > 0){
-        mainCharacter.addPosition({- mainCharacter.getSpeed(),0});
+        mainCharacter.move({-mainCharacter.getSpeed(),0});
       } 
       if (ESAT::IsKeyPressed('D') && mainCharacter.getPosition().x < 600){
-        mainCharacter.addPosition({mainCharacter.getSpeed(),0});
+        mainCharacter.move({mainCharacter.getSpeed(),0});
       }
       if (ESAT::IsKeyDown('W') && spaceShipShoot.is_alive_ == 0){
         spaceShipShoot.is_alive_ = 1;
         spaceShipShoot.setPosition({mainCharacter.getPosition().x,
                                   mainCharacter.getPosition().y});
       } 
+      if(enemy_set.getPosition().x < 0 || enemy_set.getPosition().x > 480){
+        direction = -direction;
+        enemy_set.move({0,enemy_set.getSpeed()});
+      } 
+      enemy_set.move({(float)direction,0});
+      enemy_set.Draw(&spaceShipShoot);
+      shield_set.Draw(&spaceShipShoot);      
       ESAT::DrawSprite(mainCharacter.getSprite(),mainCharacter.getPosition().x,
                     mainCharacter.getPosition().y);
       if(spaceShipShoot.is_alive_ == 1){
-        spaceShipShoot.addPosition({0,-spaceShipShoot.getSpeed()});
+        spaceShipShoot.move({0,-spaceShipShoot.getSpeed()});
         ESAT::DrawSprite(spaceShipShoot.getSprite(),
                          spaceShipShoot.getPosition().x,
                          spaceShipShoot.getPosition().y);
