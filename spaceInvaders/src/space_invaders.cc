@@ -12,6 +12,7 @@
 #include <ESAT/time.h>
 #include <INIReader.h>
 
+//*******Default values in case the config.ini misses one of this elements
 const float kDistanceEnemies = 50;
 const float kEnemiesSpeed = 5;
 const float kShieldDistance = 200;
@@ -25,6 +26,7 @@ const uint16_t kEnemyLifes = 1;
 const uint16_t kShieldLifes = 3;
 const uint16_t kSpaceShipLifes = 1;
 const uint16_t kOriginPointFirstShield = 100;
+//**********************************************
 
 class Shoot {
   public:
@@ -98,7 +100,7 @@ class Enemy {
     ESAT::SpriteHandle sprite_;
     ESAT::Vec2 position_;
     uint8_t isAlive_;
-    uint16_t lifes_;   
+    uint8_t lifes_;   
     Enemy(void);
     Enemy(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
@@ -125,7 +127,7 @@ class Shield {
     ESAT::SpriteHandle sprite_;
     ESAT::Vec2 position_;
     uint8_t is_alive_;
-    uint16_t lifes_;          
+    uint8_t lifes_;          
     Shield(void);
     Shield(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
@@ -287,7 +289,7 @@ class SpaceShip {
     ESAT::SpriteHandle sprite_;
     ESAT::Vec2 position_;
     uint8_t isAlive_;
-    uint16_t lifes_;     
+    uint8_t lifes_;     
     float speed_;
     SpaceShip(void);
     SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
@@ -321,15 +323,53 @@ ESAT::SpriteHandle SpaceShip::getSprite(void){
   return sprite_;
 }
 
-/*Initialites the game using the config.ini file in data*/
-uint8_t InitConfig(){
+typedef struct
+  {
+    uint8_t enemies_by_col;
+    uint8_t enemies_by_row;
+    uint8_t enemy_lifes;
+    uint8_t num_shields;
+    uint8_t shield_lifes;
+    uint8_t spaceship_lifes;
+    float shoot_speed;
+    float spaceship_speed;
+
+  } configuration;
+
+/*Checks if the config value is superior the max allowed by the game. In case
+it is superior returns the max value allowed, otherwise returns the config
+value*/
+uint8_t Compararer(uint8_t config_value, uint8_t max_value){
+  return (config_value > max_value) ? max_value : config_value; 
+}
+
+/*Initialites the configuration of the game using the config.ini file in data*/
+uint8_t InitConfig(configuration *config){
+  const uint8_t kMaxEnemiesColRow = 8;
+  //Specifies the maximum number of lifes for any element.
+  const uint8_t kMaxElementLifes = 5; 
+  const uint8_t kMaxNumShields = 3;
+  const float kMaxSpeed = 30;
   INIReader reader("../data/config.ini");
   if (reader.ParseError() < 0) {
     return 1;
   }
-  std::cout << "Config loaded from 'test.ini': by_row="
-              << reader.GetInteger("enemies", "by_row", 3) << ", by_col="
-              << reader.GetInteger("enemies", "by_col", 3) << "\n";
+  config->enemies_by_col = Compararer(reader.GetInteger("enemies", "by_col",
+                                    kColEnemies), kMaxEnemiesColRow); 
+  config->enemies_by_row = Compararer(reader.GetInteger("enemies", "by_row",
+                                      kRowEnemies), kMaxEnemiesColRow); 
+  config->enemy_lifes = Compararer(reader.GetInteger("enemies", "lifes",
+                                   kEnemyLifes), kMaxElementLifes); 
+  config->num_shields = Compararer(reader.GetInteger("shields", "num_shields",
+                                   kNumShields), kMaxNumShields); 
+  config->shield_lifes = Compararer(reader.GetInteger("shields", "lifes",
+                                    kShieldLifes), kMaxElementLifes); 
+  config->spaceship_lifes = Compararer(reader.GetInteger("spaceShip", "lifes",
+                                       kSpaceShipLifes), kMaxElementLifes);
+  config->spaceship_speed = Compararer(reader.GetInteger("spaceShip", "speed",
+                                       kSpaceShipSpeed), kMaxSpeed); 
+  config->shoot_speed = Compararer(reader.GetInteger("shoots", "by_col",
+                                   kShootSpeed), kMaxSpeed);
   return 0;
 }
 
@@ -338,18 +378,20 @@ void SpaceInvaders() {
   const unsigned int kScreenHeight = 480;  
   const float kFps = 60;
   uint8_t error = 0;
-  error += InitConfig();
+  double current_time, last_time;
+  int direction = 1;
+  configuration game_config;
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
+  last_time = ESAT::Time();
+  error += InitConfig(&game_config);
   ESAT::SpriteHandle shoot_spr = ESAT::SpriteFromFile("../data/shoot.png");
   ESAT::SpriteHandle ship_spr = ESAT::SpriteFromFile("../data/spaceShip.png");
-  double current_time, last_time;
   last_time = ESAT::Time();
   SpaceShip mainCharacter(kSpaceShipLifes, ship_spr, {300,450});
   Shoot spaceShipShoot(shoot_spr, {0,0});
   EnemySet enemy_set(kEnemiesSpeed, {300,0}, kRowEnemies*kColEnemies,
                      kColEnemies);
   error += enemy_set.Init();
-  int direction = 1;
   ShieldSet shield_set(kNumShields, kOriginPointFirstShield);
   error += shield_set.Init();
   if(error == 0){
@@ -398,7 +440,6 @@ void SpaceInvaders() {
   shield_set.Dispose();
   ESAT::SpriteRelease(spaceShipShoot.getSprite());
   ESAT::SpriteRelease(mainCharacter.getSprite());
-  //ESAT::SpriteRelease(leftShield.getSprite());
   ESAT::WindowDestroy();
 }
 
