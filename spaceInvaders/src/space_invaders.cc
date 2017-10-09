@@ -17,8 +17,6 @@
 const float kDistanceEnemies = 50;
 const float kEnemiesSpeed = 5;
 const float kShieldDistance = 200;
-const float kShootSpeed = 10;
-const float kSpaceShipSpeed = 5;
 const float kShieldsYPosition = 350;
 const uint8_t kRowEnemies = 3;
 const uint8_t kColEnemies = 3;
@@ -26,6 +24,8 @@ const uint8_t kNumShields = 3;
 const uint8_t kEnemyLifes = 1;
 const uint8_t kShieldLifes = 3;
 const uint8_t kSpaceShipLifes = 1;
+const uint8_t kShootSpeed = 10;
+const uint8_t kSpaceShipSpeed = 5;
 const uint16_t kOriginPointFirstShield = 100;
 //**********************************************
 
@@ -53,7 +53,8 @@ Shoot::Shoot(float speed, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
 }
 
 /*Checks if the shoot has colided with an element in a position using the 
-dimensions of it's sprite. If the shoot colided we kill it*/
+dimensions of it's sprite. If the shoot colided we return true. If it didn't
+we return false*/
 bool Shoot::checkCollision(ESAT::Vec2 spritePosition,
     ESAT::SpriteHandle element){
   if(((position_.x > spritePosition.x && 
@@ -218,10 +219,12 @@ class EnemySet {
     Enemy *enemies_ = nullptr;
     ESAT::Vec2 position_;
     uint16_t num_enemies_;
+    uint16_t set_width_;
     uint8_t enemy_lifes_;
     uint8_t enemies_by_col_;
     EnemySet(float speed, ESAT::Vec2 position, uint16_t num_enemies,
              uint8_t enemy_lifes, uint8_t enemies_by_col);
+    uint16_t set_width(void);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void move(ESAT::Vec2 p);
@@ -239,6 +242,7 @@ EnemySet::EnemySet(float speed, ESAT::Vec2 position, uint16_t num_enemies,
 the booking of memory fails it returns a -1. If you call this method you need to call dipsose once you are done with it*/
 uint8_t EnemySet::Init(){
   ESAT::SpriteHandle sprite = ESAT::SpriteFromFile("../data/enemy.png");
+  set_width_ = enemies_by_col_*(uint8_t)ESAT::SpriteWidth(sprite);
   enemies_ = (Enemy*) malloc(sizeof(Enemy)*num_enemies_);
   if(!enemies_) return 1;
   for(int i = 0; i < num_enemies_; i++){  
@@ -275,6 +279,10 @@ void EnemySet::Draw(Shoot *shoot){
                            enemies_[i].getPosition().y + position_.y);
         }
     }
+}
+
+uint16_t EnemySet::set_width(void){
+  return set_width_;
 }
 
 float EnemySet::getSpeed(void){
@@ -339,23 +347,24 @@ typedef struct
     uint8_t spaceship_lifes;
     float shoot_speed;
     float spaceship_speed;
-
   } configuration;
 
 /*Checks if the config value is superior the max allowed by the game. In case
 it is superior returns the max value allowed, otherwise returns the config
 value*/
-uint8_t Compararer(uint8_t config_value, uint8_t max_value){
-  return (config_value > max_value) ? max_value : config_value; 
+uint8_t Compararer(long config_value, uint8_t max_value){
+  uint8_t config_value_parse;
+  config_value_parse = (uint8_t) config_value;
+  return (config_value_parse > max_value) ? max_value : config_value_parse; 
 }
 
 /*Initialites the configuration of the game using the config.ini file in data*/
 uint8_t InitConfig(configuration *config){
-  const uint8_t kMaxEnemiesColRow = 8;
+  const uint8_t kMaxEnemiesColRow = 5;
   //Specifies the maximum number of lifes for any element.
   const uint8_t kMaxElementLifes = 5; 
   const uint8_t kMaxNumShields = 3;
-  const float kMaxSpeed = 30;
+  const uint8_t kMaxSpeed = 30;
   INIReader reader("../data/config.ini");
   if (reader.ParseError() < 0) {
     return 1;
@@ -372,10 +381,10 @@ uint8_t InitConfig(configuration *config){
                                     kShieldLifes), kMaxElementLifes); 
   config->spaceship_lifes = Compararer(reader.GetInteger("spaceShip", "lifes",
                                        kSpaceShipLifes), kMaxElementLifes);
-  config->spaceship_speed = Compararer(reader.GetInteger("spaceShip", "speed",
-                                       kSpaceShipSpeed), kMaxSpeed); 
-  config->shoot_speed = Compararer(reader.GetInteger("shoots", "by_col",
-                                   kShootSpeed), kMaxSpeed);
+  config->spaceship_speed = (float)Compararer(reader.GetInteger("spaceShip",
+                                   "speed", kSpaceShipSpeed), kMaxSpeed); 
+  config->shoot_speed = (float)Compararer(reader.GetInteger("shoots", "by_col",
+                                          kShootSpeed), kMaxSpeed);
   return 0;
 }
 
@@ -420,7 +429,8 @@ void SpaceInvaders() {
         spaceShipShoot.setPosition({mainCharacter.getPosition().x,
                                   mainCharacter.getPosition().y});
       } 
-      if(enemy_set.getPosition().x < 0 || enemy_set.getPosition().x > 480){
+      if(enemy_set.getPosition().x < 0 || 
+         enemy_set.getPosition().x > 580 - enemy_set.set_width()){
         direction = -direction;
         enemy_set.move({0,enemy_set.getSpeed()});
       } 
@@ -445,7 +455,6 @@ void SpaceInvaders() {
     ESAT::WindowFrame();
     }
   }
-  
   enemy_set.Dispose();
   shield_set.Dispose();
   ESAT::SpriteRelease(spaceShipShoot.getSprite());
