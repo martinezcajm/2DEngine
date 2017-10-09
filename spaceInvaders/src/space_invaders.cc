@@ -10,6 +10,7 @@
 #include <ESAT/sprite.h>
 #include <ESAT/input.h>
 #include <ESAT/time.h>
+#include <INIReader.h>
 
 const float kDistanceEnemies = 50;
 const float kEnemiesSpeed = 5;
@@ -320,11 +321,24 @@ ESAT::SpriteHandle SpaceShip::getSprite(void){
   return sprite_;
 }
 
+/*Initialites the game using the config.ini file in data*/
+uint8_t InitConfig(){
+  INIReader reader("../data/config.ini");
+  if (reader.ParseError() < 0) {
+    return 1;
+  }
+  std::cout << "Config loaded from 'test.ini': by_row="
+              << reader.GetInteger("enemies", "by_row", 3) << ", by_col="
+              << reader.GetInteger("enemies", "by_col", 3) << "\n";
+  return 0;
+}
+
 void SpaceInvaders() {
   const unsigned int kScreenWidth = 640;
   const unsigned int kScreenHeight = 480;  
   const float kFps = 60;
-  uint8_t error;
+  uint8_t error = 0;
+  error += InitConfig();
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
   ESAT::SpriteHandle shoot_spr = ESAT::SpriteFromFile("../data/shoot.png");
   ESAT::SpriteHandle ship_spr = ESAT::SpriteFromFile("../data/spaceShip.png");
@@ -334,7 +348,7 @@ void SpaceInvaders() {
   Shoot spaceShipShoot(shoot_spr, {0,0});
   EnemySet enemy_set(kEnemiesSpeed, {300,0}, kRowEnemies*kColEnemies,
                      kColEnemies);
-  error = enemy_set.Init();
+  error += enemy_set.Init();
   int direction = 1;
   ShieldSet shield_set(kNumShields, kOriginPointFirstShield);
   error += shield_set.Init();
