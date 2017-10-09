@@ -13,6 +13,7 @@
 #include <INIReader.h>
 
 //*******Default values in case the config.ini misses one of this elements
+//*******NOTE: not all of them are configurable in init.
 const float kDistanceEnemies = 50;
 const float kEnemiesSpeed = 5;
 const float kShieldDistance = 200;
@@ -22,9 +23,9 @@ const float kShieldsYPosition = 350;
 const uint8_t kRowEnemies = 3;
 const uint8_t kColEnemies = 3;
 const uint8_t kNumShields = 3;
-const uint16_t kEnemyLifes = 1;
-const uint16_t kShieldLifes = 3;
-const uint16_t kSpaceShipLifes = 1;
+const uint8_t kEnemyLifes = 1;
+const uint8_t kShieldLifes = 3;
+const uint8_t kSpaceShipLifes = 1;
 const uint16_t kOriginPointFirstShield = 100;
 //**********************************************
 
@@ -35,7 +36,7 @@ class Shoot {
     float speed_;
     uint8_t is_alive_;
     Shoot(void);
-    Shoot(ESAT::SpriteHandle sprite, ESAT::Vec2 position);
+    Shoot(float speed, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void setPosition(ESAT::Vec2 p);
@@ -45,8 +46,8 @@ class Shoot {
     uint8_t is_alive(void);
 };
 
-Shoot::Shoot(ESAT::SpriteHandle sprite, ESAT::Vec2 position)
-    : sprite_(sprite), position_(position){
+Shoot::Shoot(float speed, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+    : speed_(speed), sprite_(sprite), position_(position){
   speed_ = kShootSpeed;
   is_alive_ = 0;
 }
@@ -102,14 +103,14 @@ class Enemy {
     uint8_t isAlive_;
     uint8_t lifes_;   
     Enemy(void);
-    Enemy(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
+    Enemy(uint8_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     ESAT::SpriteHandle getSprite(void);
 };
 
 Enemy::Enemy(void){}
 
-Enemy::Enemy(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+Enemy::Enemy(uint8_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
     : lifes_(lifes), sprite_(sprite), position_(position){
   isAlive_ = 1;
 }
@@ -129,14 +130,14 @@ class Shield {
     uint8_t is_alive_;
     uint8_t lifes_;          
     Shield(void);
-    Shield(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
+    Shield(uint8_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     ESAT::SpriteHandle getSprite(void);
 };
 
 Shield::Shield(void){}
 
-Shield::Shield(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
+Shield::Shield(uint8_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position)
     : lifes_(lifes), sprite_(sprite), position_(position){
   is_alive_ = 1;
 }
@@ -154,15 +155,19 @@ class ShieldSet{
     Shield *shields_ = nullptr;
     uint8_t num_shields_;
     uint8_t num_shields_alive_;
+    uint8_t shield_lifes_;
     uint16_t origin_first_shield_;
-    ShieldSet(uint8_t num_shields, uint16_t origin_first_shield);
+    ShieldSet(uint8_t num_shields, uint8_t shield_lifes,
+              uint16_t origin_first_shield);
     uint8_t Init(void);
     void Dispose(void);
     void Draw(Shoot *shoot);
 };
 
-ShieldSet::ShieldSet(uint8_t num_shields, uint16_t origin_first_shield)
-    : num_shields_(num_shields), origin_first_shield_(origin_first_shield){}
+ShieldSet::ShieldSet(uint8_t num_shields, uint8_t shield_lifes,
+                     uint16_t origin_first_shield)
+    : num_shields_(num_shields), shield_lifes_(shield_lifes),
+      origin_first_shield_(origin_first_shield){}
 
 /*This function initializes the class first storing dynamic memory, in case
 the booking of memory fails it returns a -1. If you call this method you need to call dipsose once you are done with it*/
@@ -172,7 +177,7 @@ uint8_t ShieldSet::Init(void){
   shields_ = (Shield*)malloc(sizeof(Shield)*num_shields_);
   if(!shields_) return 1;
   for(int i = 0; i < num_shields_; i++){
-    shields_[i] = Shield(kShieldLifes, sprite, 
+    shields_[i] = Shield(shield_lifes_, sprite, 
       {origin_first_shield_ + (i*kShieldDistance), kShieldsYPosition});
   }
   return 0;
@@ -213,9 +218,10 @@ class EnemySet {
     Enemy *enemies_ = nullptr;
     ESAT::Vec2 position_;
     uint16_t num_enemies_;
+    uint8_t enemy_lifes_;
     uint8_t enemies_by_col_;
     EnemySet(float speed, ESAT::Vec2 position, uint16_t num_enemies,
-             uint8_t enemies_by_col);
+             uint8_t enemy_lifes, uint8_t enemies_by_col);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void move(ESAT::Vec2 p);
@@ -225,9 +231,9 @@ class EnemySet {
 };
 
 EnemySet::EnemySet(float speed, ESAT::Vec2 position, uint16_t num_enemies,
-                    uint8_t enemies_by_col) 
+                   uint8_t enemy_lifes, uint8_t enemies_by_col) 
     : speed_(speed), position_(position), num_enemies_(num_enemies),
-      enemies_by_col_(enemies_by_col){}
+      enemy_lifes_(enemy_lifes), enemies_by_col_(enemies_by_col){}
 
 /*This function initializes the class first storing dynamic memory, in case
 the booking of memory fails it returns a -1. If you call this method you need to call dipsose once you are done with it*/
@@ -236,7 +242,7 @@ uint8_t EnemySet::Init(){
   enemies_ = (Enemy*) malloc(sizeof(Enemy)*num_enemies_);
   if(!enemies_) return 1;
   for(int i = 0; i < num_enemies_; i++){  
-    enemies_[i] = Enemy(kEnemyLifes, sprite,
+    enemies_[i] = Enemy(enemy_lifes_, sprite,
                         {(i%enemies_by_col_) * kDistanceEnemies,
                          (i/enemies_by_col_) * kDistanceEnemies});
   }
@@ -292,18 +298,18 @@ class SpaceShip {
     uint8_t lifes_;     
     float speed_;
     SpaceShip(void);
-    SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, ESAT::Vec2 position);
+    SpaceShip(uint8_t lifes, float speed, ESAT::SpriteHandle sprite,
+              ESAT::Vec2 position);
     ESAT::Vec2 getPosition(void);
     float getSpeed(void);
     void move(ESAT::Vec2 p);
     ESAT::SpriteHandle getSprite(void);
 };
 
-SpaceShip::SpaceShip(uint16_t lifes, ESAT::SpriteHandle sprite, 
+SpaceShip::SpaceShip(uint8_t lifes, float speed, ESAT::SpriteHandle sprite, 
                     ESAT::Vec2 position)
-    :lifes_(lifes), sprite_(sprite), position_(position){
+    :lifes_(lifes), speed_(speed), sprite_(sprite), position_(position){
   isAlive_ = 1;
-  speed_ = kSpaceShipSpeed;
 }
 
 ESAT::Vec2 SpaceShip::getPosition(void){
@@ -380,19 +386,23 @@ void SpaceInvaders() {
   uint8_t error = 0;
   double current_time, last_time;
   int direction = 1;
-  configuration game_config;
+  configuration config;
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
   last_time = ESAT::Time();
-  error += InitConfig(&game_config);
+  error += InitConfig(&config);
   ESAT::SpriteHandle shoot_spr = ESAT::SpriteFromFile("../data/shoot.png");
   ESAT::SpriteHandle ship_spr = ESAT::SpriteFromFile("../data/spaceShip.png");
   last_time = ESAT::Time();
-  SpaceShip mainCharacter(kSpaceShipLifes, ship_spr, {300,450});
-  Shoot spaceShipShoot(shoot_spr, {0,0});
-  EnemySet enemy_set(kEnemiesSpeed, {300,0}, kRowEnemies*kColEnemies,
-                     kColEnemies);
+  SpaceShip mainCharacter(config.spaceship_lifes, config.spaceship_speed,
+                          ship_spr, {300,450});
+  Shoot spaceShipShoot(config.shoot_speed, shoot_spr, {0,0});
+  EnemySet enemy_set(kEnemiesSpeed, {300,0}, 
+                     config.enemies_by_row*config.enemies_by_col,
+                     config.enemy_lifes,
+                     config.enemies_by_col);
   error += enemy_set.Init();
-  ShieldSet shield_set(kNumShields, kOriginPointFirstShield);
+  ShieldSet shield_set(config.num_shields, config.shield_lifes,
+                       kOriginPointFirstShield);
   error += shield_set.Init();
   if(error == 0){
     while (ESAT::WindowIsOpened() &&
