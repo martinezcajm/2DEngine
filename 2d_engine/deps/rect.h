@@ -2,34 +2,25 @@
 #define __RECT_H__ 1
 
 #include <cstdint>
+#include <ESAT/math.h>
 #include "entity.h"
-
-struct Position {
-  float x;
-  float y;
-};
-
-struct Color {
-  uint8_t r;
-  uint8_t g;
-  uint8_t b;
-  uint8_t a;
-};
 
 class Rect : public Entity{
  public:
-  void init(uint8_t is_solid, uint16_t width, uint16_t height, uint8_t sc_r,
+  void init(uint8_t is_solid, float width, float height, uint8_t sc_r,
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py);
   void draw();
 
   uint8_t is_solid_;
-  uint16_t width_;
-  uint16_t height_;
+  ESAT::Vec2 position_;
+  //Contains the width and height
+  ESAT::Vec2 dimensions_;
   //ToDo add rotation and scale factors
-  Color stroke_color_;
-  Color fill_color_;
-  Position position_;
+  uint8_t rgba_stroke_[4];
+  uint8_t rgba_fill_[4];
+  float rotation_;
+  ESAT::Vec2 scale_;
 };
 
 #endif
