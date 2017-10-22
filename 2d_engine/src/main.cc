@@ -9,30 +9,77 @@ void PaintRectangles() {
   const unsigned int kScreenWidth = 640;
   const unsigned int kScreenHeight = 480;  
   const float kFps = 60;
-  uint8_t error = 0;
+  const uint8_t kMaxRectangles = 50;
+
+  uint8_t is_drawing = 0;
+  uint8_t num_rectangles = 0;
   double current_time, last_time;
+  ESAT::Vec2 draw_origin_point;
+  ESAT::Vec2 draw_end_point;
+  //ESAT::Vec2 draw_direction;
+  Rect *rect_container[kMaxRectangles];
+  for(int i = 0; i < kMaxRectangles; i++){
+    rect_container[i] = new Rect();
+  }
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
   last_time = ESAT::Time();
-  Rect* rect_test = nullptr;
-  rect_test = new Rect();
-  rect_test->init(1, 20, 20, 255,0,0,255, 0,255,0,255, 10, 20);
-  if(error == 0){
-    while (ESAT::WindowIsOpened() &&
-           !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
-      ESAT::DrawBegin();
-      ESAT::DrawClear(0,0,0);
-    rect_test->draw();
+  while (ESAT::WindowIsOpened() &&
+         !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
+    ESAT::DrawBegin();
+    ESAT::DrawClear(0,0,0);
+
+    if(ESAT::MouseButtonDown(0)){
+      is_drawing = 1;
+      draw_origin_point.x = ESAT::MousePositionX();
+      draw_origin_point.y = ESAT::MousePositionY();
+    }
+    if (ESAT::MouseButtonUp(0)) {
+      is_drawing = 0;
+      draw_end_point.x = ESAT::MousePositionX();
+      draw_end_point.y = ESAT::MousePositionY();
+      //We check that there is space for more rectangles, and that the user is 
+      //not drawing a lin origin.x or y equals to endpoint.x or y
+      if((num_rectangles < kMaxRectangles) && 
+         (draw_origin_point.x!=draw_end_point.x) &&
+         (draw_origin_point.y!=draw_end_point.y)){        
+        //if()
+        rect_container[num_rectangles]->init(1,
+           draw_end_point.x - draw_origin_point.x,
+           draw_end_point.y - draw_origin_point.y, 
+           255,0,0,255,
+           0,255,0,255,
+           draw_origin_point.x, draw_origin_point.y);
+        num_rectangles++;
+      }
+    }
+    if(is_drawing){
+      draw_end_point.x = ESAT::MousePositionX();
+      draw_end_point.y = ESAT::MousePositionY();
+      rect_container[num_rectangles]->init(1,
+           draw_end_point.x - draw_origin_point.x,
+           draw_end_point.y - draw_origin_point.y, 
+           255,0,0,255,
+           0,255,0,255,
+           draw_origin_point.x, draw_origin_point.y);
+    }
+
+    for (auto const rectangle : rect_container){  
+      if (rectangle->active_){
+        rectangle->draw();
+      }
+    }
+
     do{
       current_time = ESAT::Time();
     }while((current_time-last_time)<=1000.0/kFps);
     last_time = current_time; 
     ESAT::DrawEnd();
-    // End of current frame
+  // End of current frame
     ESAT::WindowFrame();
-    }
   }
-  delete rect_test;
-  rect_test = nullptr;
+  for(int i = 0; i < kMaxRectangles; i++){
+    delete rect_container[i];
+  }
   ESAT::WindowDestroy();
 }
 
