@@ -13,26 +13,26 @@ void PaintRectangles() {
 
   uint8_t is_drawing = 0;
   uint8_t num_rectangles = 0;
-  double current_time, last_time;
-  ESAT::Vec2 draw_origin_point;
-  ESAT::Vec2 draw_end_point;
-  //ESAT::Vec2 draw_direction;
+  double current_time = ESAT::Time();
+  double last_time = ESAT::Time();
+  ESAT::Vec2 draw_origin_point = {0,0};
+  ESAT::Vec2 draw_end_point = {0,0};
   Rect *rect_container[kMaxRectangles];
   for(int i = 0; i < kMaxRectangles; i++){
     rect_container[i] = new Rect();
   }
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
-  last_time = ESAT::Time();
   while (ESAT::WindowIsOpened() &&
          !ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Escape)) {
     ESAT::DrawBegin();
     ESAT::DrawClear(0,0,0);
-
+    //We register the position where starts the button click
     if(ESAT::MouseButtonDown(0)){
       is_drawing = 1;
       draw_origin_point.x = ESAT::MousePositionX();
       draw_origin_point.y = ESAT::MousePositionY();
     }
+    //Once the mouse button is released we do the final init to the rectangle
     if (ESAT::MouseButtonUp(0)) {
       is_drawing = 0;
       draw_end_point.x = ESAT::MousePositionX();
@@ -41,8 +41,7 @@ void PaintRectangles() {
       //not drawing a lin origin.x or y equals to endpoint.x or y
       if((num_rectangles < kMaxRectangles) && 
          (draw_origin_point.x!=draw_end_point.x) &&
-         (draw_origin_point.y!=draw_end_point.y)){        
-        //if()
+         (draw_origin_point.y!=draw_end_point.y)){
         rect_container[num_rectangles]->init(1,
            draw_end_point.x - draw_origin_point.x,
            draw_end_point.y - draw_origin_point.y, 
@@ -52,7 +51,8 @@ void PaintRectangles() {
         num_rectangles++;
       }
     }
-    if(is_drawing){
+    //We draw the selected area while the mouse button is not released
+    if(is_drawing && num_rectangles < kMaxRectangles){
       draw_end_point.x = ESAT::MousePositionX();
       draw_end_point.y = ESAT::MousePositionY();
       rect_container[num_rectangles]->init(1,
