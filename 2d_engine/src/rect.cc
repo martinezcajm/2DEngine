@@ -58,3 +58,13 @@ void Rect::draw(){
 
   ESAT::DrawSolidPath(p, 5, true);
 }
+
+void Rect::move(float px, float py){
+  position_.x += px;
+  position_.y += py;
+}
+
+void Rect::resize(float width, float height){
+  dimensions_.x = width;
+  dimensions_.y = height;
+}
