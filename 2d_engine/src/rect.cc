@@ -1,6 +1,26 @@
 #include <ESAT/draw.h>
 #include "rect.h"
 
+Rect::Rect() {
+  Entity::Entity();
+  is_solid_ = 0;
+  position_.x = 0;
+  position_.y = 0;
+  dimensions_.x = 0;
+  dimensions_.y = 0;
+  rgba_stroke_[0] = 0;
+  rgba_stroke_[1] = 0;
+  rgba_stroke_[2] = 0;
+  rgba_stroke_[3] = 0;
+  rgba_fill_[0] = 0;
+  rgba_fill_[1] = 0;
+  rgba_fill_[2] = 0;
+  rgba_fill_[3] = 0;
+  rotation_ = 0.0f;
+  scale_.x = 0;
+  scale_.y = 0;
+}
+
 void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
                 uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
                 uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py){

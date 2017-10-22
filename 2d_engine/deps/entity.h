@@ -6,6 +6,7 @@
 class Entity{
  public:
   //Methods
+  Entity();
   void init(uint32_t tag);
   void init();
   //Data members
