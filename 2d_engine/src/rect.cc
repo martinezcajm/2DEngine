@@ -1,8 +1,10 @@
 #include <ESAT/draw.h>
 #include "rect.h"
 
-Rect::Rect() {
-  Entity::Entity();
+uint32_t Rect::total_rects_ = 1;
+
+Rect::Rect() : Entity() {
+  //Entity::Entity();
   is_solid_ = 0;
   position_.x = 0;
   position_.y = 0;
@@ -19,6 +21,7 @@ Rect::Rect() {
   rotation_ = 0.0f;
   scale_.x = 0;
   scale_.y = 0;
+  total_rects_ ++;
 }
 
 void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
@@ -67,4 +70,13 @@ void Rect::move(float px, float py){
 void Rect::resize(float width, float height){
   dimensions_.x = width;
   dimensions_.y = height;
+}
+
+Rect* Rect::CreateRect(){
+  if(Rect::total_rects_ < kMaxRects){
+    Rect* p_rect = new Rect();
+    return p_rect;
+  }else{
+    return nullptr;
+  }
 }

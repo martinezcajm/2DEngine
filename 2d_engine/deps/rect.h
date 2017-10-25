@@ -7,13 +7,13 @@
 
 class Rect : public Entity{
  public:
-  Rect();
   void init(uint8_t is_solid, float width, float height, uint8_t sc_r,
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py);
   void draw();
   void move(float px, float py);
   void resize(float width, float height);
+  static Rect* Rect::CreateRect();
 
   uint8_t is_solid_;
   ESAT::Vec2 position_;
@@ -24,6 +24,10 @@ class Rect : public Entity{
   uint8_t rgba_fill_[4];
   float rotation_;
   ESAT::Vec2 scale_;
+ private:
+  Rect();
+  static uint32_t total_rects_;
+  static const uint8_t kMaxRects = 50;
 };
 
 #endif

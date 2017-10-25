@@ -19,7 +19,7 @@ void PaintRectangles() {
   ESAT::Vec2 draw_end_point = {0,0};
   Rect *rect_container[kMaxRectangles];
   for(int i = 0; i < kMaxRectangles; i++){
-    rect_container[i] = new Rect();
+    rect_container[i] = Rect::CreateRect();
   }
   ESAT::WindowInit(kScreenWidth, kScreenHeight);
   while (ESAT::WindowIsOpened() &&

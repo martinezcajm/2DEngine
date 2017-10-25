@@ -9,9 +9,16 @@ class Entity{
   Entity();
   void init(uint32_t tag);
   void init();
+  uint32_t id();
   //Data members
   uint32_t tag_;
   uint8_t active_;
+  
+//TODO Copy constructor reimplement
+
+ private:
+  static uint32_t total_ids_;
+  uint32_t id_;
 };
 
 #endif
