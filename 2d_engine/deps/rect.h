@@ -2,7 +2,8 @@
 #define __RECT_H__ 1
 
 #include <cstdint>
-#include <ESAT/math.h>
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 #include "entity.h"
 
 class Rect : public Entity{
@@ -10,24 +11,23 @@ class Rect : public Entity{
   void init(uint8_t is_solid, float width, float height, uint8_t sc_r,
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py);
-  void draw();
+  void draw(sf::RenderWindow *window);
   void move(float px, float py);
   void resize(float width, float height);
   static Rect* Rect::CreateRect();
-
+  
+  static const uint8_t kMaxRects = 50;
   uint8_t is_solid_;
-  ESAT::Vec2 position_;
+  sf::Vector2f position_;
   //Contains the width and height
-  ESAT::Vec2 dimensions_;
-  //ToDo add rotation and scale factors
-  uint8_t rgba_stroke_[4];
-  uint8_t rgba_fill_[4];
+  sf::Vector2f dimensions_;
+  sf::Color rgba_stroke_;
+  sf::Color rgba_fill_;
   float rotation_;
-  ESAT::Vec2 scale_;
+  sf::Vector2f scale_;
  private:
   Rect();
   static uint32_t total_rects_;
-  static const uint8_t kMaxRects = 50;
 };
 
 #endif
