@@ -9,8 +9,33 @@ class Rect : public DrawableEntity{
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
             float rotation, float scalex, float scaley);
+  /** @Draws the graphic entity Rectangle
+  *
+  * Draws the rectangle using SFML to the window passed by reference 
+  *
+  * @return void
+  * @param window SFML RenderWindow passed by reference
+  */
   void draw(sf::RenderWindow &window);
+  /** @Changes the size of the rect
+  *
+  * Sets the value of width and height for the rect to the ones indicated by 
+  *parameter. 
+  *
+  * @width new width of the rectangle
+  * @height new height of the rectangle
+  */
   void resize(float width, float height);
+  /** @Factory that creates rect
+  *
+  * Checks that the number of rects didn't pass the maxim amount established
+  * If you wish to create a Rect you must use this method. In case the maximum
+  * amount of rects has been reached it will return nullptr. Otherwise it will
+  *return a pointer to a rect.
+  *
+  * @return Rect* returns the rect created or nullptr if the maximum of rects 
+  *has been reached
+  */
   static Rect* Rect::CreateRect();
   
   static const uint8_t kMaxRects = 50;
