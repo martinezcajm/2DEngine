@@ -21,7 +21,7 @@ int main()
         }
 
         window.clear();
-        rect_test->draw(&window);
+        rect_test->draw(window);
         window.display();
     }
 

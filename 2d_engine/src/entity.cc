@@ -9,6 +9,13 @@ Entity::Entity() {
   total_ids_ ++;
 }
 
+Entity::Entity(const Entity& o) {
+  tag_ = o.tag_;
+  active_ = o.active_;
+  id_ = total_ids_;
+  total_ids_ ++;
+};
+
 void Entity::init(uint32_t tag){
   tag_ = tag;
   active_ = 1;

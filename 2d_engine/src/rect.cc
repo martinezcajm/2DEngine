@@ -41,7 +41,7 @@ void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
   position_.y = py;
 }
 
-void Rect::draw(sf::RenderWindow *window){
+void Rect::draw(sf::RenderWindow &window){
   sf::RectangleShape rectangle(dimensions_);
   rectangle.setPosition(position_.x, position_.y);
   if(is_solid_){
@@ -51,7 +51,7 @@ void Rect::draw(sf::RenderWindow *window){
   rectangle.setOutlineColor(rgba_fill_);
   rectangle.rotate(rotation_);
   rectangle.scale(scale_.x, scale_.y);
-  window->draw(rectangle);
+  window.draw(rectangle);
 }
 
 void Rect::move(float px, float py){
