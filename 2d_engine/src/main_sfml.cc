@@ -9,7 +9,8 @@ int main()
                     50,100, 
                     255,0,0,255,
                     0,255,0,255,
-                    200, 300);
+                    200, 300,
+                    0,1,1);
     while (window.isOpen())
     {
         sf::Event event;
