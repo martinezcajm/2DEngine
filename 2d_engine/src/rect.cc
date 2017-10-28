@@ -27,7 +27,6 @@ void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
   rgba_fill_.a = fc_a;
 }
 
-//TODO create the rectangle shape out of draw
 void Rect::draw(sf::RenderWindow &window){
   sf::RectangleShape rectangle(dimensions_);
   rectangle.setPosition(position_.x, position_.y);
@@ -54,5 +53,3 @@ Rect* Rect::CreateRect(){
     return nullptr;
   }
 }
-
-//TODO implement destructor that will free the rectangle shape

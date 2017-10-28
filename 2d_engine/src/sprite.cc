@@ -8,18 +8,18 @@ Sprite::Sprite() : DrawableEntity() {
 }
 
 void Sprite::init(float px, float py,
-                float rotation, float scalex, float scaley){
+                float rotation, float scalex, float scaley,
+                const sf::Texture &texture){
   DrawableEntity::init(255,255,255,255, px,py, rotation, scalex,scaley);
-  texture_.loadFromFile("../data/enemy.png");
+  sprite_.setTexture(texture);
 }
 
-//TODO create the Sprite out of draw
 void Sprite::draw(sf::RenderWindow &window){
-  sf::Sprite sprite;
-  sprite.setTexture(texture_);
-  sprite.setColor(color_);
-  sprite.setPosition(position_);
-  window.draw(sprite);
+  sprite_.setColor(color_);
+  sprite_.setPosition(position_);
+  sprite_.rotate(rotation_);
+  sprite_.scale(scale_.x, scale_.y);
+  window.draw(sprite_);
 }
 
 Sprite* Sprite::CreateSprite(){
@@ -30,5 +30,3 @@ Sprite* Sprite::CreateSprite(){
     return nullptr;
   }
 }
-
-//TODO implement destructor that will free the Text

@@ -15,17 +15,17 @@ void Label::init(uint8_t r, uint8_t g, uint8_t b, uint8_t a,
                 sf::String text){
   DrawableEntity::init(r,g,b,a, px,py, rotation, scalex,scaley);
   text_ = text;
+  font_.loadFromFile("../data/fonts/arial.ttf");
 }
 
-//TODO create the Text and font out of draw
 void Label::draw(sf::RenderWindow &window){
-  sf::Font font;
-  font.loadFromFile("../data/fonts/arial.ttf");
-  sf::Text text(text_, font);
+  sf::Text text(text_, font_);
   text.setCharacterSize(font_size_);
   text.setStyle(style_);
   text.setFillColor(color_);
   text.setPosition(position_);
+  text.rotate(rotation_);
+  text.scale(scale_.x, scale_.y);
   window.draw(text);
 }
 

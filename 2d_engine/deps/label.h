@@ -34,6 +34,8 @@ class Label : public DrawableEntity{
   sf::String text_;
   //Used to indicate if is normal, bold, italic or underlined
   sf::Text::Style style_;
+  //Font of the text
+  sf::Font font_;
  private:
   Label();
   Label(const Label& o){};

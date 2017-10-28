@@ -6,7 +6,8 @@
 class Sprite : public DrawableEntity{
  public:
   void init(float px, float py,
-            float rotation, float scalex, float scaley);
+            float rotation, float scalex, float scaley,
+            const sf::Texture &texture);
   /** @Draws the graphic entity Sprite
   *
   * Draws the sprite using SFML to the window passed by reference 
@@ -28,8 +29,7 @@ class Sprite : public DrawableEntity{
   static Sprite* Sprite::CreateSprite();
   
   static const uint8_t kMaxSprites = 50;
-  //TODO remove texture from Sprite
-  sf::Texture texture_;
+  sf::Sprite sprite_;
 
  private:
   Sprite();
