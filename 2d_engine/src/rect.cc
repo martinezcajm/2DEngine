@@ -1,6 +1,6 @@
 #include "rect.h"
 
-uint32_t Rect::total_rects_ = 1;
+uint32_t Rect::total_rects_ = 0;
 
 Rect::Rect() : DrawableEntity() {
   is_solid_ = 0;
