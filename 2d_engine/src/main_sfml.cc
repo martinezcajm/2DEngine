@@ -1,4 +1,8 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Window/Event.hpp>
+#include "imgui.h"
+#include "imgui-SFML.h"
 #include "rect.h"
 #include "label.h"
 #include "sprite.h"
@@ -7,6 +11,9 @@ int main()
 {
   
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
+  window.setFramerateLimit(60);
+  ImGui::SFML::Init(window);
+
   Rect *rect_test = Rect::CreateRect();
   Label *label_test = Label::CreateLabel();
   sf::Texture texture;
@@ -25,22 +32,32 @@ int main()
   sprite_test->init(0,0,
                    0,1,1,
                    texture);
+
+  sf::Clock deltaClock;
   while (window.isOpen())
   {
-      sf::Event event;
-      while (window.pollEvent(event))
-      {
-          if (event.type == sf::Event::Closed){
-              window.close();
-          }
+    sf::Event event;
+    while (window.pollEvent(event))
+    {
+      ImGui::SFML::ProcessEvent(event);
+      if (event.type == sf::Event::Closed){
+          window.close();
       }
+    }
+    ImGui::SFML::Update(window, deltaClock.restart());
 
-      window.clear();
-      rect_test->draw(window);
-      label_test->draw(window);
-      sprite_test->draw(window);
-      window.display();
+    ImGui::Begin("Hello, world!");
+    ImGui::Button("Look at this pretty button");
+    ImGui::End();
+
+    window.clear();
+    rect_test->draw(window);
+    label_test->draw(window);
+    sprite_test->draw(window);
+    ImGui::SFML::Render(window);
+    window.display();
   }
+  ImGui::SFML::Shutdown();
   delete rect_test;
   delete label_test;
   delete sprite_test;
