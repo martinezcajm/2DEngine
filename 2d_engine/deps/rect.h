@@ -37,6 +37,13 @@ class Rect : public DrawableEntity{
   *has been reached
   */
   static Rect* Rect::CreateRect();
+  /** @Checks if a point collides with the rect
+  *
+  * Checks if the point passed by reference collides with the rect.
+  *
+  * @return bool returns true if the point collides and false if not.
+  */
+  bool checkCollision(sf::Vector2f& position);
   
   static const uint8_t kMaxRects = 50;
   uint8_t is_solid_;
