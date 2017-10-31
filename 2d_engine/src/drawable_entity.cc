@@ -31,3 +31,12 @@ void DrawableEntity::move(float px, float py){
   position_.x += px;
   position_.y += py;
 }
+
+void DrawableEntity::draw(sf::RenderWindow &window, const sf::Drawable &entity,                        const sf::Vector2f &rotation_origin){
+  sf::Transform t;
+  t.translate(position_);
+  //We indicate the rotation with the origin point from which it will rotate.
+  t.rotate(rotation_, rotation_origin);
+  t.scale(scale_);
+  window.draw(entity, t);
+}

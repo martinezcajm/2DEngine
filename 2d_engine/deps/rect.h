@@ -25,7 +25,7 @@ class Rect : public DrawableEntity{
   * @width new width of the rectangle
   * @height new height of the rectangle
   */
-  void resize(float width, float height);
+  void resize(const float width, const float height);
   /** @Factory that creates rect
   *
   * Checks that the number of rects didn't pass the maxim amount established

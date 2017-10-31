@@ -16,9 +16,22 @@ class DrawableEntity : public Entity{
   *
   * @return void
   * @param px quantity the entity will move in the x axis
-  * @aram py quantity the entity will move in the y axis
+  * @param py quantity the entity will move in the y axis
   */
   void move(float px, float py);
+  /** @brief draws a drawable entity
+  *
+  * this method is in charge of applying the transformations that are common
+  * to all drawable_entities using the transform class of SFML (uses matrix)  
+  * and finally drawing it to the window.
+  *
+  * @return void
+  * @param window window in wich the entity will be drawn.
+  * @param entity entity that will be drawn.
+  * @rotation_origin origin point from wich the rotation will be done.
+  */
+  void draw(sf::RenderWindow &window, const sf::Drawable &entity, 
+            const sf::Vector2f &rotation_origin);
   sf::Vector2f position_;
   float rotation_;
   sf::Vector2f scale_;

@@ -7,11 +7,13 @@
 #include "label.h"
 #include "sprite.h"
 
+
 typedef enum UiStatus
 {
   kIdle,
   kDraw,
-  kSelection
+  kSelection,
+  kWrite
 } UiStatus;
 
 int main()
@@ -23,6 +25,7 @@ int main()
   sf::Vector2f draw_end_point = {0,0};
   UiStatus status = UiStatus::kSelection;
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
+  float color[3] = { 0.f, 0.f, 0.f };
   window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
   uint8_t element_selected = 0;
@@ -74,6 +77,7 @@ int main()
            draw_origin_point.x, draw_origin_point.y,
            0,1,1);
           }else if(status == UiStatus::kSelection){
+            //element_selected = 0;
             for (auto const rectangle : rect_container){  
               if (rectangle->active_ && 
                   rectangle->checkCollision(mouse_position)){
@@ -121,6 +125,7 @@ int main()
           status = UiStatus::kDraw;
         }
       }
+      ImGui::SameLine();
       if (ImGui::Button("Selector")) {
         if(status == UiStatus::kSelection){
           status = UiStatus::kIdle;
@@ -129,16 +134,57 @@ int main()
         }
         is_drawing = 0;
       }
-      ImGui::End();
-      if(element_selected){
-        ImGui::Begin("Selection");
-        ImGui::Text("position");
-        ImGui::InputFloat("x", &selection->position_.x);
-        ImGui::InputFloat("y", &selection->position_.y);
-        ImGui::End();
+      ImGui::SameLine();
+      if (ImGui::Button("Text")) {
+        if(status == UiStatus::kWrite){
+          status = UiStatus::kIdle;
+        }else{
+          status = UiStatus::kWrite;
+        }
+        is_drawing = 0;
       }
-      
+      ImGui::End();
+      static bool no_titlebar = false;
+    static bool no_border = true;
+    static bool no_resize = false;
+    static bool no_move = false;
+    static bool no_scrollbar = false;
+    static bool no_collapse = false;
+    static bool no_menu = false;
 
+
+    ImGui::Begin("Selection");
+      if(element_selected){
+        if (ImGui::CollapsingHeader("Info")){
+          ImGui::Text("position:{x:%f, y:%f} \n", selection->position_.x,
+           selection->position_.y);
+        }
+        if (ImGui::CollapsingHeader("Edit")){
+          if (ImGui::TreeNode("Position"))
+          {
+            ImGui::InputFloat("x", &selection->position_.x);
+            ImGui::InputFloat("y", &selection->position_.y);
+            ImGui::TreePop();
+          }
+          if (ImGui::TreeNode("Color"))
+          {
+            if (ImGui::ColorEdit3("Rect Color", color)) {
+              selection->color_.r = static_cast<sf::Uint8>(color[0]);
+              selection->color_.g = static_cast<sf::Uint8>(color[1]);
+              selection->color_.b = static_cast<sf::Uint8>(color[2]);
+              //selection->color_.a = static_cast<sf::Uint8>(color[3]);
+            }
+            ImGui::TreePop();
+          }
+          if (ImGui::TreeNode("Transformation"))
+          {
+            ImGui::InputFloat("rotation", &selection->rotation_);
+            ImGui::InputFloat("scale", &selection->scale_.x);
+            ImGui::TreePop();
+          } 
+        } 
+      }
+      ImGui::End();
       window.clear();
       for (auto const rectangle : rect_container){  
         if (rectangle->active_){
@@ -149,6 +195,7 @@ int main()
       label_test->draw(window);
       sprite_test->draw(window);
       ImGui::SFML::Render(window);
+      //ImGui::ShowTestWindow();
       window.display();
     }
   ImGui::SFML::Shutdown();

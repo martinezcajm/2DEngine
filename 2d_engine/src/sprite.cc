@@ -17,8 +17,8 @@ void Sprite::init(float px, float py,
 void Sprite::draw(sf::RenderWindow &window){
   sprite_.setColor(color_);
   sprite_.setPosition(position_);
-  sprite_.rotate(rotation_);
   sprite_.scale(scale_.x, scale_.y);
+  sprite_.rotate(rotation_);
   window.draw(sprite_);
 }
 

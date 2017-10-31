@@ -29,18 +29,16 @@ void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
 
 void Rect::draw(sf::RenderWindow &window){
   sf::RectangleShape rectangle(dimensions_);
-  rectangle.setPosition(position_.x, position_.y);
   if(is_solid_){
     rectangle.setFillColor(color_);
   }
   rectangle.setOutlineThickness(2);
   rectangle.setOutlineColor(rgba_fill_);
-  rectangle.rotate(rotation_);
-  rectangle.scale(scale_.x, scale_.y);
-  window.draw(rectangle);
+  sf::Vector2f rotation_origin = {dimensions_.x/2,dimensions_.y/2};
+  DrawableEntity::draw(window, rectangle, rotation_origin);
 }
 
-void Rect::resize(float width, float height){
+void Rect::resize(const float width, const float height){
   dimensions_.x = width;
   dimensions_.y = height;
 }
