@@ -23,9 +23,9 @@ int main()
   sf::Vector2f mouse_position = {0,0};
   sf::Vector2f draw_origin_point = {0,0};
   sf::Vector2f draw_end_point = {0,0};
-  UiStatus status = UiStatus::kSelection;
+  UiStatus status = UiStatus::kIdle;
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
-  float color[3] = { 0.f, 0.f, 0.f };
+  float color[4] = { 0.f, 0.f, 0.f, 0.f };
   window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
   uint8_t element_selected = 0;
@@ -64,7 +64,8 @@ int main()
           window.close();
       }
       if (event.type == sf::Event::MouseButtonPressed && 
-          event.mouseButton.button == sf::Mouse::Left ) {
+          event.mouseButton.button == sf::Mouse::Left &&
+          !ImGui::IsAnyWindowHovered()) {
         mouse_position = static_cast<sf::Vector2f>(
                          sf::Mouse::getPosition(window));
         if(status == UiStatus::kDraw){
@@ -144,16 +145,11 @@ int main()
         is_drawing = 0;
       }
       ImGui::End();
-      static bool no_titlebar = false;
-    static bool no_border = true;
-    static bool no_resize = false;
-    static bool no_move = false;
-    static bool no_scrollbar = false;
-    static bool no_collapse = false;
-    static bool no_menu = false;
 
 
     ImGui::Begin("Selection");
+
+
       if(element_selected){
         if (ImGui::CollapsingHeader("Info")){
           ImGui::Text("position:{x:%f, y:%f} \n", selection->position_.x,
@@ -162,24 +158,29 @@ int main()
         if (ImGui::CollapsingHeader("Edit")){
           if (ImGui::TreeNode("Position"))
           {
-            ImGui::InputFloat("x", &selection->position_.x);
-            ImGui::InputFloat("y", &selection->position_.y);
+            ImGui::InputFloat("x", &selection->position_.x, 1.0f, 1.0f);
+            ImGui::InputFloat("y", &selection->position_.y, 1.0f, 1.0f);
             ImGui::TreePop();
           }
           if (ImGui::TreeNode("Color"))
           {
-            if (ImGui::ColorEdit3("Rect Color", color)) {
-              selection->color_.r = static_cast<sf::Uint8>(color[0]);
-              selection->color_.g = static_cast<sf::Uint8>(color[1]);
-              selection->color_.b = static_cast<sf::Uint8>(color[2]);
-              //selection->color_.a = static_cast<sf::Uint8>(color[3]);
+            color[0] = static_cast<float>(selection->color_.r/255.f);
+            color[1] = static_cast<float>(selection->color_.g/255.f); 
+            color[2] = static_cast<float>(selection->color_.b/255.f); 
+            color[3] = static_cast<float>(selection->color_.a/255.f); 
+            if (ImGui::ColorEdit4("Rect Color", color)) {
+              selection->color_.r = static_cast<sf::Uint8>(color[0] * 255.f);
+              selection->color_.g = static_cast<sf::Uint8>(color[1] * 255.f);
+              selection->color_.b = static_cast<sf::Uint8>(color[2] * 255.f);
+              selection->color_.a = static_cast<sf::Uint8>(color[3] * 255.f);
             }
             ImGui::TreePop();
           }
           if (ImGui::TreeNode("Transformation"))
           {
-            ImGui::InputFloat("rotation", &selection->rotation_);
-            ImGui::InputFloat("scale", &selection->scale_.x);
+            ImGui::InputFloat("rotation", &selection->rotation_, 1.0f, 1.0f);
+            ImGui::InputFloat("scale", &selection->scale_.x, 1.0f, 1.0f);
+            selection->scale_.y = selection->scale_.x;
             ImGui::TreePop();
           } 
         } 

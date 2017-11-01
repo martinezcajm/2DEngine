@@ -3,11 +3,46 @@
 
 #include "drawable_entity.h"
 
+typedef enum SpriteOrigin
+{
+  kMemory,
+  kImage,
+  kSpriteHandler
+} SpriteOrigin;
+
 class Sprite : public DrawableEntity{
  public:
+  /** @Initializes the sprite using a texture
+  *
+  * Initializes the position and transformations of a sprite using an 
+  * sf::Texture as texture.
+  *
+  * @return void
+  * @param px position x of the sprite
+  * @param py position y of the sprite
+  * @param rotation value of rotation of the sprite in degrees
+  * @param scalex x scale value of the sprite
+  * @param scaley y scale value of the sprite
+  * @param texture that will use the sprite
+  */
   void init(float px, float py,
             float rotation, float scalex, float scaley,
             const sf::Texture &texture);
+  /** @Initializes the sprite using a buffer from memory
+  *
+  * Initializes the position and transformations of a sprite using memory data
+  *
+  * @return void
+  * @param px position x of the sprite
+  * @param py position y of the sprite
+  * @param rotation value of rotation of the sprite in degrees
+  * @param scalex x scale value of the sprite
+  * @param scaley y scale value of the sprite
+  * @param embeddedImageData data of the image to be loaded as texture
+  */
+  void init(float px, float py,
+            float rotation, float scalex, float scaley,
+            const char *embeddedImageData);
   /** @Draws the graphic entity Sprite
   *
   * Draws the sprite using SFML to the window passed by reference 
@@ -35,6 +70,7 @@ class Sprite : public DrawableEntity{
   Sprite();
   Sprite(const Sprite& o){};
   static uint32_t total_sprites_;
+  SpriteOrigin origin_;
 };
 
 #endif

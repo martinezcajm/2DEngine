@@ -10,8 +10,22 @@ Sprite::Sprite() : DrawableEntity() {
 void Sprite::init(float px, float py,
                 float rotation, float scalex, float scaley,
                 const sf::Texture &texture){
-  DrawableEntity::init(255,255,255,255, px,py, rotation, scalex,scaley);
+  DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   sprite_.setTexture(texture);
+  origin_ = SpriteOrigin::kSpriteHandler;
+}
+
+void Sprite::init(float px, float py,
+                float rotation, float scalex, float scaley,
+                const char *embeddedImageData){
+  DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
+  /*if(embeddedImageData != nullptr && 
+       texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData))){
+  
+       }
+  texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData));
+  sprite_.setTexture(texture);*/
+  origin_ = SpriteOrigin::kMemory;
 }
 
 void Sprite::draw(sf::RenderWindow &window){

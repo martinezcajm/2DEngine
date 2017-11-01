@@ -34,7 +34,8 @@ void Rect::draw(sf::RenderWindow &window){
   }
   rectangle.setOutlineThickness(2);
   rectangle.setOutlineColor(rgba_fill_);
-  sf::Vector2f rotation_origin = {dimensions_.x/2,dimensions_.y/2};
+  sf::Vector2f rotation_origin = {(dimensions_.x/2)*scale_.x
+                                  ,(dimensions_.y/2)*scale_.y};
   DrawableEntity::draw(window, rectangle, rotation_origin);
 }
 
