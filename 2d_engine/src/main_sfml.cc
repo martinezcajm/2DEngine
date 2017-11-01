@@ -78,7 +78,7 @@ int main()
            draw_origin_point.x, draw_origin_point.y,
            0,1,1);
           }else if(status == UiStatus::kSelection){
-            //element_selected = 0;
+            element_selected = 0;
             for (auto const rectangle : rect_container){  
               if (rectangle->active_ && 
                   rectangle->checkCollision(mouse_position)){
@@ -118,6 +118,20 @@ int main()
       ImGui::SFML::Update(window, deltaClock.restart());
 
       ImGui::Begin("Options");
+      //To give a sense of mode selection, we give a redish color when the 
+      //button is the currently selected and a blueish one whe it's not.
+      if(status == UiStatus::kDraw){
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.65f,0.14f,0.14f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+        ImVec4(0.6f,0.08f,0.08f,1.0f));
+      }else{
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.0f,0.26f,0.69f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+      }
+      
       if (ImGui::Button("Rect create")) {
         if(status == UiStatus::kDraw){
           status = UiStatus::kIdle;
@@ -126,7 +140,19 @@ int main()
           status = UiStatus::kDraw;
         }
       }
+      ImGui::PopStyleColor(2);
       ImGui::SameLine();
+      if(status == UiStatus::kSelection){
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.65f,0.14f,0.14f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+        ImVec4(0.6f,0.08f,0.08f,1.0f));
+      }else{
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.0f,0.26f,0.69f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+      }
       if (ImGui::Button("Selector")) {
         if(status == UiStatus::kSelection){
           status = UiStatus::kIdle;
@@ -135,7 +161,19 @@ int main()
         }
         is_drawing = 0;
       }
+      ImGui::PopStyleColor(2);
       ImGui::SameLine();
+      if(status == UiStatus::kWrite){
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.65f,0.14f,0.14f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+        ImVec4(0.6f,0.08f,0.08f,1.0f));
+      }else{
+        ImGui::PushStyleColor(ImGuiCol_Button, 
+        ImVec4(0.0f,0.26f,0.69f,1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+      }
       if (ImGui::Button("Text")) {
         if(status == UiStatus::kWrite){
           status = UiStatus::kIdle;
@@ -144,6 +182,7 @@ int main()
         }
         is_drawing = 0;
       }
+      ImGui::PopStyleColor(2);
       ImGui::End();
 
 
