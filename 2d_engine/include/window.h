@@ -11,6 +11,7 @@ class  Window{
   Window() {};
   void CreateWindow(const sf::Vector2u size, const sf::String& title, 
                     unsigned int frameRateLimit = 60);
+  // GUSTAVO: Please remember that method names go normally likeThisExample()
   bool IsOpen();
   void Display();
   void Close();
