@@ -57,8 +57,8 @@ class Sprite : public DrawableEntity{
   * In case the allocation of the texture fails it will return a 0. If all 
   * went well 1
   *
-  * @return uint8_t indicates if there was an error in the execution error->0
-  *  ok->1
+  * @return uint8_t indicates if there was an error in the execution error->1
+  *  ok->0
   * @param px position x of the sprite
   * @param py position y of the sprite
   * @param rotation value of rotation of the sprite in degrees
@@ -92,14 +92,17 @@ class Sprite : public DrawableEntity{
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;
 
- private:
+ protected:
+  static uint32_t total_sprites_;
   Sprite();
   Sprite(const Sprite& o){};
-  static uint32_t total_sprites_;
-  SpriteOrigin origin_;
   //A texture owned only by this sprite, it will be freed by the sprite ones
   //it's life ends (not necessarily destruction)
   sf::Texture *own_texture_;
+
+ private:
+  SpriteOrigin origin_;
+  
 };
 
 #endif

@@ -38,11 +38,11 @@ uint8_t Sprite::init(float px, float py,
                 const std::string &file_path){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   own_texture_ = new sf::Texture();
-  if(own_texture_ == nullptr) return 0;
+  if(own_texture_ == nullptr) return 1;
   own_texture_->loadFromFile(file_path);
   sprite_.setTexture(*own_texture_);
   origin_ = SpriteOrigin::kImage;
-  return 1;
+  return 0;
 }
 
 void Sprite::draw(sf::RenderWindow &window){

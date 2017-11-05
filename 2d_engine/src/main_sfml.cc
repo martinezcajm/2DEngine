@@ -6,6 +6,7 @@
 #include "rect.h"
 #include "label.h"
 #include "sprite.h"
+#include "background.h"
 
 
 typedef enum UiStatus
@@ -34,18 +35,12 @@ int main()
   for(int i = 0; i < Rect::kMaxRects; i++){
     rect_container[i] = Rect::CreateRect();
   }
-  //Rect *rect_test = Rect::CreateRect();
   Label *label_test = Label::CreateLabel();
   Sprite *sprite_from_image = Sprite::CreateSprite();
+  Background *bg = Background::CreateBackground();
   sf::Texture texture;
   texture.loadFromFile("../data/icons/draw.png");
   Sprite *sprite_test = Sprite::CreateSprite();
-  /*rect_test->init(1,
-                  50,100, 
-                  255,0,0,255,
-                  0,255,0,255,
-                  200, 300,
-                  0,1,1);*/
   label_test->init(255,0,0,255,
                    500,400,
                    0,1,1,
@@ -56,6 +51,12 @@ int main()
   sprite_from_image->init(50,0,
                    0,1,1,
                    "../data/icons/draw.png");
+  bg->init("../data/bg.png",800,800);
+
+  bg->speed_.x = 5;
+  bg->speed_.y = 5;
+  bg->scrolls_horizontally_ = 1;
+  bg->scrolls_vertically_ = 1;
 
   sf::Clock deltaClock;
   while (window.isOpen())
@@ -235,7 +236,8 @@ int main()
           rectangle->draw(window);
         }
       }
-      //rect_test->draw(window);
+      bg->update();
+      bg->draw(window);
       label_test->draw(window);
       sprite_test->draw(window);
       sprite_from_image->draw(window);
@@ -247,7 +249,6 @@ int main()
   for(int i = 0; i < Rect::kMaxRects; i++){
     delete rect_container[i];
   }
-  //delete rect_test;
   delete label_test;
   delete sprite_test;
   delete sprite_from_image;
