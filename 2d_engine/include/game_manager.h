@@ -5,23 +5,25 @@
 #include "rect.h"
 #include "label.h"
 #include "sprite.h"
+#include "scene.h"
 
 class GameManager {
 private:
   GameManager();
   GameManager(const GameManager& other){};
-  ~GameManager();
+  ~GameManager(){};
 
 public:
   static GameManager& instance();
 
-  bool game_over;
-  Window *window;
-  sf::Vector2u *window_size;
-  Rect *rect_test;
-  Label *label_test;
-  Sprite *sprite_test;
-  sf::Texture *texture;
+  bool game_over_;
+  Window *window_;
+  Scene *scene_;
+  sf::Vector2u *window_size_;
+  Rect *rect_test_;
+  Label *label_test_;
+  Sprite *sprite_test_;
+  sf::Texture *texture_;
 };
 
 #endif

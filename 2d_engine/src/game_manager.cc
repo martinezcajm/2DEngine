@@ -1,19 +1,12 @@
 #include "game_manager.h"
 
 GameManager::GameManager(){
-  window = new Window();
-  window_size = new sf::Vector2u();
-  window_size->x = 800;
-  window_size->y = 800;
-  window->CreateWindow(*window_size, "My Window");
-  game_over = false;
+  window_size_ = new sf::Vector2u();
+  window_size_->x = 800;
+  window_size_->y = 800;
+  window_ = Window::CreateWindow(*window_size_, "My Window");
 
-
-  
-}
-
-GameManager::~GameManager(){
-  //delete objects
+  game_over_ = false;
 }
 
 GameManager& GameManager::instance(){
