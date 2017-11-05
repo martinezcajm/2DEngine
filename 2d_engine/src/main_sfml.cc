@@ -17,6 +17,41 @@ typedef enum UiStatus
   kWrite
 } UiStatus;
 
+typedef enum UiEditType
+{
+  kNull,
+  kRect,
+  kLabel
+} UiEditType;
+
+void UiPreloadCommonValues(DrawableEntity &d_entity){
+  if (ImGui::TreeNode("Position")){
+    ImGui::InputFloat("x", &d_entity.position_.x, 1.0f, 1.0f);
+    ImGui::InputFloat("y", &d_entity.position_.y, 1.0f, 1.0f);
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("Color")){
+    float color[4] = { 0.f, 0.f, 0.f, 0.f };
+    color[0] = static_cast<float>(d_entity.color_.r/255.f);
+    color[1] = static_cast<float>(d_entity.color_.g/255.f); 
+    color[2] = static_cast<float>(d_entity.color_.b/255.f); 
+    color[3] = static_cast<float>(d_entity.color_.a/255.f); 
+    if (ImGui::ColorEdit4("Rect Color", color)) {
+      d_entity.color_.r = static_cast<sf::Uint8>(color[0] * 255.f);
+      d_entity.color_.g = static_cast<sf::Uint8>(color[1] * 255.f);
+      d_entity.color_.b = static_cast<sf::Uint8>(color[2] * 255.f);
+      d_entity.color_.a = static_cast<sf::Uint8>(color[3] * 255.f);
+    }
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("Transformation")){
+    ImGui::InputFloat("rotation", &d_entity.rotation_, 1.0f, 1.0f);
+    ImGui::InputFloat("scalex", &d_entity.scale_.x, 1.0f, 1.0f);
+    ImGui::InputFloat("scaley", &d_entity.scale_.y, 1.0f, 1.0f);
+    ImGui::TreePop();
+  } 
+}
+
 int main()
 {
   uint8_t is_drawing = 0;
@@ -25,12 +60,12 @@ int main()
   sf::Vector2f draw_origin_point = {0,0};
   sf::Vector2f draw_end_point = {0,0};
   UiStatus status = UiStatus::kIdle;
+  UiEditType edit_type = UiEditType::kLabel;
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
-  float color[4] = { 0.f, 0.f, 0.f, 0.f };
   window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
-  uint8_t element_selected = 0;
-  Rect *selection = nullptr;
+  Rect *rect_selection = nullptr;
+  Label *label_selection = nullptr;
   Rect *rect_container[Rect::kMaxRects];
   for(int i = 0; i < Rect::kMaxRects; i++){
     rect_container[i] = Rect::CreateRect();
@@ -61,6 +96,8 @@ int main()
   bg->scrolls_horizontally_ = 1;
   //bg->scrolls_vertically_ = 1;
 
+  label_selection = label_test;
+
   sf::Clock deltaClock;
   while (window.isOpen())
   {
@@ -86,12 +123,12 @@ int main()
            draw_origin_point.x, draw_origin_point.y,
            0,1,1);
           }else if(status == UiStatus::kSelection){
-            element_selected = 0;
+            //edit_type = UiEditType::kNull;
             for (auto const rectangle : rect_container){  
               if (rectangle->active_ && 
                   rectangle->checkCollision(mouse_position)){
-                selection = rectangle;
-                element_selected = 1;
+                rect_selection = rectangle;
+                edit_type = UiEditType::kRect;
               }
             }
           }
@@ -196,58 +233,38 @@ int main()
 
     ImGui::Begin("Selection");
 
+    if (ImGui::CollapsingHeader("Edit")){
 
-      if(element_selected){
-        if (ImGui::CollapsingHeader("Info")){
-          ImGui::Text("position:{x:%f, y:%f} \n", selection->position_.x,
-           selection->position_.y);
-        }
-        if (ImGui::CollapsingHeader("Edit")){
-          if (ImGui::TreeNode("Position"))
-          {
-            ImGui::InputFloat("x", &selection->position_.x, 1.0f, 1.0f);
-            ImGui::InputFloat("y", &selection->position_.y, 1.0f, 1.0f);
-            ImGui::TreePop();
-          }
-          if (ImGui::TreeNode("Color"))
-          {
-            color[0] = static_cast<float>(selection->color_.r/255.f);
-            color[1] = static_cast<float>(selection->color_.g/255.f); 
-            color[2] = static_cast<float>(selection->color_.b/255.f); 
-            color[3] = static_cast<float>(selection->color_.a/255.f); 
-            if (ImGui::ColorEdit4("Rect Color", color)) {
-              selection->color_.r = static_cast<sf::Uint8>(color[0] * 255.f);
-              selection->color_.g = static_cast<sf::Uint8>(color[1] * 255.f);
-              selection->color_.b = static_cast<sf::Uint8>(color[2] * 255.f);
-              selection->color_.a = static_cast<sf::Uint8>(color[3] * 255.f);
-            }
-            ImGui::TreePop();
-          }
-          if (ImGui::TreeNode("Transformation"))
-          {
-            ImGui::InputFloat("rotation", &selection->rotation_, 1.0f, 1.0f);
-            ImGui::InputFloat("scale", &selection->scale_.x, 1.0f, 1.0f);
-            selection->scale_.y = selection->scale_.x;
-            ImGui::TreePop();
-          } 
-        } 
-      }
-      ImGui::End();
-      window.clear();
-      for (auto const rectangle : rect_container){  
-        if (rectangle->active_){
-          rectangle->draw(window);
+      if(edit_type == UiEditType::kRect){
+        UiPreloadCommonValues(*rect_selection);
+      }else if(edit_type == UiEditType::kLabel){
+        UiPreloadCommonValues(*label_selection);
+        if (ImGui::TreeNode("label")){
+          ImGui::InputInt("font size", 
+                          &label_selection->font_size_,
+                          1, 1);
+          ImGui::InputText("text", label_selection->text_, 50);
+          ImGui::TreePop();
         }
       }
-      bg->update();
-      bg->draw(window);
-      label_test->draw(window);
-      sprite_test->draw(window);
-      sprite_from_image->draw(window);
-      ImGui::SFML::Render(window);
-      //ImGui::ShowTestWindow();
-      window.display();
+    } 
+
+    ImGui::End();
+    window.clear();
+    bg->update();
+    bg->draw(window);
+    for (auto const rectangle : rect_container){  
+      if (rectangle->active_){
+        rectangle->draw(window);
+      }
     }
+      
+    label_test->draw(window);
+    sprite_test->draw(window);
+    sprite_from_image->draw(window);
+    ImGui::SFML::Render(window);
+    window.display();
+  }
   ImGui::SFML::Shutdown();
   for(int i = 0; i < Rect::kMaxRects; i++){
     delete rect_container[i];

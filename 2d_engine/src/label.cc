@@ -1,9 +1,10 @@
+#include <string.h>
 #include "label.h"
 
 uint32_t Label::total_labels_ = 1;
 
 Label::Label() : DrawableEntity() {
-  text_ = "";
+  text_[0] = ' ';
   font_size_ = 30;
   style_ = sf::Text::Regular;
   font_ = nullptr;
@@ -13,11 +14,12 @@ Label::Label() : DrawableEntity() {
 void Label::init(uint8_t r, uint8_t g, uint8_t b, uint8_t a, 
                 float px, float py,
                 float rotation, float scalex, float scaley,
-                sf::String text, const sf::Font &font){
+                const char* text, const sf::Font &font){
   DrawableEntity::init(r,g,b,a, px,py, rotation, scalex,scaley);
-  text_ = text;
+  if(text != nullptr){
+    memcpy(&text_, text, kTextMaxSize);
+  }
   font_ = &font;
-  //font_.loadFromFile("../data/fonts/arial.ttf");
 }
 
 void Label::draw(sf::RenderWindow &window){
@@ -29,6 +31,20 @@ void Label::draw(sf::RenderWindow &window){
   text.rotate(rotation_);
   text.scale(scale_.x, scale_.y);
   window.draw(text);
+}
+
+void Label::set_text(const char* text){
+  if(text != nullptr){
+    memcpy(&text_, text, kTextMaxSize);
+  }
+}
+
+void Label::set_font(const sf::Font  &font){
+  font_ = &font;
+}
+
+void Label::set_font_size(const int32_t &font_size){
+  font_size_ = font_size;
 }
 
 Label* Label::CreateLabel(){

@@ -54,6 +54,7 @@ Rect* Rect::CreateRect(){
 }
 
 bool Rect::checkCollision(sf::Vector2f& position){
-  sf::FloatRect aux(position_, dimensions_);
+  sf::FloatRect aux(position_.x, position_.y,
+                    dimensions_.x*scale_.x, dimensions_.y*scale_.y);
   return aux.contains(position);
 }
