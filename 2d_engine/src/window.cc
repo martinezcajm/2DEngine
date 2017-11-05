@@ -1,17 +1,30 @@
 #include "window.h"
 
-void Window::CreateWindow(const sf::Vector2u size, const sf::String& title, 
-                          unsigned int frameRateLimit){
+uint8_t Window::total_windows_ = 0;
+Window::Window(const sf::Vector2u size, const sf::String& title, 
+               unsigned int frame_rate_limit){
   sfml_window_ = new sf::RenderWindow(sf::VideoMode(size.x, size.y), title);
   sfml_window_->setFramerateLimit(60);
-  frameRateLimit_ = frameRateLimit;
+  frame_rate_limit_ = frame_rate_limit;
+  Window::total_windows_++;
+}
+
+Window* Window::CreateWindow(const sf::Vector2u size, const sf::String& title, 
+                          unsigned int frame_rate_limit){
+                            
+  if(Window::total_windows_ < kMaxWindows){
+    Window* p_window = new Window(size, title, frame_rate_limit);
+    return p_window;
+  }else{
+    return nullptr;
+  }
 }
  
-bool Window::IsOpen(){
-  while (sfml_window_->pollEvent(event))
+bool Window::isOpen(){
+  while (sfml_window_->pollEvent(event_))
   {
     //ImGui::SFML::ProcessEvent(event);
-    if (event.type == sf::Event::Closed){
+    if (event_.type == sf::Event::Closed){
       sfml_window_->close();
     }
   }
@@ -19,16 +32,16 @@ bool Window::IsOpen(){
   return sfml_window_->isOpen();
 
 }
-void Window::Display(){
+void Window::display(){
   sfml_window_->display();
 }
-void Window::Close(){
+void Window::close(){
   sfml_window_->close();
 }
-void Window::Clear(){
+void Window::clear(){
   sfml_window_->clear();
 }
-void Window::Draw(const sf::Drawable& drawable){
+void Window::draw(const sf::Drawable& drawable){
   sfml_window_->draw(drawable);
 }
 /*
