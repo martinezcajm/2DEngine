@@ -22,7 +22,8 @@ uint8_t Background::init(const std::string &file_path,
   own_texture_->setRepeated(true);
   sprite_.setTexture(*own_texture_);
   sprite_.setPosition(position_.x, position_.y);
-  //bgSprite.setTextureRect(sf::IntRect(0,bgY,800,600));
+  sprite_.setScale((float)width/own_texture_->getSize().x,
+                   (float)height/own_texture_->getSize().y);
   sprite_.setTextureRect(sf::IntRect(background_position_,dimensions_));
   return 0;
 }

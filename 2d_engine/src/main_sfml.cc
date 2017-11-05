@@ -51,12 +51,12 @@ int main()
   sprite_from_image->init(50,0,
                    0,1,1,
                    "../data/icons/draw.png");
-  bg->init("../data/bg.png",800,800);
+  bg->init("../data/bg.png",window.getSize().x,window.getSize().y);
 
-  bg->speed_.x = 5;
-  bg->speed_.y = 5;
+  bg->speed_.x = 1;
+  //bg->speed_.y = 5;
   bg->scrolls_horizontally_ = 1;
-  bg->scrolls_vertically_ = 1;
+  //bg->scrolls_vertically_ = 1;
 
   sf::Clock deltaClock;
   while (window.isOpen())
