@@ -6,16 +6,16 @@
 class  Game{
  public:
   Game();
-  void Init();
-  void GameLoop();
+  void init();
+  void gameLoop();
   
   GameManager& GM = GameManager::instance();
   bool game_over; 
  private:
   Game(const Game& other){};
-  void ProcessInput();
-  void Update();
-  void Render();
+  void processInput();
+  void update();
+  void render();
 };
 
 #endif
