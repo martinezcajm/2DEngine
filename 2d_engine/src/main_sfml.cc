@@ -35,16 +35,19 @@ int main()
   for(int i = 0; i < Rect::kMaxRects; i++){
     rect_container[i] = Rect::CreateRect();
   }
+  sf::Font font;
+  font.loadFromFile("../data/fonts/arial.ttf");
   Label *label_test = Label::CreateLabel();
   Sprite *sprite_from_image = Sprite::CreateSprite();
   Background *bg = Background::CreateBackground();
   sf::Texture texture;
   texture.loadFromFile("../data/icons/draw.png");
+  
   Sprite *sprite_test = Sprite::CreateSprite();
   label_test->init(255,0,0,255,
                    500,400,
                    0,1,1,
-                   "Hello world");
+                   "Hello world", font);
   sprite_test->init(0,0,
                    0,1,1,
                    texture);

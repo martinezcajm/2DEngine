@@ -8,7 +8,7 @@ class Label : public DrawableEntity{
   void init(uint8_t r, uint8_t g, uint8_t b, uint8_t a, 
             float px, float py,
             float rotation, float scalex, float scaley,
-            sf::String text);
+            sf::String text, const sf::Font &font);
   /** @Draws the graphic entity Label
   *
   * Draws the label using SFML to the window passed by reference 
@@ -35,7 +35,7 @@ class Label : public DrawableEntity{
   //Used to indicate if is normal, bold, italic or underlined
   sf::Text::Style style_;
   //Font of the text
-  sf::Font font_;
+  const sf::Font *font_;
  private:
   Label();
   Label(const Label& o){};
