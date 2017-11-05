@@ -36,6 +36,7 @@ int main()
   }
   //Rect *rect_test = Rect::CreateRect();
   Label *label_test = Label::CreateLabel();
+  Sprite *sprite_from_image = Sprite::CreateSprite();
   sf::Texture texture;
   texture.loadFromFile("../data/icons/draw.png");
   Sprite *sprite_test = Sprite::CreateSprite();
@@ -52,6 +53,9 @@ int main()
   sprite_test->init(0,0,
                    0,1,1,
                    texture);
+  sprite_from_image->init(50,0,
+                   0,1,1,
+                   "../data/icons/draw.png");
 
   sf::Clock deltaClock;
   while (window.isOpen())
@@ -234,6 +238,7 @@ int main()
       //rect_test->draw(window);
       label_test->draw(window);
       sprite_test->draw(window);
+      sprite_from_image->draw(window);
       ImGui::SFML::Render(window);
       //ImGui::ShowTestWindow();
       window.display();
@@ -245,6 +250,7 @@ int main()
   //delete rect_test;
   delete label_test;
   delete sprite_test;
+  delete sprite_from_image;
 
   return 0;
 }

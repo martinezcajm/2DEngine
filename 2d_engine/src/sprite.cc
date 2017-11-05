@@ -3,8 +3,14 @@
 uint32_t Sprite::total_sprites_ = 1;
 
 Sprite::Sprite() : DrawableEntity() {
-
+  own_texture_ = nullptr;
   total_sprites_ ++;
+}
+
+Sprite::~Sprite(){
+  if(origin_ != kSpriteHandler && own_texture_ != nullptr){
+    delete own_texture_;
+  }
 }
 
 void Sprite::init(float px, float py,
@@ -17,15 +23,26 @@ void Sprite::init(float px, float py,
 
 void Sprite::init(float px, float py,
                 float rotation, float scalex, float scaley,
-                const char *embeddedImageData){
+                const sf::Texture& texture, uint8_t *error_ocurred){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
-  /*if(embeddedImageData != nullptr && 
-       texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData))){
-  
+  /*if(embeddedImageData != nullptr){
+         texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData));
        }
-  texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData));
+  
   sprite_.setTexture(texture);*/
   origin_ = SpriteOrigin::kMemory;
+}
+
+uint8_t Sprite::init(float px, float py,
+                float rotation, float scalex, float scaley,
+                const std::string &file_path){
+  DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
+  own_texture_ = new sf::Texture();
+  if(own_texture_ == nullptr) return 0;
+  own_texture_->loadFromFile(file_path);
+  sprite_.setTexture(*own_texture_);
+  origin_ = SpriteOrigin::kImage;
+  return 1;
 }
 
 void Sprite::draw(sf::RenderWindow &window){
