@@ -32,8 +32,9 @@ class DrawableEntity : public Entity{
   */
   void draw(sf::RenderWindow &window, const sf::Drawable &entity, 
             const sf::Vector2f &rotation_origin);
-  sf::Vector2f position_;
+  uint32_t z_order_;
   float rotation_;
+  sf::Vector2f position_;  
   sf::Vector2f scale_;
   sf::Color color_;
 };
