@@ -31,6 +31,8 @@ void Rect::draw(sf::RenderWindow &window){
   sf::RectangleShape rectangle(dimensions_);
   if(is_solid_){
     rectangle.setFillColor(color_);
+  }else{
+    rectangle.setFillColor(sf::Color{0,0,0,0});
   }
   rectangle.setOutlineThickness(2);
   rectangle.setOutlineColor(rgba_fill_);

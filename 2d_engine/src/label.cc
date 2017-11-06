@@ -33,12 +33,6 @@ void Label::draw(sf::RenderWindow &window){
   window.draw(text);
 }
 
-void Label::set_text(const char* text){
-  if(text != nullptr){
-    memcpy(&text_, text, kTextMaxSize);
-  }
-}
-
 void Label::set_font(const sf::Font  &font){
   font_ = &font;
 }
@@ -55,5 +49,3 @@ Label* Label::CreateLabel(){
     return nullptr;
   }
 }
-
-//TODO implement destructor that will free the Text

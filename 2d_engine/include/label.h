@@ -24,14 +24,6 @@ class Label : public DrawableEntity{
   * @return void
   * @param &text reference to the new string we wish to show within the label
   */
-  void set_text(const char* text);
-  /** @Setter for font value
-  *
-  * Changes the font of the label
-  *
-  * @return void
-  * @param &font reference to the new font our label we use
-  */
   void set_font(const sf::Font  &font);
   /** @Setter for font_size value
   *

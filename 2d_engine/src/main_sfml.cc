@@ -21,13 +21,16 @@ typedef enum UiEditType
 {
   kNull,
   kRect,
-  kLabel
+  kLabel,
+  kSprite,
+  kBackground
 } UiEditType;
 
 void UiPreloadCommonValues(DrawableEntity &d_entity){
   if (ImGui::TreeNode("Position")){
     ImGui::InputFloat("x", &d_entity.position_.x, 1.0f, 1.0f);
     ImGui::InputFloat("y", &d_entity.position_.y, 1.0f, 1.0f);
+    ImGui::InputInt("zOrder", &d_entity.z_order_, 1, 1);
     ImGui::TreePop();
   }
   if (ImGui::TreeNode("Color")){
@@ -60,12 +63,16 @@ int main()
   sf::Vector2f draw_origin_point = {0,0};
   sf::Vector2f draw_end_point = {0,0};
   UiStatus status = UiStatus::kIdle;
-  UiEditType edit_type = UiEditType::kLabel;
+  UiEditType edit_type = UiEditType::kBackground;
+  //Used fot imgui colors
+  float color[4] = { 0.f, 0.f, 0.f, 0.f };
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
   window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
   Rect *rect_selection = nullptr;
   Label *label_selection = nullptr;
+  Sprite *sprite_selection = nullptr;
+  Background *background_selection = nullptr;
   Rect *rect_container[Rect::kMaxRects];
   for(int i = 0; i < Rect::kMaxRects; i++){
     rect_container[i] = Rect::CreateRect();
@@ -97,6 +104,7 @@ int main()
   //bg->scrolls_vertically_ = 1;
 
   label_selection = label_test;
+  background_selection = bg;
 
   sf::Clock deltaClock;
   while (window.isOpen())
@@ -237,6 +245,36 @@ int main()
 
       if(edit_type == UiEditType::kRect){
         UiPreloadCommonValues(*rect_selection);
+        if (ImGui::TreeNode("BorderColor")){
+          color[0] = static_cast<float>(rect_selection->rgba_fill_.r/255.f);
+          color[1] = static_cast<float>(rect_selection->rgba_fill_.g/255.f); 
+          color[2] = static_cast<float>(rect_selection->rgba_fill_.b/255.f); 
+          color[3] = static_cast<float>(rect_selection->rgba_fill_.a/255.f); 
+          if (ImGui::ColorEdit4("Rect Color", color)) {
+            rect_selection->rgba_fill_.r = 
+                            static_cast<sf::Uint8>(color[0] * 255.f);
+            rect_selection->rgba_fill_.g = 
+                            static_cast<sf::Uint8>(color[1] * 255.f);
+            rect_selection->rgba_fill_.b =
+                            static_cast<sf::Uint8>(color[2] * 255.f);
+            rect_selection->rgba_fill_.a = 
+                            static_cast<sf::Uint8>(color[3] * 255.f);
+          }
+          ImGui::TreePop();
+        }
+        if(ImGui::TreeNode("Dimensions")){
+          ImGui::InputFloat("width", 
+                            &rect_selection->dimensions_.x, 
+                            1.0f, 1.0f);
+          ImGui::InputFloat("height", 
+                            &rect_selection->dimensions_.y, 
+                            1.0f, 1.0f);
+          static bool is_solid = rect_selection->is_solid_? true : false;
+          ImGui::Checkbox("Solid",
+                          &is_solid);
+          rect_selection->is_solid_ = is_solid? 1 : 0;
+          ImGui::TreePop();
+        }
       }else if(edit_type == UiEditType::kLabel){
         UiPreloadCommonValues(*label_selection);
         if (ImGui::TreeNode("label")){
@@ -244,6 +282,30 @@ int main()
                           &label_selection->font_size_,
                           1, 1);
           ImGui::InputText("text", label_selection->text_, 50);
+            const char* listbox_items[] = { "Arial", "Verdana" };
+            static int listbox_item_current = 1;
+          ImGui::ListBox("font", &listbox_item_current,
+                         listbox_items, 2, 4);
+          ImGui::TreePop();
+        }
+      }else if(edit_type == UiEditType::kSprite){
+        UiPreloadCommonValues(*sprite_selection);
+      }else if(edit_type == UiEditType::kBackground){
+        if (ImGui::TreeNode("movement")){
+          static bool scrolls_vertically = 
+                    background_selection->scrolls_vertically_? true : false;
+          static bool scrolls_horizontally = 
+                    background_selection->scrolls_horizontally_? true : false;          
+          ImGui::InputInt("speedx", &background_selection->speed_.x, 1, 1);
+          ImGui::InputInt("speedy", &background_selection->speed_.y, 1, 1);
+          ImGui::Checkbox("Scrolls Vertically)",
+                          &scrolls_vertically);
+          ImGui::Checkbox("Scrolls Horizontally)",
+                          &scrolls_horizontally);
+          background_selection->scrolls_vertically_ = 
+                      scrolls_vertically? 1 : 0;
+          background_selection->scrolls_horizontally_ = 
+                      scrolls_horizontally? 1 : 0;
           ImGui::TreePop();
         }
       }
