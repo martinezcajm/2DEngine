@@ -1,11 +1,12 @@
 #ifndef __SCENE_H__
 #define __SCENE_H__ 1
 
+#include "string.h"
 #include "rect.h"
 #include "label.h"
 #include "sprite.h"
 #include "background.h"
-#include<set>
+#include <set>
 #include <unordered_map>
 #include <map>
 
@@ -14,8 +15,9 @@ class Scene{
   Scene();
   ~Scene();
 
-  void loadScene();
-  void saveScene();
+  void cleanScene();
+  void loadScene(std::string scene_path);
+  void saveScene(std::string scene_path);
 
   //// BACKGROUND ////
   void addBackground(Background& background);
@@ -47,7 +49,7 @@ class Scene{
   // 2 - Rect
   // 3 - Label
   // 4 - Sprite
-  DrawableEntity *checkColision(sf::Vector2f& position, uint8_t *type);
+  DrawableEntity *checkCollision(sf::Vector2f& position, uint8_t *type);
 
   void drawScene();
 
