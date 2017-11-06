@@ -16,7 +16,12 @@ private:
 public:
   static GameManager& instance();
 
+  uint32_t score_;
+  // saveGame
+  // loadGame
+  
   bool game_over_;
+  bool is_editor_;
   Window *window_;
   Scene *scene_;
   sf::Vector2u *window_size_;

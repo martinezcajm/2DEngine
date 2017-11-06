@@ -7,7 +7,12 @@
 #include <SFML/Graphics.hpp>
 
 Game::Game(){ }
+Game::~Game(){ }
+
 void Game::init(){
+  GM.game_over_ = false;
+  GM.is_editor_ = true;
+
   GM.scene_ = new Scene();
   GM.texture_ = new sf::Texture();
   GM.texture_->loadFromFile("../data/enemy.png");
@@ -70,29 +75,51 @@ void Game::init(){
                    
 }
 
-void Game::gameLoop(){
+void Game::finish(){
+  // TODO: release all the memory
+
+  // TODO: say goodbye
+}
+
+
+void Game::mainLoop(){
+  init();
+
   while(!GM.game_over_){
     processInput();
-    update();
-    render();
+
+    if(GM.is_editor_){
+      updateEditor();
+      renderEditor();
+    }else{
+      updateGame();
+      renderGame();
+    }
   }
+
+  finish();
 }
 
 void Game::processInput(){
   // Eventos de input
-
 
   if(!GM.window_->isOpen()){
     GM.game_over_ = true;
   }
 }
 
-void Game::update(){
+void Game::updateEditor(){
   // Actualizar estados
+  // TODO: calculate delta
+  // TODO: Check input value
 
+  // TODO: Call the rest of update
 }
 
-void Game::render(){
+void Game::renderEditor(){
+  // TODO: Frameskip control
+  // TODO: call the rest of draws
+
   // render
   GM.window_->clear();
   GM.scene_->drawScene();
@@ -110,4 +137,10 @@ void Game::render(){
 
 
   //GameManager::instance().window->Display();
+}
+
+void Game::updateGame(){
+}
+
+void Game::renderGame(){  
 }

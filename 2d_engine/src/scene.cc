@@ -15,10 +15,11 @@ void Scene::saveScene(){
 void Scene::drawScene(){
   GameManager& GM = GameManager::instance();
 
-    // Print Backgrounds
-  /*for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
-       it!=z_order_levels.begin(); it--){
-    
+  // Foreach Z-order we print the elements of that level
+  for (std::set<uint32_t>::iterator it=z_order_levels.begin(); 
+       it!=z_order_levels.end(); it--){
+        
+    // Print Backgrouds
     if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
       for (std::unordered_map<uint32_t, Background*>::iterator it2 =
           z_order_map_background_.at(*it).begin(); it2 
@@ -28,11 +29,6 @@ void Scene::drawScene(){
         it2->second->draw(*GM.window_->sfml_window_);
       }
     }
-  }*/
-
-  // Foreach Z-order we print the elements of that level
-  for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
-       it!=z_order_levels.begin(); it--){
 
     // Print Rects
     if (z_order_map_rect_.find(*it) != z_order_map_rect_.end()) {
@@ -66,6 +62,94 @@ void Scene::drawScene(){
       }
     }
   }
+}
+
+DrawableEntity *Scene::checkColision(sf::Vector2f& position, uint8_t *type){
+  
+  // Foreach Z-order we print the elements of that level
+  for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
+       it!=z_order_levels.begin(); it--){
+    
+    // Check Backgrouds
+    if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
+      for (std::unordered_map<uint32_t, Background*>::iterator it2 =
+          z_order_map_background_.at(*it).begin(); it2 
+          != z_order_map_background_.at(*it).end();
+          it2++) {
+
+        if(it2->second->checkCollision(position)){
+          *type = 1;
+          return it2->second;
+        }
+      }
+    }
+
+    // Check Rects
+    if (z_order_map_rect_.find(*it) != z_order_map_rect_.end()) {
+      for(std::unordered_map<uint32_t, Rect*>::iterator it2 = 
+          z_order_map_rect_.at(*it).begin(); it2 != 
+          z_order_map_rect_.at(*it).end(); it2++){
+        
+        if(it2->second->checkCollision(position)){
+          *type = 2;
+          return it2->second;
+        }
+      }
+    }
+
+    // Check Labels
+    if (z_order_map_label_.find(*it) != z_order_map_label_.end()) {
+      for(std::unordered_map<uint32_t, Label*>::iterator it2 = 
+          z_order_map_label_.at(*it).begin(); it2 
+          != z_order_map_label_.at(*it).end(); 
+          it2++){
+        
+        if(it2->second->checkCollision(position)){
+          *type = 3;
+          return it2->second;
+        }
+      }
+    }
+
+    // Check Sprites
+    if (z_order_map_sprite_.find(*it) != z_order_map_sprite_.end()) {
+      for(std::unordered_map<uint32_t, Sprite*>::iterator it2 = 
+          z_order_map_sprite_.at(*it).begin(); it2 != 
+          z_order_map_sprite_.at(*it).end(); 
+          it2++){
+        
+        if(it2->second->checkCollision(position)){
+          *type = 4;
+          return it2->second;
+        }
+      }
+    }
+  }
+
+  *type = 0;
+  return NULL;
+}
+
+
+///// Texture /////
+void Scene::addTexture(sf::Texture& texture, uint32_t texture_id){  
+  std::pair<uint32_t, sf::Texture*> insert_pair(texture_id, &texture);
+  map_texture_.insert(insert_pair); 
+}
+
+sf::Texture* Scene::getTexture(uint32_t texture_id){
+  std::unordered_map<uint32_t, sf::Texture*>::const_iterator iterator = 
+  map_texture_.find(texture_id);
+  
+  if(iterator == map_texture_.end()){
+    return NULL; // Texture not found
+  }else{
+    return iterator->second;
+  }
+}
+void Scene::removeTexture(uint32_t texture_id){
+  sf::Texture *texture_tmp = map_texture_.at(texture_id);
+  map_texture_.erase(texture_id);
 }
 
 ///// Rect /////
