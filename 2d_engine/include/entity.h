@@ -8,7 +8,7 @@ class Entity{
   //Methods
   Entity();
   Entity(const Entity& o);
-  void init(uint32_t tag);
+  void init(const uint32_t tag);
   void init();
   uint32_t id();
   //Data members

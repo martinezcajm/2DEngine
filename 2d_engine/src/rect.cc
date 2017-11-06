@@ -55,8 +55,18 @@ Rect* Rect::CreateRect(){
   }
 }
 
-bool Rect::checkCollision(sf::Vector2f& position){
-  sf::FloatRect aux(position_.x, position_.y,
-                    dimensions_.x*scale_.x, dimensions_.y*scale_.y);
-  return aux.contains(position);
+bool Rect::checkCollision(sf::Vector2f &position){
+  sf::RectangleShape rectangle(dimensions_);
+  rectangle.setOutlineThickness(2);
+  sf::Vector2f rotation_origin = { (dimensions_.x / 2)*scale_.x,
+                                   (dimensions_.y / 2)*scale_.y};
+  sf::Transform t;
+  t.translate(position_);
+  t.rotate(rotation_, rotation_origin);
+  t.scale(scale_);
+  
+  sf::FloatRect boundaries = rectangle.getLocalBounds();
+  boundaries = t.transformRect(boundaries);
+
+  return DrawableEntity::checkCollision(position, boundaries);
 }

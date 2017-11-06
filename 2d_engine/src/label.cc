@@ -27,10 +27,10 @@ void Label::draw(sf::RenderWindow &window){
   text.setCharacterSize(font_size_);
   text.setStyle(style_);
   text.setFillColor(color_);
-  text.setPosition(position_);
-  text.rotate(rotation_);
-  text.scale(scale_.x, scale_.y);
-  window.draw(text);
+  sf::FloatRect boundaries = text.getLocalBounds();
+  sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
+                                  (boundaries.height/2)*scale_.y};
+  DrawableEntity::draw(window, text, rotation_origin);
 }
 
 void Label::set_font(const sf::Font  &font){
@@ -51,6 +51,20 @@ Label* Label::CreateLabel(){
 }
 
 bool Label::checkCollision(sf::Vector2f& position){
-  //TODO functionallity and create a common func in drawable entity
-  return false;
+  sf::Text text(text_, *font_);
+  text.setCharacterSize(font_size_);
+  text.setStyle(style_);
+  
+  sf::FloatRect boundaries = text.getLocalBounds();
+  sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x
+                                  ,(boundaries.height/2)*scale_.y};
+  sf::Transform t;
+  t.translate(position_);
+  t.rotate(rotation_, rotation_origin);
+  t.scale(scale_);
+  
+  //We apply the transformations we have done to our boundaries
+  boundaries = t.transformRect(boundaries);
+
+  return DrawableEntity::checkCollision(position, boundaries);
 }

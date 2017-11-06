@@ -26,7 +26,7 @@ typedef enum UiEditType
   kBackground
 } UiEditType;
 
-void UiPreloadCommonValues(DrawableEntity &d_entity){
+void UiLoadCommonValuesEdit(DrawableEntity &d_entity){
   if (ImGui::TreeNode("Position")){
     ImGui::InputFloat("x", &d_entity.position_.x, 1.0f, 1.0f);
     ImGui::InputFloat("y", &d_entity.position_.y, 1.0f, 1.0f);
@@ -34,7 +34,7 @@ void UiPreloadCommonValues(DrawableEntity &d_entity){
     ImGui::TreePop();
   }
   if (ImGui::TreeNode("Color")){
-    float color[4] = { 0.f, 0.f, 0.f, 0.f };
+    static float color[4] = { 0.f, 0.f, 0.f, 0.f };
     color[0] = static_cast<float>(d_entity.color_.r/255.f);
     color[1] = static_cast<float>(d_entity.color_.g/255.f); 
     color[2] = static_cast<float>(d_entity.color_.b/255.f); 
@@ -55,6 +55,128 @@ void UiPreloadCommonValues(DrawableEntity &d_entity){
   } 
 }
 
+void UiLoadRectValuesEdit(Rect &rect){
+  static float color[4] = { 0.f, 0.f, 0.f, 0.f };
+  UiLoadCommonValuesEdit(rect);
+  if (ImGui::TreeNode("BorderColor")){
+    color[0] = static_cast<float>(rect.rgba_fill_.r/255.f);
+    color[1] = static_cast<float>(rect.rgba_fill_.g/255.f); 
+    color[2] = static_cast<float>(rect.rgba_fill_.b/255.f); 
+    color[3] = static_cast<float>(rect.rgba_fill_.a/255.f); 
+    if (ImGui::ColorEdit4("Rect Color", color)) {
+      rect.rgba_fill_.r = static_cast<sf::Uint8>(color[0] * 255.f);
+      rect.rgba_fill_.g = static_cast<sf::Uint8>(color[1] * 255.f);
+      rect.rgba_fill_.b = static_cast<sf::Uint8>(color[2] * 255.f);
+      rect.rgba_fill_.a = static_cast<sf::Uint8>(color[3] * 255.f);
+    }
+    ImGui::TreePop();
+  }
+  if(ImGui::TreeNode("Dimensions")){
+    ImGui::InputFloat("width", 
+    &rect.dimensions_.x, 1.0f, 1.0f);
+    ImGui::InputFloat("height", &rect.dimensions_.y, 1.0f, 1.0f);
+    static bool is_solid = rect.is_solid_? true : false;
+    ImGui::Checkbox("Solid", &is_solid);
+    rect.is_solid_ = is_solid? 1 : 0;
+    ImGui::TreePop();
+  }
+}
+
+void UiLoadLabelValuesEdit(Label &label){
+  UiLoadCommonValuesEdit(label);
+  if (ImGui::TreeNode("label")){
+    ImGui::InputInt("font size", &label.font_size_, 1, 1);
+    ImGui::InputText("text", label.text_, 50);
+    const char* listbox_items[] = { "Arial", "Verdana" };
+    static int listbox_item_current = 1;
+    ImGui::ListBox("font", &listbox_item_current, listbox_items, 2, 4);
+    ImGui::TreePop();
+  }
+}
+
+void UiLoadBackgroundValuesEdit(Background &bg){
+  if (ImGui::TreeNode("movement")){
+    static bool scrolls_vertically = bg.scrolls_vertically_? true : false;
+    static bool scrolls_horizontally = bg.scrolls_horizontally_? true : false; 
+    ImGui::InputInt("speedx", &bg.speed_.x, 1, 1);
+    ImGui::InputInt("speedy", &bg.speed_.y, 1, 1);
+    ImGui::Checkbox("Scrolls Vertically)", &scrolls_vertically);
+    ImGui::Checkbox("Scrolls Horizontally)", &scrolls_horizontally);
+    bg.scrolls_vertically_ = scrolls_vertically? 1 : 0;
+    bg.scrolls_horizontally_ = scrolls_horizontally? 1 : 0;
+    ImGui::TreePop();
+  }
+}
+
+void UiLoadMenu(UiStatus &status, uint8_t &is_drawing){
+  ImGui::Begin("Options");
+  //To give a sense of mode selection, we give a redish color when the 
+  //button is the currently selected and a blueish one whe it's not.
+  if(status == UiStatus::kDraw){
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.65f,0.14f,0.14f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+                          ImVec4(0.6f,0.08f,0.08f,1.0f));
+  }else{
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.0f,0.26f,0.69f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+                          ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+  }
+  if (ImGui::Button("Rect create")) {
+    if(status == UiStatus::kDraw){
+      status = UiStatus::kIdle;
+      is_drawing = 0;
+    }else{
+      status = UiStatus::kDraw;
+    }
+  }
+  ImGui::PopStyleColor(2);
+  ImGui::SameLine();
+  if(status == UiStatus::kSelection){
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.65f,0.14f,0.14f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+                          ImVec4(0.6f,0.08f,0.08f,1.0f));
+  }else{
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.0f,0.26f,0.69f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+                          ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+  }
+  if (ImGui::Button("Selector")) {
+    if(status == UiStatus::kSelection){
+      status = UiStatus::kIdle;
+    }else{
+      status = UiStatus::kSelection;
+    }
+    is_drawing = 0;
+  }
+  ImGui::PopStyleColor(2);
+  ImGui::SameLine();
+  if(status == UiStatus::kWrite){
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.65f,0.14f,0.14f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+                          ImVec4(0.6f,0.08f,0.08f,1.0f));
+  }else{
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.0f,0.26f,0.69f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+                          ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+  }
+  if (ImGui::Button("Text")) {
+    if(status == UiStatus::kWrite){
+      status = UiStatus::kIdle;
+    }else{
+      status = UiStatus::kWrite;
+    }
+    is_drawing = 0;
+  }
+  ImGui::PopStyleColor(2);
+  ImGui::End();
+}
+
 int main()
 {
   uint8_t is_drawing = 0;
@@ -63,7 +185,7 @@ int main()
   sf::Vector2f draw_origin_point = {0,0};
   sf::Vector2f draw_end_point = {0,0};
   UiStatus status = UiStatus::kIdle;
-  UiEditType edit_type = UiEditType::kBackground;
+  UiEditType edit_type = UiEditType::kNull;
   //Used fot imgui colors
   float color[4] = { 0.f, 0.f, 0.f, 0.f };
   sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
@@ -93,7 +215,7 @@ int main()
   sprite_test->init(0,0,
                    0,1,1,
                    texture);
-  sprite_from_image->init(50,0,
+  sprite_from_image->init(700,600,
                    0,1,1,
                    "../data/icons/draw.png");
   bg->init("../data/bg.png",window.getSize().x,window.getSize().y);
@@ -102,8 +224,6 @@ int main()
   //bg->speed_.y = 5;
   bg->scrolls_horizontally_ = 1;
   //bg->scrolls_vertically_ = 1;
-
-  label_selection = label_test;
   background_selection = bg;
 
   sf::Clock deltaClock;
@@ -131,13 +251,29 @@ int main()
            draw_origin_point.x, draw_origin_point.y,
            0,1,1);
           }else if(status == UiStatus::kSelection){
-            //edit_type = UiEditType::kNull;
+            edit_type = UiEditType::kNull;
+            if(bg->checkCollision(mouse_position)){
+              background_selection = bg;
+              edit_type = UiEditType::kBackground;
+            }
             for (auto const rectangle : rect_container){  
               if (rectangle->active_ && 
                   rectangle->checkCollision(mouse_position)){
                 rect_selection = rectangle;
                 edit_type = UiEditType::kRect;
               }
+            }
+            if(label_test->checkCollision(mouse_position)){
+              label_selection = label_test;
+              edit_type = UiEditType::kLabel;
+            }
+            if(sprite_test->checkCollision(mouse_position)){
+              sprite_selection = sprite_test;
+              edit_type = UiEditType::kSprite;
+            }
+            if(sprite_from_image->checkCollision(mouse_position)){
+              sprite_selection = sprite_from_image;
+              edit_type = UiEditType::kSprite;
             }
           }
         }
@@ -167,151 +303,22 @@ int main()
            draw_end_point.x - draw_origin_point.x,
            draw_end_point.y - draw_origin_point.y);
       }
-
       ImGui::SFML::Update(window, deltaClock.restart());
-
-      ImGui::Begin("Options");
-      //To give a sense of mode selection, we give a redish color when the 
-      //button is the currently selected and a blueish one whe it's not.
-      if(status == UiStatus::kDraw){
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.65f,0.14f,0.14f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
-        ImVec4(0.6f,0.08f,0.08f,1.0f));
-      }else{
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.0f,0.26f,0.69f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
-        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
-      }
-      
-      if (ImGui::Button("Rect create")) {
-        if(status == UiStatus::kDraw){
-          status = UiStatus::kIdle;
-          is_drawing = 0;
-        }else{
-          status = UiStatus::kDraw;
-        }
-      }
-      ImGui::PopStyleColor(2);
-      ImGui::SameLine();
-      if(status == UiStatus::kSelection){
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.65f,0.14f,0.14f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
-        ImVec4(0.6f,0.08f,0.08f,1.0f));
-      }else{
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.0f,0.26f,0.69f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
-        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
-      }
-      if (ImGui::Button("Selector")) {
-        if(status == UiStatus::kSelection){
-          status = UiStatus::kIdle;
-        }else{
-          status = UiStatus::kSelection;
-        }
-        is_drawing = 0;
-      }
-      ImGui::PopStyleColor(2);
-      ImGui::SameLine();
-      if(status == UiStatus::kWrite){
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.65f,0.14f,0.14f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
-        ImVec4(0.6f,0.08f,0.08f,1.0f));
-      }else{
-        ImGui::PushStyleColor(ImGuiCol_Button, 
-        ImVec4(0.0f,0.26f,0.69f,1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
-        ImVec4(0.0f,0.21f,0.52f,1.0f)); 
-      }
-      if (ImGui::Button("Text")) {
-        if(status == UiStatus::kWrite){
-          status = UiStatus::kIdle;
-        }else{
-          status = UiStatus::kWrite;
-        }
-        is_drawing = 0;
-      }
-      ImGui::PopStyleColor(2);
-      ImGui::End();
-
-
+      UiLoadMenu(status, is_drawing);      
     ImGui::Begin("Selection");
-
     if (ImGui::CollapsingHeader("Edit")){
-
       if(edit_type == UiEditType::kRect){
-        UiPreloadCommonValues(*rect_selection);
-        if (ImGui::TreeNode("BorderColor")){
-          color[0] = static_cast<float>(rect_selection->rgba_fill_.r/255.f);
-          color[1] = static_cast<float>(rect_selection->rgba_fill_.g/255.f); 
-          color[2] = static_cast<float>(rect_selection->rgba_fill_.b/255.f); 
-          color[3] = static_cast<float>(rect_selection->rgba_fill_.a/255.f); 
-          if (ImGui::ColorEdit4("Rect Color", color)) {
-            rect_selection->rgba_fill_.r = 
-                            static_cast<sf::Uint8>(color[0] * 255.f);
-            rect_selection->rgba_fill_.g = 
-                            static_cast<sf::Uint8>(color[1] * 255.f);
-            rect_selection->rgba_fill_.b =
-                            static_cast<sf::Uint8>(color[2] * 255.f);
-            rect_selection->rgba_fill_.a = 
-                            static_cast<sf::Uint8>(color[3] * 255.f);
-          }
-          ImGui::TreePop();
-        }
-        if(ImGui::TreeNode("Dimensions")){
-          ImGui::InputFloat("width", 
-                            &rect_selection->dimensions_.x, 
-                            1.0f, 1.0f);
-          ImGui::InputFloat("height", 
-                            &rect_selection->dimensions_.y, 
-                            1.0f, 1.0f);
-          static bool is_solid = rect_selection->is_solid_? true : false;
-          ImGui::Checkbox("Solid",
-                          &is_solid);
-          rect_selection->is_solid_ = is_solid? 1 : 0;
-          ImGui::TreePop();
-        }
+        UiLoadRectValuesEdit(*rect_selection);
       }else if(edit_type == UiEditType::kLabel){
-        UiPreloadCommonValues(*label_selection);
-        if (ImGui::TreeNode("label")){
-          ImGui::InputInt("font size", 
-                          &label_selection->font_size_,
-                          1, 1);
-          ImGui::InputText("text", label_selection->text_, 50);
-            const char* listbox_items[] = { "Arial", "Verdana" };
-            static int listbox_item_current = 1;
-          ImGui::ListBox("font", &listbox_item_current,
-                         listbox_items, 2, 4);
-          ImGui::TreePop();
-        }
+        UiLoadLabelValuesEdit(*label_selection);
       }else if(edit_type == UiEditType::kSprite){
-        UiPreloadCommonValues(*sprite_selection);
+        UiLoadCommonValuesEdit(*sprite_selection);
       }else if(edit_type == UiEditType::kBackground){
-        if (ImGui::TreeNode("movement")){
-          static bool scrolls_vertically = 
-                    background_selection->scrolls_vertically_? true : false;
-          static bool scrolls_horizontally = 
-                    background_selection->scrolls_horizontally_? true : false;          
-          ImGui::InputInt("speedx", &background_selection->speed_.x, 1, 1);
-          ImGui::InputInt("speedy", &background_selection->speed_.y, 1, 1);
-          ImGui::Checkbox("Scrolls Vertically)",
-                          &scrolls_vertically);
-          ImGui::Checkbox("Scrolls Horizontally)",
-                          &scrolls_horizontally);
-          background_selection->scrolls_vertically_ = 
-                      scrolls_vertically? 1 : 0;
-          background_selection->scrolls_horizontally_ = 
-                      scrolls_horizontally? 1 : 0;
-          ImGui::TreePop();
-        }
+        UiLoadBackgroundValuesEdit(*background_selection);
       }
     } 
-
     ImGui::End();
+
     window.clear();
     bg->update();
     bg->draw(window);

@@ -8,17 +8,9 @@
 class DrawableEntity : public Entity{
  public:
   DrawableEntity();
-  void init(uint8_t r,uint8_t g,uint8_t b,uint8_t a, float px, float py,
-            float rotation, float scalex, float scaley);
-  /** @brief moves the entity
-  *
-  * moves the entity a number of points from it's original position x, y
-  *
-  * @return void
-  * @param px quantity the entity will move in the x axis
-  * @param py quantity the entity will move in the y axis
-  */
-  void move(float px, float py);
+  void init(const uint8_t r, const uint8_t g, const uint8_t b ,const uint8_t a,
+            const float px, const float py,
+            const float rotation, const float scalex, const float scaley);
   /** @brief draws a drawable entity
   *
   * this method is in charge of applying the transformations that are common
@@ -32,6 +24,15 @@ class DrawableEntity : public Entity{
   */
   void draw(sf::RenderWindow &window, const sf::Drawable &entity, 
             const sf::Vector2f &rotation_origin);
+  /** @Checks if a point collides with the entity
+  *
+  * Checks if the point passed by reference collides with the boundaries.
+  *
+  * @return bool returns true if the point collides and false if not.
+  */
+  //TODO make checkCollision virtual
+  bool  checkCollision(const sf::Vector2f &position,
+                       const sf::FloatRect &boundaries);
   int32_t z_order_;
   float rotation_;
   sf::Vector2f position_;  

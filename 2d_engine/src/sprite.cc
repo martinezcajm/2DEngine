@@ -47,10 +47,10 @@ uint8_t Sprite::init(float px, float py,
 
 void Sprite::draw(sf::RenderWindow &window){
   sprite_.setColor(color_);
-  sprite_.setPosition(position_);
-  sprite_.scale(scale_.x, scale_.y);
-  sprite_.rotate(rotation_);
-  window.draw(sprite_);
+  sf::FloatRect boundaries = sprite_.getLocalBounds();
+  sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
+                                  (boundaries.height/2)*scale_.y};
+  DrawableEntity::draw(window, sprite_, rotation_origin);
 }
 
 Sprite* Sprite::CreateSprite(){
@@ -63,6 +63,18 @@ Sprite* Sprite::CreateSprite(){
 }
 
 bool Sprite::checkCollision(sf::Vector2f& position){
-  //TODO functionallity and create a common func in drawable entity
+
+  sf::FloatRect boundaries = sprite_.getLocalBounds();
+  sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
+                                  (boundaries.height/2)*scale_.y};
+  sf::Transform t;
+  t.translate(position_);
+  t.rotate(rotation_, rotation_origin);
+  t.scale(scale_);
+  
+  //We apply the transformations we have done to our boundaries
+  boundaries = t.transformRect(boundaries);
+
+  return DrawableEntity::checkCollision(position, boundaries);
   return false;
 }

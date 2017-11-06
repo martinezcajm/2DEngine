@@ -16,7 +16,7 @@ Entity::Entity(const Entity& o) {
   total_ids_ ++;
 };
 
-void Entity::init(uint32_t tag){
+void Entity::init(const uint32_t tag){
   tag_ = tag;
   active_ = 1;
 }
