@@ -49,3 +49,8 @@ Label* Label::CreateLabel(){
     return nullptr;
   }
 }
+
+bool Label::checkCollision(sf::Vector2f& position){
+  //TODO functionallity and create a common func in drawable entity
+  return false;
+}

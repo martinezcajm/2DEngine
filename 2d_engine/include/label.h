@@ -44,6 +44,13 @@ class Label : public DrawableEntity{
   * labels has been reached
   */
   static Label* Label::CreateLabel();
+  /** @Checks if a point collides with the label
+  *
+  * Checks if the point passed by reference collides with the label.
+  *
+  * @return bool returns true if the point collides and false if not.
+  */
+  bool checkCollision(sf::Vector2f& position);
   
   static const uint8_t kMaxLabels = 50;
   static const uint8_t kTextMaxSize = 50;

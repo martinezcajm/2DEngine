@@ -91,6 +91,13 @@ class Sprite : public DrawableEntity{
   
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;
+  /** @Checks if a point collides with the sprite
+  *
+  * Checks if the point passed by reference collides with the sprite.
+  *
+  * @return bool returns true if the point collides and false if not.
+  */
+  bool checkCollision(sf::Vector2f& position);
 
  protected:
   static uint32_t total_sprites_;

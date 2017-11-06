@@ -61,3 +61,8 @@ Sprite* Sprite::CreateSprite(){
     return nullptr;
   }
 }
+
+bool Sprite::checkCollision(sf::Vector2f& position){
+  //TODO functionallity and create a common func in drawable entity
+  return false;
+}
