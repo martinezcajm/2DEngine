@@ -66,13 +66,20 @@ void Game::init(){
   GM.scene_->addRect(*rect3);
   GM.scene_->addRect(*rect4);
 
-  GM.scene_->removeRect(4);
+  //GM.scene_->removeRect(4);
 
   GM.sprite_test_ = Sprite::CreateSprite();
   GM.sprite_test_->init(0,0,
     0,1,1,
     *GM.texture_);
-                   
+      
+  sf::Vector2f position;
+  uint8_t i = 0;
+  position.x = 100;
+  position.y = 200;
+  GM.scene_->checkCollision(position, &i);
+  GM.scene_->saveScene("scene.json");
+  GM.scene_->loadScene("scene.json");
 }
 
 void Game::finish(){
