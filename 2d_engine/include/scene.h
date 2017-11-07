@@ -50,7 +50,7 @@ class Scene{
   // 2 - Rect
   // 3 - Label
   // 4 - Sprite
-  DrawableEntity *checkCollision(sf::Vector2f& position, uint8_t *type);
+  uint32_t checkCollision(sf::Vector2f& position, uint8_t *type);
 
   void drawScene();
 

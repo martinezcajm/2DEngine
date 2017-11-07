@@ -400,7 +400,7 @@ void Scene::drawScene(){
   }
 }
 
-DrawableEntity *Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
+uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
   
   // Foreach Z-order we print the elements of that level
   for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
@@ -415,7 +415,7 @@ DrawableEntity *Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
 
         if(it2->second->checkCollision(position)){
           *type = 1;
-          return it2->second;
+          return it2->first;
         }
       }
     }
@@ -428,7 +428,7 @@ DrawableEntity *Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
         
         if(it2->second->checkCollision(position)){
           *type = 2;
-          return it2->second;
+          return it2->first;
         }
       }
     }
@@ -442,7 +442,7 @@ DrawableEntity *Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
         
         if(it2->second->checkCollision(position)){
           *type = 3;
-          return it2->second;
+          return it2->first;
         }
       }
     }
@@ -456,14 +456,14 @@ DrawableEntity *Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
         
         if(it2->second->checkCollision(position)){
           *type = 4;
-          return it2->second;
+          return it2->first;
         }
       }
     }
   }
 
   *type = 0;
-  return nullptr;
+  return 0;
 }
 
 

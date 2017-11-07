@@ -181,8 +181,46 @@ void Game::updateEditor(){
                        sf::Mouse::getPosition(*GM.window_->sfml_window_));
       GM.drawing_rect_->resize(GM.mouse_position_.x - GM.draw_origin_point_.x,
                                GM.mouse_position_.y - GM.draw_origin_point_.y);
-    }else if(GM.status_ui_ == UiStatus::kSelection){
-      //Check collisions
+    }else if(GM.status_ui_ == UiStatus::kSelection){      
+      GM.selected_id_ = GM.scene_->
+        checkCollision(GM.mouse_position_, &GM.selected_type_);
+
+      // 0 - nothing
+      // 1 - Background
+      // 2 - Rect
+      // 3 - Label
+      // 4 - Sprite
+      if(GM.selected_type_ == 0){
+        GM.edit_type_ui_ = UiEditType::kNull;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      }else if(GM.selected_type_ == 1){
+        GM.edit_type_ui_ = UiEditType::kBackground;
+        GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      }else if(GM.selected_type_ == 1){
+        GM.edit_type_ui_ = UiEditType::kRect;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      } else if(GM.selected_type_ == 2){
+        GM.edit_type_ui_ = UiEditType::kLabel;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
+        GM.sprite_selection_ = nullptr;
+      } else if(GM.selected_type_ == 3){
+        GM.edit_type_ui_ = UiEditType::kSprite;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_);
+      }
     }
   }
   

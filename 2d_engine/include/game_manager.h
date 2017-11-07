@@ -70,6 +70,8 @@ public:
   UiDrawStatus draw_status_ui_;
   MouseStatus mouse_status_;
   //Selection items for UI
+  uint8_t selected_type_;
+  uint32_t selected_id_;
   Rect *rect_selection_;
   Label *label_selection_;
   Sprite *sprite_selection_;
