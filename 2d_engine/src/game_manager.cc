@@ -9,9 +9,18 @@ GameManager::GameManager(){
   edit_type_ui_ = UiEditType::kNull;
   game_over_ = false;
   draw_status_ui_ = UiDrawStatus::kNotDrawing;
-  click_ = 0;
+  mouse_status_ = MouseStatus::kNothing;
   mouse_position_.x = 0;
   mouse_position_.y = 0;
+  draw_origin_point_.x = 0;
+  draw_origin_point_.y = 0;
+  deltaClock_.restart();
+  drawing_rect_ = nullptr;
+  ui_is_drawing_ = 0;
+  rect_selection_ = nullptr;
+  label_selection_ = nullptr;
+  sprite_selection_ = nullptr;
+  background_selection_ = nullptr;
 }
 
 GameManager& GameManager::instance(){

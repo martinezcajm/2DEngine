@@ -22,13 +22,13 @@ class  Window{
   static const uint8_t kMaxWindows = 1;
   unsigned int frame_rate_limit_;
   sf::RenderWindow *sfml_window_;
+  sf::Event event_;
  private:
   Window(const sf::Vector2u size, const sf::String& title, 
          unsigned int frameRateLimit);
   Window() {};
   Window(const Window& other){};
 
-  sf::Event event_;
   static uint8_t total_windows_;
 };
 #endif

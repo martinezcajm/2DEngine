@@ -32,6 +32,13 @@ typedef enum UiDrawStatus
   kStopDrawing
 } UiDrawStatus;
 
+typedef enum MouseStatus
+{
+  kNothing,
+  kPressed,
+  kReleased
+} MouseStatus;
+
 class GameManager {
 private:
   GameManager();
@@ -41,7 +48,7 @@ private:
 public:
   static GameManager& instance();
 
-  uint8_t click_; // indicates if there has been a click
+  uint8_t ui_is_drawing_;
   uint32_t score_;
   // saveGame
   // loadGame
@@ -55,9 +62,18 @@ public:
   Sprite *sprite_test_;
   sf::Texture *texture_;
   sf::Vector2f mouse_position_;
+  sf::Vector2f draw_origin_point_;
+  sf::Clock deltaClock_;
+  Rect* drawing_rect_;
   UiStatus status_ui_;
   UiEditType edit_type_ui_;
   UiDrawStatus draw_status_ui_;
+  MouseStatus mouse_status_;
+  //Selection items for UI
+  Rect *rect_selection_;
+  Label *label_selection_;
+  Sprite *sprite_selection_;
+  Background *background_selection_;
 };
 
 #endif
