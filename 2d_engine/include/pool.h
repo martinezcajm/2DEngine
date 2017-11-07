@@ -73,6 +73,39 @@ class Pool{
   * maxim has been reached
   */
   Background* getBackground();
+  /** @Adds an existing rect to the pool
+  *
+  * Recieves an existing rect and resets it's value using the unuse function of
+  * rect
+  *
+  * @return void
+  */
+  void returnRect(Rect &rect);
+  /** @Adds an existing label to the pool
+  *
+  * Recieves an existing label and resets it's value using the unuse function 
+  * of label
+  *
+  * @return void
+  */
+  void returnLabel(Label &label);
+  /** @Adds an existing sprite to the pool
+  *
+  * Recieves an existing sprite and resets it's value using the unuse function 
+  * of sprite
+  *
+  * @return void
+  */
+  void returnSprite(Sprite &sprite);
+  /** @Adds an existing background to the pool
+  *
+  * Recieves an existing background and resets it's value using the unuse 
+  * function of background
+  *
+  * @return void
+  */
+  void returnBackground(Background &background);
+
 
   std::vector<Rect*> rect_pool_;
   std::vector<Label*> label_pool_;

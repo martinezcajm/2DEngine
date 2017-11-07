@@ -58,3 +58,15 @@ void Background::update(){
   }
   sprite_.setTextureRect(sf::IntRect(background_position_,dimensions_));
 }
+
+void Background::unuse(){
+  scrolls_horizontally_ = 0;
+  scrolls_vertically_ = 0;
+  speed_.x = 0;
+  speed_.y = 0;
+  background_position_.x = 0;
+  background_position_.y = 0;
+  dimensions_.x = 0;
+  dimensions_.y = 0;
+  Sprite::unuse();
+}

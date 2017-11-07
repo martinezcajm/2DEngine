@@ -31,8 +31,16 @@ class DrawableEntity : public Entity{
   * @return bool returns true if the point collides and false if not.
   */
   //TODO make checkCollision virtual
-  bool  checkCollision(const sf::Vector2f &position,
+  bool checkCollision(const sf::Vector2f &position,
                        const sf::FloatRect &boundaries);
+  /** @Resets the values of the entity
+  *
+  * Sets the attributes of the object to return it to a pool and being able
+  * to reuse it later.
+  *
+  * @return void
+  */
+  void unuse();
   int32_t z_order_;
   float rotation_;
   sf::Vector2f position_;  

@@ -43,3 +43,17 @@ bool DrawableEntity::checkCollision(const sf::Vector2f &position,
                                     const sf::FloatRect &boundaries){
   return boundaries.contains(position);
 }
+
+void DrawableEntity::unuse(){
+  z_order_ = 0;
+  rotation_ = 0;
+  position_.x = 0;
+  position_.y = 0;
+  scale_.x = 0;
+  scale_.y = 0;
+  color_.r = 0;
+  color_.g = 0;
+  color_.b = 0;
+  color_.a = 0;
+  Entity::unuse();
+}

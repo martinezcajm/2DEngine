@@ -4,6 +4,7 @@ uint32_t Sprite::total_sprites_ = 1;
 
 Sprite::Sprite() : DrawableEntity() {
   own_texture_ = nullptr;
+  origin_ = SpriteOrigin::kUnknown;
   total_sprites_ ++;
 }
 
@@ -76,5 +77,14 @@ bool Sprite::checkCollision(sf::Vector2f& position){
   boundaries = t.transformRect(boundaries);
 
   return DrawableEntity::checkCollision(position, boundaries);
-  return false;
+}
+
+void Sprite::unuse(){
+  if(origin_ != kSpriteHandler && own_texture_ != nullptr){
+    delete own_texture_;
+    own_texture_ = nullptr;
+  }
+  //sprite_ = Sprite();
+  origin_ = SpriteOrigin::kUnknown;
+  DrawableEntity::unuse();
 }

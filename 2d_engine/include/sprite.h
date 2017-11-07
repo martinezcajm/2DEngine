@@ -5,6 +5,7 @@
 
 typedef enum SpriteOrigin
 {
+  kUnknown,
   kMemory,
   kImage,
   kSpriteHandler
@@ -88,9 +89,6 @@ class Sprite : public DrawableEntity{
   * sprites has been reached
   */
   static Sprite* Sprite::CreateSprite();
-  
-  static const uint8_t kMaxSprites = 50;
-  sf::Sprite sprite_;
   /** @Checks if a point collides with the sprite
   *
   * Checks if the point passed by reference collides with the sprite.
@@ -98,6 +96,17 @@ class Sprite : public DrawableEntity{
   * @return bool returns true if the point collides and false if not.
   */
   bool checkCollision(sf::Vector2f& position);
+  /** @Resets the values of the sprite
+  *
+  * Sets the attributes of the sprite to a default value
+  * to return it to a pool and being able to reuse it later.
+  *
+  * @return void
+  */
+  void unuse();
+
+  static const uint8_t kMaxSprites = 50;
+  sf::Sprite sprite_;
 
  protected:
   static uint32_t total_sprites_;

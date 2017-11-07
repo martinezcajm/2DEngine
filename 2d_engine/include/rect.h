@@ -44,6 +44,14 @@ class Rect : public DrawableEntity{
   * @return bool returns true if the point collides and false if not.
   */
   bool checkCollision(sf::Vector2f& position);
+  /** @Resets the values of the rect
+  *
+  * Sets the attributes of the rect to a default value
+  * to return it to a pool and being able to reuse it later.
+  *
+  * @return void
+  */
+  void unuse();
   
   static const uint8_t kMaxRects = 50;
   uint8_t is_solid_;

@@ -11,6 +11,14 @@ class Entity{
   void init(const uint32_t tag);
   void init();
   uint32_t id();
+  /** @Resets the values of the entity
+  *
+  * Sets the attributes of the object to return it to a pool and being able
+  * to reuse it later.
+  *
+  * @return void
+  */
+  void unuse();
   //Data members
   uint32_t tag_;
   uint8_t active_;

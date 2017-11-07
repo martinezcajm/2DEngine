@@ -29,3 +29,8 @@ void Entity::init(){
 uint32_t Entity::id(){
   return id_;
 }
+
+void Entity::unuse(){
+  tag_ = 0;
+  active_ = 0;
+}

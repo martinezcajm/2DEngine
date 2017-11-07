@@ -70,3 +70,14 @@ bool Rect::checkCollision(sf::Vector2f &position){
 
   return DrawableEntity::checkCollision(position, boundaries);
 }
+
+void Rect::unuse(){
+  is_solid_ = 0;
+  dimensions_.x = 0;
+  dimensions_.y = 0;
+  rgba_fill_.r = 0;
+  rgba_fill_.g = 0;
+  rgba_fill_.b = 0;
+  rgba_fill_.a = 0;
+  DrawableEntity::unuse();
+}

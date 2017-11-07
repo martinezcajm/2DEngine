@@ -51,6 +51,14 @@ class Background : public Sprite{
   * maximum of sprites has been reached
   */
   static Background* Background::CreateBackground();
+  /** @Resets the values of the background
+  *
+  * Sets the attributes of the background to a default value
+  * to return it to a pool and being able to reuse it later.
+  *
+  * @return void
+  */
+  void unuse();
 
   uint8_t scrolls_horizontally_;
   uint8_t scrolls_vertically_;

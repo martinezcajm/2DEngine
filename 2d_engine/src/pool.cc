@@ -106,3 +106,24 @@ Background* Pool::getBackground(){
     return Background::CreateBackground();
   }
 }
+
+void Pool::returnRect(Rect &rect){
+  rect.unuse();
+  rect_pool_.push_back(&rect);
+}
+
+void Pool::returnLabel(Label &label){
+  label.unuse();
+  label_pool_.push_back(&label);
+}
+
+void Pool::returnSprite(Sprite &sprite){
+  sprite.unuse();
+  sprite_pool_.push_back(&sprite);
+}
+
+void Pool::returnBackground(Background &background){
+  background.unuse();
+  bg_pool_.push_back(&background);
+}
+
