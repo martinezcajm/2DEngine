@@ -104,6 +104,13 @@ class Sprite : public DrawableEntity{
   * @return void
   */
   void unuse();
+  /** @Getter for origin
+  * Returns the origin of the texture, it will vary depending on how the 
+  * sprite was initiallized
+  *
+  * @return void
+  */
+  SpriteOrigin origin();
 
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;

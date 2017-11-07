@@ -89,3 +89,7 @@ void Sprite::unuse(){
   origin_ = SpriteOrigin::kUnknown;
   DrawableEntity::unuse();
 }
+
+SpriteOrigin Sprite::origin(){
+  return origin_;
+}
