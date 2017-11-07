@@ -107,6 +107,7 @@ class Sprite : public DrawableEntity{
 
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;
+  sf::String texture_dir_;
 
  protected:
   static uint32_t total_sprites_;

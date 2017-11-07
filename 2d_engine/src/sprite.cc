@@ -6,6 +6,7 @@ Sprite::Sprite() : DrawableEntity() {
   own_texture_ = nullptr;
   origin_ = SpriteOrigin::kUnknown;
   total_sprites_ ++;
+  texture_dir_ = "../data/fonts/arial.ttf";
 }
 
 Sprite::~Sprite(){
