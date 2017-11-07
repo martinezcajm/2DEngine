@@ -17,6 +17,7 @@ Game::~Game(){
 void Game::init(){
   GM.game_over_ = false;
   GM.is_editor_ = true;
+  ImGui::SFML::Init(*GM.window_->sfml_window_);
   POOL.init();
 
   GM.scene_ = new Scene();
@@ -92,6 +93,7 @@ void Game::finish(){
   // TODO: release all the memory
 
   // TODO: say goodbye
+  ImGui::SFML::Shutdown();
 }
 
 
