@@ -6,6 +6,7 @@
 #include "label.h"
 #include "sprite.h"
 #include "background.h"
+#include "pool.h"
 #include <set>
 #include <unordered_map>
 #include <map>
@@ -40,9 +41,9 @@ class Scene{
   void removeSprite(uint32_t sprite_id);
   
   /// Texture ///
-  void addTexture(sf::Texture& texture, uint32_t texture_id);
-  sf::Texture* getTexture(uint32_t texture_id);
-  void removeTexture(uint32_t texture_id);
+  void addTexture(sf::Texture& texture, std::string texture_path);
+  sf::Texture* getTexture(std::string texture_path);
+  void removeTexture(std::string texture_path);
 
   // 0 - No colision
   // 1 - Background
@@ -53,7 +54,7 @@ class Scene{
 
   void drawScene();
 
-  std::unordered_map<uint32_t, sf::Texture*> map_texture_;
+  std::unordered_map<std::string, sf::Texture*> map_texture_;
   
   std::unordered_map<uint32_t, Rect*> map_rect_;
   std::map<uint32_t, std::unordered_map<uint32_t, Rect*>> z_order_map_rect_;
@@ -70,6 +71,8 @@ class Scene{
     z_order_map_background_;
 
   std::set<uint32_t> z_order_levels;
+
+  Pool& POOL = Pool::instance();
  private:
   Scene(const Scene& other){};
   
