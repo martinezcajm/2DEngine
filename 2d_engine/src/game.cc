@@ -148,9 +148,10 @@ void Game::updateEditor(){
   // Actualizar estados
   if(GM.status_ui_ == UiStatus::kDraw){
     if(GM.mouse_status_ == MouseStatus::kPressed){
+      GM.mouse_status_ = MouseStatus::kNothing;
       GM.drawing_rect_ = POOL.getRect();
       //The limit of rects has been reached
-      if(GM.drawing_rect_ != nullptr){
+      if(GM.drawing_rect_ == nullptr){
         GM.ui_is_drawing_ = 0;
       }else{
         //We insert the rect to the scene
@@ -166,6 +167,7 @@ void Game::updateEditor(){
            0,1,1);
       }
     }else if(GM.mouse_status_ == MouseStatus::kReleased){
+      GM.mouse_status_ = MouseStatus::kNothing;
       if(GM.ui_is_drawing_){
         GM.ui_is_drawing_ = 0;
         GM.mouse_position_ = static_cast<sf::Vector2f>(
@@ -181,46 +183,49 @@ void Game::updateEditor(){
                        sf::Mouse::getPosition(*GM.window_->sfml_window_));
       GM.drawing_rect_->resize(GM.mouse_position_.x - GM.draw_origin_point_.x,
                                GM.mouse_position_.y - GM.draw_origin_point_.y);
-    }else if(GM.status_ui_ == UiStatus::kSelection){      
-      GM.selected_id_ = GM.scene_->
-        checkCollision(GM.mouse_position_, &GM.selected_type_);
-
+    }
+  }else if(GM.status_ui_ == UiStatus::kSelection && 
+           GM.mouse_status_ == MouseStatus::kPressed){
+    GM.mouse_status_ = MouseStatus::kNothing;
+    GM.mouse_position_ = static_cast<sf::Vector2f>(
+                       sf::Mouse::getPosition(*GM.window_->sfml_window_));
+    GM.selected_id_ = GM.scene_-> checkCollision(GM.mouse_position_,
+                                                 &GM.selected_type_);
       // 0 - nothing
       // 1 - Background
       // 2 - Rect
       // 3 - Label
       // 4 - Sprite
-      if(GM.selected_type_ == 0){
-        GM.edit_type_ui_ = UiEditType::kNull;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      }else if(GM.selected_type_ == 1){
-        GM.edit_type_ui_ = UiEditType::kBackground;
-        GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      }else if(GM.selected_type_ == 1){
-        GM.edit_type_ui_ = UiEditType::kRect;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      } else if(GM.selected_type_ == 2){
-        GM.edit_type_ui_ = UiEditType::kLabel;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
-        GM.sprite_selection_ = nullptr;
-      } else if(GM.selected_type_ == 3){
-        GM.edit_type_ui_ = UiEditType::kSprite;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_);
-      }
+    if(GM.selected_type_ == 0){
+      GM.edit_type_ui_ = UiEditType::kNull;
+      GM.background_selection_ = nullptr;
+      GM.rect_selection_ = nullptr;
+      GM.label_selection_ = nullptr;
+      GM.sprite_selection_ = nullptr;
+    }else if(GM.selected_type_ == 1){
+      GM.edit_type_ui_ = UiEditType::kBackground;
+      GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
+      GM.rect_selection_ = nullptr;
+      GM.label_selection_ = nullptr;
+      GM.sprite_selection_ = nullptr;
+    }else if(GM.selected_type_ == 2){
+      GM.edit_type_ui_ = UiEditType::kRect;
+      GM.background_selection_ = nullptr;
+      GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
+      GM.label_selection_ = nullptr;
+      GM.sprite_selection_ = nullptr;
+    } else if(GM.selected_type_ == 3){
+      GM.edit_type_ui_ = UiEditType::kLabel;
+      GM.background_selection_ = nullptr;
+      GM.rect_selection_ = nullptr;
+      GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
+      GM.sprite_selection_ = nullptr;
+    } else if(GM.selected_type_ == 4){
+      GM.edit_type_ui_ = UiEditType::kSprite;
+      GM.background_selection_ = nullptr;
+      GM.rect_selection_ = nullptr;
+      GM.label_selection_ = nullptr;
+      GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_);
     }
   }
   
@@ -362,7 +367,7 @@ void Game::UiLoadBackgroundValuesEdit(Background &bg){
 }
 
 void Game::UiLoadMenu(){
-  ImGui::Begin("Options");
+  ImGui::Begin("Mode");
   //To give a sense of mode selection, we give a redish color when the 
   //button is the currently selected and a blueish one whe it's not.
   if(GM.status_ui_ == UiStatus::kDraw){
@@ -427,5 +432,14 @@ void Game::UiLoadMenu(){
     GM.ui_is_drawing_ = 0;
   }
   ImGui::PopStyleColor(2);
+  if (ImGui::TreeNode("Scene options")){
+    if (ImGui::Button("Load")) {
+      
+    }
+    if (ImGui::Button("Save")) {
+      
+    }
+    ImGui::TreePop();
+  }
   ImGui::End();
 }

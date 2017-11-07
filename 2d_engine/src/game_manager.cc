@@ -8,7 +8,6 @@ GameManager::GameManager(){
   status_ui_ = UiStatus::kIdle;
   edit_type_ui_ = UiEditType::kNull;
   game_over_ = false;
-  draw_status_ui_ = UiDrawStatus::kNotDrawing;
   mouse_status_ = MouseStatus::kNothing;
   mouse_position_.x = 0;
   mouse_position_.y = 0;

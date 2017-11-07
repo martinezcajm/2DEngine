@@ -24,14 +24,6 @@ typedef enum UiEditType
   kBackground
 } UiEditType;
 
-typedef enum UiDrawStatus
-{
-  kNotDrawing,
-  kStartDrawing,
-  kDrawing,
-  kStopDrawing
-} UiDrawStatus;
-
 typedef enum MouseStatus
 {
   kNothing,
@@ -67,7 +59,6 @@ public:
   Rect* drawing_rect_;
   UiStatus status_ui_;
   UiEditType edit_type_ui_;
-  UiDrawStatus draw_status_ui_;
   MouseStatus mouse_status_;
   //Selection items for UI
   uint8_t selected_type_;
