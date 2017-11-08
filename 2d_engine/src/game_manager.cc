@@ -20,6 +20,7 @@ GameManager::GameManager(){
   label_selection_ = nullptr;
   sprite_selection_ = nullptr;
   background_selection_ = nullptr;
+  std::list<DrawableEntity*> drawableEntities_selection_;
   arial_.loadFromFile("../data/fonts/arial.ttf");
   verdana_.loadFromFile("../data/fonts/verdana.ttf");
   native_dialog_ = new Native_dialogs();
