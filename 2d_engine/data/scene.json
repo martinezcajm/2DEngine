@@ -1,0 +1,145 @@
+{
+  "Backgrounds": [
+    {
+      "active_": 0,
+      "background_position_": {
+        "x": 0,
+        "y": -2761
+      },
+      "color_": {
+        "a": 255,
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "dimensions_": {
+        "x": 800,
+        "y": 800
+      },
+      "origin_": 2,
+      "position_": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "scrolls_horizontally_": 0,
+      "scrolls_vertically_": 1,
+      "speed_": {
+        "x": 0,
+        "y": -3
+      },
+      "tag_": 0,
+      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\bg.png",
+      "z_order_": 0
+    }
+  ],
+  "Labels": [
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 28,
+      "position_": {
+        "x": 25.0,
+        "y": 24.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "Score:",
+      "z_order_": 0
+    }
+  ],
+  "Rects": [
+    {
+      "active_": 1,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "dimensions_": {
+        "x": -8.0,
+        "y": -46.0
+      },
+      "is_solid_": 1,
+      "position_": {
+        "x": 400.0,
+        "y": 656.0
+      },
+      "rgba_fill_": {
+        "a": 255,
+        "b": 0,
+        "g": 255,
+        "r": 0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "tag_": 1,
+      "z_order_": 0
+    }
+  ],
+  "Sprites": [
+    {
+      "active_": 1,
+      "color_": {
+        "a": 255,
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "origin_": 2,
+      "position_": {
+        "x": 352.0,
+        "y": 700.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "tag_": 1,
+      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\spaceShip.png",
+      "z_order_": 0
+    },
+    {
+      "active_": 1,
+      "color_": {
+        "a": 255,
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "origin_": 2,
+      "position_": {
+        "x": 282.0,
+        "y": 0.0
+      },
+      "rotation_": 180.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "tag_": 1,
+      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\enemy.png",
+      "z_order_": 0
+    }
+  ],
+  "Textures": null
+}
