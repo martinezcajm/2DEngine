@@ -8,6 +8,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Graphics.hpp>
 
+sf::Font font;
 
 Game::Game(){ }
 Game::~Game(){
@@ -124,18 +125,10 @@ void Game::processInput(){
         GM.window_->event_.mouseButton.button == sf::Mouse::Left &&
         !ImGui::IsAnyWindowHovered()) {
       GM.mouse_status_ = MouseStatus::kPressed;
-      /*GM.mouse_position_ = static_cast<sf::Vector2f>(
-                       sf::Mouse::getPosition(GM.window_->sfml_window_));
-      if(GM.status_ui_ == UiStatus::kDraw){
-        GM.draw_status_ui_ = UiDrawStatus::kStartDrawing;
-      }*/
     }
     if (GM.window_->event_.type == sf::Event::MouseButtonReleased && 
         GM.window_->event_.mouseButton.button == sf::Mouse::Left ) {
       GM.mouse_status_ = MouseStatus::kReleased;
-      /*if(GM.status_ui_ == UiStatus::kDraw){
-        GM.draw_status_ui_ = UiDrawStatus::kStopDrawing;
-      }*/
     }
   }  
 
@@ -227,6 +220,22 @@ void Game::updateEditor(){
       GM.label_selection_ = nullptr;
       GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_);
     }
+  }else if(GM.status_ui_ == UiStatus::kWrite && 
+           GM.mouse_status_ == MouseStatus::kPressed){
+    GM.mouse_status_ = MouseStatus::kNothing;
+    Label *tmpLabel = POOL.getLabel();
+    //If the limit of labels hasn't been reached
+    if(tmpLabel != nullptr){
+      GM.mouse_position_ = static_cast<sf::Vector2f>(
+                       sf::Mouse::getPosition(*GM.window_->sfml_window_));
+      GM.scene_->addLabel(*tmpLabel);
+      font.loadFromFile("../data/fonts/arial.ttf");
+      tmpLabel->init(255,0,0,255,
+                     GM.mouse_position_.x,GM.mouse_position_.y,
+                     0,1,1,
+                     "Hello world", font);
+    }
+    
   }
   
   ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
