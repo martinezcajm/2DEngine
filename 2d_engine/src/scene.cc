@@ -591,13 +591,14 @@ void Scene::removeRect(uint32_t rect_id){
 
 void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
   // Obtain the rect
-  Rect* rect = map_rect_.at(rect_id);  
-  if(rect != nullptr){
-    z_order_map_rect_.at(rect->z_order_).erase(rect_id);
+  Rect *rect_tmp = map_rect_.at(rect_id);
+
+  if(rect_tmp != nullptr){
+    z_order_map_rect_.at(rect_tmp->z_order_).erase(rect_id);
     z_order_levels.insert(newZOrder);
 
     // Create pair to insert in z_order_map_rect_
-    std::pair<uint32_t, Rect*> insert_pair(rect_id, rect);
+    std::pair<uint32_t, Rect*> insert_pair(rect_id, rect_tmp);
     // Create iterator for z_order_map_rect_
     std::map<uint32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
       iterator = z_order_map_rect_.find(newZOrder);
@@ -616,7 +617,7 @@ void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
       z_order_map_rect_.at(newZOrder).insert(insert_pair);
     }
 
-    rect->z_order_ = newZOrder;
+    rect_tmp->z_order_ = newZOrder;
   }
 }
 

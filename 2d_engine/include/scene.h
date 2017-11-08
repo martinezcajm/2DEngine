@@ -30,7 +30,7 @@ class Scene{
   void addRect(Rect& rect);
   Rect* getRect(uint32_t rect_id);
   void removeRect(uint32_t rect_id);
-  void changeZOrderRect(uint32_t newZOrder);
+  void changeZOrderRect(uint32_t rect_id, uint32_t newZOrder);
   
   //// LABEL ////
   void addLabel(Label& label);
