@@ -1,0 +1,552 @@
+\hypertarget{class_scene}{}\section{Scene Class Reference}
+\label{class_scene}\index{Scene@{Scene}}
+
+
+{\ttfamily \#include $<$scene.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_scene_a6c4a04bd6fb848a1bdf8d1a82792c1ef}{clean\+Scene} ()
+\item 
+void \hyperlink{class_scene_aca9bd4059c420909135294125b591682}{load\+Scene} (const std\+::string scene\+\_\+path, const sf\+::\+Font \&font)
+\item 
+void \hyperlink{class_scene_a70c218eb67b3507a56486e1dd945f095}{save\+Scene} (const std\+::string scene\+\_\+path)
+\item 
+void \hyperlink{class_scene_a07d6d13ed45e8882192bed7330e5383a}{add\+Background} (\hyperlink{class_background}{Background} \&background)
+\item 
+\hyperlink{class_background}{Background} $\ast$ \hyperlink{class_scene_ade83d8b5c8b13f12b11c9ef07507163d}{get\+Background} (const uint32\+\_\+t background\+\_\+id)
+\item 
+void \hyperlink{class_scene_a33e4cfa3d8433c5ccb8842ca65d85c70}{remove\+Background} (const uint32\+\_\+t background\+\_\+id)
+\item 
+void \hyperlink{class_scene_a95b1dd31805e0734f66fb9f131166fa4}{change\+Z\+Order\+Background} (const uint32\+\_\+t background\+\_\+id, const int32\+\_\+t new\+Z\+Order)
+\item 
+void \hyperlink{class_scene_a2ef42ab154353fa7881f9f7382f43b1f}{add\+Rect} (\hyperlink{class_rect}{Rect} \&rect)
+\item 
+\hyperlink{class_rect}{Rect} $\ast$ \hyperlink{class_scene_abff9132084e8edf5eee4f992233dc2e3}{get\+Rect} (const uint32\+\_\+t rect\+\_\+id)
+\item 
+void \hyperlink{class_scene_a1e0fa3c3898c30822e14fdaa963eaa62}{remove\+Rect} (const uint32\+\_\+t rect\+\_\+id)
+\item 
+void \hyperlink{class_scene_aee2976ddb158bde51704f40cf0266e10}{change\+Z\+Order\+Rect} (const uint32\+\_\+t rect\+\_\+id, const int32\+\_\+t new\+Z\+Order)
+\item 
+void \hyperlink{class_scene_a4327310c11ae2f3130ddb61ed20cfda3}{add\+Label} (\hyperlink{class_label}{Label} \&label)
+\item 
+\hyperlink{class_label}{Label} $\ast$ \hyperlink{class_scene_aa65487dbbc075503ccf386df47b5cbc8}{get\+Label} (const uint32\+\_\+t label\+\_\+id)
+\item 
+void \hyperlink{class_scene_ac8e9f99810684c6bd397477972691cb8}{remove\+Label} (const uint32\+\_\+t label\+\_\+id)
+\item 
+void \hyperlink{class_scene_ac7dc181963c83afe8d3863e4226a3bd2}{change\+Z\+Order\+Label} (const uint32\+\_\+t label\+\_\+id, const int32\+\_\+t new\+Z\+Order)
+\item 
+void \hyperlink{class_scene_ac7bada9fa9ea8dbeee358693b44e540e}{add\+Sprite} (\hyperlink{class_sprite}{Sprite} \&sprite)
+\item 
+\hyperlink{class_sprite}{Sprite} $\ast$ \hyperlink{class_scene_a45418063b55b68e440cac7fab52e3c51}{get\+Sprite} (const uint32\+\_\+t sprite\+\_\+id)
+\item 
+void \hyperlink{class_scene_a6033b04f27e305069727d210e86b3902}{remove\+Sprite} (const uint32\+\_\+t sprite\+\_\+id)
+\item 
+void \hyperlink{class_scene_a3913b5c955c938f6bbd84d3e78bebcad}{change\+Z\+Order\+Sprite} (const uint32\+\_\+t sprite\+\_\+id, const int32\+\_\+t new\+Z\+Order)
+\item 
+void \hyperlink{class_scene_ad7c686656e9ad8e20f85f7997c4bc747}{add\+Texture} (sf\+::\+Texture \&texture, const std\+::string texture\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Texture ///. \end{DoxyCompactList}\item 
+sf\+::\+Texture $\ast$ \hyperlink{class_scene_a1c7233bcc955b7b71156b31205ec2360}{get\+Texture} (const std\+::string texture\+\_\+path)
+\item 
+void \hyperlink{class_scene_a6418fa4353c7d079b42e11af7343c8a9}{remove\+Texture} (const std\+::string texture\+\_\+path)
+\item 
+uint32\+\_\+t \hyperlink{class_scene_a8a29c60fda35f60e0d2ab54b497955ec}{check\+Collision} (sf\+::\+Vector2f \&position, uint8\+\_\+t $\ast$type)
+\item 
+std\+::list$<$ \hyperlink{class_drawable_entity}{Drawable\+Entity} $\ast$ $>$ \hyperlink{class_scene_a53baaa91f1356e5fe9abc9b5a1cffb94}{get\+Drawable\+Entities\+By\+Tag} (const uint32\+\_\+t tag)
+\item 
+void \hyperlink{class_scene_ae27f4327ca363cc9cad8ab553504e2d5}{draw\+Scene} ()
+\item 
+void \hyperlink{class_scene_aa24c7e636c10e4e42650c1374b90bb80}{update} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that create and manage a scene
+
+This class create and manage the scene and all the elements that form it. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_a07d6d13ed45e8882192bed7330e5383a}\label{class_scene_a07d6d13ed45e8882192bed7330e5383a}} 
+\index{Scene@{Scene}!add\+Background@{add\+Background}}
+\index{add\+Background@{add\+Background}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{add\+Background()}{addBackground()}}
+{\footnotesize\ttfamily void Scene\+::add\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{class_background}{Background} \&}]{background }\end{DoxyParamCaption})}
+
+a \hyperlink{class_background}{Background} to the scene
+
+Add a \hyperlink{class_background}{Background} in the mappings that form the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em background} & Reference of the \hyperlink{class_background}{Background} to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a4327310c11ae2f3130ddb61ed20cfda3}\label{class_scene_a4327310c11ae2f3130ddb61ed20cfda3}} 
+\index{Scene@{Scene}!add\+Label@{add\+Label}}
+\index{add\+Label@{add\+Label}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{add\+Label()}{addLabel()}}
+{\footnotesize\ttfamily void Scene\+::add\+Label (\begin{DoxyParamCaption}\item[{\hyperlink{class_label}{Label} \&}]{label }\end{DoxyParamCaption})}
+
+a \hyperlink{class_label}{Label} to the scene
+
+Add a \hyperlink{class_label}{Label} in the mappings that form the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em label} & Reference of the \hyperlink{class_label}{Label} to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a2ef42ab154353fa7881f9f7382f43b1f}\label{class_scene_a2ef42ab154353fa7881f9f7382f43b1f}} 
+\index{Scene@{Scene}!add\+Rect@{add\+Rect}}
+\index{add\+Rect@{add\+Rect}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{add\+Rect()}{addRect()}}
+{\footnotesize\ttfamily void Scene\+::add\+Rect (\begin{DoxyParamCaption}\item[{\hyperlink{class_rect}{Rect} \&}]{rect }\end{DoxyParamCaption})}
+
+a \hyperlink{class_rect}{Rect} to the scene
+
+Add a \hyperlink{class_rect}{Rect} in the mappings that form the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & Reference of the \hyperlink{class_rect}{Rect} to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ac7bada9fa9ea8dbeee358693b44e540e}\label{class_scene_ac7bada9fa9ea8dbeee358693b44e540e}} 
+\index{Scene@{Scene}!add\+Sprite@{add\+Sprite}}
+\index{add\+Sprite@{add\+Sprite}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{add\+Sprite()}{addSprite()}}
+{\footnotesize\ttfamily void Scene\+::add\+Sprite (\begin{DoxyParamCaption}\item[{\hyperlink{class_sprite}{Sprite} \&}]{sprite }\end{DoxyParamCaption})}
+
+a \hyperlink{class_sprite}{Sprite} to the scene
+
+Add a \hyperlink{class_sprite}{Sprite} in the mappings that form the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & Reference of the \hyperlink{class_sprite}{Sprite} to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ad7c686656e9ad8e20f85f7997c4bc747}\label{class_scene_ad7c686656e9ad8e20f85f7997c4bc747}} 
+\index{Scene@{Scene}!add\+Texture@{add\+Texture}}
+\index{add\+Texture@{add\+Texture}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{add\+Texture()}{addTexture()}}
+{\footnotesize\ttfamily void Scene\+::add\+Texture (\begin{DoxyParamCaption}\item[{sf\+::\+Texture \&}]{texture,  }\item[{const std\+::string}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Texture ///. 
+
+a Texture to the scene
+
+Add a Texture in the mappings that form the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & Reference of the Texture to add \\
+\hline
+{\em texture\+\_\+path} & Path where is the texture file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a95b1dd31805e0734f66fb9f131166fa4}\label{class_scene_a95b1dd31805e0734f66fb9f131166fa4}} 
+\index{Scene@{Scene}!change\+Z\+Order\+Background@{change\+Z\+Order\+Background}}
+\index{change\+Z\+Order\+Background@{change\+Z\+Order\+Background}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{change\+Z\+Order\+Background()}{changeZOrderBackground()}}
+{\footnotesize\ttfamily void Scene\+::change\+Z\+Order\+Background (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{background\+\_\+id,  }\item[{const int32\+\_\+t}]{new\+Z\+Order }\end{DoxyParamCaption})}
+
+the z-\/order of a \hyperlink{class_background}{Background} of the scene
+
+Change the z-\/order of a \hyperlink{class_background}{Background} of the scene.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em background\+\_\+id} & Id of the \hyperlink{class_background}{Background} to change the z-\/order \\
+\hline
+{\em new\+Z\+Order} & New z-\/order of the \hyperlink{class_background}{Background} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ac7dc181963c83afe8d3863e4226a3bd2}\label{class_scene_ac7dc181963c83afe8d3863e4226a3bd2}} 
+\index{Scene@{Scene}!change\+Z\+Order\+Label@{change\+Z\+Order\+Label}}
+\index{change\+Z\+Order\+Label@{change\+Z\+Order\+Label}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{change\+Z\+Order\+Label()}{changeZOrderLabel()}}
+{\footnotesize\ttfamily void Scene\+::change\+Z\+Order\+Label (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{label\+\_\+id,  }\item[{const int32\+\_\+t}]{new\+Z\+Order }\end{DoxyParamCaption})}
+
+the z-\/order of a \hyperlink{class_label}{Label} of the scene
+
+Change the z-\/order of a \hyperlink{class_label}{Label} of the scene.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em label\+\_\+id} & Id of the \hyperlink{class_label}{Label} to change the z-\/order \\
+\hline
+{\em new\+Z\+Order} & New z-\/order of the \hyperlink{class_label}{Label} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_aee2976ddb158bde51704f40cf0266e10}\label{class_scene_aee2976ddb158bde51704f40cf0266e10}} 
+\index{Scene@{Scene}!change\+Z\+Order\+Rect@{change\+Z\+Order\+Rect}}
+\index{change\+Z\+Order\+Rect@{change\+Z\+Order\+Rect}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{change\+Z\+Order\+Rect()}{changeZOrderRect()}}
+{\footnotesize\ttfamily void Scene\+::change\+Z\+Order\+Rect (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{rect\+\_\+id,  }\item[{const int32\+\_\+t}]{new\+Z\+Order }\end{DoxyParamCaption})}
+
+the z-\/order of a \hyperlink{class_rect}{Rect} of the scene
+
+Change the z-\/order of a \hyperlink{class_rect}{Rect} of the scene.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em rect\+\_\+id} & Id of the \hyperlink{class_rect}{Rect} to change the z-\/order \\
+\hline
+{\em new\+Z\+Order} & New z-\/order of the \hyperlink{class_rect}{Rect} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a3913b5c955c938f6bbd84d3e78bebcad}\label{class_scene_a3913b5c955c938f6bbd84d3e78bebcad}} 
+\index{Scene@{Scene}!change\+Z\+Order\+Sprite@{change\+Z\+Order\+Sprite}}
+\index{change\+Z\+Order\+Sprite@{change\+Z\+Order\+Sprite}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{change\+Z\+Order\+Sprite()}{changeZOrderSprite()}}
+{\footnotesize\ttfamily void Scene\+::change\+Z\+Order\+Sprite (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sprite\+\_\+id,  }\item[{const int32\+\_\+t}]{new\+Z\+Order }\end{DoxyParamCaption})}
+
+the z-\/order of a \hyperlink{class_sprite}{Sprite} of the scene
+
+Change the z-\/order of a \hyperlink{class_sprite}{Sprite} of the scene.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em sprite\+\_\+id} & Id of the \hyperlink{class_sprite}{Sprite} to change the z-\/order \\
+\hline
+{\em new\+Z\+Order} & New z-\/order of the \hyperlink{class_sprite}{Sprite} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a8a29c60fda35f60e0d2ab54b497955ec}\label{class_scene_a8a29c60fda35f60e0d2ab54b497955ec}} 
+\index{Scene@{Scene}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
+{\footnotesize\ttfamily uint32\+\_\+t Scene\+::check\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{position,  }\item[{uint8\+\_\+t $\ast$}]{type }\end{DoxyParamCaption})}
+
+if some element collision with a point
+
+Check if some element of the scene have a colision with a point specified in the parameters
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t Return the id of the first element that have a collision. Return 0 if any element have collision. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The point to check the collision \\
+\hline
+{\em type} & The typeof element that colision. 0 -\/ No colision, 1 -\/ \hyperlink{class_background}{Background}, 2 -\/ \hyperlink{class_rect}{Rect}, 3 -\/ \hyperlink{class_label}{Label}, 4 -\/ \hyperlink{class_sprite}{Sprite} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a6c4a04bd6fb848a1bdf8d1a82792c1ef}\label{class_scene_a6c4a04bd6fb848a1bdf8d1a82792c1ef}} 
+\index{Scene@{Scene}!clean\+Scene@{clean\+Scene}}
+\index{clean\+Scene@{clean\+Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{clean\+Scene()}{cleanScene()}}
+{\footnotesize\ttfamily void Scene\+::clean\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the scene
+
+Clean all maps of the scene and return the elements to the \hyperlink{class_pool}{Pool}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_scene_ae27f4327ca363cc9cad8ab553504e2d5}\label{class_scene_ae27f4327ca363cc9cad8ab553504e2d5}} 
+\index{Scene@{Scene}!draw\+Scene@{draw\+Scene}}
+\index{draw\+Scene@{draw\+Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{draw\+Scene()}{drawScene()}}
+{\footnotesize\ttfamily void Scene\+::draw\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+all elemnts of the scene
+
+Draw all elemnts of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_scene_ade83d8b5c8b13f12b11c9ef07507163d}\label{class_scene_ade83d8b5c8b13f12b11c9ef07507163d}} 
+\index{Scene@{Scene}!get\+Background@{get\+Background}}
+\index{get\+Background@{get\+Background}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Background()}{getBackground()}}
+{\footnotesize\ttfamily \hyperlink{class_background}{Background}$\ast$ Scene\+::get\+Background (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{background\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_background}{Background} from the scene
+
+Returns the \hyperlink{class_background}{Background} with the specified id from the scene
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_background}{Background} Return the \hyperlink{class_background}{Background} with the id specified 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em background\+\_\+id} & Id of the \hyperlink{class_background}{Background} to return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a53baaa91f1356e5fe9abc9b5a1cffb94}\label{class_scene_a53baaa91f1356e5fe9abc9b5a1cffb94}} 
+\index{Scene@{Scene}!get\+Drawable\+Entities\+By\+Tag@{get\+Drawable\+Entities\+By\+Tag}}
+\index{get\+Drawable\+Entities\+By\+Tag@{get\+Drawable\+Entities\+By\+Tag}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Drawable\+Entities\+By\+Tag()}{getDrawableEntitiesByTag()}}
+{\footnotesize\ttfamily std\+::list$<$\hyperlink{class_drawable_entity}{Drawable\+Entity}$\ast$$>$ Scene\+::get\+Drawable\+Entities\+By\+Tag (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{tag }\end{DoxyParamCaption})}
+
+a list of entities with a specific tag
+
+Return the entities with the tag specified in params
+
+\begin{DoxyReturn}{Returns}
+list$<$\+Drawable\+Entity$\ast$$>$ Return the list of \hyperlink{class_drawable_entity}{Drawable\+Entity} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Tag to seach \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_aa65487dbbc075503ccf386df47b5cbc8}\label{class_scene_aa65487dbbc075503ccf386df47b5cbc8}} 
+\index{Scene@{Scene}!get\+Label@{get\+Label}}
+\index{get\+Label@{get\+Label}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Label()}{getLabel()}}
+{\footnotesize\ttfamily \hyperlink{class_label}{Label}$\ast$ Scene\+::get\+Label (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{label\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_label}{Label} from the scene
+
+Returns the \hyperlink{class_label}{Label} with the specified id from the scene
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_label}{Label} Return the \hyperlink{class_label}{Label} with the id specified 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em label\+\_\+id} & Id of the \hyperlink{class_label}{Label} to return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_abff9132084e8edf5eee4f992233dc2e3}\label{class_scene_abff9132084e8edf5eee4f992233dc2e3}} 
+\index{Scene@{Scene}!get\+Rect@{get\+Rect}}
+\index{get\+Rect@{get\+Rect}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Rect()}{getRect()}}
+{\footnotesize\ttfamily \hyperlink{class_rect}{Rect}$\ast$ Scene\+::get\+Rect (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{rect\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_rect}{Rect} from the scene
+
+Returns the \hyperlink{class_rect}{Rect} with the specified id from the scene
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_rect}{Rect} Return the \hyperlink{class_rect}{Rect} with the id specified 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em rect\+\_\+id} & Id of the \hyperlink{class_rect}{Rect} to return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a45418063b55b68e440cac7fab52e3c51}\label{class_scene_a45418063b55b68e440cac7fab52e3c51}} 
+\index{Scene@{Scene}!get\+Sprite@{get\+Sprite}}
+\index{get\+Sprite@{get\+Sprite}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Sprite()}{getSprite()}}
+{\footnotesize\ttfamily \hyperlink{class_sprite}{Sprite}$\ast$ Scene\+::get\+Sprite (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sprite\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_sprite}{Sprite} from the scene
+
+Returns the \hyperlink{class_sprite}{Sprite} with the specified id from the scene
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_sprite}{Sprite} Return the \hyperlink{class_sprite}{Sprite} with the id specified 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em sprite\+\_\+id} & Id of the \hyperlink{class_sprite}{Sprite} to return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a1c7233bcc955b7b71156b31205ec2360}\label{class_scene_a1c7233bcc955b7b71156b31205ec2360}} 
+\index{Scene@{Scene}!get\+Texture@{get\+Texture}}
+\index{get\+Texture@{get\+Texture}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{get\+Texture()}{getTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture$\ast$ Scene\+::get\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+a Texture from the scene
+
+Returns the Texture with the specified path from the scene
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Texture Return the texture with the path specified 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+path} & Path of the Texture to return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_aca9bd4059c420909135294125b591682}\label{class_scene_aca9bd4059c420909135294125b591682}} 
+\index{Scene@{Scene}!load\+Scene@{load\+Scene}}
+\index{load\+Scene@{load\+Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{load\+Scene()}{loadScene()}}
+{\footnotesize\ttfamily void Scene\+::load\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string}]{scene\+\_\+path,  }\item[{const sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
+
+a scene
+
+Load a scene from a file with format json. Put to the labels the font of the parameter.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+\_\+path} & Path of the scene to load \\
+\hline
+{\em font} & Font to put in the labels \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a33e4cfa3d8433c5ccb8842ca65d85c70}\label{class_scene_a33e4cfa3d8433c5ccb8842ca65d85c70}} 
+\index{Scene@{Scene}!remove\+Background@{remove\+Background}}
+\index{remove\+Background@{remove\+Background}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{remove\+Background()}{removeBackground()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Background (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{background\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_background}{Background} of the scene
+
+Remove the \hyperlink{class_background}{Background} with the specified id of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em background\+\_\+id} & Id of the \hyperlink{class_background}{Background} to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ac8e9f99810684c6bd397477972691cb8}\label{class_scene_ac8e9f99810684c6bd397477972691cb8}} 
+\index{Scene@{Scene}!remove\+Label@{remove\+Label}}
+\index{remove\+Label@{remove\+Label}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{remove\+Label()}{removeLabel()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Label (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{label\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_label}{Label} of the scene
+
+Remove the \hyperlink{class_label}{Label} with the specified id of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em label\+\_\+id} & Id of the \hyperlink{class_label}{Label} to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a1e0fa3c3898c30822e14fdaa963eaa62}\label{class_scene_a1e0fa3c3898c30822e14fdaa963eaa62}} 
+\index{Scene@{Scene}!remove\+Rect@{remove\+Rect}}
+\index{remove\+Rect@{remove\+Rect}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{remove\+Rect()}{removeRect()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Rect (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{rect\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_rect}{Rect} of the scene
+
+Remove the \hyperlink{class_rect}{Rect} with the specified id of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em rect\+\_\+id} & Id of the \hyperlink{class_rect}{Rect} to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a6033b04f27e305069727d210e86b3902}\label{class_scene_a6033b04f27e305069727d210e86b3902}} 
+\index{Scene@{Scene}!remove\+Sprite@{remove\+Sprite}}
+\index{remove\+Sprite@{remove\+Sprite}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{remove\+Sprite()}{removeSprite()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Sprite (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sprite\+\_\+id }\end{DoxyParamCaption})}
+
+a \hyperlink{class_sprite}{Sprite} of the scene
+
+Remove the \hyperlink{class_sprite}{Sprite} with the specified id of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em sprite\+\_\+id} & Id of the \hyperlink{class_sprite}{Sprite} to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a6418fa4353c7d079b42e11af7343c8a9}\label{class_scene_a6418fa4353c7d079b42e11af7343c8a9}} 
+\index{Scene@{Scene}!remove\+Texture@{remove\+Texture}}
+\index{remove\+Texture@{remove\+Texture}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{remove\+Texture()}{removeTexture()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+a Texture of the scene
+
+Remove the Texture with the specified path of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+path} & Path of the Texture to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a70c218eb67b3507a56486e1dd945f095}\label{class_scene_a70c218eb67b3507a56486e1dd945f095}} 
+\index{Scene@{Scene}!save\+Scene@{save\+Scene}}
+\index{save\+Scene@{save\+Scene}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{save\+Scene()}{saveScene()}}
+{\footnotesize\ttfamily void Scene\+::save\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string}]{scene\+\_\+path }\end{DoxyParamCaption})}
+
+a scene
+
+Save a scene in a file with format json.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+\_\+path} & Path of the scene to load \\
+\hline
+{\em font} & Font to put in the labels \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_aa24c7e636c10e4e42650c1374b90bb80}\label{class_scene_aa24c7e636c10e4e42650c1374b90bb80}} 
+\index{Scene@{Scene}!update@{update}}
+\index{update@{update}!Scene@{Scene}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the elements of the scene
+
+Call to Update of the all elements of the scene
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+path} & Path of the Texture to remove \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/scene.\+h\end{DoxyCompactItemize}

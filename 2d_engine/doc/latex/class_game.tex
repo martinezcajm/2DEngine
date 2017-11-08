@@ -1,0 +1,318 @@
+\hypertarget{class_game}{}\section{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game} ()
+\item 
+\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{$\sim$\+Game} ()
+\item 
+void \hyperlink{class_game_a6f3a33940524b6ba9d83f627ccb14bbf}{init} ()
+\item 
+void \hyperlink{class_game_a815a3ec2787b4b1c4077d28165c380e8}{process\+Input} ()
+\item 
+void \hyperlink{class_game_a67a8c5c0356c9ad33fac1abc435a3746}{update\+Game} ()
+\item 
+void \hyperlink{class_game_a4573580347746dbb7dbe568383682ed3}{render\+Game} ()
+\item 
+void \hyperlink{class_game_a81abd2f677aba0c3f068c902d690e2fb}{update\+Editor} ()
+\item 
+void \hyperlink{class_game_a204ea65111892ca826f3a65cc8818ea7}{render\+Editor} ()
+\item 
+void \hyperlink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{main\+Loop} ()
+\item 
+void \hyperlink{class_game_a4a803542276ea0497ad3a87b8983dd67}{finish} ()
+\item 
+void \hyperlink{class_game_a828811993f0d93a72758b05c98609540}{render\+UI} ()
+\item 
+void \hyperlink{class_game_a0a41188d1bfa82e9e0cdda1c0530a389}{Ui\+Load\+Common\+Values\+Edit} (\hyperlink{class_drawable_entity}{Drawable\+Entity} \&d\+\_\+entity)
+\item 
+void \hyperlink{class_game_a8710233ba10c51897d95b176f1bac5ca}{Ui\+Load\+Rect\+Values\+Edit} (\hyperlink{class_rect}{Rect} \&rect)
+\item 
+void \hyperlink{class_game_a895e8ae5390fcd21a903623a23ceeaac}{Ui\+Load\+Label\+Values\+Edit} (\hyperlink{class_label}{Label} \&label)
+\item 
+void \hyperlink{class_game_a65b1b506f6c9ffb4006e94680e05cd04}{Ui\+Load\+Background\+Values\+Edit} (\hyperlink{class_background}{Background} \&bg)
+\item 
+void \hyperlink{class_game_a184082948455436281839a2e96279e17}{Ui\+Load\+Menu} ()
+\item 
+void \hyperlink{class_game_aa18ae3db4c6d5b2fac2080afcd8e6790}{Ui\+Start\+Game\+Menu} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_abdaa5299f22a22a628149cda5040c5c8}\label{class_game_abdaa5299f22a22a628149cda5040c5c8}} 
+\hyperlink{class_game_manager}{Game\+Manager} \& {\bfseries GM} = \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{Game\+Manager\+::instance}()
+\item 
+\mbox{\Hypertarget{class_game_aa22c10008978460e1dea4d6fbfa70b53}\label{class_game_aa22c10008978460e1dea4d6fbfa70b53}} 
+\hyperlink{class_pool}{Pool} \& {\bfseries P\+O\+OL} = \hyperlink{class_pool_a20e44e0054d4eedf57f1943b87c06e20}{Pool\+::instance}()
+\item 
+\mbox{\Hypertarget{class_game_af4325db0c4cd8e4f51fd2b3567191d66}\label{class_game_af4325db0c4cd8e4f51fd2b3567191d66}} 
+bool {\bfseries game\+\_\+over\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_acd6e7363beb1cdf8a208f07ec41f39ae}\label{class_game_acd6e7363beb1cdf8a208f07ec41f39ae}} 
+char const  $\ast$ {\bfseries k\+Filter\+Patterns\+Json} \mbox{[}1\mbox{]} = \{ \char`\"{}$\ast$.json\char`\"{} \}
+\item 
+\mbox{\Hypertarget{class_game_a6abb1fb644b47a9ad92cad622b1b7222}\label{class_game_a6abb1fb644b47a9ad92cad622b1b7222}} 
+char const  $\ast$ {\bfseries k\+Filter\+Patterns\+Image} \mbox{[}3\mbox{]} = \{ \char`\"{}$\ast$.png\char`\"{},\char`\"{}$\ast$.jpeg\char`\"{}, \char`\"{}$\ast$.jpg\char`\"{} \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main class of the editor
+
+This class contains the main bucle of the game and editor 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Constructor of the game
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\label{class_game_ae3d112ca6e0e55150d2fdbc704474530}} 
+\index{Game@{Game}!````~Game@{$\sim$\+Game}}
+\index{````~Game@{$\sim$\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{$\sim$\+Game()}{~Game()}}
+{\footnotesize\ttfamily Game\+::$\sim$\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Destructor of the game
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a4a803542276ea0497ad3a87b8983dd67}\label{class_game_a4a803542276ea0497ad3a87b8983dd67}} 
+\index{Game@{Game}!finish@{finish}}
+\index{finish@{finish}!Game@{Game}}
+\subsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily void Game\+::finish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Free the memoryof the elements of the game
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a6f3a33940524b6ba9d83f627ccb14bbf}\label{class_game_a6f3a33940524b6ba9d83f627ccb14bbf}} 
+\index{Game@{Game}!init@{init}}
+\index{init@{init}!Game@{Game}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Game\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Initializes the necesary objects for the game.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}\label{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}} 
+\index{Game@{Game}!main\+Loop@{main\+Loop}}
+\index{main\+Loop@{main\+Loop}!Game@{Game}}
+\subsubsection{\texorpdfstring{main\+Loop()}{mainLoop()}}
+{\footnotesize\ttfamily void Game\+::main\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game loop
+
+Process the game loop.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a815a3ec2787b4b1c4077d28165c380e8}\label{class_game_a815a3ec2787b4b1c4077d28165c380e8}} 
+\index{Game@{Game}!process\+Input@{process\+Input}}
+\index{process\+Input@{process\+Input}!Game@{Game}}
+\subsubsection{\texorpdfstring{process\+Input()}{processInput()}}
+{\footnotesize\ttfamily void Game\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the inputs
+
+Check the inputs and change the game stats for do the uptade.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a204ea65111892ca826f3a65cc8818ea7}\label{class_game_a204ea65111892ca826f3a65cc8818ea7}} 
+\index{Game@{Game}!render\+Editor@{render\+Editor}}
+\index{render\+Editor@{render\+Editor}!Game@{Game}}
+\subsubsection{\texorpdfstring{render\+Editor()}{renderEditor()}}
+{\footnotesize\ttfamily void Game\+::render\+Editor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game entities
+
+Draw all the entities of the game and the UI of the editor
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a4573580347746dbb7dbe568383682ed3}\label{class_game_a4573580347746dbb7dbe568383682ed3}} 
+\index{Game@{Game}!render\+Game@{render\+Game}}
+\index{render\+Game@{render\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{render\+Game()}{renderGame()}}
+{\footnotesize\ttfamily void Game\+::render\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game entities
+
+Draw all the entities of the game
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a828811993f0d93a72758b05c98609540}\label{class_game_a828811993f0d93a72758b05c98609540}} 
+\index{Game@{Game}!render\+UI@{render\+UI}}
+\index{render\+UI@{render\+UI}!Game@{Game}}
+\subsubsection{\texorpdfstring{render\+U\+I()}{renderUI()}}
+{\footnotesize\ttfamily void Game\+::render\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the UI
+
+Function in charge of rendering the UI
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a65b1b506f6c9ffb4006e94680e05cd04}\label{class_game_a65b1b506f6c9ffb4006e94680e05cd04}} 
+\index{Game@{Game}!Ui\+Load\+Background\+Values\+Edit@{Ui\+Load\+Background\+Values\+Edit}}
+\index{Ui\+Load\+Background\+Values\+Edit@{Ui\+Load\+Background\+Values\+Edit}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Background\+Values\+Edit()}{UiLoadBackgroundValuesEdit()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Load\+Background\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_background}{Background} \&}]{bg }\end{DoxyParamCaption})}
+
+the edit values of \hyperlink{class_background}{Background} entity
+
+Loads the edit values of \hyperlink{class_background}{Background} entity\+: speed, vertical movememnt, horizaontal\+\_\+movement...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reference} & to the background whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a0a41188d1bfa82e9e0cdda1c0530a389}\label{class_game_a0a41188d1bfa82e9e0cdda1c0530a389}} 
+\index{Game@{Game}!Ui\+Load\+Common\+Values\+Edit@{Ui\+Load\+Common\+Values\+Edit}}
+\index{Ui\+Load\+Common\+Values\+Edit@{Ui\+Load\+Common\+Values\+Edit}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Common\+Values\+Edit()}{UiLoadCommonValuesEdit()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Load\+Common\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_drawable_entity}{Drawable\+Entity} \&}]{d\+\_\+entity }\end{DoxyParamCaption})}
+
+the edit values of Drawable entity
+
+Loads the edit values of Drawable entity\+: transformations, color, position...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reference} & to the drawable entity whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a895e8ae5390fcd21a903623a23ceeaac}\label{class_game_a895e8ae5390fcd21a903623a23ceeaac}} 
+\index{Game@{Game}!Ui\+Load\+Label\+Values\+Edit@{Ui\+Load\+Label\+Values\+Edit}}
+\index{Ui\+Load\+Label\+Values\+Edit@{Ui\+Load\+Label\+Values\+Edit}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Label\+Values\+Edit()}{UiLoadLabelValuesEdit()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Load\+Label\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_label}{Label} \&}]{label }\end{DoxyParamCaption})}
+
+the edit values of \hyperlink{class_label}{Label} entity
+
+Loads the edit values of \hyperlink{class_label}{Label} entity\+: text, font\+\_\+size...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reference} & to the label whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a184082948455436281839a2e96279e17}\label{class_game_a184082948455436281839a2e96279e17}} 
+\index{Game@{Game}!Ui\+Load\+Menu@{Ui\+Load\+Menu}}
+\index{Ui\+Load\+Menu@{Ui\+Load\+Menu}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Menu()}{UiLoadMenu()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Load\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the mode menu of the UI
+
+Loads the mode menu with the different buttons to chose in which mode is working the UI
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a8710233ba10c51897d95b176f1bac5ca}\label{class_game_a8710233ba10c51897d95b176f1bac5ca}} 
+\index{Game@{Game}!Ui\+Load\+Rect\+Values\+Edit@{Ui\+Load\+Rect\+Values\+Edit}}
+\index{Ui\+Load\+Rect\+Values\+Edit@{Ui\+Load\+Rect\+Values\+Edit}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Rect\+Values\+Edit()}{UiLoadRectValuesEdit()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Load\+Rect\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_rect}{Rect} \&}]{rect }\end{DoxyParamCaption})}
+
+the edit values of \hyperlink{class_rect}{Rect} entity
+
+Loads the edit values of \hyperlink{class_rect}{Rect} entity\+: fill color, is\+\_\+solid, size...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reference} & to the rect whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa18ae3db4c6d5b2fac2080afcd8e6790}\label{class_game_aa18ae3db4c6d5b2fac2080afcd8e6790}} 
+\index{Game@{Game}!Ui\+Start\+Game\+Menu@{Ui\+Start\+Game\+Menu}}
+\index{Ui\+Start\+Game\+Menu@{Ui\+Start\+Game\+Menu}!Game@{Game}}
+\subsubsection{\texorpdfstring{Ui\+Start\+Game\+Menu()}{UiStartGameMenu()}}
+{\footnotesize\ttfamily void Game\+::\+Ui\+Start\+Game\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game mode menu
+
+Only part of the UI that will be shown in game mode, this allows us to change between game mode and edit mode
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a81abd2f677aba0c3f068c902d690e2fb}\label{class_game_a81abd2f677aba0c3f068c902d690e2fb}} 
+\index{Game@{Game}!update\+Editor@{update\+Editor}}
+\index{update\+Editor@{update\+Editor}!Game@{Game}}
+\subsubsection{\texorpdfstring{update\+Editor()}{updateEditor()}}
+{\footnotesize\ttfamily void Game\+::update\+Editor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Update entitites and the game state.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a67a8c5c0356c9ad33fac1abc435a3746}\label{class_game_a67a8c5c0356c9ad33fac1abc435a3746}} 
+\index{Game@{Game}!update\+Game@{update\+Game}}
+\index{update\+Game@{update\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{update\+Game()}{updateGame()}}
+{\footnotesize\ttfamily void Game\+::update\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the game
+
+Update entitites and the game state.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/game.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,274 @@
+\hypertarget{class_sprite}{}\section{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+
+
+{\ttfamily \#include $<$sprite.\+h$>$}
+
+Inheritance diagram for Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_sprite}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{$\sim$\+Sprite} ()
+\item 
+void \hyperlink{class_sprite_a51cf0234a0f71f4c9fb722a9e331305a}{init} (const float px, const float py, const float rotation, const float scalex, const float scaley, const sf\+::\+Texture \&texture)
+\item 
+void \hyperlink{class_sprite_af9c2ffd6e4c3f1cc1791562be86fe2cc}{init} (const float px, const float py, const float rotation, const float scalex, const float scaley, const sf\+::\+Texture \&texture, uint8\+\_\+t \&error\+\_\+ocurred)
+\item 
+uint8\+\_\+t \hyperlink{class_sprite_ae60101c72db08a33215ec89faae8a87c}{init} (const float px, const float py, const float rotation, const float scalex, const float scaley, const std\+::string \&file\+\_\+path)
+\item 
+void \hyperlink{class_sprite_adf1e840c7fe51abacc8a8f80c9e63c81}{draw} (sf\+::\+Render\+Window \&window)
+\item 
+bool \hyperlink{class_sprite_acb1a84678f2536ff83b5f2c44dfa3b45}{check\+Collision} (const sf\+::\+Vector2f \&position)
+\item 
+void \hyperlink{class_sprite_a26019c4dc52face7a098ddace9926863}{unuse} ()
+\item 
+Sprite\+Origin \hyperlink{class_sprite_a0eccfb75237b7c5eda33810cb1080daf}{origin} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_sprite}{Sprite} $\ast$ \hyperlink{class_sprite_aaabea785dc01ff0246b290fc9e6b3f62}{Create\+Sprite} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_abf366a9a6edad58a8e2bb8a61cc2c3cd}\label{class_sprite_abf366a9a6edad58a8e2bb8a61cc2c3cd}} 
+sf\+::\+Sprite {\bfseries sprite\+\_\+}
+\item 
+\mbox{\Hypertarget{class_sprite_a06bd345188635cf4ecd14c0388458f87}\label{class_sprite_a06bd345188635cf4ecd14c0388458f87}} 
+std\+::string {\bfseries texture\+\_\+dir\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_a9f565e1571739b17c22760fa99289d2a}\label{class_sprite_a9f565e1571739b17c22760fa99289d2a}} 
+static const uint8\+\_\+t {\bfseries k\+Max\+Sprites} = 50
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite} ()
+\item 
+\hyperlink{class_sprite_aa5cb9fac0cfa5d81dc429e75137179d0}{Sprite} (const \hyperlink{class_sprite}{Sprite} \&o)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_adc21e288d7f99213c4b0ef37eaa58353}\label{class_sprite_adc21e288d7f99213c4b0ef37eaa58353}} 
+sf\+::\+Texture $\ast$ {\bfseries own\+\_\+texture\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_a1fc1356f60c3d969a5f4cf6b70759e0e}\label{class_sprite_a1fc1356f60c3d969a5f4cf6b70759e0e}} 
+static uint32\+\_\+t {\bfseries total\+\_\+sprites\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+entity \hyperlink{class_sprite}{Sprite}
+
+Class used to represent a sprite. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sprite_a8accab430f9d90ae5117b57d67e32b84}\label{class_sprite_a8accab430f9d90ae5117b57d67e32b84}} 
+\index{Sprite@{Sprite}!````~Sprite@{$\sim$\+Sprite}}
+\index{````~Sprite@{$\sim$\+Sprite}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{$\sim$\+Sprite()}{~Sprite()}}
+{\footnotesize\ttfamily Sprite\+::$\sim$\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a sprite
+
+In case the sprite stored it\textquotesingle{}s own texture in the hip it needs to free it. \mbox{\Hypertarget{class_sprite_a12cba3ac1868418add3c4d95ce87e615}\label{class_sprite_a12cba3ac1868418add3c4d95ce87e615}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{Sprite()}{Sprite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+constructor
+
+\hyperlink{class_sprite}{Sprite} constructor used by the factory to create sprite
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Sprite 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_aa5cb9fac0cfa5d81dc429e75137179d0}\label{class_sprite_aa5cb9fac0cfa5d81dc429e75137179d0}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{Sprite()}{Sprite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{const \hyperlink{class_sprite}{Sprite} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+copy constructor
+
+\hyperlink{class_sprite}{Sprite} copy constructor without anything to disable it.
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Sprite 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sprite_acb1a84678f2536ff83b5f2c44dfa3b45}\label{class_sprite_acb1a84678f2536ff83b5f2c44dfa3b45}} 
+\index{Sprite@{Sprite}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
+{\footnotesize\ttfamily bool Sprite\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
+
+if a point collides with the sprite
+
+Checks if the point passed by reference collides with the sprite.
+
+\begin{DoxyReturn}{Returns}
+bool returns true if the point collides and false if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_aaabea785dc01ff0246b290fc9e6b3f62}\label{class_sprite_aaabea785dc01ff0246b290fc9e6b3f62}} 
+\index{Sprite@{Sprite}!Create\+Sprite@{Create\+Sprite}}
+\index{Create\+Sprite@{Create\+Sprite}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{Create\+Sprite()}{CreateSprite()}}
+{\footnotesize\ttfamily static \hyperlink{class_sprite}{Sprite}$\ast$ Sprite\+::\+Create\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+that creates sprites
+
+Checks that the number of sprites didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_sprite}{Sprite} you must use this method. In case the maximum amount of sprites has been reached it will return nullptr. Otherwise it will return a pointer to a sprite.
+
+\begin{DoxyReturn}{Returns}
+Sprite$\ast$ returns the sprite created or nullptr if the maximum of sprites has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_adf1e840c7fe51abacc8a8f80c9e63c81}\label{class_sprite_adf1e840c7fe51abacc8a8f80c9e63c81}} 
+\index{Sprite@{Sprite}!draw@{draw}}
+\index{draw@{draw}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Sprite\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+the graphic entity \hyperlink{class_sprite}{Sprite}
+
+Draws the sprite using S\+F\+ML to the window passed by reference
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & S\+F\+ML Render\+Window passed by reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a51cf0234a0f71f4c9fb722a9e331305a}\label{class_sprite_a51cf0234a0f71f4c9fb722a9e331305a}} 
+\index{Sprite@{Sprite}!init@{init}}
+\index{init@{init}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Sprite\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const sf\+::\+Texture \&}]{texture }\end{DoxyParamCaption})}
+
+the sprite using a texture
+
+Initializes the position and transformations of a sprite using an sf\+::\+Texture as texture.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the sprite \\
+\hline
+{\em py} & position y of the sprite \\
+\hline
+{\em rotation} & value of rotation of the sprite in degrees \\
+\hline
+{\em scalex} & x scale value of the sprite \\
+\hline
+{\em scaley} & y scale value of the sprite \\
+\hline
+{\em texture} & that will use the sprite \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_af9c2ffd6e4c3f1cc1791562be86fe2cc}\label{class_sprite_af9c2ffd6e4c3f1cc1791562be86fe2cc}} 
+\index{Sprite@{Sprite}!init@{init}}
+\index{init@{init}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Sprite\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const sf\+::\+Texture \&}]{texture,  }\item[{uint8\+\_\+t \&}]{error\+\_\+ocurred }\end{DoxyParamCaption})}
+
+the sprite using a buffer from memory
+
+Initializes an \hyperlink{class_sprite}{Sprite} with its own texture that will be stored in memory. In case the allocation of the texture fails it will return a 0. If all went well 1
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the sprite \\
+\hline
+{\em py} & position y of the sprite \\
+\hline
+{\em rotation} & value of rotation of the sprite in degrees \\
+\hline
+{\em scalex} & x scale value of the sprite \\
+\hline
+{\em scaley} & y scale value of the sprite \\
+\hline
+{\em texture} & referency of the texture we wish to do the copy \\
+\hline
+{\em uint8\+\_\+t} & indicates if there was an error in the execution \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_ae60101c72db08a33215ec89faae8a87c}\label{class_sprite_ae60101c72db08a33215ec89faae8a87c}} 
+\index{Sprite@{Sprite}!init@{init}}
+\index{init@{init}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily uint8\+\_\+t Sprite\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+the sprite using an image file
+
+Initializes an \hyperlink{class_sprite}{Sprite} with its own texture through an image file. In case the allocation of the texture fails it will return a 0. If all went well 1
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t indicates if there was an error in the execution error-\/$>$1 ok-\/$>$0 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the sprite \\
+\hline
+{\em py} & position y of the sprite \\
+\hline
+{\em rotation} & value of rotation of the sprite in degrees \\
+\hline
+{\em scalex} & x scale value of the sprite \\
+\hline
+{\em scaley} & y scale value of the sprite \\
+\hline
+{\em image\+\_\+file} & image that will be used for the texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a0eccfb75237b7c5eda33810cb1080daf}\label{class_sprite_a0eccfb75237b7c5eda33810cb1080daf}} 
+\index{Sprite@{Sprite}!origin@{origin}}
+\index{origin@{origin}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{origin()}{origin()}}
+{\footnotesize\ttfamily Sprite\+Origin Sprite\+::origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+for origin Returns the origin of the texture, it will vary depending on how the sprite was initiallized
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a26019c4dc52face7a098ddace9926863}\label{class_sprite_a26019c4dc52face7a098ddace9926863}} 
+\index{Sprite@{Sprite}!unuse@{unuse}}
+\index{unuse@{unuse}!Sprite@{Sprite}}
+\subsubsection{\texorpdfstring{unuse()}{unuse()}}
+{\footnotesize\ttfamily void Sprite\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the values of the sprite
+
+Sets the attributes of the sprite to a default value to return it to a pool and being able to reuse it later.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/sprite.\+h\end{DoxyCompactItemize}

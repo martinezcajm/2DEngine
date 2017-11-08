@@ -1,0 +1,200 @@
+\hypertarget{class_label}{}\section{Label Class Reference}
+\label{class_label}\index{Label@{Label}}
+
+
+{\ttfamily \#include $<$label.\+h$>$}
+
+Inheritance diagram for Label\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_label}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_label_ab69dd0268124ac21d55b87734fd282a0}{init} (const uint8\+\_\+t r, const uint8\+\_\+t g, const uint8\+\_\+t b, const uint8\+\_\+t a, const float px, const float py, const float rotation, const float scalex, const float scaley, const char $\ast$text, const sf\+::\+Font \&font)
+\item 
+void \hyperlink{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}{draw} (sf\+::\+Render\+Window \&window)
+\item 
+void \hyperlink{class_label_affe136b0a2e4a2240ecd30460222811d}{set\+\_\+font} (const sf\+::\+Font \&font)
+\item 
+void \hyperlink{class_label_a9e794358a782f0a4ba163bcbbe013612}{set\+\_\+font\+\_\+size} (const int32\+\_\+t \&font\+\_\+size)
+\item 
+bool \hyperlink{class_label_ad79f141fe2f04fd095b9507cac2667a6}{check\+Collision} (const sf\+::\+Vector2f \&position)
+\item 
+void \hyperlink{class_label_abafe12b2237df6f7e915d407d8084ec7}{unuse} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_label}{Label} $\ast$ \hyperlink{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}{Create\+Label} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_label_a96bfd593e67f9031a244732fed63358f}\label{class_label_a96bfd593e67f9031a244732fed63358f}} 
+int32\+\_\+t {\bfseries font\+\_\+size\+\_\+}
+\item 
+\mbox{\Hypertarget{class_label_a272e5426b0989b667b42cc4c87d697a7}\label{class_label_a272e5426b0989b667b42cc4c87d697a7}} 
+char {\bfseries text\+\_\+} \mbox{[}k\+Text\+Max\+Size\mbox{]}
+\item 
+\mbox{\Hypertarget{class_label_a2f2da01fed83e50368d3d3674ed11d1b}\label{class_label_a2f2da01fed83e50368d3d3674ed11d1b}} 
+sf\+::\+Text\+::\+Style {\bfseries style\+\_\+}
+\item 
+\mbox{\Hypertarget{class_label_a19110944dc9f96e238ca9e807d06421c}\label{class_label_a19110944dc9f96e238ca9e807d06421c}} 
+const sf\+::\+Font $\ast$ {\bfseries font\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_label_a00ba8c3c345de6f169c739243aad2634}\label{class_label_a00ba8c3c345de6f169c739243aad2634}} 
+static const uint8\+\_\+t {\bfseries k\+Max\+Labels} = 50
+\item 
+\mbox{\Hypertarget{class_label_a73c9a955b95b4e3dfbba8b4a7771d64a}\label{class_label_a73c9a955b95b4e3dfbba8b4a7771d64a}} 
+static const uint8\+\_\+t {\bfseries k\+Text\+Max\+Size} = 50
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+entity \hyperlink{class_label}{Label}
+
+Class used to represent text. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_label_ad79f141fe2f04fd095b9507cac2667a6}\label{class_label_ad79f141fe2f04fd095b9507cac2667a6}} 
+\index{Label@{Label}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Label@{Label}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
+{\footnotesize\ttfamily bool Label\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
+
+if a point collides with the label
+
+Checks if the point passed by reference collides with the label.
+
+\begin{DoxyReturn}{Returns}
+bool returns true if the point collides and false if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}\label{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}} 
+\index{Label@{Label}!Create\+Label@{Create\+Label}}
+\index{Create\+Label@{Create\+Label}!Label@{Label}}
+\subsubsection{\texorpdfstring{Create\+Label()}{CreateLabel()}}
+{\footnotesize\ttfamily static \hyperlink{class_label}{Label}$\ast$ Label\+::\+Create\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+that creates labels
+
+Checks that the number of labels didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_label}{Label} you must use this method. In case the maximum amount of labels has been reached it will return nullptr. Otherwise it will return a pointer to a label.
+
+\begin{DoxyReturn}{Returns}
+Label$\ast$ returns the label created or nullptr if the maximum of labels has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}\label{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}} 
+\index{Label@{Label}!draw@{draw}}
+\index{draw@{draw}!Label@{Label}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Label\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+the graphic entity \hyperlink{class_label}{Label}
+
+Draws the label using S\+F\+ML to the window passed by reference
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & S\+F\+ML Render\+Window passed by reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_label_ab69dd0268124ac21d55b87734fd282a0}\label{class_label_ab69dd0268124ac21d55b87734fd282a0}} 
+\index{Label@{Label}!init@{init}}
+\index{init@{init}!Label@{Label}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Label\+::init (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{r,  }\item[{const uint8\+\_\+t}]{g,  }\item[{const uint8\+\_\+t}]{b,  }\item[{const uint8\+\_\+t}]{a,  }\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const char $\ast$}]{text,  }\item[{const sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
+
+the \hyperlink{class_label}{Label}
+
+Initializes a label
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em r} & color red component of the label we want to create \\
+\hline
+{\em g} & color blue component of the label we want to create \\
+\hline
+{\em b} & color green component of the label we want to create \\
+\hline
+{\em a} & alpha channel of the color of the label we want to create \\
+\hline
+{\em px} & x position in the window \\
+\hline
+{\em py} & y position in the window \\
+\hline
+{\em rotation} & rotation in degrees \\
+\hline
+{\em scalex} & scale quantity at x axis \\
+\hline
+{\em scaley} & scale quantity at y axis \\
+\hline
+{\em text} & text that will contain the label \\
+\hline
+{\em font} & font of the text \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_label_affe136b0a2e4a2240ecd30460222811d}\label{class_label_affe136b0a2e4a2240ecd30460222811d}} 
+\index{Label@{Label}!set\+\_\+font@{set\+\_\+font}}
+\index{set\+\_\+font@{set\+\_\+font}!Label@{Label}}
+\subsubsection{\texorpdfstring{set\+\_\+font()}{set\_font()}}
+{\footnotesize\ttfamily void Label\+::set\+\_\+font (\begin{DoxyParamCaption}\item[{const sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
+
+for text value
+
+Changes the text value of the label
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em \&text} & reference to the new string we wish to show within the label \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_label_a9e794358a782f0a4ba163bcbbe013612}\label{class_label_a9e794358a782f0a4ba163bcbbe013612}} 
+\index{Label@{Label}!set\+\_\+font\+\_\+size@{set\+\_\+font\+\_\+size}}
+\index{set\+\_\+font\+\_\+size@{set\+\_\+font\+\_\+size}!Label@{Label}}
+\subsubsection{\texorpdfstring{set\+\_\+font\+\_\+size()}{set\_font\_size()}}
+{\footnotesize\ttfamily void Label\+::set\+\_\+font\+\_\+size (\begin{DoxyParamCaption}\item[{const int32\+\_\+t \&}]{font\+\_\+size }\end{DoxyParamCaption})}
+
+for font\+\_\+size value
+
+Changes the font size of the label
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em \&font\+\_\+size} & reference to the new font size of our label \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_label_abafe12b2237df6f7e915d407d8084ec7}\label{class_label_abafe12b2237df6f7e915d407d8084ec7}} 
+\index{Label@{Label}!unuse@{unuse}}
+\index{unuse@{unuse}!Label@{Label}}
+\subsubsection{\texorpdfstring{unuse()}{unuse()}}
+{\footnotesize\ttfamily void Label\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the values of the label
+
+Sets the attributes of the label to a default value to return it to a pool and being able to reuse it later.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/label.\+h\end{DoxyCompactItemize}

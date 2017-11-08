@@ -1,0 +1,133 @@
+\hypertarget{class_window}{}\section{Window Class Reference}
+\label{class_window}\index{Window@{Window}}
+
+
+{\ttfamily \#include $<$window.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_window_a0530ead23b2c91ef90a5f98e4df41cb8}{is\+Open} ()
+\item 
+void \hyperlink{class_window_afadfafa5a0b9472554759004aafb327e}{display} ()
+\item 
+void \hyperlink{class_window_a35055c04498121d39741bfcd5082705b}{close} ()
+\item 
+void \hyperlink{class_window_a38bc43bdd1a97e5de7f346ba4c3957ef}{clear} ()
+\item 
+void \hyperlink{class_window_adfb2d5826942693e289d13f314a341f7}{draw} (const sf\+::\+Drawable \&drawable)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_window}{Window} $\ast$ \hyperlink{class_window_ac23ace79f02693ff5463f91dba8bb38b}{Create\+Window} (const sf\+::\+Vector2u size, const sf\+::\+String \&title, unsigned int frame\+Rate\+Limit=60)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_window_adf4fd93b0ad5bd9c045a4bbc5c767b7d}\label{class_window_adf4fd93b0ad5bd9c045a4bbc5c767b7d}} 
+unsigned int {\bfseries frame\+\_\+rate\+\_\+limit\+\_\+}
+\item 
+\mbox{\Hypertarget{class_window_a49d4bbd674a3cef9ff823ef17a0bef42}\label{class_window_a49d4bbd674a3cef9ff823ef17a0bef42}} 
+sf\+::\+Render\+Window $\ast$ {\bfseries sfml\+\_\+window\+\_\+}
+\item 
+\mbox{\Hypertarget{class_window_a79a1f398d58121ef49bb7d29b3f2ea64}\label{class_window_a79a1f398d58121ef49bb7d29b3f2ea64}} 
+sf\+::\+Event {\bfseries event\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_window_adddb1eb449be45c372249dc1462c4e68}\label{class_window_adddb1eb449be45c372249dc1462c4e68}} 
+static const uint8\+\_\+t {\bfseries k\+Max\+Windows} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class create and manage the windows
+
+This class create and manage the windows of the game editor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_window_a38bc43bdd1a97e5de7f346ba4c3957ef}\label{class_window_a38bc43bdd1a97e5de7f346ba4c3957ef}} 
+\index{Window@{Window}!clear@{clear}}
+\index{clear@{clear}!Window@{Window}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Window\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the window
+
+Clear the window and put it black.
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_window_a35055c04498121d39741bfcd5082705b}\label{class_window_a35055c04498121d39741bfcd5082705b}} 
+\index{Window@{Window}!close@{close}}
+\index{close@{close}!Window@{Window}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Window\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the window
+
+Close the window.
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_window_ac23ace79f02693ff5463f91dba8bb38b}\label{class_window_ac23ace79f02693ff5463f91dba8bb38b}} 
+\index{Window@{Window}!Create\+Window@{Create\+Window}}
+\index{Create\+Window@{Create\+Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{Create\+Window()}{CreateWindow()}}
+{\footnotesize\ttfamily static \hyperlink{class_window}{Window}$\ast$ Window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2u}]{size,  }\item[{const sf\+::\+String \&}]{title,  }\item[{unsigned int}]{frame\+Rate\+Limit = {\ttfamily 60} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+that creates windows
+
+Checks that the number of window didn\textquotesingle{}t pass the maxim established. In case the maximum of window has been reached it will return nullptr.
+
+\begin{DoxyReturn}{Returns}
+Window$\ast$ returns a pointer to the \hyperlink{class_window}{Window} created or nullptr if the maximum of windows has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_window_afadfafa5a0b9472554759004aafb327e}\label{class_window_afadfafa5a0b9472554759004aafb327e}} 
+\index{Window@{Window}!display@{display}}
+\index{display@{display}!Window@{Window}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Window\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the window
+
+Display on screen the elements that has been rendered to the window so far.
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_window_adfb2d5826942693e289d13f314a341f7}\label{class_window_adfb2d5826942693e289d13f314a341f7}} 
+\index{Window@{Window}!draw@{draw}}
+\index{draw@{draw}!Window@{Window}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Window\+::draw (\begin{DoxyParamCaption}\item[{const sf\+::\+Drawable \&}]{drawable }\end{DoxyParamCaption})}
+
+a drawable object.
+
+Draw a drawable object to the render-\/target.
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_window_a0530ead23b2c91ef90a5f98e4df41cb8}\label{class_window_a0530ead23b2c91ef90a5f98e4df41cb8}} 
+\index{Window@{Window}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Window@{Window}}
+\subsubsection{\texorpdfstring{is\+Open()}{isOpen()}}
+{\footnotesize\ttfamily bool Window\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+if the window is open
+
+Checks if the window is open.
+
+\begin{DoxyReturn}{Returns}
+bool returns true if the window is open and false if not. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/window.\+h\end{DoxyCompactItemize}

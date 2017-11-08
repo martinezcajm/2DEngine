@@ -1,0 +1,205 @@
+\hypertarget{class_pool}{}\section{Pool Class Reference}
+\label{class_pool}\index{Pool@{Pool}}
+
+
+{\ttfamily \#include $<$pool.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}{init} ()
+\item 
+void \hyperlink{class_pool_aa2bcc7b11c5f0a438b1fe5405ba698ff}{free} ()
+\item 
+\hyperlink{class_rect}{Rect} $\ast$ \hyperlink{class_pool_a2ea49e227ce14fcb926d451f9f59e452}{get\+Rect} ()
+\item 
+\hyperlink{class_label}{Label} $\ast$ \hyperlink{class_pool_a13ce02d7dbee29305a83dcdb22a01661}{get\+Label} ()
+\item 
+\hyperlink{class_sprite}{Sprite} $\ast$ \hyperlink{class_pool_abd15708186d45b2e45312c872dd84384}{get\+Sprite} ()
+\item 
+\hyperlink{class_background}{Background} $\ast$ \hyperlink{class_pool_a367c875efe93a27fea4bcaf0ed281abd}{get\+Background} ()
+\item 
+void \hyperlink{class_pool_a3b5250c08babf163d9d4877c7a2a6f40}{return\+Rect} (\hyperlink{class_rect}{Rect} \&rect)
+\item 
+void \hyperlink{class_pool_a2a38a2d1aa883152d27fa213ac2cc2e8}{return\+Label} (\hyperlink{class_label}{Label} \&label)
+\item 
+void \hyperlink{class_pool_a227334c0983a0c1bf42d72a44fcfee8f}{return\+Sprite} (\hyperlink{class_sprite}{Sprite} \&sprite)
+\item 
+void \hyperlink{class_pool_af6234b218a3dd72a440a3381b35c9e36}{return\+Background} (\hyperlink{class_background}{Background} \&background)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_pool}{Pool} \& \hyperlink{class_pool_a20e44e0054d4eedf57f1943b87c06e20}{instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pool_a2a73ee4005262cd6f4ebfc25a1811fce}\label{class_pool_a2a73ee4005262cd6f4ebfc25a1811fce}} 
+std\+::vector$<$ \hyperlink{class_rect}{Rect} $\ast$ $>$ {\bfseries rect\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_a5ea3bbd258fcb452dcfa036ac5acacd5}\label{class_pool_a5ea3bbd258fcb452dcfa036ac5acacd5}} 
+std\+::vector$<$ \hyperlink{class_label}{Label} $\ast$ $>$ {\bfseries label\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_a0bd32066fb5351695261a6fa1f1796bf}\label{class_pool_a0bd32066fb5351695261a6fa1f1796bf}} 
+std\+::vector$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries sprite\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_a11e4e7ab2e2d9307e7ec5dd56ffc84ed}\label{class_pool_a11e4e7ab2e2d9307e7ec5dd56ffc84ed}} 
+std\+::vector$<$ \hyperlink{class_background}{Background} $\ast$ $>$ {\bfseries bg\+\_\+pool\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+in charge of managing the pools
+
+Singleton of pools used to reuse the diverse graphical entities of the application avoiding this way the destruction of objects during execution as much as possible 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pool_aa2bcc7b11c5f0a438b1fe5405ba698ff}\label{class_pool_aa2bcc7b11c5f0a438b1fe5405ba698ff}} 
+\index{Pool@{Pool}!free@{free}}
+\index{free@{free}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily void Pool\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the pull
+
+Frees all the elements stored in the pools.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a367c875efe93a27fea4bcaf0ed281abd}\label{class_pool_a367c875efe93a27fea4bcaf0ed281abd}} 
+\index{Pool@{Pool}!get\+Background@{get\+Background}}
+\index{get\+Background@{get\+Background}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Background()}{getBackground()}}
+{\footnotesize\ttfamily \hyperlink{class_background}{Background}$\ast$ Pool\+::get\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a \hyperlink{class_background}{Background}
+
+Returns a \hyperlink{class_background}{Background} from the pool, if the pool doesn\textquotesingle{}t have more backgrounds it creates one using the background factory. If the max of backgrounds has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Background$\ast$ pointer to background if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a13ce02d7dbee29305a83dcdb22a01661}\label{class_pool_a13ce02d7dbee29305a83dcdb22a01661}} 
+\index{Pool@{Pool}!get\+Label@{get\+Label}}
+\index{get\+Label@{get\+Label}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Label()}{getLabel()}}
+{\footnotesize\ttfamily \hyperlink{class_label}{Label}$\ast$ Pool\+::get\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a \hyperlink{class_label}{Label}
+
+Returns a \hyperlink{class_label}{Label} from the pool, if the pool doesn\textquotesingle{}t have more labels it creates one using the label factory. If the max of labels has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Label$\ast$ pointer to label if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a2ea49e227ce14fcb926d451f9f59e452}\label{class_pool_a2ea49e227ce14fcb926d451f9f59e452}} 
+\index{Pool@{Pool}!get\+Rect@{get\+Rect}}
+\index{get\+Rect@{get\+Rect}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Rect()}{getRect()}}
+{\footnotesize\ttfamily \hyperlink{class_rect}{Rect}$\ast$ Pool\+::get\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a \hyperlink{class_rect}{Rect}
+
+Returns a \hyperlink{class_rect}{Rect} from the pool, if the pool doesn\textquotesingle{}t have more rects it creates one using the rect factory. If the max of rects has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Rect$\ast$ pointer to rect if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_abd15708186d45b2e45312c872dd84384}\label{class_pool_abd15708186d45b2e45312c872dd84384}} 
+\index{Pool@{Pool}!get\+Sprite@{get\+Sprite}}
+\index{get\+Sprite@{get\+Sprite}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Sprite()}{getSprite()}}
+{\footnotesize\ttfamily \hyperlink{class_sprite}{Sprite}$\ast$ Pool\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+a \hyperlink{class_sprite}{Sprite}
+
+Returns a \hyperlink{class_sprite}{Sprite} from the pool, if the pool doesn\textquotesingle{}t have more sprites it creates one using the sprite factory. If the max of sprites has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Sprite$\ast$ pointer to sprite if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}\label{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}} 
+\index{Pool@{Pool}!init@{init}}
+\index{init@{init}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Pool\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the pool
+
+Initializes the pool creating the first instances of the elements.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a20e44e0054d4eedf57f1943b87c06e20}\label{class_pool_a20e44e0054d4eedf57f1943b87c06e20}} 
+\index{Pool@{Pool}!instance@{instance}}
+\index{instance@{instance}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily static \hyperlink{class_pool}{Pool}\& Pool\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+the instance of our pool
+
+In charge of creating our singleton of pools in case it doesn\textquotesingle{}t exist or return it\textquotesingle{}s instance if it exists.
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_pool}{Pool}\& instance of the pool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_af6234b218a3dd72a440a3381b35c9e36}\label{class_pool_af6234b218a3dd72a440a3381b35c9e36}} 
+\index{Pool@{Pool}!return\+Background@{return\+Background}}
+\index{return\+Background@{return\+Background}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Background()}{returnBackground()}}
+{\footnotesize\ttfamily void Pool\+::return\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{class_background}{Background} \&}]{background }\end{DoxyParamCaption})}
+
+an existing background to the pool
+
+Recieves an existing background and resets it\textquotesingle{}s value using the unuse function of background
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a2a38a2d1aa883152d27fa213ac2cc2e8}\label{class_pool_a2a38a2d1aa883152d27fa213ac2cc2e8}} 
+\index{Pool@{Pool}!return\+Label@{return\+Label}}
+\index{return\+Label@{return\+Label}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Label()}{returnLabel()}}
+{\footnotesize\ttfamily void Pool\+::return\+Label (\begin{DoxyParamCaption}\item[{\hyperlink{class_label}{Label} \&}]{label }\end{DoxyParamCaption})}
+
+an existing label to the pool
+
+Recieves an existing label and resets it\textquotesingle{}s value using the unuse function of label
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a3b5250c08babf163d9d4877c7a2a6f40}\label{class_pool_a3b5250c08babf163d9d4877c7a2a6f40}} 
+\index{Pool@{Pool}!return\+Rect@{return\+Rect}}
+\index{return\+Rect@{return\+Rect}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Rect()}{returnRect()}}
+{\footnotesize\ttfamily void Pool\+::return\+Rect (\begin{DoxyParamCaption}\item[{\hyperlink{class_rect}{Rect} \&}]{rect }\end{DoxyParamCaption})}
+
+an existing rect to the pool
+
+Recieves an existing rect and resets it\textquotesingle{}s value using the unuse function of rect
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a227334c0983a0c1bf42d72a44fcfee8f}\label{class_pool_a227334c0983a0c1bf42d72a44fcfee8f}} 
+\index{Pool@{Pool}!return\+Sprite@{return\+Sprite}}
+\index{return\+Sprite@{return\+Sprite}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Sprite()}{returnSprite()}}
+{\footnotesize\ttfamily void Pool\+::return\+Sprite (\begin{DoxyParamCaption}\item[{\hyperlink{class_sprite}{Sprite} \&}]{sprite }\end{DoxyParamCaption})}
+
+an existing sprite to the pool
+
+Recieves an existing sprite and resets it\textquotesingle{}s value using the unuse function of sprite
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/pool.\+h\end{DoxyCompactItemize}

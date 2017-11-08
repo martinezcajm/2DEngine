@@ -1,0 +1,176 @@
+\hypertarget{class_rect}{}\section{Rect Class Reference}
+\label{class_rect}\index{Rect@{Rect}}
+
+
+{\ttfamily \#include $<$rect.\+h$>$}
+
+Inheritance diagram for Rect\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_rect}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rect_aa780623e4639a2679ed300424142d50d}{init} (uint8\+\_\+t is\+\_\+solid, float width, float height, uint8\+\_\+t sc\+\_\+r, uint8\+\_\+t sc\+\_\+g, uint8\+\_\+t sc\+\_\+b, uint8\+\_\+t sc\+\_\+a, uint8\+\_\+t fc\+\_\+r, uint8\+\_\+t fc\+\_\+g, uint8\+\_\+t fc\+\_\+b, uint8\+\_\+t fc\+\_\+a, float px, float py, float rotation, float scalex, float scaley)
+\item 
+void \hyperlink{class_rect_aa131d780f6ebb75e9057c01221486adc}{draw} (sf\+::\+Render\+Window \&window)
+\item 
+void \hyperlink{class_rect_ab7593e78f2fbc2354d8ef832ac3625a7}{resize} (const float width, const float height)
+\item 
+bool \hyperlink{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}{check\+Collision} (const sf\+::\+Vector2f \&position)
+\item 
+void \hyperlink{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}{unuse} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_rect}{Rect} $\ast$ \hyperlink{class_rect_ac9283327c926d453d0cd5a49ded8d150}{Create\+Rect} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_rect_a898ebf0731c53c824582d4b1930b9e90}\label{class_rect_a898ebf0731c53c824582d4b1930b9e90}} 
+uint8\+\_\+t {\bfseries is\+\_\+solid\+\_\+}
+\item 
+\mbox{\Hypertarget{class_rect_abb92a0e14f750712887e2061866a52bd}\label{class_rect_abb92a0e14f750712887e2061866a52bd}} 
+sf\+::\+Vector2f {\bfseries dimensions\+\_\+}
+\item 
+\mbox{\Hypertarget{class_rect_a6af011eb6f16dabee8eff47e0772260e}\label{class_rect_a6af011eb6f16dabee8eff47e0772260e}} 
+sf\+::\+Color {\bfseries rgba\+\_\+fill\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_rect_a18981822ae235d9ed80b6dd9ba257fcc}\label{class_rect_a18981822ae235d9ed80b6dd9ba257fcc}} 
+static const uint8\+\_\+t {\bfseries k\+Max\+Rects} = 50
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+entity \hyperlink{class_label}{Label}
+
+Class used to represent Rectangles. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}\label{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}} 
+\index{Rect@{Rect}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
+{\footnotesize\ttfamily bool Rect\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
+
+if a point collides with the rect
+
+Checks if the point passed by reference collides with the rect.
+
+\begin{DoxyReturn}{Returns}
+bool returns true if the point collides and false if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rect_ac9283327c926d453d0cd5a49ded8d150}\label{class_rect_ac9283327c926d453d0cd5a49ded8d150}} 
+\index{Rect@{Rect}!Create\+Rect@{Create\+Rect}}
+\index{Create\+Rect@{Create\+Rect}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{Create\+Rect()}{CreateRect()}}
+{\footnotesize\ttfamily static \hyperlink{class_rect}{Rect}$\ast$ Rect\+::\+Create\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+that creates rect
+
+Checks that the number of rects didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_rect}{Rect} you must use this method. In case the maximum amount of rects has been reached it will return nullptr. Otherwise it will return a pointer to a rect.
+
+\begin{DoxyReturn}{Returns}
+Rect$\ast$ returns the rect created or nullptr if the maximum of rects has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rect_aa131d780f6ebb75e9057c01221486adc}\label{class_rect_aa131d780f6ebb75e9057c01221486adc}} 
+\index{Rect@{Rect}!draw@{draw}}
+\index{draw@{draw}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Rect\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+the graphic entity Rectangle
+
+Draws the rectangle using S\+F\+ML to the window passed by reference
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & S\+F\+ML Render\+Window passed by reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rect_aa780623e4639a2679ed300424142d50d}\label{class_rect_aa780623e4639a2679ed300424142d50d}} 
+\index{Rect@{Rect}!init@{init}}
+\index{init@{init}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Rect\+::init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{is\+\_\+solid,  }\item[{float}]{width,  }\item[{float}]{height,  }\item[{uint8\+\_\+t}]{sc\+\_\+r,  }\item[{uint8\+\_\+t}]{sc\+\_\+g,  }\item[{uint8\+\_\+t}]{sc\+\_\+b,  }\item[{uint8\+\_\+t}]{sc\+\_\+a,  }\item[{uint8\+\_\+t}]{fc\+\_\+r,  }\item[{uint8\+\_\+t}]{fc\+\_\+g,  }\item[{uint8\+\_\+t}]{fc\+\_\+b,  }\item[{uint8\+\_\+t}]{fc\+\_\+a,  }\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{rotation,  }\item[{float}]{scalex,  }\item[{float}]{scaley }\end{DoxyParamCaption})}
+
+the \hyperlink{class_rect}{Rect}
+
+Initializes the different values of a rect
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+solid} & used to indicate if the rect has fill color \\
+\hline
+{\em width} & width dimension of the rectangle \\
+\hline
+{\em height} & height dimension of the rectangle \\
+\hline
+{\em sc\+\_\+r} & color red component of the inner color \\
+\hline
+{\em sc\+\_\+g} & color blue component of the inner color \\
+\hline
+{\em sc\+\_\+b} & color green component of the inner color \\
+\hline
+{\em sc\+\_\+a} & alpha channel of the inner color \\
+\hline
+{\em fc\+\_\+r} & color red component of the fill color \\
+\hline
+{\em fc\+\_\+g} & color blue component of the fill color \\
+\hline
+{\em fc\+\_\+b} & color green component of the fill color \\
+\hline
+{\em fc\+\_\+a} & alpha channel of the fill color \\
+\hline
+{\em px} & x position in the window \\
+\hline
+{\em py} & y position in the window \\
+\hline
+{\em rotation} & rotation in degrees \\
+\hline
+{\em scalex} & scale quantity at x axis \\
+\hline
+{\em scaley} & scale quantity at y axis \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rect_ab7593e78f2fbc2354d8ef832ac3625a7}\label{class_rect_ab7593e78f2fbc2354d8ef832ac3625a7}} 
+\index{Rect@{Rect}!resize@{resize}}
+\index{resize@{resize}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void Rect\+::resize (\begin{DoxyParamCaption}\item[{const float}]{width,  }\item[{const float}]{height }\end{DoxyParamCaption})}
+
+the size of the rect
+
+Sets the value of width and height for the rect to the ones indicated by parameter.
+
+new width of the rectangle  new height of the rectangle \mbox{\Hypertarget{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}\label{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}} 
+\index{Rect@{Rect}!unuse@{unuse}}
+\index{unuse@{unuse}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{unuse()}{unuse()}}
+{\footnotesize\ttfamily void Rect\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the values of the rect
+
+Sets the attributes of the rect to a default value to return it to a pool and being able to reuse it later.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/rect.\+h\end{DoxyCompactItemize}

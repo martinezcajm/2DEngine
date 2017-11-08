@@ -1,0 +1,119 @@
+\hypertarget{class_native__dialogs}{}\section{Native\+\_\+dialogs Class Reference}
+\label{class_native__dialogs}\index{Native\+\_\+dialogs@{Native\+\_\+dialogs}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_native__dialogs_a325b62ac200ee9d8287a7320643d5385}{message\+Box} (const char $\ast$title, const char $\ast$message, const char $\ast$type, const char $\ast$icon, const int default\+Button)
+\item 
+const char $\ast$ \hyperlink{class_native__dialogs_a4bf815830a674dc34903d272391bcac3}{save\+File\+Dialog} (const char $\ast$title, const char $\ast$default\+File, const int num\+Of\+Filter\+Patterns, const char $\ast$$\ast$filter\+Patterns, const char $\ast$single\+Filter\+Description)
+\item 
+const char $\ast$ \hyperlink{class_native__dialogs_a57d8bdda43d74e367598bd5dc530b526}{open\+File\+Dialog} (const char $\ast$title, const char $\ast$default\+File, const int num\+Of\+Filter\+Patterns, const char $\ast$$\ast$filter\+Patterns, const char $\ast$single\+Filter\+Description)
+\item 
+const char $\ast$ \hyperlink{class_native__dialogs_a8bdf80cf55d1d5cf2835bc1b3e4084cc}{select\+Folder\+Dialog} (const char $\ast$title, const char $\ast$default\+Path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_native__dialogs_a325b62ac200ee9d8287a7320643d5385}\label{class_native__dialogs_a325b62ac200ee9d8287a7320643d5385}} 
+\index{Native\+\_\+dialogs@{Native\+\_\+dialogs}!message\+Box@{message\+Box}}
+\index{message\+Box@{message\+Box}!Native\+\_\+dialogs@{Native\+\_\+dialogs}}
+\subsubsection{\texorpdfstring{message\+Box()}{messageBox()}}
+{\footnotesize\ttfamily void Native\+\_\+dialogs\+::message\+Box (\begin{DoxyParamCaption}\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{message,  }\item[{const char $\ast$}]{type,  }\item[{const char $\ast$}]{icon,  }\item[{const int}]{default\+Button }\end{DoxyParamCaption})}
+
+a message box native
+
+Open a mesage box with the introduced message.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the message box \\
+\hline
+{\em message} & Message to write in the message box \\
+\hline
+{\em type} & Type of message box, can be\+: \char`\"{}ok\char`\"{}, \char`\"{}okcancel\char`\"{}, \char`\"{}yesno\char`\"{} or \char`\"{}yesnocancel\char`\"{} \\
+\hline
+{\em icon} & Icon to put in the message box, can be\+: \char`\"{}info\char`\"{} \char`\"{}warning\char`\"{} \char`\"{}error\char`\"{} or \char`\"{}question\char`\"{} \\
+\hline
+{\em default\+Button} & Default button\+: 0 for cancel/no, 1 for ok/yes or 2 for no in yesnocancel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_native__dialogs_a57d8bdda43d74e367598bd5dc530b526}\label{class_native__dialogs_a57d8bdda43d74e367598bd5dc530b526}} 
+\index{Native\+\_\+dialogs@{Native\+\_\+dialogs}!open\+File\+Dialog@{open\+File\+Dialog}}
+\index{open\+File\+Dialog@{open\+File\+Dialog}!Native\+\_\+dialogs@{Native\+\_\+dialogs}}
+\subsubsection{\texorpdfstring{open\+File\+Dialog()}{openFileDialog()}}
+{\footnotesize\ttfamily const char$\ast$ Native\+\_\+dialogs\+::open\+File\+Dialog (\begin{DoxyParamCaption}\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{default\+File,  }\item[{const int}]{num\+Of\+Filter\+Patterns,  }\item[{const char $\ast$$\ast$}]{filter\+Patterns,  }\item[{const char $\ast$}]{single\+Filter\+Description }\end{DoxyParamCaption})}
+
+a open file dialog
+
+Open a native dialog for open a file
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the dialog box. Can be N\+U\+LL \\
+\hline
+{\em default\+File} & Put a default path and file to open. Can be N\+U\+LL. \\
+\hline
+{\em num\+Of\+Filter\+Patterns} & Number of posibles extensions to open. By default 0 \\
+\hline
+{\em filter\+Patterns} & Pattern with the posible extensions to open. i.\+e\+: \{\char`\"{}$\ast$.\+jpg\char`\"{},\char`\"{}$\ast$.\+png\char`\"{}\}. Can be N\+U\+LL \\
+\hline
+{\em single\+Filter\+Description} & Singl description of the file type \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_native__dialogs_a4bf815830a674dc34903d272391bcac3}\label{class_native__dialogs_a4bf815830a674dc34903d272391bcac3}} 
+\index{Native\+\_\+dialogs@{Native\+\_\+dialogs}!save\+File\+Dialog@{save\+File\+Dialog}}
+\index{save\+File\+Dialog@{save\+File\+Dialog}!Native\+\_\+dialogs@{Native\+\_\+dialogs}}
+\subsubsection{\texorpdfstring{save\+File\+Dialog()}{saveFileDialog()}}
+{\footnotesize\ttfamily const char$\ast$ Native\+\_\+dialogs\+::save\+File\+Dialog (\begin{DoxyParamCaption}\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{default\+File,  }\item[{const int}]{num\+Of\+Filter\+Patterns,  }\item[{const char $\ast$$\ast$}]{filter\+Patterns,  }\item[{const char $\ast$}]{single\+Filter\+Description }\end{DoxyParamCaption})}
+
+a save file dialog
+
+Open a native dialog for save a file
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the dialog box. Can be N\+U\+LL \\
+\hline
+{\em default\+File} & Put a default path and file to save. Can be N\+U\+LL. \\
+\hline
+{\em num\+Of\+Filter\+Patterns} & Number of posibles extensions to save. By default 0 \\
+\hline
+{\em filter\+Patterns} & Pattern with the posible extensions to save. i.\+e\+: \{\char`\"{}$\ast$.\+jpg\char`\"{},\char`\"{}$\ast$.\+png\char`\"{}\}. Can be N\+U\+LL \\
+\hline
+{\em single\+Filter\+Description} & Singl description of the file type \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_native__dialogs_a8bdf80cf55d1d5cf2835bc1b3e4084cc}\label{class_native__dialogs_a8bdf80cf55d1d5cf2835bc1b3e4084cc}} 
+\index{Native\+\_\+dialogs@{Native\+\_\+dialogs}!select\+Folder\+Dialog@{select\+Folder\+Dialog}}
+\index{select\+Folder\+Dialog@{select\+Folder\+Dialog}!Native\+\_\+dialogs@{Native\+\_\+dialogs}}
+\subsubsection{\texorpdfstring{select\+Folder\+Dialog()}{selectFolderDialog()}}
+{\footnotesize\ttfamily const char$\ast$ Native\+\_\+dialogs\+::select\+Folder\+Dialog (\begin{DoxyParamCaption}\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{default\+Path }\end{DoxyParamCaption})}
+
+a select folder dialog
+
+Open a native dialog for select a folder
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the dialog box. Can be N\+U\+LL \\
+\hline
+{\em default\+Path} & Put a default path to open. Can be N\+U\+LL. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2d\+\_\+engine/include/native\+\_\+dialogs.\+h\end{DoxyCompactItemize}
