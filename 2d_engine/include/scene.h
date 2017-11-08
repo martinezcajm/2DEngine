@@ -25,6 +25,7 @@ class Scene{
   void addBackground(Background& background);
   Background* getBackground(uint32_t background_id);
   void removeBackground(uint32_t background_id);
+  void changeZOrderBackground(uint32_t background_id, uint32_t newZOrder);
 
   //// RECT ////
   void addRect(Rect& rect);
@@ -36,11 +37,13 @@ class Scene{
   void addLabel(Label& label);
   Label* getLabel(uint32_t label_id);
   void removeLabel(uint32_t label_id);
+  void changeZOrderLabel(uint32_t label_id, uint32_t newZOrder);
 
   //// SPRITE ////
   void addSprite(Sprite& sprite);
   Sprite* getSprite(uint32_t sprite_id);
   void removeSprite(uint32_t sprite_id);
+  void changeZOrderSprite(uint32_t sprite_id, uint32_t newZOrder);
   
   /// Texture ///
   void addTexture(sf::Texture& texture, std::string texture_path);
