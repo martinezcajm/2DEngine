@@ -5,22 +5,48 @@
 #include <SFML/Graphics.hpp>
 #include "entity.h"
 
+/** @Drawable entity
+*
+* Class used to specify the common methods and attributes of the entities
+* that can be drawn.
+*
+*/
 class DrawableEntity : public Entity{
  public:
+  /** @Drawable entity constructor
+  *
+  * Drawable entity constructor
+  *
+  * @return *DrawableEntity
+  */
   DrawableEntity();
+  /** @Initializes the drawable entity
+  *
+  * Initializes the drawable entity
+  *
+  * @return void
+  * @param r color red component of the label we want to create
+  * @param g color blue component of the label we want to create 
+  * @param b color green component of the label we want to create
+  * @param a alpha channel of the color of the label we want to create
+  * @param px x position in the window
+  * @param py y position in the window
+  * @param rotation rotation in degrees
+  * @param scalex scale quantity at x axis
+  * @param scaley scale quantity at y axis
+  */
   void init(const uint8_t r, const uint8_t g, const uint8_t b ,const uint8_t a,
             const float px, const float py,
             const float rotation, const float scalex, const float scaley);
   /** @brief moves the entity
-   *
-   * moves the entity a number of points from it's original position x, y
-   *
-   * @return void
-   * @param px quantity the entity will move in the x axis
-   * @param py quantity the entity will move in the y axis
-   */
-
-   void move(float px, float py);
+  *
+  * moves the entity a number of points from it's original position x, y
+  *
+  * @return void
+  * @param px quantity the entity will move in the x axis
+  * @param py quantity the entity will move in the y axis
+  */
+  void move(const float px, const float py);
   /** @brief draws a drawable entity
   *
   * this method is in charge of applying the transformations that are common

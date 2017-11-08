@@ -3,8 +3,35 @@
 
 #include "drawable_entity.h"
 
+/** @Graphic entity Label
+*
+* Class used to represent Rectangles.
+*
+*/
 class Rect : public DrawableEntity{
  public:
+  /** @Initializes the Rect
+  *
+  * Initializes the different values of a rect
+  *
+  * @return void
+  * @param is_solid used to indicate if the rect has fill color
+  * @param width width dimension of the rectangle
+  * @param height height dimension of the rectangle
+  * @param sc_r color red component of the inner color 
+  * @param sc_g color blue component of the inner color 
+  * @param sc_b color green component of the inner color 
+  * @param sc_a alpha channel of the inner color
+  * @param fc_r color red component of the fill color 
+  * @param fc_g color blue component of the fill color 
+  * @param fc_b color green component of the fill color 
+  * @param fc_a alpha channel of the fill color 
+  * @param px x position in the window
+  * @param py y position in the window
+  * @param rotation rotation in degrees
+  * @param scalex scale quantity at x axis
+  * @param scaley scale quantity at y axis
+  */
   void init(uint8_t is_solid, float width, float height, uint8_t sc_r,
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
@@ -43,7 +70,7 @@ class Rect : public DrawableEntity{
   *
   * @return bool returns true if the point collides and false if not.
   */
-  bool checkCollision(sf::Vector2f& position);
+  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the rect
   *
   * Sets the attributes of the rect to a default value
@@ -59,7 +86,19 @@ class Rect : public DrawableEntity{
   sf::Vector2f dimensions_;
   sf::Color rgba_fill_;
  private:
+  /** @Rect constructor
+  *
+  * Rect constructor used by the factory to create rects
+  *
+  * @return *Rect
+  */
   Rect();
+  /** @Rect copy constructor
+  *
+  * Rect copy constructor without anything to disable it.
+  *
+  * @return *Rect
+  */
   Rect(const Rect& o){};
   static uint32_t total_rects_;
 };

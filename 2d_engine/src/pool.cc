@@ -1,3 +1,4 @@
+//Comments can be found at the header
 #include "pool.h"
 
 Pool::Pool(){

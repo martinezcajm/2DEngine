@@ -3,12 +3,42 @@
 
 #include <cstdint>
 
+/** @entity
+*
+* Atomic class of the elements of our engine.
+*
+*/
 class Entity{
  public:
-  //Methods
+  /** @Entity constructor
+  *
+  * Base constructor of entity
+  *
+  * @return *Entity
+  */
   Entity();
+  /** @Entity copy constructor
+  *
+  * Personal Entity copy constructor taking into account the id.
+  *
+  * @return *Entity
+  */
   Entity(const Entity& o);
+  /** @Initializes the Entity
+  *
+  * Initializes an entity with a tag
+  *
+  * @return void
+  * @param tag unsigned int used to group entities
+  */
   void init(const uint32_t tag);
+  /** @Initializes the Entity
+  *
+  * Initializes an entity with default values
+  *
+  * @return void
+  * @param tag unsigned int used to group entities
+  */
   void init();
   uint32_t id();
   /** @Resets the values of the entity

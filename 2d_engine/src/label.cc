@@ -1,3 +1,5 @@
+//Comments can be found at the header
+
 #include <string.h>
 #include "label.h"
 
@@ -11,10 +13,11 @@ Label::Label() : DrawableEntity() {
   total_labels_ ++;
 }
 
-void Label::init(uint8_t r, uint8_t g, uint8_t b, uint8_t a, 
-                float px, float py,
-                float rotation, float scalex, float scaley,
-                const char* text, const sf::Font &font){
+void Label::init(const uint8_t r, const uint8_t g, const uint8_t b, 
+                 const uint8_t a, 
+                 const float px, const float py,
+                 const float rotation, const float scalex, const float scaley,
+                 const char* text, const sf::Font &font){
   DrawableEntity::init(r,g,b,a, px,py, rotation, scalex,scaley);
   if(text != nullptr){
     memcpy(&text_, text, kTextMaxSize);
@@ -50,7 +53,7 @@ Label* Label::CreateLabel(){
   }
 }
 
-bool Label::checkCollision(sf::Vector2f& position){
+bool Label::checkCollision(const sf::Vector2f& position){
   sf::Text text(text_, *font_);
   text.setCharacterSize(font_size_);
   text.setStyle(style_);

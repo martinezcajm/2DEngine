@@ -11,6 +11,11 @@ typedef enum SpriteOrigin
   kSpriteHandler
 } SpriteOrigin;
 
+/** @Graphic entity Sprite
+*
+* Class used to represent a sprite. 
+*
+*/
 class Sprite : public DrawableEntity{
  public:
   /** @Deletes a sprite
@@ -31,8 +36,8 @@ class Sprite : public DrawableEntity{
   * @param scaley y scale value of the sprite
   * @param texture that will use the sprite
   */
-  void init(float px, float py,
-            float rotation, float scalex, float scaley,
+  void init(const float px, const float py,
+            const float rotation, const float scalex, const float scaley,
             const sf::Texture &texture);
   /** @Initializes the sprite using a buffer from memory
   *
@@ -49,8 +54,8 @@ class Sprite : public DrawableEntity{
   * @param texture referency of the texture we wish to do the copy
   * @param uint8_t indicates if there was an error in the execution
   */
-  void init(float px, float py,
-            float rotation, float scalex, float scaley,
+  void init(const float px, const float py,
+            const float rotation, const float scalex, const float scaley,
             const sf::Texture& texture, uint8_t &error_ocurred);
   /** @Initializes the sprite using an image file
   *
@@ -67,9 +72,9 @@ class Sprite : public DrawableEntity{
   * @param scaley y scale value of the sprite
   * @param image_file image that will be used for the texture
   */
-  uint8_t Sprite::init(float px, float py,
-                float rotation, float scalex, float scaley,
-                const std::string &file_path);
+  uint8_t init(const float px, const float py,
+               const float rotation, const float scalex, const float scaley,
+               const std::string &file_path);
   /** @Draws the graphic entity Sprite
   *
   * Draws the sprite using SFML to the window passed by reference 
@@ -95,7 +100,7 @@ class Sprite : public DrawableEntity{
   *
   * @return bool returns true if the point collides and false if not.
   */
-  bool checkCollision(sf::Vector2f& position);
+  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the sprite
   *
   * Sets the attributes of the sprite to a default value
@@ -118,7 +123,19 @@ class Sprite : public DrawableEntity{
 
  protected:
   static uint32_t total_sprites_;
+  /** @Sprite constructor
+  *
+  * Sprite constructor used by the factory to create sprite
+  *
+  * @return *Sprite
+  */
   Sprite();
+  /** @Sprite copy constructor
+  *
+  * Sprite copy constructor without anything to disable it.
+  *
+  * @return *Sprite
+  */
   Sprite(const Sprite& o){};
   //A texture owned only by this sprite, it will be freed by the sprite ones
   //it's life ends (not necessarily destruction)

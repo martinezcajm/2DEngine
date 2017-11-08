@@ -3,6 +3,12 @@
 
 #include "sprite.h"
 
+/** @Graphic entity Background.
+*
+* Class used to represent backgrounds. Used to stablish continuous movement 
+* to a sprite.
+*
+*/
 class Background : public Sprite{
  public:
   /** @Initializes the sprite using a texture
@@ -19,7 +25,8 @@ class Background : public Sprite{
   * @param scaley y scale value of the sprite
   * @param texture that will use the sprite
   */
-  uint8_t init(const std::string &file_path, uint32_t width, uint32_t height);
+  uint8_t init(const std::string &file_path, const uint32_t width, 
+               const uint32_t height);
   /** @Updates the background position
   *
   * Updates the position of the background in the x,y axis if they are 
@@ -69,7 +76,19 @@ class Background : public Sprite{
   sf::Vector2i background_position_;
 
  private:
+  /** @Background constructor
+  *
+  * Background constructor used by the factory to create backgrounds
+  *
+  * @return *Background
+  */
   Background();
+  /** @Background copy constructor
+  *
+  * Background copy constructor without anything to disable it.
+  *
+  * @return *Background
+  */
   Background(const Background& o){};
 
 };

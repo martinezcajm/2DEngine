@@ -8,7 +8,13 @@
 #include "sprite.h"
 #include "background.h"
 
-
+/** @Class in charge of managing the pools
+*
+* Singleton of pools used to reuse the diverse graphical entities of the
+* application avoiding this way the destruction of objects during execution
+* as much as possible
+*
+*/
 class Pool{
  public:
   /** @Gets the instance of our pool
@@ -113,8 +119,24 @@ class Pool{
   std::vector<Background*> bg_pool_;
 
  private:
+  /** @Pool constructor
+  *
+  * In charge of creating the first instance that will use the singleton
+  *
+  * @return *Pool
+  */
   Pool();
+  /** @Pool copy constructor
+  *
+  * Pool copy constructor without anything to disable it.
+  *
+  * @return *Pool
+  */
   Pool(const Pool& o){};
+  /** @Pool destructor
+  *
+  * Destructor of class pool private so the pool can't be destroyed
+  */
   ~Pool(){};
 
   //Number of entities that will create the pool at start of each type

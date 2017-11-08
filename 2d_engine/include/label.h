@@ -3,11 +3,33 @@
 
 #include "drawable_entity.h"
 
+/** @Graphic entity Label
+*
+* Class used to represent text.
+*
+*/
 class Label : public DrawableEntity{
  public:
-  void init(uint8_t r, uint8_t g, uint8_t b, uint8_t a, 
-            float px, float py,
-            float rotation, float scalex, float scaley,
+  /** @Initializes the Label
+  *
+  * Initializes a label
+  *
+  * @return void
+  * @param r color red component of the label we want to create
+  * @param g color blue component of the label we want to create 
+  * @param b color green component of the label we want to create
+  * @param a alpha channel of the color of the label we want to create
+  * @param px x position in the window
+  * @param py y position in the window
+  * @param rotation rotation in degrees
+  * @param scalex scale quantity at x axis
+  * @param scaley scale quantity at y axis
+  * @param text text that will contain the label
+  * @param font font of the text
+  */
+  void init(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a,
+            const float px, const float py,
+            const float rotation, const float scalex, const float scaley,
             const char* text, const sf::Font &font);
   /** @Draws the graphic entity Label
   *
@@ -50,7 +72,7 @@ class Label : public DrawableEntity{
   *
   * @return bool returns true if the point collides and false if not.
   */
-  bool checkCollision(sf::Vector2f& position);
+  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the label
   *
   * Sets the attributes of the label to a default value
@@ -69,7 +91,19 @@ class Label : public DrawableEntity{
   //Font of the text
   const sf::Font *font_;
  private:
+  /** @Label constructor
+  *
+  * Label constructor used by the factory to create labels
+  *
+  * @return *Label
+  */
   Label();
+  /** @Label copy constructor
+  *
+  * Label copy constructor without anything to disable it.
+  *
+  * @return *Label
+  */
   Label(const Label& o){};
   static uint32_t total_labels_;
 };

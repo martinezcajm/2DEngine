@@ -1,3 +1,4 @@
+//Comments can be found at the header
 #include "background.h"
 
 Background::Background() : Sprite(){
@@ -6,7 +7,7 @@ Background::Background() : Sprite(){
 }
 
 uint8_t Background::init(const std::string &file_path,
-                         uint32_t width, uint32_t height){
+                         const uint32_t width, const uint32_t height){
   uint8_t error = 0;
   error = Sprite::init(0,0,   //position
                        0,1,1, //transforms r, sx, sy
@@ -22,8 +23,6 @@ uint8_t Background::init(const std::string &file_path,
   own_texture_->setRepeated(true);
   sprite_.setTexture(*own_texture_);
   sprite_.setPosition(position_.x, position_.y);
-  /*sprite_.setScale(static_cast<float>(width/own_texture_->getSize().x),
-                   static_cast<float>(height/own_texture_->getSize().y));*/
   sprite_.setTextureRect(sf::IntRect(background_position_,dimensions_));
   return 0;
 }

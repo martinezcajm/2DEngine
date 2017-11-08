@@ -1,3 +1,4 @@
+//Comments can be found at the header
 #include "rect.h"
 
 uint32_t Rect::total_rects_ = 0;
@@ -55,7 +56,7 @@ Rect* Rect::CreateRect(){
   }
 }
 
-bool Rect::checkCollision(sf::Vector2f &position){
+bool Rect::checkCollision(const sf::Vector2f &position){
   sf::RectangleShape rectangle(dimensions_);
   rectangle.setOutlineThickness(2);
   sf::Vector2f rotation_origin = { (dimensions_.x / 2)*scale_.x,

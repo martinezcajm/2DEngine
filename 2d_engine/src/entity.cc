@@ -1,3 +1,4 @@
+//Comments can be found at the header
 #include "entity.h"
 
 uint32_t Entity::total_ids_ = 1;

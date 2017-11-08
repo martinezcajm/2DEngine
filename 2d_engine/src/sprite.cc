@@ -1,3 +1,4 @@
+//Comments can be found at the header
 #include "sprite.h"
 
 uint32_t Sprite::total_sprites_ = 1;
@@ -15,19 +16,19 @@ Sprite::~Sprite(){
   }
 }
 
-void Sprite::init(float px, float py,
-                float rotation, float scalex, float scaley,
-                const sf::Texture &texture){
+void Sprite::init(const float px, const float py,
+                  const float rotation, const float scalex, const float scaley,
+                  const sf::Texture &texture){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   sprite_.setTexture(texture);
   origin_ = SpriteOrigin::kSpriteHandler;
 }
 
-void Sprite::init(float px, float py,
-                float rotation, float scalex, float scaley,
-                const sf::Texture& texture, uint8_t &error_ocurred){
+void Sprite::init(const float px, const float py,
+                  const float rotation, const float scalex, const float scaley,
+                  const sf::Texture& texture, uint8_t &error_ocurred){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
-  error_ocurred = 10;
+  error_ocurred = 0;
   //We invoke the SFML copy constructor of texture
   own_texture_ = new sf::Texture(texture);
   if(own_texture_ == nullptr){
@@ -38,9 +39,10 @@ void Sprite::init(float px, float py,
   origin_ = SpriteOrigin::kMemory;
 }
 
-uint8_t Sprite::init(float px, float py,
-                float rotation, float scalex, float scaley,
-                const std::string &file_path){
+uint8_t Sprite::init(const float px, const float py,
+                     const float rotation, const float scalex, 
+                     const float scaley,
+                     const std::string &file_path){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   own_texture_ = new sf::Texture();
   if(own_texture_ == nullptr) return 1;
@@ -68,7 +70,7 @@ Sprite* Sprite::CreateSprite(){
   }
 }
 
-bool Sprite::checkCollision(sf::Vector2f& position){
+bool Sprite::checkCollision(const sf::Vector2f& position){
 
   sf::FloatRect boundaries = sprite_.getLocalBounds();
   sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
@@ -89,7 +91,6 @@ void Sprite::unuse(){
     delete own_texture_;
     own_texture_ = nullptr;
   }
-  //sprite_ = Sprite();
   origin_ = SpriteOrigin::kUnknown;
   DrawableEntity::unuse();
 }

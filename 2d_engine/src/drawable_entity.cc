@@ -1,3 +1,5 @@
+//Comments can be found at the header
+
 #include "drawable_entity.h"
 
 DrawableEntity::DrawableEntity() : Entity() {
@@ -30,7 +32,7 @@ void DrawableEntity::init(const uint8_t r, const uint8_t g,
   scale_.y = scaley;
 }
 
-void DrawableEntity::move(float px, float py){
+void DrawableEntity::move(const float px, const float py){
    position_.x += px;
    position_.y += py;
 }
