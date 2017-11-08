@@ -137,6 +137,10 @@ void Game::processInput(){
         GM.draw_status_ui_ = UiDrawStatus::kStopDrawing;
       }*/
     }
+	if (GM.window_->event_.type == sf::Event::Closed) {
+		GM.window_->sfml_window_->close();
+		GM.game_over_ = true;
+	}
   }  
 
   if(!GM.window_->isOpen()){

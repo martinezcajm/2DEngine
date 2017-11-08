@@ -21,16 +21,7 @@ Window* Window::CreateWindow(const sf::Vector2u size, const sf::String& title,
 }
  
 bool Window::isOpen(){
-  while (sfml_window_->pollEvent(event_))
-  {
-    //ImGui::SFML::ProcessEvent(event);
-    if (event_.type == sf::Event::Closed){
-      sfml_window_->close();
-    }
-  }
-
   return sfml_window_->isOpen();
-
 }
 void Window::display(){
   sfml_window_->display();

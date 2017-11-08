@@ -401,11 +401,12 @@ void Scene::drawScene(){
 }
 
 uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
-  
+  std::set<uint32_t>::iterator it = z_order_levels.end();
+  do {
+	  it--;
   // Foreach Z-order we print the elements of that level
-  for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
-       it!=z_order_levels.begin(); it--){
-    
+  /*for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
+       it!=z_order_levels.begin(); it--){*/
     // Check Backgrouds
     if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
       for (std::unordered_map<uint32_t, Background*>::iterator it2 =
@@ -460,7 +461,8 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
         }
       }
     }
-  }
+  //}
+  } while (it != z_order_levels.begin());
 
   *type = 0;
   return 0;
