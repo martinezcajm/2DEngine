@@ -286,12 +286,36 @@ void Game::renderUI(){
   if (ImGui::CollapsingHeader("Edit")){
     if(GM.edit_type_ui_ == UiEditType::kRect){
       UiLoadRectValuesEdit(*GM.rect_selection_);
+      if (ImGui::Button("DeleteRect")) {
+        GM.scene_->removeRect(GM.rect_selection_->id());
+        POOL.returnRect(*GM.rect_selection_);
+        GM.rect_selection_ = nullptr;
+        GM.edit_type_ui_ = UiEditType::kNull;
+      }
     }else if(GM.edit_type_ui_ == UiEditType::kLabel){
       UiLoadLabelValuesEdit(*GM.label_selection_);
+      if (ImGui::Button("DeleteLabel")) {
+        GM.scene_->removeLabel(GM.label_selection_->id());
+        POOL.returnLabel(*GM.label_selection_);
+        GM.label_selection_ = nullptr;
+        GM.edit_type_ui_ = UiEditType::kNull;
+      }
     }else if(GM.edit_type_ui_ == UiEditType::kSprite){
       UiLoadCommonValuesEdit(*GM.sprite_selection_);
+      if (ImGui::Button("DeleteSprite")) {
+        GM.scene_->removeSprite(GM.sprite_selection_->id());
+        POOL.returnSprite(*GM.sprite_selection_);
+        GM.sprite_selection_ = nullptr;
+        GM.edit_type_ui_ = UiEditType::kNull;
+      }
     }else if(GM.edit_type_ui_ == UiEditType::kBackground){
       UiLoadBackgroundValuesEdit(*GM.background_selection_);
+      if (ImGui::Button("DeleteBackground")) {
+        GM.scene_->removeBackground(GM.background_selection_->id());
+        POOL.returnBackground(*GM.background_selection_);
+        GM.background_selection_ = nullptr;
+        GM.edit_type_ui_ = UiEditType::kNull;
+      }
     }
   } 
   ImGui::End();
@@ -449,6 +473,7 @@ void Game::UiLoadMenu(){
     if (ImGui::Button("Load")) {
       
     }
+    ImGui::SameLine();
     if (ImGui::Button("Save")) {
       
     }
