@@ -68,11 +68,15 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
 
     json j_texture = (json)*it;
 
-    // Create Texture
-    sf::Texture *texture = new sf::Texture();    
-    if(texture != nullptr){
-      texture->loadFromFile(j_texture["texture_dir_"]);
-      this->addTexture(*texture, j_texture["texture_dir_"]);
+    std::string texture_path = j_texture["texture_dir_"];
+    sf::Texture *texture = this->getTexture(texture_path);
+    
+    if(texture == nullptr){
+      texture = new sf::Texture();
+      if(texture != nullptr){
+        texture->loadFromFile(texture_path);  
+        this->addTexture(*texture, texture_path);
+      }
     }
   }
 
@@ -486,6 +490,40 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
   return 0;
 }
 
+std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
+  std::list<DrawableEntity*> return_list;
+  
+  for (std::unordered_map<uint32_t, Rect*>::iterator it =
+       map_rect_.begin(); it != map_rect_.end(); it++) {
+
+    if(it->second->tag_ == tag){
+      return_list.push_back(it->second);
+    }
+  }
+  for (std::unordered_map<uint32_t, Label*>::iterator it =
+       map_label_.begin(); it != map_label_.end(); it++) {
+      
+    if(it->second->tag_ == tag){
+      return_list.push_back(it->second);
+    }
+  }  
+  for (std::unordered_map<uint32_t, Sprite*>::iterator it =
+       map_sprite_.begin(); it != map_sprite_.end(); it++) {
+
+    if(it->second->tag_ == tag){
+      return_list.push_back(it->second);
+    }
+  }
+  for (std::unordered_map<uint32_t, Background*>::iterator it =
+       map_background_.begin(); it != map_background_.end(); it++) {
+      
+    if(it->second->tag_ == tag){
+      return_list.push_back(it->second);
+    }
+  }
+
+  return return_list;
+}
 
 ///// Texture /////
 void Scene::addTexture(sf::Texture& texture, std::string texture_path){  
@@ -505,6 +543,7 @@ sf::Texture* Scene::getTexture(std::string texture_path){
 }
 void Scene::removeTexture(std::string texture_path){
   sf::Texture *texture_tmp = map_texture_.at(texture_path);
+  free(texture_tmp);
   map_texture_.erase(texture_path);
 }
 
@@ -544,8 +583,41 @@ Rect* Scene::getRect(uint32_t rect_id){
 }
 void Scene::removeRect(uint32_t rect_id){
   Rect *rect_tmp = map_rect_.at(rect_id);
-  map_rect_.erase(rect_id);
-  z_order_map_rect_.at(rect_tmp->z_order_).erase(rect_id);
+  if(rect_tmp != nullptr){
+    map_rect_.erase(rect_id);
+    z_order_map_rect_.at(rect_tmp->z_order_).erase(rect_id);
+  }
+}
+
+void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
+  // Obtain the rect
+  Rect* rect = map_rect_.at(rect_id);  
+  if(rect != nullptr){
+    z_order_map_rect_.at(rect->z_order_).erase(rect_id);
+    z_order_levels.insert(newZOrder);
+
+    // Create pair to insert in z_order_map_rect_
+    std::pair<uint32_t, Rect*> insert_pair(rect_id, rect);
+    // Create iterator for z_order_map_rect_
+    std::map<uint32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
+      iterator = z_order_map_rect_.find(newZOrder);
+
+    if (iterator == z_order_map_rect_.end()) {
+      // If z-order is not in z_order_map_rect_ we add a new map in the z-order
+      std::unordered_map<uint32_t, Rect*> map_tmp;
+      map_tmp.insert(insert_pair);
+
+      std::pair<uint32_t, std::unordered_map<uint32_t, Rect*>> 
+        insert_z_order_pair(newZOrder, map_tmp);
+      z_order_map_rect_.insert(insert_z_order_pair);
+    } else {
+      // If z-order is in z_order_map_rect_ we only add the pair in the z-order
+
+      z_order_map_rect_.at(newZOrder).insert(insert_pair);
+    }
+
+    rect->z_order_ = newZOrder;
+  }
 }
 
 ///// Label /////

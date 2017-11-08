@@ -8,6 +8,7 @@
 #include "background.h"
 #include "pool.h"
 #include <set>
+#include <list>
 #include <unordered_map>
 #include <map>
 
@@ -29,6 +30,7 @@ class Scene{
   void addRect(Rect& rect);
   Rect* getRect(uint32_t rect_id);
   void removeRect(uint32_t rect_id);
+  void changeZOrderRect(uint32_t newZOrder);
   
   //// LABEL ////
   void addLabel(Label& label);
@@ -51,6 +53,8 @@ class Scene{
   // 3 - Label
   // 4 - Sprite
   uint32_t checkCollision(sf::Vector2f& position, uint8_t *type);
+
+  std::list<DrawableEntity*> getDrawableEntitiesByTag(uint32_t tag);
 
   void drawScene();
 
@@ -75,8 +79,6 @@ class Scene{
   Pool& POOL = Pool::instance();
  private:
   Scene(const Scene& other){};
-  uint8_t error_code;
-  
 };
 
 #endif
