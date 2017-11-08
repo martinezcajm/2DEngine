@@ -13,7 +13,8 @@ typedef enum UiStatus
   kIdle,
   kDraw,
   kSelection,
-  kWrite
+  kWrite,
+  kMultiselect
 } UiStatus;
 
 typedef enum UiEditType
@@ -22,7 +23,8 @@ typedef enum UiEditType
   kRect,
   kLabel,
   kSprite,
-  kBackground
+  kBackground,
+  kMulti
 } UiEditType;
 
 typedef enum MouseStatus
@@ -71,6 +73,8 @@ public:
   //TODO charge them through an ini file
   sf::Font arial_;
   sf::Font verdana_;
+  //tag that is related to a selected item
+  static const uint32_t selected_item_tag_ = 1;
 };
 
 #endif
