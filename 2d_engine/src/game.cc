@@ -18,6 +18,17 @@ void Game::init(){
   POOL.init();
 
   GM.scene_ = new Scene();
+  //TODO Right now the UI only allows to create sprite by image, but the 
+  //sprite has the capacity to be created through copy of an already existing
+  //texture (copying it in memory and having it's own reference) 
+  //or by a texture Test case to check it works, the first sprite loses it's
+  //texture after the scope and the last one doesn't as it stores a copy of it 
+  /*
+  GM.scene_->addSprite(*sprite_test);
+  Sprite *sprite_test2 = POOL.getSprite();
+  uint8_t error;
+  sprite_test2->init(300,400,0,1,1,texture,error);
+  GM.scene_->addSprite(*sprite_test2);*/
 }
 
 void Game::finish(){
@@ -218,8 +229,14 @@ void Game::renderUI(){
   UiStartGameMenu();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
+    static int32_t ui_z_order;
     if(GM.edit_type_ui_ == UiEditType::kRect){
       UiLoadRectValuesEdit(*GM.rect_selection_);
+      ImGui::Text("The actual z-order is: %i", GM.rect_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderRect(GM.rect_selection_->id(),ui_z_order);
+      }
       if (ImGui::Button("DeleteRect")) {
         GM.scene_->removeRect(GM.rect_selection_->id());
         POOL.returnRect(*GM.rect_selection_);
@@ -228,6 +245,11 @@ void Game::renderUI(){
       }
     }else if(GM.edit_type_ui_ == UiEditType::kLabel){
       UiLoadLabelValuesEdit(*GM.label_selection_);
+      ImGui::Text("The actual z-order is: %i", GM.label_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderLabel(GM.label_selection_->id(),ui_z_order);
+      }
       if (ImGui::Button("DeleteLabel")) {
         GM.scene_->removeLabel(GM.label_selection_->id());
         POOL.returnLabel(*GM.label_selection_);
@@ -236,6 +258,11 @@ void Game::renderUI(){
       }
     }else if(GM.edit_type_ui_ == UiEditType::kSprite){
       UiLoadCommonValuesEdit(*GM.sprite_selection_);
+      ImGui::Text("The actual z-order is: %i", GM.sprite_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderSprite(GM.sprite_selection_->id(),ui_z_order);
+      }
       if (ImGui::Button("DeleteSprite")) {
         GM.scene_->removeSprite(GM.sprite_selection_->id());
         POOL.returnSprite(*GM.sprite_selection_);
@@ -244,6 +271,13 @@ void Game::renderUI(){
       }
     }else if(GM.edit_type_ui_ == UiEditType::kBackground){
       UiLoadBackgroundValuesEdit(*GM.background_selection_);
+      ImGui::Text("The actual z-order is: %i", 
+                  GM.background_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderBackground(GM.background_selection_->id(),
+                                          ui_z_order);
+      }
       if (ImGui::Button("DeleteBackground")) {
         GM.scene_->removeBackground(GM.background_selection_->id());
         POOL.returnBackground(*GM.background_selection_);
@@ -259,7 +293,6 @@ void Game::UiLoadCommonValuesEdit(DrawableEntity &d_entity){
   if (ImGui::TreeNode("Position")){
     ImGui::InputFloat("x", &d_entity.position_.x, 1.0f, 1.0f);
     ImGui::InputFloat("y", &d_entity.position_.y, 1.0f, 1.0f);
-    ImGui::InputInt("zOrder", &d_entity.z_order_, 1, 1);
     ImGui::TreePop();
   }
   if (ImGui::TreeNode("Color")){
@@ -451,7 +484,7 @@ void Game::UiLoadMenu(){
       path = GM.native_dialog_->openFileDialog(
           "Select an image for the background",
           "../data/",
-          1,
+          3,
           kFilterPatternsImage,
           NULL);
       if (path != "") {
@@ -469,7 +502,7 @@ void Game::UiLoadMenu(){
       path = GM.native_dialog_->openFileDialog(
           "Select an image for the sprite",
           "../data/",
-          1,
+          3,
           kFilterPatternsImage,
           NULL);
       if (path != "") {

@@ -25,13 +25,16 @@ void Sprite::init(float px, float py,
 
 void Sprite::init(float px, float py,
                 float rotation, float scalex, float scaley,
-                const sf::Texture& texture, uint8_t *error_ocurred){
+                const sf::Texture& texture, uint8_t &error_ocurred){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
-  /*if(embeddedImageData != nullptr){
-         texture.loadFromMemory(embeddedImageData, sizeof(*embeddedImageData));
-       }
-  
-  sprite_.setTexture(texture);*/
+  error_ocurred = 10;
+  //We invoke the SFML copy constructor of texture
+  own_texture_ = new sf::Texture(texture);
+  if(own_texture_ == nullptr){
+    error_ocurred = 1;
+    return;
+  } 
+  sprite_.setTexture(*own_texture_);
   origin_ = SpriteOrigin::kMemory;
 }
 
@@ -44,6 +47,7 @@ uint8_t Sprite::init(float px, float py,
   own_texture_->loadFromFile(file_path);
   sprite_.setTexture(*own_texture_);
   origin_ = SpriteOrigin::kImage;
+  texture_dir_ = file_path;
   return 0;
 }
 

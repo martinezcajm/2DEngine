@@ -89,7 +89,7 @@ class  Game{
   std::string path = "";
   bool game_over;
   char const *filterPatternsJson[1] = { "*.json" };
-  char const *kFilterPatternsImage[1] = { "*.png" };
+  char const *kFilterPatternsImage[3] = { "*.png","*.jpeg", "*.jpg" };
  private:
   Game(const Game& other){};
 };
