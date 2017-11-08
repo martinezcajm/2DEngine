@@ -1,3 +1,4 @@
+// Comments can be found at the header
 #include "imgui.h"
 #include "imgui-SFML.h"
 #include "rect.h"
@@ -453,11 +454,12 @@ void Game::UiLoadMenu(){
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){
     if (ImGui::Button("Load")) {
+      std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select the scene to load",
           "../data/",
           1,
-          filterPatternsJson,
+          kFilterPatternsJson,
           NULL);
 
       if (path != "") {
@@ -466,12 +468,13 @@ void Game::UiLoadMenu(){
     }
     ImGui::SameLine();
     if (ImGui::Button("Save")) {
+      std::string path = "";
       //GM.scene_->saveScene("scene.json");   
       path = GM.native_dialog_->saveFileDialog(
           "Save scene as",
           "../data/scene.json",
           1,
-          filterPatternsJson,
+          kFilterPatternsJson,
           NULL);
       if (path != "") {
         GM.scene_->saveScene(path);
@@ -481,6 +484,7 @@ void Game::UiLoadMenu(){
   }
   if(ImGui::TreeNode("Graphics creation")){
     if (ImGui::Button("Background")) {
+      std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select an image for the background",
           "../data/",
@@ -499,6 +503,7 @@ void Game::UiLoadMenu(){
       }
     }
     if (ImGui::Button("Sprite")) {
+      std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select an image for the sprite",
           "../data/",

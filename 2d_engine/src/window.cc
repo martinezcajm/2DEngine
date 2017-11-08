@@ -1,3 +1,4 @@
+// Comments can be found at the header
 #include "window.h"
 
 uint8_t Window::total_windows_ = 0;

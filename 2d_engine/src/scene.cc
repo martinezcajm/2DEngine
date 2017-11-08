@@ -1,3 +1,4 @@
+// Comments can be found at the header
 #include "scene.h"
 #include "game_manager.h"
 #include "json.hpp"
@@ -234,7 +235,7 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
   }
 }
 
-void Scene::saveScene(std::string scene_path){
+void Scene::saveScene(const std::string scene_path){
   json j_scene;
   json j_backgrounds;
   json j_rects;
@@ -548,12 +549,12 @@ void Scene::update(){
 
 
 ///// Texture /////
-void Scene::addTexture(sf::Texture& texture, std::string texture_path){  
+void Scene::addTexture(sf::Texture& texture, const std::string texture_path){  
   std::pair<std::string, sf::Texture*> insert_pair(texture_path, &texture);
   map_texture_.insert(insert_pair); 
 }
 
-sf::Texture* Scene::getTexture(std::string texture_path){
+sf::Texture* Scene::getTexture(const std::string texture_path){
   std::unordered_map<std::string, sf::Texture*>::const_iterator iterator = 
   map_texture_.find(texture_path);
   
@@ -563,7 +564,7 @@ sf::Texture* Scene::getTexture(std::string texture_path){
     return iterator->second;
   }
 }
-void Scene::removeTexture(std::string texture_path){
+void Scene::removeTexture(const std::string texture_path){
   sf::Texture *texture_tmp = map_texture_.at(texture_path);
   free(texture_tmp);
   map_texture_.erase(texture_path);
@@ -590,7 +591,7 @@ void Scene::addRect(Rect& rect){
   }
 }
 
-Rect* Scene::getRect(uint32_t rect_id){
+Rect* Scene::getRect(const uint32_t rect_id){
   std::unordered_map<uint32_t, Rect*>::const_iterator iterator = 
     map_rect_.find(rect_id);
   
@@ -600,14 +601,14 @@ Rect* Scene::getRect(uint32_t rect_id){
     return iterator->second;
   }
 }
-void Scene::removeRect(uint32_t rect_id){
+void Scene::removeRect(const uint32_t rect_id){
   Rect *rect_tmp = map_rect_.at(rect_id);
   if(rect_tmp != nullptr){
     map_rect_.erase(rect_id);
     z_order_map_rect_.at(rect_tmp->z_order_).erase(rect_id);
   }
 }
-void Scene::changeZOrderRect(uint32_t rect_id, int32_t newZOrder){
+void Scene::changeZOrderRect(const uint32_t rect_id, const int32_t newZOrder){
   // Obtain the rect
   Rect *rect_tmp = map_rect_.at(rect_id);
 
@@ -659,7 +660,7 @@ void Scene::addLabel(Label& label){
   }
 }
 
-Label* Scene::getLabel(uint32_t label_id){
+Label* Scene::getLabel(const uint32_t label_id){
   std::unordered_map<uint32_t, Label*>::const_iterator iterator = 
     map_label_.find(label_id);
   
@@ -669,12 +670,13 @@ Label* Scene::getLabel(uint32_t label_id){
     return iterator->second;
   }
 }
-void Scene::removeLabel(uint32_t label_id){
+void Scene::removeLabel(const uint32_t label_id){
   Label *label_tmp = map_label_.at(label_id);
   map_label_.erase(label_id);
   z_order_map_label_.at(label_tmp->z_order_).erase(label_id);
 }
-void Scene::changeZOrderLabel(uint32_t label_id, int32_t newZOrder){
+void Scene::changeZOrderLabel(const uint32_t label_id, 
+  const int32_t newZOrder){
   // Obtain the label
   Label *label_tmp = map_label_.at(label_id);
 
@@ -727,7 +729,7 @@ void Scene::addSprite(Sprite& sprite){
   }
 }
 
-Sprite* Scene::getSprite(uint32_t sprite_id){
+Sprite* Scene::getSprite(const uint32_t sprite_id){
   std::unordered_map<uint32_t, Sprite*>::const_iterator iterator = 
     map_sprite_.find(sprite_id);
   
@@ -738,13 +740,14 @@ Sprite* Scene::getSprite(uint32_t sprite_id){
   }
 }
 
-void Scene::removeSprite(uint32_t sprite_id){
+void Scene::removeSprite(const uint32_t sprite_id){
   Sprite *sprite_tmp = map_sprite_.at(sprite_id);
   map_sprite_.erase(sprite_id);
   z_order_map_sprite_.at(sprite_tmp->z_order_).erase(sprite_id);
 }
 
-void Scene::changeZOrderSprite(uint32_t sprite_id, int32_t newZOrder){
+void Scene::changeZOrderSprite(const uint32_t sprite_id, 
+  const int32_t newZOrder){
   // Obtain the sprite
   Sprite *sprite_tmp = map_sprite_.at(sprite_id);
 
@@ -797,7 +800,7 @@ void Scene::addBackground(Background& background){
   }
 }
 
-Background* Scene::getBackground(uint32_t background_id){
+Background* Scene::getBackground(const uint32_t background_id){
   std::unordered_map<uint32_t, Background*>::const_iterator iterator = 
     map_background_.find(background_id);
   
@@ -813,7 +816,8 @@ void Scene::removeBackground(uint32_t background_id){
   z_order_map_background_.at(background_tmp->z_order_).erase(background_id);
 }
 
-void Scene::changeZOrderBackground(uint32_t background_id, int32_t newZOrder){
+void Scene::changeZOrderBackground(const uint32_t background_id, 
+  const int32_t newZOrder){
   // Obtain the background
   Background *background_tmp = map_background_.at(background_id);
 

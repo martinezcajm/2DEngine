@@ -1,3 +1,4 @@
+// Comments can be found at the header
 #include "game_manager.h"
 
 GameManager::GameManager(){

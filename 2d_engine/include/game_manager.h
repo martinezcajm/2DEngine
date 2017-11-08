@@ -39,8 +39,16 @@ private:
   ~GameManager(){};
 
 public:
+  /** @Gets the instance of our GameManager
+  *
+  * In charge of creating our GameManager singleton in case it doesn't exist
+  * or return it's instance if it exists.
+  *
+  * @return GameManager& instance
+  */
   static GameManager& instance();
 
+  // Elements of the game
   uint32_t score_;
   uint8_t game_over_;
   uint8_t is_editor_;
