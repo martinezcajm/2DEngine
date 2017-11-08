@@ -55,14 +55,13 @@ void Scene::cleanScene(){
   z_order_levels.clear();
 }
 
-void Scene::loadScene(std::string scene_path){
+void Scene::loadScene(const std::string scene_path, const sf::Font& font){
   //TODO  
   std::ifstream i(scene_path);
   json j_scene;
   i >> j_scene;
 
   cleanScene();
-
 
   for (json::iterator it = j_scene["Textures"].begin(); it 
        != j_scene["Textures"].end(); ++it) {
@@ -100,9 +99,6 @@ void Scene::loadScene(std::string scene_path){
     }
   }
 
-  sf::Font font;
-  font.loadFromFile("../data/fonts/arial.ttf");
-
   for (json::iterator it = j_scene["Labels"].begin(); it 
        != j_scene["Labels"].end(); ++it) {
 
@@ -131,10 +127,12 @@ void Scene::loadScene(std::string scene_path){
        != j_scene["Sprites"].end(); ++it) {
 
     json j_sprite = (json)*it;    
-    // Create Label    
+    // Create Sprite    
     Sprite *sprite = POOL.getSprite();
     
     if(sprite!= nullptr){
+      uint8_t error_code = 0;  
+
       std::string texture_path = j_sprite["texture_dir_"];
       sf::Texture *texture = this->getTexture(texture_path);
       
@@ -143,31 +141,44 @@ void Scene::loadScene(std::string scene_path){
         if(texture != nullptr){
           texture->loadFromFile(texture_path);  
           this->addTexture(*texture, texture_path);
+        }else{
+          error_code = 1;
         }
       }
 
-      //kSpriteHandler
-      sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
-                  j_sprite["rotation_"], j_sprite["scale_"]["x"],
-                  j_sprite["scale_"]["y"], *texture);
-      
-      //kMemory
-      //uint8_t error_init;            
-      //sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
-      //            j_sprite["rotation_"], j_sprite["scale_"]["x"],
-      //            j_sprite["scale_"]["y"], *texture &error_init);
-      //if(error_init != 0){
-      //  // va bien
-      // }
-      sprite->tag_ = j_sprite["tag_"];
-      sprite->active_ = j_sprite["active_"];
-      sprite->z_order_ = j_sprite["z_order_"];
-      sprite->color_.r = j_sprite["color_"]["r"];
-      sprite->color_.g = j_sprite["color_"]["g"];
-      sprite->color_.b = j_sprite["color_"]["b"];
-      sprite->color_.a = j_sprite["color_"]["a"];
+      if(error_code == 0){
+        if(j_sprite["origin_"] == SpriteOrigin::kSpriteHandler){ // init by handle
+          sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
+            j_sprite["rotation_"], j_sprite["scale_"]["x"],
+            j_sprite["scale_"]["y"], *texture);
+        }else if(j_sprite["origin_"] == SpriteOrigin::kMemory){ // init by memory
+          sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
+            j_sprite["rotation_"], j_sprite["scale_"]["x"],
+            j_sprite["scale_"]["y"], *texture, &error_code);      
+        }else if(j_sprite["origin_"] == SpriteOrigin::kImage){
+          sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
+            j_sprite["rotation_"], j_sprite["scale_"]["x"],
+            j_sprite["scale_"]["y"], texture_path);
+        }else{
+          error_code = 1; //No es un sprite valido
+        }
+      }
 
-      this->addSprite(*sprite);
+
+      if(error_code == 0){
+        sprite->tag_ = j_sprite["tag_"];
+        sprite->active_ = j_sprite["active_"];
+        sprite->z_order_ = j_sprite["z_order_"];
+        sprite->color_.r = j_sprite["color_"]["r"];
+        sprite->color_.g = j_sprite["color_"]["g"];
+        sprite->color_.b = j_sprite["color_"]["b"];
+        sprite->color_.a = j_sprite["color_"]["a"];
+
+        this->addSprite(*sprite);
+      }else{
+        // if has error building the sprite, return it to the pool
+        POOL.returnSprite(*sprite);
+      }
     }
   }
   
@@ -175,38 +186,46 @@ void Scene::loadScene(std::string scene_path){
        != j_scene["Backgrounds"].end(); ++it) {
 
     json j_background = (json)*it;    
-    // Create Label    
+    // Create Background    
     Background *background = POOL.getBackground();
 
     if(background!= nullptr){
-      //kImage
-      background->init(j_background["texture_dir_"],
-                      j_background["dimensions_"]["x"],
-                      j_background["dimensions_"]["y"]);
-          
-      background->rotation_ = j_background["rotation_"];
-      background->position_.x = j_background["position_"]["x"];
-      background->position_.y = j_background["position_"]["y"];
-      background->scale_.x = j_background["scale_"]["x"];
-      background->scale_.y = j_background["scale_"]["y"];    
-      background->color_.r = j_background["color_"]["r"];
-      background->color_.g = j_background["color_"]["g"];
-      background->color_.b = j_background["color_"]["b"];
-      background->color_.a = j_background["color_"]["a"];    
-      background->tag_ = j_background["tag_"];
-      background->active_ = j_background["active_"];
-      background->z_order_ = j_background["z_order_"];
+      uint8_t error_code = 0;
+      std::string texture_path = j_background["texture_dir_"];
 
-      background->scrolls_horizontally_ = j_background["scrolls_horizontally_"];
-      background->scrolls_vertically_ = j_background["scrolls_vertically_"];
-      background->speed_.x = j_background["speed_"]["x"];
-      background->speed_.y = j_background["speed_"]["y"];
-      background->background_position_.x = 
-        j_background["background_position_"]["x"];
-      background->background_position_.y = 
-        j_background["background_position_"]["y"];    
+      if(j_background["origin_"] == SpriteOrigin::kImage){
+        error_code = background->init(texture_path,
+                                      j_background["dimensions_"]["x"],
+                                      j_background["dimensions_"]["y"]);
+      }
+      
+      if(error_code == 0){
+        background->rotation_ = j_background["rotation_"];
+        background->position_.x = j_background["position_"]["x"];
+        background->position_.y = j_background["position_"]["y"];
+        background->scale_.x = j_background["scale_"]["x"];
+        background->scale_.y = j_background["scale_"]["y"];    
+        background->color_.r = j_background["color_"]["r"];
+        background->color_.g = j_background["color_"]["g"];
+        background->color_.b = j_background["color_"]["b"];
+        background->color_.a = j_background["color_"]["a"];    
+        background->tag_ = j_background["tag_"];
+        background->active_ = j_background["active_"];
+        background->z_order_ = j_background["z_order_"];
 
-      this->addBackground(*background);
+        background->scrolls_horizontally_ = j_background["scrolls_horizontally_"];
+        background->scrolls_vertically_ = j_background["scrolls_vertically_"];
+        background->speed_.x = j_background["speed_"]["x"];
+        background->speed_.y = j_background["speed_"]["y"];
+        background->background_position_.x = 
+          j_background["background_position_"]["x"];
+        background->background_position_.y = 
+          j_background["background_position_"]["y"];    
+
+        this->addBackground(*background);
+      }else{
+        POOL.returnBackground(*background);
+      }
     }
   }
 }
@@ -289,7 +308,7 @@ void Scene::saveScene(std::string scene_path){
     j_sprite["color_"]["b"] = it->second->color_.b;
     j_sprite["color_"]["a"] = it->second->color_.a;
     j_sprite["texture_dir_"] = it->second->texture_dir_;
-    //j_sprite["origin_"] = it->second->origin_;
+    j_sprite["origin_"] = it->second->origin();
 
     j_sprites.push_back(j_sprite);
   }
@@ -312,8 +331,7 @@ void Scene::saveScene(std::string scene_path){
     j_background["color_"]["b"] = it->second->color_.b;
     j_background["color_"]["a"] = it->second->color_.a;
     j_background["texture_dir_"] = it->second->texture_dir_;
-    //j_background["texture_path"] = it->second->getTexturePath();
-    //j_background["origin_"] = it->second->origin_;
+    j_background["origin_"] = it->second->origin();
     j_background["scrolls_horizontally_"] = it->second->scrolls_horizontally_;
     j_background["scrolls_vertically_"] = it->second->scrolls_vertically_;
     j_background["speed_"]["x"] = it->second->speed_.x;

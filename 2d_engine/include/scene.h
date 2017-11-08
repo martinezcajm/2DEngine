@@ -17,7 +17,7 @@ class Scene{
   ~Scene();
 
   void cleanScene();
-  void loadScene(std::string scene_path);
+  void loadScene(const std::string scene_path, const sf::Font& font);
   void saveScene(std::string scene_path);
 
   //// BACKGROUND ////
@@ -75,6 +75,7 @@ class Scene{
   Pool& POOL = Pool::instance();
  private:
   Scene(const Scene& other){};
+  uint8_t error_code;
   
 };
 
