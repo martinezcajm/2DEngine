@@ -6,6 +6,7 @@
 #include "label.h"
 #include "sprite.h"
 #include "scene.h"
+#include "native_dialogs.h"
 
 typedef enum UiStatus
 {
@@ -42,8 +43,7 @@ public:
 
   uint8_t ui_is_drawing_;
   uint32_t score_;
-  // saveGame
-  // loadGame
+  Native_dialogs *native_dialog_;
   bool game_over_;
   bool is_editor_;
   Window *window_;
