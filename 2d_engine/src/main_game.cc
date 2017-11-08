@@ -1,13 +1,7 @@
 #include "game.h"
 
-
-
 int main()
-
 {
-
- Game game;
-
- game.mainLoop();
-
+  Game game;
+  game.mainLoop();
 }
