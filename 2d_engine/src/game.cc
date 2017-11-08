@@ -205,13 +205,24 @@ void Game::renderEditor(){
 }
 
 void Game::updateGame(){
+  //We are still rendering a part of the UI, so we need the update to be 
+  //effective
+  ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
 }
 
 void Game::renderGame(){  
+  //Only part of the UI that needs to be displayed while we are at game mode
+  UiStartGameMenu();
+  GM.window_->clear();
+
+  GM.scene_->drawScene(); 
+  ImGui::SFML::Render(*GM.window_->sfml_window_);
+  GM.window_->display();
 }
 
 void Game::renderUI(){
-  UiLoadMenu();      
+  UiLoadMenu();    
+  UiStartGameMenu();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
     if(GM.edit_type_ui_ == UiEditType::kRect){
@@ -340,6 +351,14 @@ void Game::UiLoadBackgroundValuesEdit(Background &bg){
   }
 }
 
+void Game::UiStartGameMenu(){
+  ImGui::Begin("GameMode");
+  if(ImGui::Button("GameStart")){
+    GM.is_editor_ = !GM.is_editor_;
+  }
+  ImGui::End();
+}
+
 void Game::UiLoadMenu(){
   ImGui::Begin("Mode");
   //To give a sense of mode selection, we give a redish color when the 
@@ -450,6 +469,24 @@ void Game::UiLoadMenu(){
           tmp_bg->init(path,
                        GM.window_->sfml_window_->getSize().x,
                        GM.window_->sfml_window_->getSize().y);
+        }
+      }
+    }
+    if (ImGui::Button("Sprite")) {
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the sprite",
+          "../data/",
+          1,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Sprite *tmp_sprite = POOL.getBackground();
+        //If the limit of labels hasn't been reached
+        if(tmp_sprite != nullptr){
+          GM.scene_->addSprite(*tmp_sprite);
+          tmp_sprite->init(0,0,
+                           0,1,1,
+                           path);
         }
       }
     }

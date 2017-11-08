@@ -71,6 +71,15 @@ class  Game{
   * 
   */
   void UiLoadMenu();
+  /** @Loads the game mode menu
+  *
+  * Only part of the UI that will be shown in game mode, this allows us to
+  * change between game mode and edit mode
+  *
+  * @return void
+  * 
+  */
+  void UiStartGameMenu();
   
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
