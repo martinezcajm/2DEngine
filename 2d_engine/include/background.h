@@ -11,19 +11,22 @@
 */
 class Background : public Sprite{
  public:
-  /** @Initializes the sprite using a texture
+  /** @Destroys the Background
   *
-  * Initializes the position and transformations of a sprite using an 
-  * sf::Texture as texture.
+  * Destructor of the background
+  *
+  * @return void
+  */
+  ~Background();
+  /** @Initializes the backgorund using a texture
+  *
+  * Initializes the width height and path of a background
   *
   * @return uint8_t indicates if there was an error in the execution error->1
   *  ok->0
-  * @param px position x of the sprite
-  * @param py position y of the sprite
-  * @param rotation value of rotation of the sprite in degrees
-  * @param scalex x scale value of the sprite
-  * @param scaley y scale value of the sprite
-  * @param texture that will use the sprite
+  * @param width width the background will be initialized to
+  * @param height height the background will be initialized to
+  * @param file_path image that will be used for the texture
   */
   uint8_t init(const std::string &file_path, const uint32_t width, 
                const uint32_t height);

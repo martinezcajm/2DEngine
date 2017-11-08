@@ -13,6 +13,8 @@ Label::Label() : DrawableEntity() {
   total_labels_ ++;
 }
 
+Label::~Label(){ }
+
 void Label::init(const uint8_t r, const uint8_t g, const uint8_t b, 
                  const uint8_t a, 
                  const float px, const float py,

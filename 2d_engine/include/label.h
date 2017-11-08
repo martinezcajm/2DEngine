@@ -10,6 +10,13 @@
 */
 class Label : public DrawableEntity{
  public:
+  /** @Destroys the label
+  *
+  * Destructor of the label
+  *
+  * @return void
+  */
+  ~Label();
   /** @Initializes the Label
   *
   * Initializes a label

@@ -14,6 +14,8 @@ Rect::Rect() : DrawableEntity() {
   total_rects_ ++;
 }
 
+Rect::~Rect(){ }
+
 void Rect::init(uint8_t is_solid, float width, float height, uint8_t sc_r,
                 uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
                 uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,

@@ -17,6 +17,13 @@ class Entity{
   * @return *Entity
   */
   Entity();
+  /** @Destroys the Entity
+  *
+  * Destructor of the entity
+  *
+  * @return void
+  */
+  ~Entity();
   /** @Entity copy constructor
   *
   * Personal Entity copy constructor taking into account the id.

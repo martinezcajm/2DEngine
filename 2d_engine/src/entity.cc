@@ -10,6 +10,8 @@ Entity::Entity() {
   total_ids_ ++;
 }
 
+Entity::~Entity(){ }
+
 Entity::Entity(const Entity& o) {
   tag_ = o.tag_;
   active_ = o.active_;

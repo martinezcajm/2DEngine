@@ -15,6 +15,8 @@ DrawableEntity::DrawableEntity() : Entity() {
   scale_.y = 1;
 }
 
+DrawableEntity::~DrawableEntity(){ }
+
 void DrawableEntity::init(const uint8_t r, const uint8_t g, 
                           const uint8_t b ,const uint8_t a,
                           const float px, const float py,

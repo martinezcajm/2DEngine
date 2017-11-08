@@ -6,6 +6,8 @@ Background::Background() : Sprite(){
   speed_.y = 0;
 }
 
+Background::~Background(){ }
+
 uint8_t Background::init(const std::string &file_path,
                          const uint32_t width, const uint32_t height){
   uint8_t error = 0;

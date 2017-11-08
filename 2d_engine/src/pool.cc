@@ -4,6 +4,8 @@
 Pool::Pool(){
 }
 
+Pool::~Pool(){}
+
 Pool& Pool::instance(){
   static Pool* pinstance = new Pool();
   return *pinstance;

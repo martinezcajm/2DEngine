@@ -20,6 +20,13 @@ class DrawableEntity : public Entity{
   * @return *DrawableEntity
   */
   DrawableEntity();
+  /** @Destroys the Drawable entity
+  *
+  * Destructor of the drawable entity
+  *
+  * @return void
+  */
+  ~DrawableEntity();
   /** @Initializes the drawable entity
   *
   * Initializes the drawable entity

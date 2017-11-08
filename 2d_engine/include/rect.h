@@ -10,6 +10,13 @@
 */
 class Rect : public DrawableEntity{
  public:
+  /** @Destroys the Rect
+  *
+  * Destructor of the rect
+  *
+  * @return void
+  */
+  ~Rect();
   /** @Initializes the Rect
   *
   * Initializes the different values of a rect

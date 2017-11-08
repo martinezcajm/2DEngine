@@ -137,7 +137,7 @@ class Pool{
   *
   * Destructor of class pool private so the pool can't be destroyed
   */
-  ~Pool(){};
+  ~Pool();
 
   //Number of entities that will create the pool at start of each type
   static const uint32_t start_rects_ = 20;

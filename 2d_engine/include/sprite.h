@@ -52,7 +52,7 @@ class Sprite : public DrawableEntity{
   * @param scalex x scale value of the sprite
   * @param scaley y scale value of the sprite
   * @param texture referency of the texture we wish to do the copy
-  * @param uint8_t indicates if there was an error in the execution
+  * @param error_ocurred indicates if there was an error in the execution
   */
   void init(const float px, const float py,
             const float rotation, const float scalex, const float scaley,
@@ -70,7 +70,7 @@ class Sprite : public DrawableEntity{
   * @param rotation value of rotation of the sprite in degrees
   * @param scalex x scale value of the sprite
   * @param scaley y scale value of the sprite
-  * @param image_file image that will be used for the texture
+  * @param file_path image that will be used for the texture
   */
   uint8_t init(const float px, const float py,
                const float rotation, const float scalex, const float scaley,

@@ -13,6 +13,8 @@ Inheritance diagram for Background\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_background_a36754df1deb720393217ade59da41557}{$\sim$\+Background} ()
+\item 
 uint8\+\_\+t \hyperlink{class_background_ae4ae960cd876ef4a2f9fb6e0a7e8bc73}{init} (const std\+::string \&file\+\_\+path, const uint32\+\_\+t width, const uint32\+\_\+t height)
 \item 
 void \hyperlink{class_background_acab58b65d4299d4bd51b8376e8c3e3d3}{update} ()
@@ -52,6 +54,22 @@ entity \hyperlink{class_background}{Background}.
 
 Class used to represent backgrounds. Used to stablish continuous movement to a sprite. 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_background_a36754df1deb720393217ade59da41557}\label{class_background_a36754df1deb720393217ade59da41557}} 
+\index{Background@{Background}!````~Background@{$\sim$\+Background}}
+\index{````~Background@{$\sim$\+Background}!Background@{Background}}
+\subsubsection{\texorpdfstring{$\sim$\+Background()}{~Background()}}
+{\footnotesize\ttfamily Background\+::$\sim$\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the \hyperlink{class_background}{Background}
+
+Destructor of the background
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_background_aafc5996195781b2d4bff7d170792425d}\label{class_background_aafc5996195781b2d4bff7d170792425d}} 
 \index{Background@{Background}!Create\+Background@{Create\+Background}}
@@ -90,26 +108,20 @@ void
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily uint8\+\_\+t Background\+::init (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const uint32\+\_\+t}]{width,  }\item[{const uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
 
-the sprite using a texture
+the backgorund using a texture
 
-Initializes the position and transformations of a sprite using an sf\+::\+Texture as texture.
+Initializes the width height and path of a background
 
 \begin{DoxyReturn}{Returns}
 uint8\+\_\+t indicates if there was an error in the execution error-\/$>$1 ok-\/$>$0 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-{\em px} & position x of the sprite \\
+{\em width} & width the background will be initialized to \\
 \hline
-{\em py} & position y of the sprite \\
+{\em height} & height the background will be initialized to \\
 \hline
-{\em rotation} & value of rotation of the sprite in degrees \\
-\hline
-{\em scalex} & x scale value of the sprite \\
-\hline
-{\em scaley} & y scale value of the sprite \\
-\hline
-{\em texture} & that will use the sprite \\
+{\em file\+\_\+path} & image that will be used for the texture \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_background_a544eaaa5b1b55c6adebe989633521ac3}\label{class_background_a544eaaa5b1b55c6adebe989633521ac3}} 
@@ -142,4 +154,4 @@ void
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-2d\+\_\+engine/include/background.\+h\end{DoxyCompactItemize}
+include/background.\+h\end{DoxyCompactItemize}
