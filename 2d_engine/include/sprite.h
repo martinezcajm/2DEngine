@@ -51,7 +51,7 @@ class Sprite : public DrawableEntity{
   */
   void init(float px, float py,
             float rotation, float scalex, float scaley,
-            const sf::Texture& texture, uint8_t *error_ocurred);
+            const sf::Texture& texture, uint8_t &error_ocurred);
   /** @Initializes the sprite using an image file
   *
   * Initializes an Sprite with its own texture through an image file.
@@ -114,7 +114,7 @@ class Sprite : public DrawableEntity{
 
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;
-  sf::String texture_dir_;
+  std::string texture_dir_;
 
  protected:
   static uint32_t total_sprites_;
