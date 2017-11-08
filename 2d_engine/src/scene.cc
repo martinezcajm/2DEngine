@@ -17,29 +17,29 @@ void Scene::cleanScene(){
   // TODO: Return objects to the Pool
 
   for (std::unordered_map<std::string, sf::Texture*>::iterator it =
-    map_texture_.begin(); it != map_texture_.end(); it++) {
+    map_texture_.begin(); it != map_texture_.end(); ++it) {
 
     //free texture memory
     free(it->second);
   }
 
   for (std::unordered_map<uint32_t, Rect*>::iterator it =
-    map_rect_.begin(); it != map_rect_.end(); it++) {
+    map_rect_.begin(); it != map_rect_.end(); ++it) {
 
     POOL.returnRect(*it->second);
   }
   for (std::unordered_map<uint32_t, Label*>::iterator it =
-    map_label_.begin(); it != map_label_.end(); it++) {
+    map_label_.begin(); it != map_label_.end(); ++it) {
       
     POOL.returnLabel(*it->second);
   }  
   for (std::unordered_map<uint32_t, Sprite*>::iterator it =
-    map_sprite_.begin(); it != map_sprite_.end(); it++) {
+    map_sprite_.begin(); it != map_sprite_.end(); ++it) {
 
     POOL.returnSprite(*it->second);
   }
   for (std::unordered_map<uint32_t, Background*>::iterator it =
-    map_background_.begin(); it != map_background_.end(); it++) {
+    map_background_.begin(); it != map_background_.end(); ++it) {
       
     POOL.returnBackground(*it->second);
   }
@@ -244,7 +244,7 @@ void Scene::saveScene(const std::string scene_path){
   json j_textures;
 
   for (std::unordered_map<uint32_t, Rect*>::iterator it =
-    map_rect_.begin(); it != map_rect_.end(); it++) {
+    map_rect_.begin(); it != map_rect_.end(); ++it) {
       
     //it->second;
     json j_rect;
@@ -272,7 +272,7 @@ void Scene::saveScene(const std::string scene_path){
   }  
 
   for (std::unordered_map<uint32_t, Label*>::iterator it =
-    map_label_.begin(); it != map_label_.end(); it++) {
+    map_label_.begin(); it != map_label_.end(); ++it) {
       
     //it->second;
     json j_label;
@@ -296,7 +296,7 @@ void Scene::saveScene(const std::string scene_path){
   }
 
   for (std::unordered_map<uint32_t, Sprite*>::iterator it =
-    map_sprite_.begin(); it != map_sprite_.end(); it++) {
+    map_sprite_.begin(); it != map_sprite_.end(); ++it) {
 
     //it->second;
     json j_sprite;
@@ -319,7 +319,7 @@ void Scene::saveScene(const std::string scene_path){
   }
   
   for (std::unordered_map<uint32_t, Background*>::iterator it =
-    map_background_.begin(); it != map_background_.end(); it++) {
+    map_background_.begin(); it != map_background_.end(); ++it) {
 
     //it->second;
     json j_background;
@@ -352,7 +352,7 @@ void Scene::saveScene(const std::string scene_path){
   }
   
   for (std::unordered_map<std::string, sf::Texture*>::iterator it =
-    map_texture_.begin(); it != map_texture_.end(); it++) {
+    map_texture_.begin(); it != map_texture_.end(); ++it) {
 
     //it->second;
     json j_texture;
@@ -376,14 +376,14 @@ void Scene::drawScene(){
 
   // Foreach Z-order we print the elements of that level
   for (std::set<int32_t>::iterator it=z_order_levels.begin(); 
-       it!=z_order_levels.end(); it++){
+       it!=z_order_levels.end(); ++it){
         
     // Print Backgrouds
     if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
       for (std::unordered_map<uint32_t, Background*>::iterator it2 =
           z_order_map_background_.at(*it).begin(); it2 
           != z_order_map_background_.at(*it).end();
-          it2++) {
+          ++it2) {
 
         it2->second->draw(*GM.window_->sfml_window_);
       }
@@ -393,7 +393,7 @@ void Scene::drawScene(){
     if (z_order_map_rect_.find(*it) != z_order_map_rect_.end()) {
       for(std::unordered_map<uint32_t, Rect*>::iterator it2 = 
           z_order_map_rect_.at(*it).begin(); it2 != 
-          z_order_map_rect_.at(*it).end(); it2++){
+          z_order_map_rect_.at(*it).end(); ++it2){
         
         it2->second->draw(*GM.window_->sfml_window_);
       }
@@ -404,7 +404,7 @@ void Scene::drawScene(){
       for(std::unordered_map<uint32_t, Label*>::iterator it2 = 
           z_order_map_label_.at(*it).begin(); it2 
           != z_order_map_label_.at(*it).end(); 
-          it2++){
+          ++it2){
         
         it2->second->draw(*GM.window_->sfml_window_);
       }
@@ -415,7 +415,7 @@ void Scene::drawScene(){
       for(std::unordered_map<uint32_t, Sprite*>::iterator it2 = 
           z_order_map_sprite_.at(*it).begin(); it2 != 
           z_order_map_sprite_.at(*it).end(); 
-          it2++){
+          ++it2){
         
         it2->second->draw(*GM.window_->sfml_window_);
       }
@@ -426,13 +426,13 @@ void Scene::drawScene(){
 uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
   std::set<int32_t>::iterator it = z_order_levels.end();
   do {
-    it--;
+    --it;
     
     // Check Rects
     if (z_order_map_rect_.find(*it) != z_order_map_rect_.end()) {
       for(std::unordered_map<uint32_t, Rect*>::iterator it2 = 
           z_order_map_rect_.at(*it).begin(); it2 != 
-          z_order_map_rect_.at(*it).end(); it2++){
+          z_order_map_rect_.at(*it).end(); ++it2){
         
         if(it2->second->checkCollision(position)){
           *type = 2;
@@ -446,7 +446,7 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
       for(std::unordered_map<uint32_t, Label*>::iterator it2 = 
           z_order_map_label_.at(*it).begin(); it2 
           != z_order_map_label_.at(*it).end(); 
-          it2++){
+          ++it2){
         
         if(it2->second->checkCollision(position)){
           *type = 3;
@@ -460,7 +460,7 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
       for(std::unordered_map<uint32_t, Sprite*>::iterator it2 = 
           z_order_map_sprite_.at(*it).begin(); it2 != 
           z_order_map_sprite_.at(*it).end(); 
-          it2++){
+          ++it2){
         
         if(it2->second->checkCollision(position)){
           *type = 4;
@@ -474,7 +474,7 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
       for (std::unordered_map<uint32_t, Background*>::iterator it2 =
         z_order_map_background_.at(*it).begin(); it2
         != z_order_map_background_.at(*it).end();
-        it2++) {
+        ++it2) {
 
         if (it2->second->checkCollision(position)) {
           *type = 1;
@@ -492,28 +492,28 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
   std::list<DrawableEntity*> return_list;
   
   for (std::unordered_map<uint32_t, Rect*>::iterator it =
-       map_rect_.begin(); it != map_rect_.end(); it++) {
+       map_rect_.begin(); it != map_rect_.end(); ++it) {
 
     if(it->second->tag_ == tag){
       return_list.push_back(it->second);
     }
   }
   for (std::unordered_map<uint32_t, Label*>::iterator it =
-       map_label_.begin(); it != map_label_.end(); it++) {
+       map_label_.begin(); it != map_label_.end(); ++it) {
       
     if(it->second->tag_ == tag){
       return_list.push_back(it->second);
     }
   }  
   for (std::unordered_map<uint32_t, Sprite*>::iterator it =
-       map_sprite_.begin(); it != map_sprite_.end(); it++) {
+       map_sprite_.begin(); it != map_sprite_.end(); ++it) {
 
     if(it->second->tag_ == tag){
       return_list.push_back(it->second);
     }
   }
   for (std::unordered_map<uint32_t, Background*>::iterator it =
-       map_background_.begin(); it != map_background_.end(); it++) {
+       map_background_.begin(); it != map_background_.end(); ++it) {
       
     if(it->second->tag_ == tag){
       return_list.push_back(it->second);
@@ -526,22 +526,22 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
 void Scene::update(){
   // For now only the Background have Update  
   /*for (std::unordered_map<uint32_t, Rect*>::iterator it =
-       map_rect_.begin(); it != map_rect_.end(); it++) {
+       map_rect_.begin(); it != map_rect_.end(); ++it) {
 
       it->second->update();    
   }
   for (std::unordered_map<uint32_t, Label*>::iterator it =
-       map_label_.begin(); it != map_label_.end(); it++) {
+       map_label_.begin(); it != map_label_.end(); ++it) {
     
     it->second->update();    
   }  
   for (std::unordered_map<uint32_t, Sprite*>::iterator it =
-       map_sprite_.begin(); it != map_sprite_.end(); it++) {
+       map_sprite_.begin(); it != map_sprite_.end(); ++it) {
 
     it->second->update();    
   }*/
   for (std::unordered_map<uint32_t, Background*>::iterator it =
-       map_background_.begin(); it != map_background_.end(); it++) {
+       map_background_.begin(); it != map_background_.end(); ++it) {
       
     it->second->update();    
   }
