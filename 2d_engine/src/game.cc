@@ -132,7 +132,8 @@ void Game::updateEditor(){
       GM.drawing_rect_->resize(GM.mouse_position_.x - GM.draw_origin_point_.x,
                                GM.mouse_position_.y - GM.draw_origin_point_.y);
     }
-  }else if(GM.status_ui_ == UiStatus::kSelection && 
+  }else if((GM.status_ui_ == UiStatus::kSelection|| 
+            GM.status_ui_ == UiStatus::kMultiselect) && 
            GM.mouse_status_ == MouseStatus::kPressed){
     GM.mouse_status_ = MouseStatus::kNothing;
     GM.mouse_position_ = static_cast<sf::Vector2f>(
@@ -151,29 +152,52 @@ void Game::updateEditor(){
       GM.label_selection_ = nullptr;
       GM.sprite_selection_ = nullptr;
     }else if(GM.selected_type_ == 1){
-      GM.edit_type_ui_ = UiEditType::kBackground;
       GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
-      GM.rect_selection_ = nullptr;
-      GM.label_selection_ = nullptr;
-      GM.sprite_selection_ = nullptr;
+      if(GM.status_ui_ == UiStatus::kSelection){
+        GM.edit_type_ui_ = UiEditType::kBackground;
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      }
+      //We don't want to be able to multi select the background, as there's
+      //no sense in moving it
     }else if(GM.selected_type_ == 2){
-      GM.edit_type_ui_ = UiEditType::kRect;
-      GM.background_selection_ = nullptr;
       GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
-      GM.label_selection_ = nullptr;
-      GM.sprite_selection_ = nullptr;
+      if(GM.status_ui_ == UiStatus::kSelection){
+        GM.edit_type_ui_ = UiEditType::kRect;
+        GM.background_selection_ = nullptr;
+        GM.label_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      }else if(GM.status_ui_ == UiStatus::kMultiselect){
+        GM.edit_type_ui_ = UiEditType::kMulti;
+        GM.rect_selection_->tag_ = (GM.rect_selection_->tag_) ?
+                                    0 : GM.selected_item_tag_;
+      }
     } else if(GM.selected_type_ == 3){
-      GM.edit_type_ui_ = UiEditType::kLabel;
-      GM.background_selection_ = nullptr;
-      GM.rect_selection_ = nullptr;
       GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
-      GM.sprite_selection_ = nullptr;
+      if(GM.status_ui_ == UiStatus::kSelection){
+        GM.edit_type_ui_ = UiEditType::kLabel;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = nullptr;
+        GM.sprite_selection_ = nullptr;
+      }else if(GM.status_ui_ == UiStatus::kMultiselect){
+        GM.edit_type_ui_ = UiEditType::kMulti;
+        GM.label_selection_->tag_ = (GM.label_selection_->tag_) ?
+                                     0 : GM.selected_item_tag_;
+      }
     } else if(GM.selected_type_ == 4){
-      GM.edit_type_ui_ = UiEditType::kSprite;
-      GM.background_selection_ = nullptr;
-      GM.rect_selection_ = nullptr;
-      GM.label_selection_ = nullptr;
-      GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_);
+      GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_); 
+      if(GM.status_ui_ == UiStatus::kSelection){
+        GM.edit_type_ui_ = UiEditType::kSprite;
+        GM.background_selection_ = nullptr;
+        GM.rect_selection_ = nullptr;
+        GM.label_selection_ = nullptr;        
+      }else if(GM.status_ui_ == UiStatus::kMultiselect){
+        GM.edit_type_ui_ = UiEditType::kMulti;
+        GM.sprite_selection_->tag_ = (GM.sprite_selection_->tag_) ?
+                                      0 : GM.selected_item_tag_;
+      }
+      
     }
   }else if(GM.status_ui_ == UiStatus::kWrite && 
            GM.mouse_status_ == MouseStatus::kPressed){
@@ -230,7 +254,7 @@ void Game::renderUI(){
   UiStartGameMenu();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
-    static int32_t ui_z_order;
+    static int32_t ui_z_order = 0;
     if(GM.edit_type_ui_ == UiEditType::kRect){
       UiLoadRectValuesEdit(*GM.rect_selection_);
       ImGui::Text("The actual z-order is: %i", GM.rect_selection_->z_order_);
@@ -284,6 +308,22 @@ void Game::renderUI(){
         POOL.returnBackground(*GM.background_selection_);
         GM.background_selection_ = nullptr;
         GM.edit_type_ui_ = UiEditType::kNull;
+      }
+    }else if(GM.edit_type_ui_ == UiEditType::kMulti){
+      static float px = 0.0f;
+      static float py = 0.0f;
+      if (ImGui::TreeNode("Movement")){
+        ImGui::InputFloat("x", &px, 1.0f, 1.0f);
+        ImGui::InputFloat("y", &py, 1.0f, 1.0f);
+        ImGui::TreePop();
+      }
+      if (ImGui::Button("Move selected items")) {
+        std::list<DrawableEntity*> selected = 
+                  GM.scene_->getDrawableEntitiesByTag(GM.selected_item_tag_);
+        for (std::list<DrawableEntity*>::const_iterator it =
+             selected.begin(); it != selected.end(); ++it) {
+          (*it)->move(px, py);
+        }
       }
     }
   } 
@@ -450,6 +490,28 @@ void Game::UiLoadMenu(){
       GM.status_ui_ = UiStatus::kWrite;
     }
     GM.ui_is_drawing_ = 0;
+  }
+  ImGui::PopStyleColor(2);
+  if(GM.status_ui_ == UiStatus::kMultiselect){
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.65f,0.14f,0.14f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, 
+                          ImVec4(0.6f,0.08f,0.08f,1.0f));
+  }else{
+    ImGui::PushStyleColor(ImGuiCol_Button, 
+                          ImVec4(0.0f,0.26f,0.69f,1.0f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered,
+                          ImVec4(0.0f,0.21f,0.52f,1.0f)); 
+  }
+  if (ImGui::Button("Multi Selection")) {
+    if(GM.status_ui_ == UiStatus::kMultiselect){
+      GM.status_ui_ = UiStatus::kIdle;
+      GM.edit_type_ui_ = UiEditType::kNull;
+      GM.ui_is_drawing_ = 0;
+    }else{
+      GM.status_ui_ = UiStatus::kMultiselect;
+      GM.edit_type_ui_ = UiEditType::kMulti;
+    }
   }
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){

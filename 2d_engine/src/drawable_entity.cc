@@ -30,6 +30,11 @@ void DrawableEntity::init(const uint8_t r, const uint8_t g,
   scale_.y = scaley;
 }
 
+void DrawableEntity::move(float px, float py){
+   position_.x += px;
+   position_.y += py;
+}
+
 void DrawableEntity::draw(sf::RenderWindow &window, const sf::Drawable &entity,                        const sf::Vector2f &rotation_origin){
   sf::Transform t;
   t.translate(position_);
@@ -45,7 +50,7 @@ bool DrawableEntity::checkCollision(const sf::Vector2f &position,
 }
 
 void DrawableEntity::unuse(){
-  z_order_ = 0;
+  z_order_ = 1;
   rotation_ = 0;
   position_.x = 0;
   position_.y = 0;
