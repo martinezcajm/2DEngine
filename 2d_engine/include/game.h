@@ -17,6 +17,9 @@ class  Game{
   void renderEditor();
   void mainLoop();
   void finish();
+
+  /////// UI Functions ///////
+
   /** @Renders the UI
   *
   * Function in charge of rendering the UI

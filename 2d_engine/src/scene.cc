@@ -374,7 +374,7 @@ void Scene::drawScene(){
   GameManager& GM = GameManager::instance();
 
   // Foreach Z-order we print the elements of that level
-  for (std::set<uint32_t>::iterator it=z_order_levels.begin(); 
+  for (std::set<int32_t>::iterator it=z_order_levels.begin(); 
        it!=z_order_levels.end(); it++){
         
     // Print Backgrouds
@@ -423,26 +423,10 @@ void Scene::drawScene(){
 }
 
 uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
-  std::set<uint32_t>::iterator it = z_order_levels.end();
+  std::set<int32_t>::iterator it = z_order_levels.end();
   do {
-	  it--;
-  // Foreach Z-order we print the elements of that level
-  /*for (std::set<uint32_t>::iterator it=z_order_levels.end(); 
-       it!=z_order_levels.begin(); it--){*/
-    // Check Backgrouds
-    if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
-      for (std::unordered_map<uint32_t, Background*>::iterator it2 =
-          z_order_map_background_.at(*it).begin(); it2 
-          != z_order_map_background_.at(*it).end();
-          it2++) {
-
-        if(it2->second->checkCollision(position)){
-          *type = 1;
-          return it2->first;
-        }
-      }
-    }
-
+    it--;
+    
     // Check Rects
     if (z_order_map_rect_.find(*it) != z_order_map_rect_.end()) {
       for(std::unordered_map<uint32_t, Rect*>::iterator it2 = 
@@ -483,7 +467,20 @@ uint32_t Scene::checkCollision(sf::Vector2f& position, uint8_t *type){
         }
       }
     }
-  //}
+
+    // Check Backgrouds
+    if (z_order_map_background_.find(*it) != z_order_map_background_.end()) {
+      for (std::unordered_map<uint32_t, Background*>::iterator it2 =
+        z_order_map_background_.at(*it).begin(); it2
+        != z_order_map_background_.at(*it).end();
+        it2++) {
+
+        if (it2->second->checkCollision(position)) {
+          *type = 1;
+          return it2->first;
+        }
+      }
+    }
   } while (it != z_order_levels.begin());
 
   *type = 0;
@@ -525,6 +522,31 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
   return return_list;
 }
 
+void Scene::update(){
+  // For now only the Background have Update  
+  /*for (std::unordered_map<uint32_t, Rect*>::iterator it =
+       map_rect_.begin(); it != map_rect_.end(); it++) {
+
+      it->second->update();    
+  }
+  for (std::unordered_map<uint32_t, Label*>::iterator it =
+       map_label_.begin(); it != map_label_.end(); it++) {
+    
+    it->second->update();    
+  }  
+  for (std::unordered_map<uint32_t, Sprite*>::iterator it =
+       map_sprite_.begin(); it != map_sprite_.end(); it++) {
+
+    it->second->update();    
+  }*/
+  for (std::unordered_map<uint32_t, Background*>::iterator it =
+       map_background_.begin(); it != map_background_.end(); it++) {
+      
+    it->second->update();    
+  }
+}
+
+
 ///// Texture /////
 void Scene::addTexture(sf::Texture& texture, std::string texture_path){  
   std::pair<std::string, sf::Texture*> insert_pair(texture_path, &texture);
@@ -553,20 +575,17 @@ void Scene::addRect(Rect& rect){
   std::pair<uint32_t, Rect*> insert_pair(rect.id(), &rect);
   map_rect_.insert(insert_pair);
  
-  std::map<uint32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
+  std::map<int32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
     iterator = z_order_map_rect_.find(rect.z_order_);
 
   if (iterator == z_order_map_rect_.end()) {
     std::unordered_map<uint32_t, Rect*> map_tmp;
     map_tmp.insert(insert_pair);
 
-    std::pair<uint32_t, std::unordered_map<uint32_t, Rect*>> 
+    std::pair<int32_t, std::unordered_map<uint32_t, Rect*>> 
       insert_z_order_pair(rect.z_order_, map_tmp);
     z_order_map_rect_.insert(insert_z_order_pair);
   } else {
-    //std::unordered_map<uint32_t, Rect*> map_tmp = iterator->second;
-    //map_tmp.insert(insert_pair);
-
 	  z_order_map_rect_.at(rect.z_order_).insert(insert_pair);
   }
 }
@@ -588,7 +607,7 @@ void Scene::removeRect(uint32_t rect_id){
     z_order_map_rect_.at(rect_tmp->z_order_).erase(rect_id);
   }
 }
-void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
+void Scene::changeZOrderRect(uint32_t rect_id, int32_t newZOrder){
   // Obtain the rect
   Rect *rect_tmp = map_rect_.at(rect_id);
 
@@ -599,7 +618,7 @@ void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
     // Create pair to insert in z_order_map_rect_
     std::pair<uint32_t, Rect*> insert_pair(rect_id, rect_tmp);
     // Create iterator for z_order_map_rect_
-    std::map<uint32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
+    std::map<int32_t, std::unordered_map<uint32_t, Rect*>>::const_iterator 
       iterator = z_order_map_rect_.find(newZOrder);
 
     if (iterator == z_order_map_rect_.end()) {
@@ -607,7 +626,7 @@ void Scene::changeZOrderRect(uint32_t rect_id, uint32_t newZOrder){
       std::unordered_map<uint32_t, Rect*> map_tmp;
       map_tmp.insert(insert_pair);
 
-      std::pair<uint32_t, std::unordered_map<uint32_t, Rect*>> 
+      std::pair<int32_t, std::unordered_map<uint32_t, Rect*>> 
         insert_z_order_pair(newZOrder, map_tmp);
       z_order_map_rect_.insert(insert_z_order_pair);
     } else {
@@ -625,14 +644,14 @@ void Scene::addLabel(Label& label){
   std::pair<uint32_t, Label*> insert_pair(label.id(), &label);
   map_label_.insert(insert_pair);
  
-  std::map<uint32_t, std::unordered_map<uint32_t, Label*>>::const_iterator 
+  std::map<int32_t, std::unordered_map<uint32_t, Label*>>::const_iterator 
     iterator = z_order_map_label_.find(label.z_order_);
 
   if (iterator == z_order_map_label_.end()) {
     std::unordered_map<uint32_t, Label*> map_tmp;
     map_tmp.insert(insert_pair);
 
-    std::pair<uint32_t, std::unordered_map<uint32_t, Label*>> 
+    std::pair<int32_t, std::unordered_map<uint32_t, Label*>> 
       insert_z_order_pair(label.z_order_, map_tmp);
     z_order_map_label_.insert(insert_z_order_pair);
   } else {
@@ -655,7 +674,7 @@ void Scene::removeLabel(uint32_t label_id){
   map_label_.erase(label_id);
   z_order_map_label_.at(label_tmp->z_order_).erase(label_id);
 }
-void Scene::changeZOrderLabel(uint32_t label_id, uint32_t newZOrder){
+void Scene::changeZOrderLabel(uint32_t label_id, int32_t newZOrder){
   // Obtain the label
   Label *label_tmp = map_label_.at(label_id);
 
@@ -666,7 +685,7 @@ void Scene::changeZOrderLabel(uint32_t label_id, uint32_t newZOrder){
     // Create pair to insert in z_order_map_label_
     std::pair<uint32_t, Label*> insert_pair(label_id, label_tmp);
     // Create iterator for z_order_map_label_
-    std::map<uint32_t, std::unordered_map<uint32_t, Label*>>::const_iterator 
+    std::map<int32_t, std::unordered_map<uint32_t, Label*>>::const_iterator 
       iterator = z_order_map_label_.find(newZOrder);
 
     if (iterator == z_order_map_label_.end()) {
@@ -674,7 +693,7 @@ void Scene::changeZOrderLabel(uint32_t label_id, uint32_t newZOrder){
       std::unordered_map<uint32_t, Label*> map_tmp;
       map_tmp.insert(insert_pair);
 
-      std::pair<uint32_t, std::unordered_map<uint32_t, Label*>> 
+      std::pair<int32_t, std::unordered_map<uint32_t, Label*>> 
         insert_z_order_pair(newZOrder, map_tmp);
       z_order_map_label_.insert(insert_z_order_pair);
     } else {
@@ -693,14 +712,14 @@ void Scene::addSprite(Sprite& sprite){
   std::pair<uint32_t, Sprite*> insert_pair(sprite.id(), &sprite);
   map_sprite_.insert(insert_pair);
  
-  std::map<uint32_t, std::unordered_map<uint32_t, Sprite*>>::const_iterator 
+  std::map<int32_t, std::unordered_map<uint32_t, Sprite*>>::const_iterator 
     iterator = z_order_map_sprite_.find(sprite.z_order_);
 
   if (iterator == z_order_map_sprite_.end()) {
     std::unordered_map<uint32_t, Sprite*> map_tmp;
     map_tmp.insert(insert_pair);
 
-    std::pair<uint32_t, std::unordered_map<uint32_t, Sprite*>> 
+    std::pair<int32_t, std::unordered_map<uint32_t, Sprite*>> 
       insert_z_order_pair(sprite.z_order_, map_tmp);
     z_order_map_sprite_.insert(insert_z_order_pair);
   } else {
@@ -725,7 +744,7 @@ void Scene::removeSprite(uint32_t sprite_id){
   z_order_map_sprite_.at(sprite_tmp->z_order_).erase(sprite_id);
 }
 
-void Scene::changeZOrderSprite(uint32_t sprite_id, uint32_t newZOrder){
+void Scene::changeZOrderSprite(uint32_t sprite_id, int32_t newZOrder){
   // Obtain the sprite
   Sprite *sprite_tmp = map_sprite_.at(sprite_id);
 
@@ -736,7 +755,7 @@ void Scene::changeZOrderSprite(uint32_t sprite_id, uint32_t newZOrder){
     // Create pair to insert in z_order_map_sprite_
     std::pair<uint32_t, Sprite*> insert_pair(sprite_id, sprite_tmp);
     // Create iterator for z_order_map_sprite_
-    std::map<uint32_t, std::unordered_map<uint32_t, Sprite*>>::const_iterator 
+    std::map<int32_t, std::unordered_map<uint32_t, Sprite*>>::const_iterator 
       iterator = z_order_map_sprite_.find(newZOrder);
 
     if (iterator == z_order_map_sprite_.end()) {
@@ -744,7 +763,7 @@ void Scene::changeZOrderSprite(uint32_t sprite_id, uint32_t newZOrder){
       std::unordered_map<uint32_t, Sprite*> map_tmp;
       map_tmp.insert(insert_pair);
 
-      std::pair<uint32_t, std::unordered_map<uint32_t, Sprite*>> 
+      std::pair<int32_t, std::unordered_map<uint32_t, Sprite*>> 
         insert_z_order_pair(newZOrder, map_tmp);
       z_order_map_sprite_.insert(insert_z_order_pair);
     } else {
@@ -763,14 +782,14 @@ void Scene::addBackground(Background& background){
   std::pair<uint32_t, Background*> insert_pair(background.id(), &background);
   map_background_.insert(insert_pair);
  
-  std::map<uint32_t, std::unordered_map<uint32_t, Background*>>::const_iterator 
+  std::map<int32_t, std::unordered_map<uint32_t, Background*>>::const_iterator 
     iterator = z_order_map_background_.find(background.z_order_);
 
   if (iterator == z_order_map_background_.end()) {
     std::unordered_map<uint32_t, Background*> map_tmp;
     map_tmp.insert(insert_pair);
 
-    std::pair<uint32_t, std::unordered_map<uint32_t, Background*>> 
+    std::pair<int32_t, std::unordered_map<uint32_t, Background*>> 
       insert_z_order_pair(background.z_order_, map_tmp);
     z_order_map_background_.insert(insert_z_order_pair);
   } else {
@@ -794,7 +813,7 @@ void Scene::removeBackground(uint32_t background_id){
   z_order_map_background_.at(background_tmp->z_order_).erase(background_id);
 }
 
-void Scene::changeZOrderBackground(uint32_t background_id, uint32_t newZOrder){
+void Scene::changeZOrderBackground(uint32_t background_id, int32_t newZOrder){
   // Obtain the background
   Background *background_tmp = map_background_.at(background_id);
 
@@ -805,7 +824,7 @@ void Scene::changeZOrderBackground(uint32_t background_id, uint32_t newZOrder){
     // Create pair to insert in z_order_map_background_
     std::pair<uint32_t, Background*> insert_pair(background_id, background_tmp);
     // Create iterator for z_order_map_background_
-    std::map<uint32_t, std::unordered_map<uint32_t, Background*>>::const_iterator 
+    std::map<int32_t, std::unordered_map<uint32_t, Background*>>::const_iterator 
       iterator = z_order_map_background_.find(newZOrder);
 
     if (iterator == z_order_map_background_.end()) {
@@ -813,7 +832,7 @@ void Scene::changeZOrderBackground(uint32_t background_id, uint32_t newZOrder){
       std::unordered_map<uint32_t, Background*> map_tmp;
       map_tmp.insert(insert_pair);
 
-      std::pair<uint32_t, std::unordered_map<uint32_t, Background*>> 
+      std::pair<int32_t, std::unordered_map<uint32_t, Background*>> 
         insert_z_order_pair(newZOrder, map_tmp);
       z_order_map_background_.insert(insert_z_order_pair);
     } else {

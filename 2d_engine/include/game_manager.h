@@ -41,18 +41,16 @@ private:
 public:
   static GameManager& instance();
 
-  uint8_t ui_is_drawing_;
   uint32_t score_;
-  Native_dialogs *native_dialog_;
-  bool game_over_;
-  bool is_editor_;
+  uint8_t game_over_;
+  uint8_t is_editor_;
   Window *window_;
-  Scene *scene_;
   sf::Vector2u *window_size_;
-  Rect *rect_test_;
-  Label *label_test_;
-  Sprite *sprite_test_;
-  sf::Texture *texture_;
+  Scene *scene_;
+  Native_dialogs *native_dialog_;
+  
+  // Status update for UI
+  uint8_t ui_is_drawing_;
   sf::Vector2f mouse_position_;
   sf::Vector2f draw_origin_point_; //position for drawing rects 
   sf::Clock deltaClock_; //delta clock used for the UI updates
@@ -60,6 +58,7 @@ public:
   UiStatus status_ui_; //active mode of UI
   UiEditType edit_type_ui_; //edition type of UI
   MouseStatus mouse_status_; //mouse status for the UI
+  
   //Selection items for UI
   uint8_t selected_type_;
   uint32_t selected_id_;
@@ -67,6 +66,7 @@ public:
   Label *label_selection_;
   Sprite *sprite_selection_;
   Background *background_selection_;
+
   //Fonts supported by the app 
   //TODO charge them through an ini file
   sf::Font arial_;

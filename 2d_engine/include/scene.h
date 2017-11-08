@@ -25,25 +25,25 @@ class Scene{
   void addBackground(Background& background);
   Background* getBackground(uint32_t background_id);
   void removeBackground(uint32_t background_id);
-  void changeZOrderBackground(uint32_t background_id, uint32_t newZOrder);
+  void changeZOrderBackground(uint32_t background_id, int32_t newZOrder);
 
   //// RECT ////
   void addRect(Rect& rect);
   Rect* getRect(uint32_t rect_id);
   void removeRect(uint32_t rect_id);
-  void changeZOrderRect(uint32_t rect_id, uint32_t newZOrder);
+  void changeZOrderRect(uint32_t rect_id, int32_t newZOrder);
   
   //// LABEL ////
   void addLabel(Label& label);
   Label* getLabel(uint32_t label_id);
   void removeLabel(uint32_t label_id);
-  void changeZOrderLabel(uint32_t label_id, uint32_t newZOrder);
+  void changeZOrderLabel(uint32_t label_id, int32_t newZOrder);
 
   //// SPRITE ////
   void addSprite(Sprite& sprite);
   Sprite* getSprite(uint32_t sprite_id);
   void removeSprite(uint32_t sprite_id);
-  void changeZOrderSprite(uint32_t sprite_id, uint32_t newZOrder);
+  void changeZOrderSprite(uint32_t sprite_id, int32_t newZOrder);
   
   /// Texture ///
   void addTexture(sf::Texture& texture, std::string texture_path);
@@ -56,28 +56,27 @@ class Scene{
   // 3 - Label
   // 4 - Sprite
   uint32_t checkCollision(sf::Vector2f& position, uint8_t *type);
-
   std::list<DrawableEntity*> getDrawableEntitiesByTag(uint32_t tag);
-
   void drawScene();
+  void update();
 
   std::unordered_map<std::string, sf::Texture*> map_texture_;
   
   std::unordered_map<uint32_t, Rect*> map_rect_;
-  std::map<uint32_t, std::unordered_map<uint32_t, Rect*>> z_order_map_rect_;
+  std::map<int32_t, std::unordered_map<uint32_t, Rect*>> z_order_map_rect_;
 
   std::unordered_map<uint32_t, Label*> map_label_;
-  std::map<uint32_t, std::unordered_map<uint32_t, Label*>> z_order_map_label_;
+  std::map<int32_t, std::unordered_map<uint32_t, Label*>> z_order_map_label_;
   
   std::unordered_map<uint32_t, Sprite*> map_sprite_;
-  std::map<uint32_t, std::unordered_map<uint32_t, Sprite*>> 
+  std::map<int32_t, std::unordered_map<uint32_t, Sprite*>> 
     z_order_map_sprite_;
   
   std::unordered_map<uint32_t, Background*> map_background_;
-  std::map<uint32_t, std::unordered_map<uint32_t, Background*>> 
+  std::map<int32_t, std::unordered_map<uint32_t, Background*>> 
     z_order_map_background_;
 
-  std::set<uint32_t> z_order_levels;
+  std::set<int32_t> z_order_levels;
 
   Pool& POOL = Pool::instance();
  private:

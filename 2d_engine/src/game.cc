@@ -9,36 +9,23 @@
 #include <SFML/Graphics.hpp>
 
 Game::Game(){ }
-Game::~Game(){
-  POOL.free();
-}
+Game::~Game(){ }
 
 void Game::init(){
-  GM.game_over_ = false;
-  GM.is_editor_ = true;
+  GM.game_over_ = 0;
+  GM.is_editor_ = 1;
   ImGui::SFML::Init(*GM.window_->sfml_window_);
   POOL.init();
 
-  GM.scene_ = new Scene();  
-
-  
-  sf::Texture texture;
-  texture.loadFromFile("../data/enemy.png");
-  Sprite *sprite_test = POOL.getSprite();
-  sprite_test->init(0,0,
-    0,1,1,
-    texture);
-
-    GM.scene_->addSprite(*sprite_test);
+  GM.scene_ = new Scene();
 }
 
 void Game::finish(){
   // TODO: release all the memory
-
-  // TODO: say goodbye
+  delete GM.scene_;
+  POOL.free();
   ImGui::SFML::Shutdown();
 }
-
 
 void Game::mainLoop(){
   init();
@@ -60,6 +47,7 @@ void Game::mainLoop(){
 
 void Game::processInput(){
   // Eventos de input
+
   //We check sfml and imgui events
   while (GM.window_->sfml_window_->pollEvent(GM.window_->event_)){
     ImGui::SFML::ProcessEvent(GM.window_->event_);
@@ -72,18 +60,27 @@ void Game::processInput(){
         GM.window_->event_.mouseButton.button == sf::Mouse::Left ) {
       GM.mouse_status_ = MouseStatus::kReleased;
     }
-  if (GM.window_->event_.type == sf::Event::Closed) {
-    GM.window_->sfml_window_->close();
-    GM.game_over_ = true;
-  }
-  }  
-
-  if(!GM.window_->isOpen()){
-    GM.game_over_ = true;
+    if (GM.window_->event_.type == sf::Event::Closed) {
+      GM.window_->sfml_window_->close();
+      GM.game_over_ = 1;
+    }
+    if(GM.window_->event_.type == sf::Event::KeyPressed){  
+      // Exit if press ESC    
+      if (GM.window_->event_.key.code == sf::Keyboard::Escape)
+      {
+        GM.window_->sfml_window_->close();
+        GM.game_over_ = 1;
+      }
+    }
   }
 }
 
 void Game::updateEditor(){
+  // If window is close then finish the excution
+  if(!GM.window_->isOpen()){
+    GM.game_over_ = 1;
+  }
+
   // Actualizar estados
   if(GM.status_ui_ == UiStatus::kDraw){
     if(GM.mouse_status_ == MouseStatus::kPressed){
@@ -180,24 +177,17 @@ void Game::updateEditor(){
                      0,1,1,
                      "Hello world", GM.arial_);
     }
-    
   }
   
   ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
   // TODO: calculate delta
-  // TODO: Check input value
-
-  // TODO: Call the rest of update
 }
 
 void Game::renderEditor(){
-  // TODO: Frameskip control
-  // TODO: call the rest of draws
   //We render the UI
   renderUI();
   // render
   GM.window_->clear();
-
   GM.scene_->drawScene();  
 
   ImGui::SFML::Render(*GM.window_->sfml_window_);
@@ -208,14 +198,17 @@ void Game::updateGame(){
   //We are still rendering a part of the UI, so we need the update to be 
   //effective
   ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
+  
+  // TODO: Check game input value
+  GM.scene_->update();  
 }
 
 void Game::renderGame(){  
   //Only part of the UI that needs to be displayed while we are at game mode
   UiStartGameMenu();
   GM.window_->clear();
-
   GM.scene_->drawScene(); 
+
   ImGui::SFML::Render(*GM.window_->sfml_window_);
   GM.window_->display();
 }
