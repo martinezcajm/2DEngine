@@ -8,8 +8,6 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Graphics.hpp>
 
-sf::Font font;
-
 Game::Game(){ }
 Game::~Game(){
   POOL.free();
@@ -233,11 +231,10 @@ void Game::updateEditor(){
       GM.mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(*GM.window_->sfml_window_));
       GM.scene_->addLabel(*tmpLabel);
-      font.loadFromFile("../data/fonts/arial.ttf");
       tmpLabel->init(255,0,0,255,
                      GM.mouse_position_.x,GM.mouse_position_.y,
                      0,1,1,
-                     "Hello world", font);
+                     "Hello world", GM.arial_);
     }
     
   }
@@ -380,11 +377,18 @@ void Game::UiLoadRectValuesEdit(Rect &rect){
 void Game::UiLoadLabelValuesEdit(Label &label){
   UiLoadCommonValuesEdit(label);
   if (ImGui::TreeNode("label")){
-    ImGui::InputInt("font size", &label.font_size_, 1, 1);
     ImGui::InputText("text", label.text_, 50);
-    const char* listbox_items[] = { "Arial", "Verdana" };
-    static int listbox_item_current = 1;
-    ImGui::ListBox("font", &listbox_item_current, listbox_items, 2, 4);
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("Font")){
+    ImGui::InputInt("font size", &label.font_size_, 1, 1);
+    if (ImGui::Button("Arial")) {
+      label.set_font(GM.arial_);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Verdana")) {
+      label.set_font(GM.verdana_);
+    }
     ImGui::TreePop();
   }
 }

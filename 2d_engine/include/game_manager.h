@@ -54,12 +54,12 @@ public:
   Sprite *sprite_test_;
   sf::Texture *texture_;
   sf::Vector2f mouse_position_;
-  sf::Vector2f draw_origin_point_;
-  sf::Clock deltaClock_;
-  Rect* drawing_rect_;
-  UiStatus status_ui_;
-  UiEditType edit_type_ui_;
-  MouseStatus mouse_status_;
+  sf::Vector2f draw_origin_point_; //position for drawing rects 
+  sf::Clock deltaClock_; //delta clock used for the UI updates
+  Rect* drawing_rect_; //pointer to a rect that is being drawn at screen
+  UiStatus status_ui_; //active mode of UI
+  UiEditType edit_type_ui_; //edition type of UI
+  MouseStatus mouse_status_; //mouse status for the UI
   //Selection items for UI
   uint8_t selected_type_;
   uint32_t selected_id_;
@@ -67,6 +67,10 @@ public:
   Label *label_selection_;
   Sprite *sprite_selection_;
   Background *background_selection_;
+  //Fonts supported by the app 
+  //TODO charge them through an ini file
+  sf::Font arial_;
+  sf::Font verdana_;
 };
 
 #endif
