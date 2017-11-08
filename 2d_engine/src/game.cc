@@ -453,6 +453,24 @@ void Game::UiLoadMenu(){
         }
       }
     }
+    if (ImGui::Button("Sprite")) {
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the sprite",
+          "../data/",
+          1,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Sprite *tmp_sprite = POOL.getBackground();
+        //If the limit of labels hasn't been reached
+        if(tmp_sprite != nullptr){
+          GM.scene_->addSprite(*tmp_sprite);
+          tmp_sprite->init(0,0,
+                           0,1,1,
+                           path);
+        }
+      }
+    }
     ImGui::TreePop();
   }
   ImGui::End();
