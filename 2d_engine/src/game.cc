@@ -126,10 +126,10 @@ void Game::processInput(){
         GM.window_->event_.mouseButton.button == sf::Mouse::Left ) {
       GM.mouse_status_ = MouseStatus::kReleased;
     }
-	if (GM.window_->event_.type == sf::Event::Closed) {
-		GM.window_->sfml_window_->close();
-		GM.game_over_ = true;
-	}
+  if (GM.window_->event_.type == sf::Event::Closed) {
+    GM.window_->sfml_window_->close();
+    GM.game_over_ = true;
+  }
   }  
 
   if(!GM.window_->isOpen()){
@@ -223,13 +223,13 @@ void Game::updateEditor(){
   }else if(GM.status_ui_ == UiStatus::kWrite && 
            GM.mouse_status_ == MouseStatus::kPressed){
     GM.mouse_status_ = MouseStatus::kNothing;
-    Label *tmpLabel = POOL.getLabel();
+    Label *tmp_label = POOL.getLabel();
     //If the limit of labels hasn't been reached
-    if(tmpLabel != nullptr){
+    if(tmp_label != nullptr){
       GM.mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(*GM.window_->sfml_window_));
-      GM.scene_->addLabel(*tmpLabel);
-      tmpLabel->init(255,0,0,255,
+      GM.scene_->addLabel(*tmp_label);
+      tmp_label->init(255,0,0,255,
                      GM.mouse_position_.x,GM.mouse_position_.y,
                      0,1,1,
                      "Hello world", GM.arial_);
@@ -473,31 +473,50 @@ void Game::UiLoadMenu(){
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){
     if (ImGui::Button("Load")) {
-	  path = GM.native_dialog_->openFileDialog(
-        "Select the scene to load",
-        "../data/",
-        1,
-        filterPatternsJson,
-        NULL);
+      path = GM.native_dialog_->openFileDialog(
+          "Select the scene to load",
+          "../data/",
+          1,
+          filterPatternsJson,
+          NULL);
 
-	  if (path != "") {
-		  GM.scene_->loadScene(path);
-	  }
+      if (path != "") {
+        GM.scene_->loadScene(path);
+      }
     }
     ImGui::SameLine();
     if (ImGui::Button("Save")) {
       //GM.scene_->saveScene("scene.json");   
-
-	  path = GM.native_dialog_->saveFileDialog(
-		  "Save scene as",
-		  "../data/scene.json",
-		  1,
-		  filterPatternsJson,
-		  NULL);
-
-	  if (path != "") {
-		  GM.scene_->saveScene(path);
-	  }
+      path = GM.native_dialog_->saveFileDialog(
+          "Save scene as",
+          "../data/scene.json",
+          1,
+          filterPatternsJson,
+          NULL);
+      if (path != "") {
+        GM.scene_->saveScene(path);
+      }
+    }
+    ImGui::TreePop();
+  }
+  if(ImGui::TreeNode("Graphics creation")){
+    if (ImGui::Button("Background")) {
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the background",
+          "../data/",
+          1,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Background *tmp_bg = POOL.getBackground();
+        //If the limit of labels hasn't been reached
+        if(tmp_bg != nullptr){
+          GM.scene_->addBackground(*tmp_bg);
+          tmp_bg->init(path,
+                       GM.window_->sfml_window_->getSize().x,
+                       GM.window_->sfml_window_->getSize().y);
+        }
+      }
     }
     ImGui::TreePop();
   }

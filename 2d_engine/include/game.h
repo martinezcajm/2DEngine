@@ -77,6 +77,7 @@ class  Game{
   std::string path = "";
   bool game_over;
   char const *filterPatternsJson[1] = { "*.json" };
+  char const *kFilterPatternsImage[1] = { "*.png" };
  private:
   Game(const Game& other){};
 };
