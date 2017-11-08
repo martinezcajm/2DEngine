@@ -69,7 +69,8 @@ class  Window{
  private:
   Window(const sf::Vector2u size, const sf::String& title, 
          unsigned int frameRateLimit);
-  Window() {};
+  Window();
+  ~Window() {};
   Window(const Window& other){};
 
   static uint8_t total_windows_;

@@ -36,8 +36,20 @@ typedef enum MouseStatus
 
 class GameManager {
 private:
+  /** @Contruct the GameManager
+  *
+  * Constructor of the GameManager
+  *
+  * @return void
+  */
   GameManager();
   GameManager(const GameManager& other){};
+  /** @Destruct the GameManager
+  *
+  * Destructor of the GameManager
+  *
+  * @return void
+  */
   ~GameManager(){};
 
 public:
