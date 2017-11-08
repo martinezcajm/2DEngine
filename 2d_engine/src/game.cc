@@ -86,8 +86,6 @@ void Game::init(){
   position.x = 100;
   position.y = 200;
   GM.scene_->checkCollision(position, &i);
-  GM.scene_->saveScene("scene.json");
-  GM.scene_->loadScene("scene.json");
 }
 
 void Game::finish(){
@@ -447,10 +445,30 @@ void Game::UiLoadMenu(){
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){
     if (ImGui::Button("Load")) {
-      
+	  path = GM.native_dialog_->openFileDialog(
+        "Select the scene to load",
+        "../data/",
+        1,
+        filterPatternsJson,
+        NULL);
+
+	  if (path != "") {
+		  GM.scene_->loadScene(path);
+	  }
     }
     if (ImGui::Button("Save")) {
-      
+      //GM.scene_->saveScene("scene.json");   
+
+	  path = GM.native_dialog_->saveFileDialog(
+		  "Save scene as",
+		  "../data/scene.json",
+		  1,
+		  filterPatternsJson,
+		  NULL);
+
+	  if (path != "") {
+		  GM.scene_->saveScene(path);
+	  }
     }
     ImGui::TreePop();
   }

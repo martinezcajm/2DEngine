@@ -74,7 +74,9 @@ class  Game{
   
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
-  bool game_over; 
+  std::string path = "";
+  bool game_over;
+  char const *filterPatternsJson[1] = { "*.json" };
  private:
   Game(const Game& other){};
 };

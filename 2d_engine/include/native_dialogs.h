@@ -19,5 +19,7 @@ class Native_dialogs{
     const char *singleFilterDescription);
   
   const char *selectFolderDialog(const char *title, const char *defaultPath);
+ private:
+  const char * ret;
 };
 #endif

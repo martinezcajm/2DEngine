@@ -20,6 +20,8 @@ GameManager::GameManager(){
   label_selection_ = nullptr;
   sprite_selection_ = nullptr;
   background_selection_ = nullptr;
+
+  native_dialog_ = new Native_dialogs();
 }
 
 GameManager& GameManager::instance(){
