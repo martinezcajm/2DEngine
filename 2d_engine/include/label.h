@@ -72,7 +72,8 @@ class Label : public DrawableEntity{
   * @return Label* returns the label created or nullptr if the maximum of
   * labels has been reached
   */
-  static Label* Label::CreateLabel();
+  //static Label* Label::CreateLabel();
+  static Label* CreateLabel();
   /** @Checks if a point collides with the label
   *
   * Checks if the point passed by reference collides with the label.

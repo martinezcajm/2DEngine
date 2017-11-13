@@ -516,6 +516,7 @@ void Game::UiLoadMenu(){
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){
     if (ImGui::Button("Load")) {
+      GM.scene_->loadScene("../data/scene.json", GM.arial_);
       std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select the scene to load",
@@ -523,7 +524,6 @@ void Game::UiLoadMenu(){
           1,
           kFilterPatternsJson,
           NULL);
-
       if (path != "") {
         GM.scene_->loadScene(path, GM.arial_);
       }

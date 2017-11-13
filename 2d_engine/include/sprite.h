@@ -93,7 +93,9 @@ class Sprite : public DrawableEntity{
   * @return Sprite* returns the sprite created or nullptr if the maximum of
   * sprites has been reached
   */
-  static Sprite* Sprite::CreateSprite();
+  // GUSTAVO: Extra qualifications are not needed
+  //static Sprite* Sprite::CreateSprite();
+  static Sprite* CreateSprite();
   /** @Checks if a point collides with the sprite
   *
   * Checks if the point passed by reference collides with the sprite.

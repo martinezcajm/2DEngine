@@ -60,7 +60,9 @@ class Background : public Sprite{
   * @return Background* returns the background created or nullptr if the 
   * maximum of sprites has been reached
   */
-  static Background* Background::CreateBackground();
+  // GUSTAVO: Extra qualifications are not needed
+  //static Background* Background::CreateBackground();
+  static Background* CreateBackground();
   /** @Resets the values of the background
   *
   * Sets the attributes of the background to a default value

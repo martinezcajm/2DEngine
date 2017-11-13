@@ -70,7 +70,9 @@ class Rect : public DrawableEntity{
   * @return Rect* returns the rect created or nullptr if the maximum of rects 
   *has been reached
   */
-  static Rect* Rect::CreateRect();
+  // GUSTAVO: Extra qualifications are not needed
+  //static Rect* Rect::CreateRect();
+  static Rect* CreateRect();
   /** @Checks if a point collides with the rect
   *
   * Checks if the point passed by reference collides with the rect.
