@@ -11,14 +11,13 @@ Sprite::Sprite() : DrawableEntity() {
 }
 
 Sprite::~Sprite(){
-  if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
-    delete own_texture_;
-  }
+  release();
 }
 
 void Sprite::init(const float px, const float py,
                   const float rotation, const float scalex, const float scaley,
                   const sf::Texture &texture){
+  release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   sprite_.setTexture(texture);
   origin_ = SpriteOrigin::kSpriteOrigin_Handler;
@@ -27,6 +26,7 @@ void Sprite::init(const float px, const float py,
 void Sprite::init(const float px, const float py,
                   const float rotation, const float scalex, const float scaley,
                   const sf::Texture& texture, uint8_t &error_ocurred){
+  release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   error_ocurred = 0;
   //We invoke the SFML copy constructor of texture
@@ -43,6 +43,7 @@ uint8_t Sprite::init(const float px, const float py,
                      const float rotation, const float scalex, 
                      const float scaley,
                      const std::string &file_path){
+  release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   own_texture_ = new sf::Texture();
   if(own_texture_ == nullptr) return 1;
@@ -72,12 +73,22 @@ Sprite* Sprite::CreateSprite(){
 
 //TODO externalizar accion release y usarlo en los init
 void Sprite::unuse(){
-  if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
+  /*if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
     delete own_texture_;
     own_texture_ = nullptr;
   }
-  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;
+  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;*/
+  release();
   DrawableEntity::unuse();
+}
+
+void Sprite::release(){
+  if(origin_ != kSpriteOrigin_Unknown && origin_ != kSpriteOrigin_Handler &&
+     own_texture_ != nullptr){
+    delete own_texture_;
+  }
+  own_texture_ = nullptr;
+  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;
 }
 
 SpriteOrigin Sprite::origin(){

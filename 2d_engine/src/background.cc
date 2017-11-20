@@ -30,7 +30,9 @@ uint8_t Background::init(const std::string &file_path,
 }
 
 void Background::draw(sf::RenderWindow &window){
-  window.draw(sprite_);
+  if(active_){
+    window.draw(sprite_);
+  }
 }
 
 Background* Background::CreateBackground(){

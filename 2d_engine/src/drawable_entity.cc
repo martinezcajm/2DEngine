@@ -42,12 +42,14 @@ void DrawableEntity::move(const float px, const float py){
 void DrawableEntity::drawWithTransform(sf::RenderWindow &window,
                                        const sf::Drawable &entity,
                                        const sf::Vector2f &rotation_origin){
-  sf::Transform t;
-  t.translate(position_);
-  //We indicate the rotation with the origin point from which it will rotate.
-  t.rotate(rotation_, rotation_origin);
-  t.scale(scale_);
-  window.draw(entity, t);
+  if(active_){
+    sf::Transform t;
+    t.translate(position_);
+    //We indicate the rotation with the origin point from which it will rotate.
+    t.rotate(rotation_, rotation_origin);
+    t.scale(scale_);
+    window.draw(entity, t);
+  }
 }
 
 bool DrawableEntity::checkCollision(const sf::Vector2f &position){

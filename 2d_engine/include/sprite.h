@@ -148,7 +148,13 @@ class Sprite : public DrawableEntity{
   //A texture owned only by this sprite, it will be freed by the sprite ones
   //it's life ends (not necessarily destruction)
   sf::Texture *own_texture_;
-
+  /** @brief releases the texture of the sprite
+  *
+  * Releases the texture of the sprite in case it's origin allocated memory.
+  *
+  * @return void
+  */
+  void release();
  private:
   SpriteOrigin origin_;
   
