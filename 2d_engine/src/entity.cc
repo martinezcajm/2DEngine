@@ -10,7 +10,7 @@ Entity::Entity() {
   total_ids_ ++;
 }
 
-Entity::~Entity(){ }
+/*Entity::~Entity(){ }*/
 
 Entity::Entity(const Entity& o) {
   tag_ = o.tag_;
@@ -31,6 +31,10 @@ void Entity::init(){
 
 uint32_t Entity::id(){
   return id_;
+}
+
+Entity::Type Entity::type(){
+  return type_;
 }
 
 void Entity::unuse(){

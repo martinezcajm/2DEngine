@@ -5,10 +5,10 @@
 
 typedef enum SpriteOrigin
 {
-  kUnknown,
-  kMemory,
-  kImage,
-  kSpriteHandler
+  kSpriteOrigin_Unknown,
+  kSpriteOrigin_Memory,
+  kSpriteOrigin_Image,
+  kSpriteOrigin_Handler
 } SpriteOrigin;
 
 /** @Graphic entity Sprite
@@ -22,7 +22,7 @@ class Sprite : public DrawableEntity{
   *
   * In case the sprite stored it's own texture in the hip it needs to free it.
   */
-  ~Sprite();
+  virtual ~Sprite();
   /** @Initializes the sprite using a texture
   *
   * Initializes the position and transformations of a sprite using an 
@@ -82,7 +82,7 @@ class Sprite : public DrawableEntity{
   * @return void
   * @param window SFML RenderWindow passed by reference
   */
-  void draw(sf::RenderWindow &window);
+  virtual void draw(sf::RenderWindow &window) override;
   /** @Factory that creates sprites
   *
   * Checks that the number of sprites didn't pass the maxim amount established
@@ -93,16 +93,7 @@ class Sprite : public DrawableEntity{
   * @return Sprite* returns the sprite created or nullptr if the maximum of
   * sprites has been reached
   */
-  // GUSTAVO: Extra qualifications are not needed
-  //static Sprite* Sprite::CreateSprite();
   static Sprite* CreateSprite();
-  /** @Checks if a point collides with the sprite
-  *
-  * Checks if the point passed by reference collides with the sprite.
-  *
-  * @return bool returns true if the point collides and false if not.
-  */
-  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the sprite
   *
   * Sets the attributes of the sprite to a default value
@@ -110,7 +101,7 @@ class Sprite : public DrawableEntity{
   *
   * @return void
   */
-  void unuse();
+  virtual void unuse() override;
   /** @Getter for origin
   * Returns the origin of the texture, it will vary depending on how the 
   * sprite was initiallized
@@ -118,6 +109,21 @@ class Sprite : public DrawableEntity{
   * @return void
   */
   SpriteOrigin origin();
+  /** @brief Updates the sprite in the loop
+  *
+  * Implementation of the update interface
+  *
+  * @return void
+  */
+  virtual void update() override;
+  /** @brief gets the boundaries of the rect entity
+  *
+  * Implementation of the getBoundaries interface. Gets the boundaries of the
+  * Rect as an sf::FloatRect taking into account it's transformations.
+  *
+  * @return sf::FloatRect boundaries of the rect.
+  */
+  sf::FloatRect getBoundaries() override;
 
   static const uint8_t kMaxSprites = 50;
   sf::Sprite sprite_;

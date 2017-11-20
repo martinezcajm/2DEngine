@@ -16,7 +16,7 @@ class Rect : public DrawableEntity{
   *
   * @return void
   */
-  ~Rect();
+  virtual ~Rect();
   /** @Initializes the Rect
   *
   * Initializes the different values of a rect
@@ -50,7 +50,7 @@ class Rect : public DrawableEntity{
   * @return void
   * @param window SFML RenderWindow passed by reference
   */
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window) override;
   /** @Changes the size of the rect
   *
   * Sets the value of width and height for the rect to the ones indicated by 
@@ -70,16 +70,7 @@ class Rect : public DrawableEntity{
   * @return Rect* returns the rect created or nullptr if the maximum of rects 
   *has been reached
   */
-  // GUSTAVO: Extra qualifications are not needed
-  //static Rect* Rect::CreateRect();
   static Rect* CreateRect();
-  /** @Checks if a point collides with the rect
-  *
-  * Checks if the point passed by reference collides with the rect.
-  *
-  * @return bool returns true if the point collides and false if not.
-  */
-  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the rect
   *
   * Sets the attributes of the rect to a default value
@@ -87,7 +78,22 @@ class Rect : public DrawableEntity{
   *
   * @return void
   */
-  void unuse();
+  void unuse() override;
+  /** @brief Updates the rect in the loop
+  *
+  * Implementation of the update interface
+  *
+  * @return void
+  */
+  void update() override;
+  /** @brief gets the boundaries of the rect entity
+  *
+  * Implementation of the getBoundaries interface. Gets the boundaries of the
+  * Rect as an sf::FloatRect taking into account it's transformations.
+  *
+  * @return sf::FloatRect boundaries of the rect.
+  */
+  sf::FloatRect getBoundaries() override;
   
   static const uint8_t kMaxRects = 50;
   uint8_t is_solid_;

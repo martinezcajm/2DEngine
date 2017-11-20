@@ -17,7 +17,7 @@ class Background : public Sprite{
   *
   * @return void
   */
-  ~Background();
+  virtual ~Background();
   /** @Initializes the backgorund using a texture
   *
   * Initializes the width height and path of a background
@@ -30,14 +30,14 @@ class Background : public Sprite{
   */
   uint8_t init(const std::string &file_path, const uint32_t width, 
                const uint32_t height);
-  /** @Updates the background position
+  /** @brief Updates the background position
   *
   * Updates the position of the background in the x,y axis if they are 
-  *active
+  * active, implementation of the update interface
   *
   * @return void
   */
-  void update();
+  void update() override;
   /** @Draws the graphic entity Background
   *
   * Draws the background using SFML to the window passed by reference, note
@@ -47,7 +47,7 @@ class Background : public Sprite{
   * @return void
   * @param window SFML RenderWindow passed by reference
   */
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window) override;
   /** @Factory that creates backgrounds
   *
   * Checks that the number of sprites didn't pass the maxim amount established
@@ -60,8 +60,6 @@ class Background : public Sprite{
   * @return Background* returns the background created or nullptr if the 
   * maximum of sprites has been reached
   */
-  // GUSTAVO: Extra qualifications are not needed
-  //static Background* Background::CreateBackground();
   static Background* CreateBackground();
   /** @Resets the values of the background
   *
@@ -70,7 +68,7 @@ class Background : public Sprite{
   *
   * @return void
   */
-  void unuse();
+  void unuse() override;
 
   uint8_t scrolls_horizontally_;
   uint8_t scrolls_vertically_;

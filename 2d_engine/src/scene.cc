@@ -152,15 +152,17 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
       }
 
       if(error_code == 0){
-        if(j_sprite["origin_"] == SpriteOrigin::kSpriteHandler){ // init by handle
+        // init by handle
+        if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
             j_sprite["scale_"]["y"], *texture);
-        }else if(j_sprite["origin_"] == SpriteOrigin::kMemory){ // init by memory
+        // init by memory
+        }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
             j_sprite["scale_"]["y"], *texture, error_code);      
-        }else if(j_sprite["origin_"] == SpriteOrigin::kImage){
+        }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
             j_sprite["scale_"]["y"], texture_path);
@@ -198,7 +200,7 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
       uint8_t error_code = 0;
       std::string texture_path = j_background["texture_dir_"];
 
-      if(j_background["origin_"] == SpriteOrigin::kImage){
+      if(j_background["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
         error_code = background->init(texture_path,
                                       j_background["dimensions_"]["x"],
                                       j_background["dimensions_"]["y"]);

@@ -35,7 +35,7 @@ void Label::draw(sf::RenderWindow &window){
   sf::FloatRect boundaries = text.getLocalBounds();
   sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
                                   (boundaries.height/2)*scale_.y};
-  DrawableEntity::draw(window, text, rotation_origin);
+  DrawableEntity::drawWithTransform(window, text, rotation_origin);
 }
 
 void Label::set_font(const sf::Font  &font){
@@ -55,7 +55,18 @@ Label* Label::CreateLabel(){
   }
 }
 
-bool Label::checkCollision(const sf::Vector2f& position){
+
+void Label::unuse(){
+  font_size_ = 0;
+  memset(&text_, '\0', kTextMaxSize);
+  style_ = sf::Text::Regular;
+  font_ = nullptr;
+  DrawableEntity::unuse();
+}
+
+void Label::update(){}
+
+sf::FloatRect Label::getBoundaries(){
   sf::Text text(text_, *font_);
   text.setCharacterSize(font_size_);
   text.setStyle(style_);
@@ -69,15 +80,5 @@ bool Label::checkCollision(const sf::Vector2f& position){
   t.scale(scale_);
   
   //We apply the transformations we have done to our boundaries
-  boundaries = t.transformRect(boundaries);
-
-  return DrawableEntity::checkCollision(position, boundaries);
-}
-
-void Label::unuse(){
-  font_size_ = 0;
-  memset(&text_, '\0', kTextMaxSize);
-  style_ = sf::Text::Regular;
-  font_ = nullptr;
-  DrawableEntity::unuse();
+  return t.transformRect(boundaries);
 }

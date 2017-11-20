@@ -10,6 +10,12 @@
 */
 class Entity{
  public:
+  enum Type {
+    kRect = 0,
+    kBackground = 1,
+    kLabel = 2,
+    kSprite = 3
+  };
   /** @Entity constructor
   *
   * Base constructor of entity
@@ -23,7 +29,7 @@ class Entity{
   *
   * @return void
   */
-  ~Entity();
+  virtual ~Entity() = 0 {};
   /** @Entity copy constructor
   *
   * Personal Entity copy constructor taking into account the id.
@@ -47,19 +53,34 @@ class Entity{
   * @param tag unsigned int used to group entities
   */
   void init();
+  /** @brief Getter of the id
+  *
+  * Returns the value of the id
+  *
+  * @return uint32_t id of the entity
+  */
   uint32_t id();
   /** @Resets the values of the entity
   *
   * Sets the attributes of the object to return it to a pool and being able
-  * to reuse it later.
+  * to reuse it later. 
   *
   * @return void
   */
-  void unuse();
+  virtual void unuse();
+  /** @brief Getter of the type
+  *
+  * Returns the type of the entity
+  *
+  * @return Type type of the entity
+  */
+  Type type();
+
   //Data members
   uint32_t tag_;
   uint8_t active_;
-
+ protected:
+  Type type_;
  private:
   static uint32_t total_ids_;
   uint32_t id_;

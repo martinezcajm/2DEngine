@@ -39,7 +39,9 @@ void DrawableEntity::move(const float px, const float py){
    position_.y += py;
 }
 
-void DrawableEntity::draw(sf::RenderWindow &window, const sf::Drawable &entity,                        const sf::Vector2f &rotation_origin){
+void DrawableEntity::drawWithTransform(sf::RenderWindow &window,
+                                       const sf::Drawable &entity,
+                                       const sf::Vector2f &rotation_origin){
   sf::Transform t;
   t.translate(position_);
   //We indicate the rotation with the origin point from which it will rotate.
@@ -48,9 +50,8 @@ void DrawableEntity::draw(sf::RenderWindow &window, const sf::Drawable &entity, 
   window.draw(entity, t);
 }
 
-bool DrawableEntity::checkCollision(const sf::Vector2f &position,
-                                    const sf::FloatRect &boundaries){
-  return boundaries.contains(position);
+bool DrawableEntity::checkCollision(const sf::Vector2f &position){
+  return getBoundaries().contains(position);
 }
 
 void DrawableEntity::unuse(){

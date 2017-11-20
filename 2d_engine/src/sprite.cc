@@ -5,13 +5,13 @@ uint32_t Sprite::total_sprites_ = 1;
 
 Sprite::Sprite() : DrawableEntity() {
   own_texture_ = nullptr;
-  origin_ = SpriteOrigin::kUnknown;
+  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;
   total_sprites_ ++;
   texture_dir_ = "../data/fonts/arial.ttf";
 }
 
 Sprite::~Sprite(){
-  if(origin_ != kSpriteHandler && own_texture_ != nullptr){
+  if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
     delete own_texture_;
   }
 }
@@ -21,7 +21,7 @@ void Sprite::init(const float px, const float py,
                   const sf::Texture &texture){
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   sprite_.setTexture(texture);
-  origin_ = SpriteOrigin::kSpriteHandler;
+  origin_ = SpriteOrigin::kSpriteOrigin_Handler;
 }
 
 void Sprite::init(const float px, const float py,
@@ -36,7 +36,7 @@ void Sprite::init(const float px, const float py,
     return;
   } 
   sprite_.setTexture(*own_texture_);
-  origin_ = SpriteOrigin::kMemory;
+  origin_ = SpriteOrigin::kSpriteOrigin_Memory;
 }
 
 uint8_t Sprite::init(const float px, const float py,
@@ -48,7 +48,7 @@ uint8_t Sprite::init(const float px, const float py,
   if(own_texture_ == nullptr) return 1;
   own_texture_->loadFromFile(file_path);
   sprite_.setTexture(*own_texture_);
-  origin_ = SpriteOrigin::kImage;
+  origin_ = SpriteOrigin::kSpriteOrigin_Image;
   texture_dir_ = file_path;
   return 0;
 }
@@ -58,7 +58,7 @@ void Sprite::draw(sf::RenderWindow &window){
   sf::FloatRect boundaries = sprite_.getLocalBounds();
   sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
                                   (boundaries.height/2)*scale_.y};
-  DrawableEntity::draw(window, sprite_, rotation_origin);
+  DrawableEntity::drawWithTransform(window, sprite_, rotation_origin);
 }
 
 Sprite* Sprite::CreateSprite(){
@@ -70,8 +70,23 @@ Sprite* Sprite::CreateSprite(){
   }
 }
 
-bool Sprite::checkCollision(const sf::Vector2f& position){
+//TODO externalizar accion release y usarlo en los init
+void Sprite::unuse(){
+  if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
+    delete own_texture_;
+    own_texture_ = nullptr;
+  }
+  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;
+  DrawableEntity::unuse();
+}
 
+SpriteOrigin Sprite::origin(){
+  return origin_;
+}
+
+void Sprite::update(){}
+
+sf::FloatRect Sprite::getBoundaries(){
   sf::FloatRect boundaries = sprite_.getLocalBounds();
   sf::Vector2f rotation_origin = {(boundaries.width/2)*scale_.x,
                                   (boundaries.height/2)*scale_.y};
@@ -81,20 +96,5 @@ bool Sprite::checkCollision(const sf::Vector2f& position){
   t.scale(scale_);
   
   //We apply the transformations we have done to our boundaries
-  boundaries = t.transformRect(boundaries);
-
-  return DrawableEntity::checkCollision(position, boundaries);
-}
-
-void Sprite::unuse(){
-  if(origin_ != kSpriteHandler && own_texture_ != nullptr){
-    delete own_texture_;
-    own_texture_ = nullptr;
-  }
-  origin_ = SpriteOrigin::kUnknown;
-  DrawableEntity::unuse();
-}
-
-SpriteOrigin Sprite::origin(){
-  return origin_;
+  return t.transformRect(boundaries);
 }

@@ -41,7 +41,7 @@ void Rect::draw(sf::RenderWindow &window){
   rectangle.setOutlineColor(rgba_fill_);
   sf::Vector2f rotation_origin = {(dimensions_.x/2)*scale_.x
                                   ,(dimensions_.y/2)*scale_.y};
-  DrawableEntity::draw(window, rectangle, rotation_origin);
+  DrawableEntity::drawWithTransform(window, rectangle, rotation_origin);
 }
 
 void Rect::resize(const float width, const float height){
@@ -58,7 +58,20 @@ Rect* Rect::CreateRect(){
   }
 }
 
-bool Rect::checkCollision(const sf::Vector2f &position){
+void Rect::unuse(){
+  is_solid_ = 0;
+  dimensions_.x = 0;
+  dimensions_.y = 0;
+  rgba_fill_.r = 0;
+  rgba_fill_.g = 0;
+  rgba_fill_.b = 0;
+  rgba_fill_.a = 0;
+  DrawableEntity::unuse();
+}
+
+void Rect::update(){}
+
+sf::FloatRect Rect::getBoundaries(){
   sf::RectangleShape rectangle(dimensions_);
   rectangle.setOutlineThickness(2);
   sf::Vector2f rotation_origin = { (dimensions_.x / 2)*scale_.x,
@@ -69,18 +82,5 @@ bool Rect::checkCollision(const sf::Vector2f &position){
   t.scale(scale_);
   
   sf::FloatRect boundaries = rectangle.getLocalBounds();
-  boundaries = t.transformRect(boundaries);
-
-  return DrawableEntity::checkCollision(position, boundaries);
-}
-
-void Rect::unuse(){
-  is_solid_ = 0;
-  dimensions_.x = 0;
-  dimensions_.y = 0;
-  rgba_fill_.r = 0;
-  rgba_fill_.g = 0;
-  rgba_fill_.b = 0;
-  rgba_fill_.a = 0;
-  DrawableEntity::unuse();
+  return t.transformRect(boundaries);
 }

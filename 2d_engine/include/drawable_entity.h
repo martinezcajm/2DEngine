@@ -26,7 +26,7 @@ class DrawableEntity : public Entity{
   *
   * @return void
   */
-  ~DrawableEntity();
+  virtual ~DrawableEntity();
   /** @Initializes the drawable entity
   *
   * Initializes the drawable entity
@@ -54,6 +54,15 @@ class DrawableEntity : public Entity{
   * @param py quantity the entity will move in the y axis
   */
   void move(const float px, const float py);
+  /** @brief interface implementation of draw
+  *
+  * Abstract implementation of the draw method for their children, needs the
+  * window were the entity will be drawn
+  *
+  * @return void
+  * @param window window in wich the entity will be drawn.
+  */
+  virtual void draw(sf::RenderWindow &window) = 0;
   /** @brief draws a drawable entity
   *
   * this method is in charge of applying the transformations that are common
@@ -65,17 +74,23 @@ class DrawableEntity : public Entity{
   * @param entity entity that will be drawn.
   * @rotation_origin origin point from wich the rotation will be done.
   */
-  void draw(sf::RenderWindow &window, const sf::Drawable &entity, 
-            const sf::Vector2f &rotation_origin);
-  /** @Checks if a point collides with the entity
+  void drawWithTransform(sf::RenderWindow &window, const sf::Drawable &entity, 
+                         const sf::Vector2f &rotation_origin);
+  /** @brief Checks if a point collides with the entity
   *
   * Checks if the point passed by reference collides with the boundaries.
   *
   * @return bool returns true if the point collides and false if not.
+  * @param sf::Vector2f point to check if collides with the entity
   */
-  //TODO make checkCollision virtual
-  bool checkCollision(const sf::Vector2f &position,
-                       const sf::FloatRect &boundaries);
+  bool checkCollision(const sf::Vector2f &position);
+  /** @brief gets the boundaries of the drawable entity
+  *
+  * Definition of the getBoundaries interface.
+  *
+  * @return sf::FloatRect boundaries of the entity.
+  */
+  virtual sf::FloatRect getBoundaries() = 0;
   /** @Resets the values of the entity
   *
   * Sets the attributes of the object to return it to a pool and being able
@@ -83,7 +98,21 @@ class DrawableEntity : public Entity{
   *
   * @return void
   */
-  void unuse();
+  virtual void unuse() override;
+
+  /*virtual void set_position() = 0;
+  virtual void set_rotation() = 0;
+  virtual void set_scale(float scale) = 0;
+  virtual void set_size(float width, float height) = 0;
+  virtual void set_fill_color() = 0;*/
+  /** @brief interface Update method
+  *
+  * Definition of the update interface for the drawable entities
+  *
+  * @return void
+  */
+  virtual void update() = 0;
+
   
   int32_t z_order_;
   float rotation_;

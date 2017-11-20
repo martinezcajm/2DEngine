@@ -16,7 +16,7 @@ class Label : public DrawableEntity{
   *
   * @return void
   */
-  ~Label();
+  virtual ~Label();
   /** @Initializes the Label
   *
   * Initializes a label
@@ -45,7 +45,7 @@ class Label : public DrawableEntity{
   * @return void
   * @param window SFML RenderWindow passed by reference
   */
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window) override;
   /** @Setter for text value
   *
   * Changes  the text value of the label
@@ -72,15 +72,7 @@ class Label : public DrawableEntity{
   * @return Label* returns the label created or nullptr if the maximum of
   * labels has been reached
   */
-  //static Label* Label::CreateLabel();
   static Label* CreateLabel();
-  /** @Checks if a point collides with the label
-  *
-  * Checks if the point passed by reference collides with the label.
-  *
-  * @return bool returns true if the point collides and false if not.
-  */
-  bool checkCollision(const sf::Vector2f& position);
   /** @Resets the values of the label
   *
   * Sets the attributes of the label to a default value
@@ -88,7 +80,22 @@ class Label : public DrawableEntity{
   *
   * @return void
   */
-  void unuse();
+  void unuse() override;
+  /** @brief Updates the label in the loop
+  *
+  * Implementation of the update interface
+  *
+  * @return void
+  */
+  void update() override;
+  /** @brief gets the boundaries of the label entity
+  *
+  * Implementation of the getBoundaries interface. Gets the boundaries of the
+  * Label as an sf::FloatRect taking into account it's transformations.
+  *
+  * @return sf::FloatRect boundaries of the label.
+  */
+  sf::FloatRect getBoundaries() override;
   
   static const uint8_t kMaxLabels = 50;
   static const uint8_t kTextMaxSize = 50;
