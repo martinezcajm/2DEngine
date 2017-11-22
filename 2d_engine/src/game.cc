@@ -555,7 +555,7 @@ void Game::UiLoadMenu(){
           NULL);
       if (path != "") {
         Background *tmp_bg = POOL.getBackground();
-        //If the limit of labels hasn't been reached
+        //If the limit of backgrounds hasn't been reached
         if(tmp_bg != nullptr){
           GM.scene_->addBackground(*tmp_bg);
           tmp_bg->init(path,
@@ -573,8 +573,8 @@ void Game::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
-        Sprite *tmp_sprite = POOL.getBackground();
-        //If the limit of labels hasn't been reached
+        Sprite *tmp_sprite = POOL.getSprite();
+        //If the limit of sprites hasn't been reached
         if(tmp_sprite != nullptr){
           GM.scene_->addSprite(*tmp_sprite);
           tmp_sprite->init(0,0,
