@@ -9,6 +9,20 @@
 
 class UserInterface{
  public:
+  /** @brief Contructor of the UI
+  *
+  * Contructor of the UI
+  *
+  * @return *UserInterface
+  */
+  UserInterface();
+  /** @brief Destroys the UI
+  *
+  * Destructor of the UI
+  *
+  * @return void
+  */
+  ~UserInterface();
   /** @Renders the UI
   *
   * Function in charge of rendering the UI

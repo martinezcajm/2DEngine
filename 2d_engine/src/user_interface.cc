@@ -7,6 +7,10 @@
 #include "user_interface.h"
 
 
+UserInterface::UserInterface(){};
+
+UserInterface::~UserInterface(){};
+
 void UserInterface::renderUI(){
   UiLoadMenu();    
   UiStartGameMenu();
