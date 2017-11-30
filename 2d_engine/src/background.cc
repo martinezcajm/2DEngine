@@ -4,6 +4,7 @@
 Background::Background() : Sprite(){
   speed_.x = 0;
   speed_.y = 0;
+  type_ = kBackground;
 }
 
 Background::~Background(){ }

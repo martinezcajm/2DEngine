@@ -12,6 +12,7 @@ Rect::Rect() : DrawableEntity() {
   rgba_fill_.b = 0;
   rgba_fill_.a = 0;
   total_rects_ ++;
+  type_ = kRect;
 }
 
 Rect::~Rect(){ }

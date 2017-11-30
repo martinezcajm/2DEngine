@@ -11,6 +11,7 @@ Label::Label() : DrawableEntity() {
   style_ = sf::Text::Regular;
   font_ = nullptr;
   total_labels_ ++;
+  type_ = kLabel;
 }
 
 Label::~Label(){ }
