@@ -76,7 +76,7 @@ class UserInterface{
   * @param event 
   */
   void processInput(sf::RenderWindow &window, sf::Event &event);
-
+  
   void update(sf::RenderWindow &window);
 
   /** @Loads the edit values of Drawable entity

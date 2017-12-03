@@ -127,7 +127,7 @@ void UserInterface::update(sf::RenderWindow &window){
       //no sense in moving it
     }else if(GM.selected_type_ == 2){
       GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
-      if(GM.status_ui_ == UiStatus::kSelection){
+      if(status_ui_ == kSelection){
         edit_type_ui_ = kRect;
         GM.background_selection_ = nullptr;
         GM.label_selection_ = nullptr;
