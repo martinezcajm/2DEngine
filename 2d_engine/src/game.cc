@@ -16,9 +16,10 @@ Game::~Game(){ }
 void Game::init(){
   GM.game_over_ = 0;
   GM.is_editor_ = 1;
-  ImGui::SFML::Init(*GM.window_->sfml_window_);
+  //ImGui::SFML::Init(*GM.window_->sfml_window_);
   POOL.init();
   ui_ = new UserInterface();
+  ui_->init(*GM.window_->sfml_window_);
 
   GM.scene_ = new Scene();
   //TODO Right now the UI only allows to create sprite by image, but the 
@@ -39,15 +40,15 @@ void Game::finish(){
   delete GM.scene_;
   delete ui_;
   POOL.free();
-  ImGui::SFML::Shutdown();
+  //ImGui::SFML::Shutdown();
 }
 
 void Game::mainLoop(){
   init();
 
   while(!GM.game_over_){
-    processInput();
-
+    //processInput();
+    ui_->processInput(*GM.window_->sfml_window_, GM.window_->event_);
     if(GM.is_editor_){
       updateEditor();
       renderEditor();
@@ -60,7 +61,7 @@ void Game::mainLoop(){
   finish();
 }
 
-void Game::processInput(){
+/*void Game::processInput(){
   // Eventos de input
 
   //We check sfml and imgui events
@@ -88,14 +89,15 @@ void Game::processInput(){
       }
     }
   }
-}
+}*/
 
 void Game::updateEditor(){
   // If window is close then finish the excution
   if(!GM.window_->isOpen()){
     GM.game_over_ = 1;
   }
-
+  ui_->update(*GM.window_->sfml_window_);
+  /*
   // Actualizar estados
   if(GM.status_ui_ == UiStatus::kDraw){
     if(GM.mouse_status_ == MouseStatus::kPressed){
@@ -218,18 +220,19 @@ void Game::updateEditor(){
     }
   }
   
-  ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
+  ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());*/
   // TODO: calculate delta
 }
 
 void Game::renderEditor(){
-  //We render the UI
-  ui_->renderUI();
+  
   // render
   GM.window_->clear();
   GM.scene_->drawScene();  
+  //We render the UI
+  ui_->renderUI(*GM.window_->sfml_window_);
 
-  ImGui::SFML::Render(*GM.window_->sfml_window_);
+  //ImGui::SFML::Render(*GM.window_->sfml_window_);
   GM.window_->display();
 }
 
