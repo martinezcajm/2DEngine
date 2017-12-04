@@ -126,7 +126,7 @@ class UserInterface{
   * 
   */
   void UiLoadMenu();
-  /** @Loads the game mode menu
+  /** @brief Loads the game mode menu
   *
   * Only part of the UI that will be shown in game mode, this allows us to
   * change between game mode and edit mode
@@ -135,6 +135,14 @@ class UserInterface{
   * 
   */
   void UiStartGameMenu();
+  /** @brief Loads texture manager menu
+  *
+  * Shows the textures that were created for the scene
+  *
+  * @return void
+  * 
+  */
+  void UiTextureManager();
 
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
@@ -147,6 +155,7 @@ class UserInterface{
   UiStatus status_ui_; //active mode of UI
   UiEditType edit_type_ui_; //edition type of UI
   MouseStatus mouse_status_; //mouse status for the UI
+  uint8_t selected_texture_ = 1;
  private:
   char const *kFilterPatternsJson[1] = { "*.json" };
   char const *kFilterPatternsImage[3] = { "*.png","*.jpeg", "*.jpg" };

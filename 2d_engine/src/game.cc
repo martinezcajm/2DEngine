@@ -28,6 +28,8 @@ void Game::init(){
   //or by a texture Test case to check it works, the first sprite loses it's
   //texture after the scope and the last one doesn't as it stores a copy of it 
   /*
+  sf::Texture texture;
+  texture.loadFromFile("../data/enemy.png");
   GM.scene_->addSprite(*sprite_test);
   Sprite *sprite_test2 = POOL.getSprite();
   uint8_t error;

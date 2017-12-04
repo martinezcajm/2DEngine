@@ -5,6 +5,7 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 #include "user_interface.h"
+//#include <SFML/Graphics.hpp>
 
 
 UserInterface::UserInterface(){};
@@ -185,6 +186,7 @@ void UserInterface::update(sf::RenderWindow &window){
 void UserInterface::renderUI(sf::RenderWindow &window){
   UiLoadMenu();    
   UiStartGameMenu();
+  UiTextureManager();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
     static int32_t ui_z_order = 0;
@@ -521,3 +523,43 @@ void UserInterface::UiLoadMenu(){
   }
   ImGui::End();
 }
+
+void UserInterface::UiTextureManager(){
+  ImGui::Begin("Textures");
+  const char* listbox_items[] = { "Texture1", "Texture2", "Texture3"};
+            static int listbox_item_current = 1;
+            ImGui::ListBox("", &listbox_item_current, listbox_items, 3, 3);
+  if (ImGui::Button("Create Texture")) {
+    std::string path = "";
+    path = GM.native_dialog_->openFileDialog(
+        "Select an image for the texture",
+        "../data/",
+        3,
+        kFilterPatternsImage,
+        NULL);
+    if (path != "") {
+      sf::Texture *tmp_texture = nullptr;
+      tmp_texture = GM.scene_->getTexture(path);
+      if(tmp_texture == nullptr){
+        tmp_texture->loadFromFile(path);
+        GM.scene_->addTexture(*tmp_texture, path);
+      }else{
+        //The texture already exists. TODO open an error window
+      }
+    }
+  }
+  if(ImGui::Button("Sprite from texture")){
+
+  }
+  ImGui::End();
+}
+
+/*
+  sf::Texture texture;
+  texture.loadFromFile("../data/enemy.png");
+  GM.scene_->addSprite(*sprite_test);
+  Sprite *sprite_test2 = POOL.getSprite();
+  uint8_t error;
+  sprite_test2->init(300,400,0,1,1,texture,error);
+  GM.scene_->addSprite(*sprite_test2);
+  */
