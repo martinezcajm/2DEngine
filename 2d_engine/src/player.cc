@@ -1,7 +1,9 @@
 //Comments can be found at the header
 #include "player.h"
 
-Player::Player(){}
+Player::Player() : Sprite(){
+  type_ = kPlayer;
+}
 Player* Player::CreatePlayer(){  
   if(Sprite::total_sprites_ < kMaxSprites){
     Player* p_player = new Player();

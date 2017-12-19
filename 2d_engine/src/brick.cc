@@ -1,7 +1,9 @@
 //Comments can be found at the header
 #include "brick.h"
 
-Brick::Brick(){}
+Brick::Brick() : Rect(){
+  type_ = kBrick;
+}
 Brick* Brick::CreateBrick(){
   if(Rect::total_rects_ < kMaxRects){
     Brick* p_brick = new Brick();

@@ -1,7 +1,9 @@
 //Comments can be found at the header
 #include "wall.h"
 
-Wall::Wall(){}
+Wall::Wall() : Rect(){
+  type_ = kWall;
+}
 Wall* Wall::CreateWall(){
   if(Rect::total_rects_ < kMaxRects){
     Wall* p_wall = new Wall();

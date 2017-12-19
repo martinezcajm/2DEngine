@@ -1,7 +1,9 @@
 //Comments can be found at the header
 #include "ball.h"
 
-Ball::Ball(){}
+Ball::Ball() : Sprite(){
+  type_ = kBall;
+}
 Ball* Ball::CreateBall(){  
   if(Sprite::total_sprites_ < kMaxSprites){
     Ball* p_ball = new Ball();

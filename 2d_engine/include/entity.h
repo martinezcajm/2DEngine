@@ -17,7 +17,12 @@ class Entity{
     kRect = 0,
     kBackground = 1,
     kLabel = 2,
-    kSprite = 3
+    kSprite = 3,
+    kWall = 4,
+    kBrick = 5,
+    kBall = 6,
+    kPlayer = 7
+
   };
   /** @Entity constructor
   *
