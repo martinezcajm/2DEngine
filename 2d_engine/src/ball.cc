@@ -12,12 +12,13 @@ Ball* Ball::CreateBall(){
 }
 
 uint8_t Ball::init(const float px, const float py, 
-  const float scalex, const float scaley, const sf::Texture &texture,
-  const uint8_t speed_x, const uint8_t speed_y){
+  const float scalex, const float scaley,
+  const uint8_t speed_x, const uint8_t speed_y,
+  const sf::Texture &texture, const std::string &texture_path){
   
   uint8_t error = 0;
 
-  Sprite::init( px, py, 0.0f, scalex, scaley, texture);
+  Sprite::init( px, py, 0.0f, scalex, scaley, texture, texture_path);
   if(error) return error;
 
   speed_x_ = speed_x;

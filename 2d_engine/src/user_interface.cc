@@ -68,7 +68,7 @@ void UserInterface::update(sf::RenderWindow &window){
         ui_is_drawing_ = 0;
       }else{
         //We insert the rect to the scene
-        GM.scene_->addRect(*drawing_rect_);
+        GM.scene_->addDrawableEntity(*drawing_rect_);
         ui_is_drawing_ = 1;
         draw_origin_point_ = static_cast<sf::Vector2f>(
                       sf::Mouse::getPosition(window));
@@ -103,14 +103,14 @@ void UserInterface::update(sf::RenderWindow &window){
     mouse_status_ = kNothing;
     mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(window));
-    GM.selected_id_ = GM.scene_-> checkCollision(mouse_position_,
-                                                 &GM.selected_type_);
-      // 0 - nothing
+    GM.selected_id_ = GM.scene_-> checkCollision(mouse_position_);
+    //Get Drawable 
+    // 0 - nothing
       // 1 - Background
       // 2 - Rect
       // 3 - Label
       // 4 - Sprite
-    if(GM.selected_type_ == 0){
+    /*if(GM.selected_type_ == 0){
       edit_type_ui_ = UiEditType::kNull;
       GM.background_selection_ = nullptr;
       GM.rect_selection_ = nullptr;
@@ -161,10 +161,10 @@ void UserInterface::update(sf::RenderWindow &window){
         edit_type_ui_ = kMulti;
         GM.sprite_selection_->tag_ = (GM.sprite_selection_->tag_) ?
                                       0 : GM.selected_item_tag_;
-      }
-      
-    }
-  }else if(status_ui_ == kWrite && 
+      }      
+    }*/
+  }
+  else if(status_ui_ == kWrite && 
            mouse_status_ == kPressed){
     mouse_status_ = kNothing;
     Label *tmp_label = POOL.getLabel();
@@ -172,7 +172,7 @@ void UserInterface::update(sf::RenderWindow &window){
     if(tmp_label != nullptr){
       mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(window));
-      GM.scene_->addLabel(*tmp_label);
+      GM.scene_->addDrawableEntity(*tmp_label);
       tmp_label->init(255,0,0,255,
                      mouse_position_.x,mouse_position_.y,
                      0,1,1,

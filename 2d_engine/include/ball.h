@@ -25,13 +25,15 @@ class Ball : public Sprite{
   * @param py position y of the ball
   * @param scalex x scale value of the ball
   * @param scaley y scale value of the ball
-  * @param texture that will use the ball
   * @param speed_x speed of the ball in the x-axis
   * @param speed_y speed of the ball in the y-axis
+  * @param texture that will use the ball
+  * @param file_path image that will be used for the texture
   */
   uint8_t init(const float px, const float py, 
-            const float scalex, const float scaley, const sf::Texture &texture,
-            const uint8_t speed_x, const uint8_t speed_y);
+            const float scalex, const float scaley, 
+            const uint8_t speed_x, const uint8_t speed_y,
+            const sf::Texture &texture, const std::string &texture_path);
   
   /** @Factory that creates balls
   *

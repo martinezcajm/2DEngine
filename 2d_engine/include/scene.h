@@ -125,10 +125,8 @@ class Scene{
   * @return uint32_t Return the id of the first element that have a collision.
   *  Return 0 if any element have collision.
   * @param position The point to check the collision
-  * @param type The typeof element that colision. 0 - No colision, 
-  *  1 - Background, 2 - Rect, 3 - Label, 4 - Sprite
   */
-  uint32_t checkCollision(sf::Vector2f& position, uint8_t *type);
+  uint32_t checkCollision(sf::Vector2f& position);
   /** @Get a list of entities with a specific tag
   *
   *  Return the entities with the tag specified in params
