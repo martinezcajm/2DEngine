@@ -22,10 +22,10 @@ void UserInterface::renderUI(){
       ImGui::Text("The actual z-order is: %i", GM.rect_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderRect(GM.rect_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(GM.rect_selection_->id(),ui_z_order);
       }
       if (ImGui::Button("DeleteRect")) {
-        GM.scene_->removeRect(GM.rect_selection_->id());
+        GM.scene_->removeDrawableEntity(GM.rect_selection_->id());
         POOL.returnRect(*GM.rect_selection_);
         GM.rect_selection_ = nullptr;
         GM.edit_type_ui_ = UiEditType::kNull;
@@ -35,10 +35,10 @@ void UserInterface::renderUI(){
       ImGui::Text("The actual z-order is: %i", GM.label_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderLabel(GM.label_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(GM.label_selection_->id(),ui_z_order);
       }
       if (ImGui::Button("DeleteLabel")) {
-        GM.scene_->removeLabel(GM.label_selection_->id());
+        GM.scene_->removeDrawableEntity(GM.label_selection_->id());
         POOL.returnLabel(*GM.label_selection_);
         GM.label_selection_ = nullptr;
         GM.edit_type_ui_ = UiEditType::kNull;
@@ -48,10 +48,10 @@ void UserInterface::renderUI(){
       ImGui::Text("The actual z-order is: %i", GM.sprite_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderSprite(GM.sprite_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(GM.sprite_selection_->id(),ui_z_order);
       }
       if (ImGui::Button("DeleteSprite")) {
-        GM.scene_->removeSprite(GM.sprite_selection_->id());
+        GM.scene_->removeDrawableEntity(GM.sprite_selection_->id());
         POOL.returnSprite(*GM.sprite_selection_);
         GM.sprite_selection_ = nullptr;
         GM.edit_type_ui_ = UiEditType::kNull;
@@ -62,11 +62,11 @@ void UserInterface::renderUI(){
                   GM.background_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderBackground(GM.background_selection_->id(),
+        GM.scene_->changeZOrderDrawableEntity(GM.background_selection_->id(),
                                           ui_z_order);
       }
       if (ImGui::Button("DeleteBackground")) {
-        GM.scene_->removeBackground(GM.background_selection_->id());
+        GM.scene_->removeDrawableEntity(GM.background_selection_->id());
         POOL.returnBackground(*GM.background_selection_);
         GM.background_selection_ = nullptr;
         GM.edit_type_ui_ = UiEditType::kNull;
@@ -319,7 +319,7 @@ void UserInterface::UiLoadMenu(){
         Background *tmp_bg = POOL.getBackground();
         //If the limit of backgrounds hasn't been reached
         if(tmp_bg != nullptr){
-          GM.scene_->addBackground(*tmp_bg);
+          GM.scene_->addDrawableEntity(*tmp_bg);
           tmp_bg->init(path,
                        GM.window_->sfml_window_->getSize().x,
                        GM.window_->sfml_window_->getSize().y);
@@ -338,7 +338,7 @@ void UserInterface::UiLoadMenu(){
         Sprite *tmp_sprite = POOL.getSprite();
         //If the limit of sprites hasn't been reached
         if(tmp_sprite != nullptr){
-          GM.scene_->addSprite(*tmp_sprite);
+          GM.scene_->addDrawableEntity(*tmp_sprite);
           tmp_sprite->init(0,0,
                            0,1,1,
                            path);

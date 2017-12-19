@@ -106,7 +106,7 @@ void Game::updateEditor(){
         GM.ui_is_drawing_ = 0;
       }else{
         //We insert the rect to the scene
-        GM.scene_->addRect(*GM.drawing_rect_);
+        GM.scene_->addDrawableEntity(*GM.drawing_rect_);
         GM.ui_is_drawing_ = 1;
         GM.draw_origin_point_ = static_cast<sf::Vector2f>(
                       sf::Mouse::getPosition(*GM.window_->sfml_window_));
@@ -155,7 +155,8 @@ void Game::updateEditor(){
       GM.label_selection_ = nullptr;
       GM.sprite_selection_ = nullptr;
     }else if(GM.selected_type_ == 1){
-      GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
+      GM.background_selection_ = 
+        static_cast<Background*>(GM.scene_->getDrawableEntity(GM.selected_id_));
       if(GM.status_ui_ == UiStatus::kSelection){
         GM.edit_type_ui_ = UiEditType::kBackground;
         GM.rect_selection_ = nullptr;
@@ -165,7 +166,8 @@ void Game::updateEditor(){
       //We don't want to be able to multi select the background, as there's
       //no sense in moving it
     }else if(GM.selected_type_ == 2){
-      GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
+      GM.rect_selection_ = 
+        static_cast<Rect*>(GM.scene_->getDrawableEntity(GM.selected_id_));
       if(GM.status_ui_ == UiStatus::kSelection){
         GM.edit_type_ui_ = UiEditType::kRect;
         GM.background_selection_ = nullptr;
@@ -177,7 +179,8 @@ void Game::updateEditor(){
                                     0 : GM.selected_item_tag_;
       }
     } else if(GM.selected_type_ == 3){
-      GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
+      GM.label_selection_ =
+        static_cast<Label*>(GM.scene_->getDrawableEntity(GM.selected_id_));
       if(GM.status_ui_ == UiStatus::kSelection){
         GM.edit_type_ui_ = UiEditType::kLabel;
         GM.background_selection_ = nullptr;
@@ -189,7 +192,8 @@ void Game::updateEditor(){
                                      0 : GM.selected_item_tag_;
       }
     } else if(GM.selected_type_ == 4){
-      GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_); 
+      GM.sprite_selection_ = 
+        static_cast<Sprite*>(GM.scene_->getDrawableEntity(GM.selected_id_));
       if(GM.status_ui_ == UiStatus::kSelection){
         GM.edit_type_ui_ = UiEditType::kSprite;
         GM.background_selection_ = nullptr;
@@ -210,7 +214,7 @@ void Game::updateEditor(){
     if(tmp_label != nullptr){
       GM.mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(*GM.window_->sfml_window_));
-      GM.scene_->addLabel(*tmp_label);
+      GM.scene_->addDrawableEntity(*tmp_label);
       tmp_label->init(255,0,0,255,
                      GM.mouse_position_.x,GM.mouse_position_.y,
                      0,1,1,

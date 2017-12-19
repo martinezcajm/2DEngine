@@ -51,146 +51,44 @@ class Scene{
   */
   void saveScene(const std::string scene_path);
 
-  //// BACKGROUND ////
-  /** @Add a Background to the scene
+
+  //// DrawableEntity ////
+  /** @Add a DrawableEntity to the scene
   *
-  *  Add a Background in the mappings that form the scene
-  *
-  * @return void
-  * @param background Reference of the Background to add
-  */
-  void addBackground(Background& background);
-  /** @Get a Background from the scene
-  *
-  *  Returns the Background with the specified id from the scene
-  *
-  * @return Background Return the Background with the id specified
-  * @param background_id Id of the Background to return
-  */
-  Background* getBackground(const uint32_t background_id);
-  /** @Remove a Background of the scene
-  *
-  *  Remove the Background with the specified id of the scene
+  *  Add a DrawableEntity in the mappings that form the scene
   *
   * @return void
-  * @param background_id Id of the Background to remove
+  * @param drawable_entity Reference of the DrawableEntity to add
   */
-  void removeBackground(const uint32_t background_id);
-  /** @Change the z-order of a Background of the scene
+  void addDrawableEntity(DrawableEntity& drawable_entity);
+  /** @Get a DrawableEntity from the scene
   *
-  *  Change the z-order of a Background of the scene.
+  *  Returns the DrawableEntity with the specified id from the scene
+  *
+  * @return DrawableEntity Return the DrawableEntity with the id specified
+  * @param drawable_entity_id Id of the DrawableEntity to return
+  */
+  DrawableEntity* getDrawableEntity(const uint32_t drawable_entity_id);
+  /** @Remove a DrawableEntity of the scene
+  *
+  *  Remove the DrawableEntity with the specified id of the scene
   *
   * @return void
-  * @param background_id Id of the Background to change the z-order
-  * @param newZOrder New z-order of the Background
+  * @param drawable_entity_id Id of the DrawableEntity to remove
   */
-  void changeZOrderBackground(const uint32_t background_id, 
+  void removeDrawableEntity(const uint32_t drawable_entity_id);
+  /** @Change the z-order of a DrawableEntity of the scene
+  *
+  *  Change the z-order of a DrawableEntity of the scene.
+  *
+  * @return void
+  * @param drawable_entity_id Id of the DrawableEntity to change the z-order
+  * @param newZOrder New z-order of the DrawableEntity
+  */
+  void changeZOrderDrawableEntity(const uint32_t drawable_entity_id, 
     const int32_t newZOrder);
 
-  //// RECT ////
-  /** @Add a Rect to the scene
-  *
-  *  Add a Rect in the mappings that form the scene
-  *
-  * @return void
-  * @param rect Reference of the Rect to add
-  */
-  void addRect(Rect& rect);
-  /** @Get a Rect from the scene
-  *
-  *  Returns the Rect with the specified id from the scene
-  *
-  * @return Rect Return the Rect with the id specified
-  * @param rect_id Id of the Rect to return
-  */
-  Rect* getRect(const uint32_t rect_id);
-  /** @Remove a Rect of the scene
-  *
-  *  Remove the Rect with the specified id of the scene
-  *
-  * @return void
-  * @param rect_id Id of the Rect to remove
-  */
-  void removeRect(const uint32_t rect_id);
-  /** @Change the z-order of a Rect of the scene
-  *
-  *  Change the z-order of a Rect of the scene.
-  *
-  * @return void
-  * @param rect_id Id of the Rect to change the z-order
-  * @param newZOrder New z-order of the Rect
-  */
-  void changeZOrderRect(const uint32_t rect_id, const int32_t newZOrder);
-  
-  //// LABEL ////
-  /** @Add a Label to the scene
-  *
-  *  Add a Label in the mappings that form the scene
-  *
-  * @return void
-  * @param label Reference of the Label to add
-  */
-  void addLabel(Label& label);
-  /** @Get a Label from the scene
-  *
-  *  Returns the Label with the specified id from the scene
-  *
-  * @return Label Return the Label with the id specified
-  * @param label_id Id of the Label to return
-  */
-  Label* getLabel(const uint32_t label_id);
-  /** @Remove a Label of the scene
-  *
-  *  Remove the Label with the specified id of the scene
-  *
-  * @return void
-  * @param label_id Id of the Label to remove
-  */
-  void removeLabel(const uint32_t label_id);
-  /** @Change the z-order of a Label of the scene
-  *
-  *  Change the z-order of a Label of the scene.
-  *
-  * @return void
-  * @param label_id Id of the Label to change the z-order
-  * @param newZOrder New z-order of the Label
-  */
-  void changeZOrderLabel(const uint32_t label_id, const int32_t newZOrder);
 
-  //// SPRITE ////
-  /** @Add a Sprite to the scene
-  *
-  *  Add a Sprite in the mappings that form the scene
-  *
-  * @return void
-  * @param sprite Reference of the Sprite to add
-  */
-  void addSprite(Sprite& sprite);
-  /** @Get a Sprite from the scene
-  *
-  *  Returns the Sprite with the specified id from the scene
-  *
-  * @return Sprite Return the Sprite with the id specified
-  * @param sprite_id Id of the Sprite to return
-  */
-  Sprite* getSprite(const uint32_t sprite_id);
-  /** @Remove a Sprite of the scene
-  *
-  *  Remove the Sprite with the specified id of the scene
-  *
-  * @return void
-  * @param sprite_id Id of the Sprite to remove
-  */
-  void removeSprite(const uint32_t sprite_id);
-  /** @Change the z-order of a Sprite of the scene
-  *
-  *  Change the z-order of a Sprite of the scene.
-  *
-  * @return void
-  * @param sprite_id Id of the Sprite to change the z-order
-  * @param newZOrder New z-order of the Sprite
-  */
-  void changeZOrderSprite(const uint32_t sprite_id, const int32_t newZOrder);
   
   /// Texture ///
   /** @Add a Texture to the scene
@@ -257,20 +155,10 @@ class Scene{
 
  private:
   std::unordered_map<std::string, sf::Texture*> map_texture_;
-  
-  std::unordered_map<uint32_t, Rect*> map_rect_;
-  std::map<int32_t, std::unordered_map<uint32_t, Rect*>> z_order_map_rect_;
 
-  std::unordered_map<uint32_t, Label*> map_label_;
-  std::map<int32_t, std::unordered_map<uint32_t, Label*>> z_order_map_label_;
-  
-  std::unordered_map<uint32_t, Sprite*> map_sprite_;
-  std::map<int32_t, std::unordered_map<uint32_t, Sprite*>> 
-    z_order_map_sprite_;
-  
-  std::unordered_map<uint32_t, Background*> map_background_;
-  std::map<int32_t, std::unordered_map<uint32_t, Background*>> 
-    z_order_map_background_;
+  std::unordered_map<uint32_t, DrawableEntity*> map_drawable_entity_;
+  std::map<int32_t, std::unordered_map<uint32_t,DrawableEntity*>> 
+    z_order_map_drawable_entity_;
 
   std::set<int32_t> z_order_levels;
 

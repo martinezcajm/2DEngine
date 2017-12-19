@@ -100,7 +100,7 @@ class Rect : public DrawableEntity{
   //Contains the width and height
   sf::Vector2f dimensions_;
   sf::Color rgba_fill_;
- private:
+protected:
   /** @Rect constructor
   *
   * Rect constructor used by the factory to create rects
