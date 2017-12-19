@@ -32,7 +32,7 @@ class Player : public Sprite{
   */
   void init(const float px, const float py, 
             const float scalex, const float scaley,
-            const uint8_t speed_x, const uint8_t speed_y,
+            const int32_t speed_x, const int32_t speed_y,
             const sf::Texture &texture, const std::string &texture_path);
   
   /** @Initializes the player using a buffer from memory for the texture
@@ -53,7 +53,7 @@ class Player : public Sprite{
   */
   void init(const float px, const float py, 
             const float scalex, const float scaley,
-            const uint8_t speed_x, const uint8_t speed_y,
+            const int32_t speed_x, const int32_t speed_y,
             const sf::Texture &texture, uint8_t &error_ocurred,
             const std::string &texture_path);
     
@@ -75,7 +75,7 @@ class Player : public Sprite{
   */
   uint8_t init(const float px, const float py, 
                const float scalex, const float scaley,
-               const uint8_t speed_x, const uint8_t speed_y,
+               const int32_t speed_x, const int32_t speed_y,
                const std::string &file_path);
 
 
@@ -100,8 +100,7 @@ class Player : public Sprite{
   */
   virtual void update() override;
   
-  uint8_t speed_x_;
-  uint8_t speed_y_;
+  sf::Vector2i speed_;
  protected:
   /** @Player constructor
   *
