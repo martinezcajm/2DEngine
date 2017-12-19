@@ -49,7 +49,7 @@ void Game::mainLoop(){
   init();
 
   while(!GM.game_over_){
-    //processInput();
+    processInput();
     //ui_->processInput(*GM.window_->sfml_window_, GM.window_->event_);
     if(GM.is_editor_){
       updateEditor();
@@ -63,7 +63,7 @@ void Game::mainLoop(){
   finish();
 }
 
-/*void Game::processInput(){
+void Game::processInput(){
   // Eventos de input
 
   //We check sfml and imgui events
@@ -91,7 +91,7 @@ void Game::mainLoop(){
       }
     }
   }
-}*/
+}
 
 void Game::updateEditor(){
   // If window is close then finish the excution
