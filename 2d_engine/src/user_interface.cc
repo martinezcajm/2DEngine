@@ -244,7 +244,7 @@ void UserInterface::renderUI(sf::RenderWindow &window){
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kWall){
-      //UiLoadBackgroundValuesEdit(*GM.background_selection_);
+      UiLoadRectValuesEdit(*GM.wall_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   GM.wall_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -252,10 +252,55 @@ void UserInterface::renderUI(sf::RenderWindow &window){
         GM.scene_->changeZOrderDrawableEntity(GM.wall_selection_->id(),
                                           ui_z_order);
       }
-      if (ImGui::Button("DeleteBackground")) {
+      if (ImGui::Button("DeleteWall")) {
         GM.scene_->removeDrawableEntity(GM.wall_selection_->id());
-        POOL.returnBackground(*GM.background_selection_);
-        GM.background_selection_ = nullptr;
+        POOL.returnWall(*GM.wall_selection_);
+        GM.wall_selection_ = nullptr;
+        edit_type_ui_ = kNull;
+      }
+    }else if(edit_type_ui_ == kBrick){
+      UiLoadRectValuesEdit(*GM.brick_selection_ );
+      ImGui::Text("The actual z-order is: %i", 
+                  GM.brick_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderDrawableEntity(GM.brick_selection_->id(),
+                                          ui_z_order);
+      }
+      if (ImGui::Button("DeleteBrick")) {
+        GM.scene_->removeDrawableEntity(GM.brick_selection_->id());
+        POOL.returnBrick(*GM.brick_selection_);
+        GM.brick_selection_ = nullptr;
+        edit_type_ui_ = kNull;
+      }
+    }else if(edit_type_ui_ == kBall){
+      UiLoadCommonValuesEdit(*GM.ball_selection_  );
+      ImGui::Text("The actual z-order is: %i", 
+                  GM.ball_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderDrawableEntity(GM.ball_selection_->id(),
+                                          ui_z_order);
+      }
+      if (ImGui::Button("DeleteBall")) {
+        GM.scene_->removeDrawableEntity(GM.ball_selection_->id());
+        POOL.returnBall(*GM.ball_selection_);
+        GM.ball_selection_ = nullptr;
+        edit_type_ui_ = kNull;
+      }
+    }else if(edit_type_ui_ == kPlayer){
+      UiLoadCommonValuesEdit(*GM.player_selection_);
+      ImGui::Text("The actual z-order is: %i", 
+                  GM.player_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderDrawableEntity(GM.player_selection_->id(),
+                                          ui_z_order);
+      }
+      if (ImGui::Button("DeletePlayer")) {
+        GM.scene_->removeDrawableEntity(GM.player_selection_->id());
+        POOL.returnPlayer(*GM.player_selection_);
+        GM.player_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kMulti){
@@ -518,6 +563,25 @@ void UserInterface::UiLoadMenu(){
       std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select an image for the sprite",
+          "../data/",
+          3,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Sprite *tmp_sprite = POOL.getSprite();
+        //If the limit of sprites hasn't been reached
+        if(tmp_sprite != nullptr){
+          GM.scene_->addDrawableEntity(*tmp_sprite);
+          tmp_sprite->init(0,0,
+                           0,1,1,
+                           path);
+        }
+      }
+    }
+    if (ImGui::Button("Player")) {
+      std::string path = "";
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the player",
           "../data/",
           3,
           kFilterPatternsImage,

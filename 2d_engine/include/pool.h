@@ -158,14 +158,6 @@ class Pool{
   * @return void
   */
   void returnBackground(Background &background);
-  /** @brief Adds an existing background to the pool
-  *
-  * Recieves an existing background and resets it's value using the unuse 
-  * function of background
-  *
-  * @return void
-  */
-  void returnWall(Wall &wall);
   /** @brief Adds an existing wall to the pool
   *
   * Recieves an existing wall and resets it's value using the unuse 
@@ -173,11 +165,19 @@ class Pool{
   *
   * @return void
   */
-  void returnBrick(Brick &brick);
+  void returnWall(Wall &wall);
   /** @brief Adds an existing brick to the pool
   *
   * Recieves an existing brick and resets it's value using the unuse 
   * function of brick
+  *
+  * @return void
+  */
+  void returnBrick(Brick &brick);
+  /** @brief Adds an existing ball to the pool
+  *
+  * Recieves an existing ball and resets it's value using the unuse 
+  * function of ball
   *
   * @return void
   */
