@@ -27,15 +27,19 @@ class UserInterface{
     kLabel,
     kSprite,
     kBackground,
-    kMulti
+    kMulti,
+    kWall,
+    kBrick,
+    kBall,
+    kPlayer
   };
 
-  enum MouseStatus
+  /*enum MouseStatus
   {
     kNothing,
     kPressed,
     kReleased
-  };
+  };*/
   /** @brief Contructor of the UI
   *
   * Contructor of the UI

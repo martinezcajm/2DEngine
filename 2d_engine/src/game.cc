@@ -50,7 +50,7 @@ void Game::mainLoop(){
 
   while(!GM.game_over_){
     //processInput();
-    ui_->processInput(*GM.window_->sfml_window_, GM.window_->event_);
+    //ui_->processInput(*GM.window_->sfml_window_, GM.window_->event_);
     if(GM.is_editor_){
       updateEditor();
       renderEditor();
