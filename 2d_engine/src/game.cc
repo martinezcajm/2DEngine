@@ -84,10 +84,31 @@ void Game::processInput(){
     }
     if(GM.window_->event_.type == sf::Event::KeyPressed){  
       // Exit if press ESC    
-      if (GM.window_->event_.key.code == sf::Keyboard::Escape)
-      {
+      if (GM.window_->event_.key.code == sf::Keyboard::Escape){
         GM.window_->sfml_window_->close();
         GM.game_over_ = 1;
+      }
+      else
+      {
+        // Player 1
+        if(GM.window_->event_.key.code == sf::Keyboard::Left){
+          GM.player1Left_ = 0;
+        }
+        if(GM.window_->event_.key.code == sf::Keyboard::Right){
+          GM.player1Right_ = 0;
+        }
+
+        // Player 2
+        if(GM.window_->event_.key.code == sf::Keyboard::A){
+          GM.player2Left_ = 0;
+        }
+        if(GM.window_->event_.key.code == sf::Keyboard::B){
+          GM.player2Right_ = 0;
+        }
+
+        if(GM.window_->event_.key.code == sf::Keyboard::Return){
+          GM.newGame_ = 0;
+        }         
       }
     }
   }
@@ -249,6 +270,9 @@ void Game::updateGame(){
   
   // TODO: Check game input value
   GM.scene_->update();  
+
+
+
 }
 
 void Game::renderGame(){  

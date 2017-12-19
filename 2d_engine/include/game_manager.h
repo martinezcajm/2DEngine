@@ -67,7 +67,6 @@ public:
   static GameManager& instance();
 
   // Elements of the game
-  uint32_t score_;
   uint8_t game_over_;
   uint8_t is_editor_;
   Window *window_;
@@ -103,6 +102,20 @@ public:
   sf::Font verdana_;
   //tag that is related to a selected item
   static const uint32_t selected_item_tag_ = 1;
+
+  
+  // Arcanoid Status
+  uint8_t player1Left_;
+  uint8_t player1Right_;
+  uint8_t player2Left_;
+  uint8_t player2Right_;
+  uint8_t newGame_;
+
+  uint8_t players_;
+  uint8_t lives_;
+  uint32_t score_;
+  uint32_t hight_score_;
+  uint32_t round_;
 };
 
 #endif

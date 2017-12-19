@@ -16,7 +16,7 @@ class Wall : public Rect{
   *
   * @return void
   */
-  ~Wall(){};
+  virtual ~Wall(){};
   
   /** @Factory that creates wall
   *
