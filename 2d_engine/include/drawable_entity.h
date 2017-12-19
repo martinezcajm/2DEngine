@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "entity.h"
 
-/** @Drawable entity
+/** @brief Drawable entity
 *
 * Class used to specify the common methods and attributes of the entities
 * that can be drawn.
@@ -16,7 +16,7 @@
 */
 class DrawableEntity : public Entity{
  public:
-  /** @Drawable entity constructor
+  /** @brief Drawable entity constructor
   *
   * Drawable entity constructor
   *
@@ -30,7 +30,7 @@ class DrawableEntity : public Entity{
   * @return void
   */
   virtual ~DrawableEntity();
-  /** @Initializes the drawable entity
+  /** @brief Initializes the drawable entity
   *
   * Initializes the drawable entity
   *
@@ -87,6 +87,14 @@ class DrawableEntity : public Entity{
   * @param sf::Vector2f point to check if collides with the entity
   */
   bool checkCollision(const sf::Vector2f &position);
+  /** @brief Checks if an entity collides with this entity
+  *
+  * Checks if the entity passed by reference collides with the boundaries.
+  *
+  * @return bool returns true if the point collides and false if not.
+  * @param DrawableEntity entity to check if there's a collision
+  */
+  bool checkCollision(DrawableEntity &entity);
   /** @brief gets the boundaries of the drawable entity
   *
   * Definition of the getBoundaries interface.
@@ -102,12 +110,6 @@ class DrawableEntity : public Entity{
   * @return void
   */
   virtual void unuse() override;
-
-  /*virtual void set_position() = 0;
-  virtual void set_rotation() = 0;
-  virtual void set_scale(float scale) = 0;
-  virtual void set_size(float width, float height) = 0;
-  virtual void set_fill_color() = 0;*/
   /** @brief interface Update method
   *
   * Definition of the update interface for the drawable entities

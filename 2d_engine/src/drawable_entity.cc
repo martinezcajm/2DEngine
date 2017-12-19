@@ -60,6 +60,10 @@ bool DrawableEntity::checkCollision(const sf::Vector2f &position){
   return getBoundaries().contains(position);
 }
 
+bool DrawableEntity::checkCollision(DrawableEntity &entity){
+  return getBoundaries().intersects(entity.getBoundaries());
+}
+
 void DrawableEntity::unuse(){
   z_order_ = 1;
   rotation_ = 0;
