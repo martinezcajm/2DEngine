@@ -14,7 +14,7 @@ class Ball : public Sprite{
   *
   * In case the ball stored it's own texture in the hip it needs to free it.
   */
-  ~Ball();
+  virtual ~Ball() {};
   /** @Initializes the ball using a texture
   *
   * Initializes the position and transformations of a ball using an 
@@ -30,10 +30,52 @@ class Ball : public Sprite{
   * @param texture that will use the ball
   * @param file_path image that will be used for the texture
   */
-  uint8_t init(const float px, const float py, 
+  void init(const float px, const float py, 
             const float scalex, const float scaley, 
             const uint8_t speed_x, const uint8_t speed_y,
             const sf::Texture &texture, const std::string &texture_path);
+            
+  /** @Initializes the ball using a buffer from memory for the texture
+  *
+  * Initializes the position and transformations of a ball using an 
+  * sf::Texture as texture from memory.
+  *
+  * @return void
+  * @param px position x of the ball
+  * @param py position y of the ball
+  * @param scalex x scale value of the ball
+  * @param scaley y scale value of the ball
+  * @param speed_x speed of the ball in the x-axis
+  * @param speed_y speed of the ball in the y-axis
+  * @param texture that will use the ball
+  * @param error_ocurred indicates if there was an error in the execution
+  * @param file_path image that will be used for the texture
+  */
+  void init(const float px, const float py, 
+            const float scalex, const float scaley, 
+            const uint8_t speed_x, const uint8_t speed_y,
+            const sf::Texture &texture, uint8_t &error_ocurred, 
+            const std::string &texture_path);
+            
+  /** @Initializes the ball using an image file for the texture
+  *
+  * Initializes the position and transformations of a ball using an 
+  * file as texture.
+  *
+  * @return uint8_t indicates if there was an error in the execution error->1
+  *  ok->0
+  * @param px position x of the ball
+  * @param py position y of the ball
+  * @param scalex x scale value of the ball
+  * @param scaley y scale value of the ball
+  * @param speed_x speed of the ball in the x-axis
+  * @param speed_y speed of the ball in the y-axis
+  * @param file_path image that will be used for the texture
+  */
+  uint8_t init(const float px, const float py, 
+               const float scalex, const float scaley, 
+               const uint8_t speed_x, const uint8_t speed_y,
+               const std::string &file_path);
   
   /** @Factory that creates balls
   *

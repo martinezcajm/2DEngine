@@ -28,7 +28,7 @@ void UserInterface::init(sf::RenderWindow &window){
   ImGui::SFML::Init(window);
 }
 //TODO First basic refactoring check if event is necessary
-void UserInterface::processInput(sf::RenderWindow &window, sf::Event &event){
+/*void UserInterface::processInput(sf::RenderWindow &window, sf::Event &event){
 
   //We check sfml and imgui events
   while (window.pollEvent(event)){
@@ -55,7 +55,7 @@ void UserInterface::processInput(sf::RenderWindow &window, sf::Event &event){
       }
     }
   }
-}
+}*/
 
 void UserInterface::update(sf::RenderWindow &window){
   // Actualizar estados

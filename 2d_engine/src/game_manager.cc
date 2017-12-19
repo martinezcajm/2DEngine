@@ -24,6 +24,7 @@ GameManager::GameManager(){
   arial_.loadFromFile("../data/fonts/arial.ttf");
   verdana_.loadFromFile("../data/fonts/verdana.ttf");
   native_dialog_ = new Native_dialogs();
+
 }
 
 GameManager& GameManager::instance(){

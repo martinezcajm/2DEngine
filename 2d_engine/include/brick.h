@@ -16,7 +16,7 @@ class Brick : public Rect{
   *
   * @return void
   */
-  ~Brick(){};
+  virtual ~Brick(){};
   
   /** @Factory that creates brick
   *
