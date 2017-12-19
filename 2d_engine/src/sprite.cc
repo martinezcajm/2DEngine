@@ -23,7 +23,7 @@ void Sprite::init(const float px, const float py,
                   const sf::Texture &texture, const std::string &file_path){
   release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
-  sprite_.setTexture(texture);
+  sprite_.setTexture(texture, true);
   origin_ = SpriteOrigin::kSpriteOrigin_Handler;
   texture_dir_ = file_path;
 }
@@ -41,7 +41,7 @@ void Sprite::init(const float px, const float py,
     error_ocurred = 1;
     return;
   } 
-  sprite_.setTexture(*own_texture_);
+  sprite_.setTexture(*own_texture_, true);
   origin_ = SpriteOrigin::kSpriteOrigin_Memory;
   texture_dir_ = file_path;
 }
@@ -55,7 +55,7 @@ uint8_t Sprite::init(const float px, const float py,
   own_texture_ = new sf::Texture();
   if(own_texture_ == nullptr) return 1;
   own_texture_->loadFromFile(file_path);
-  sprite_.setTexture(*own_texture_);
+  sprite_.setTexture(*own_texture_, true);
   origin_ = SpriteOrigin::kSpriteOrigin_Image;
   texture_dir_ = file_path;
   return 0;

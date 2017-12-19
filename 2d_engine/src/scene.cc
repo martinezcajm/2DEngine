@@ -20,7 +20,7 @@ void Scene::cleanScene(){
     map_texture_.begin(); it != map_texture_.end(); ++it) {
 
     //free texture memory
-    free(it->second);
+    delete it->second;
   }
 
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
@@ -133,38 +133,41 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
       uint8_t error_code = 0;  
 
       std::string texture_path = j_sprite["texture_dir_"];
-      sf::Texture *texture = this->getTexture(texture_path);
-      
-      if(texture == nullptr){
-        texture = new sf::Texture();
-        if(texture != nullptr){
-          texture->loadFromFile(texture_path);  
-          this->addTexture(*texture, texture_path);
-        }else{
-          error_code = 1;
-        }
-      }
 
       if(error_code == 0){
-        // init by handle
-        if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
-          sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
-            j_sprite["rotation_"], j_sprite["scale_"]["x"],
-            j_sprite["scale_"]["y"], *texture, texture_path);
-        // init by memory
-        }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
-          sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
-            j_sprite["rotation_"], j_sprite["scale_"]["x"],
-            j_sprite["scale_"]["y"], *texture, error_code, texture_path);      
-        }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
+        // init using an image file
+        if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
             j_sprite["scale_"]["y"], texture_path);
         }else{
-          error_code = 1; //No es un sprite valido
+          // We need a texture in the mapping
+          sf::Texture *texture = this->getTexture(texture_path);
+    
+          if(texture == nullptr){
+            texture = new sf::Texture();
+            if(texture != nullptr){
+              texture->loadFromFile(texture_path);  
+              this->addTexture(*texture, texture_path);
+            }else{
+              error_code = 1;
+            }
+          }
+          // init by handle
+          if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
+            sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
+              j_sprite["rotation_"], j_sprite["scale_"]["x"],
+              j_sprite["scale_"]["y"], *texture, texture_path);
+          // init by memory
+          }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
+            sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
+              j_sprite["rotation_"], j_sprite["scale_"]["x"],
+              j_sprite["scale_"]["y"], *texture, error_code, texture_path);      
+          }else{
+            error_code = 1; //No es un sprite valido
+          }
         }
       }
-
 
       if(error_code == 0){
         sprite->tag_ = j_sprite["tag_"];
@@ -304,7 +307,7 @@ void Scene::saveScene(const std::string scene_path){
         sprite_tmp = static_cast<Sprite*>(it->second);
 
         j_sprite["tag_"] = sprite_tmp->tag_;    
-        j_sprite["active_"] = sprite_tmp->tag_;
+        j_sprite["active_"] = sprite_tmp->active_;
         j_sprite["z_order_"] = sprite_tmp->z_order_;
         j_sprite["rotation_"] = sprite_tmp->rotation_;
         j_sprite["position_"]["x"] = sprite_tmp->position_.x;
@@ -324,7 +327,7 @@ void Scene::saveScene(const std::string scene_path){
         background_tmp = static_cast<Background*>(it->second);
         
         j_background["tag_"] = background_tmp->tag_;    
-        j_background["active_"] = background_tmp->tag_;
+        j_background["active_"] = background_tmp->active_;
         j_background["z_order_"] = background_tmp->z_order_;
         j_background["rotation_"] = background_tmp->rotation_;
         j_background["position_"]["x"] = background_tmp->position_.x;
