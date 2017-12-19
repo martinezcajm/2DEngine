@@ -22,7 +22,6 @@ class Entity{
     kBrick = 5,
     kBall = 6,
     kPlayer = 7
-
   };
   /** @Entity constructor
   *

@@ -21,6 +21,10 @@ GameManager::GameManager(){
   label_selection_ = nullptr;
   sprite_selection_ = nullptr;
   background_selection_ = nullptr;
+  wall_selection_ = nullptr;
+  brick_selection_ = nullptr;
+  ball_selection_ = nullptr;
+  player_selection_ = nullptr;
   arial_.loadFromFile("../data/fonts/arial.ttf");
   verdana_.loadFromFile("../data/fonts/verdana.ttf");
   native_dialog_ = new Native_dialogs();

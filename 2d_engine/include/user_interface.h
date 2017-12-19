@@ -27,15 +27,19 @@ class UserInterface{
     kLabel,
     kSprite,
     kBackground,
-    kMulti
+    kMulti,
+    kWall,
+    kBrick,
+    kBall,
+    kPlayer
   };
 
-  enum MouseStatus
+  /*enum MouseStatus
   {
     kNothing,
     kPressed,
     kReleased
-  };
+  };*/
   /** @brief Contructor of the UI
   *
   * Contructor of the UI
@@ -154,7 +158,7 @@ class UserInterface{
   Rect* drawing_rect_; //pointer to a rect that is being drawn at screen
   UiStatus status_ui_; //active mode of UI
   UiEditType edit_type_ui_; //edition type of UI
-  MouseStatus mouse_status_; //mouse status for the UI
+  //MouseStatus mouse_status_; //mouse status for the UI
   uint8_t selected_texture_ = 1;
  private:
   char const *kFilterPatternsJson[1] = { "*.json" };

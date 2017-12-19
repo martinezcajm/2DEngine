@@ -17,7 +17,7 @@ UserInterface::~UserInterface(){
 void UserInterface::init(sf::RenderWindow &window){
   status_ui_ = kIdle;
   edit_type_ui_ = kNull;
-  mouse_status_ = kNothing;
+  //mouse_status_ = kNothing;
   mouse_position_.x = 0;
   mouse_position_.y = 0;
   draw_origin_point_.x = 0;
@@ -60,8 +60,8 @@ void UserInterface::init(sf::RenderWindow &window){
 void UserInterface::update(sf::RenderWindow &window){
   // Actualizar estados
   if(status_ui_ == kDraw){
-    if(mouse_status_ == kPressed){
-      mouse_status_ = kNothing;
+    if(GM.mouse_status_ == MouseStatus::kPressed){
+      GM.mouse_status_ = MouseStatus::kNothing;
       drawing_rect_ = POOL.getRect();
       //The limit of rects has been reached
       if(drawing_rect_ == nullptr){
@@ -79,8 +79,8 @@ void UserInterface::update(sf::RenderWindow &window){
            draw_origin_point_.x, draw_origin_point_.y,
            0,1,1);
       }
-    }else if(mouse_status_ == kReleased){
-      mouse_status_ = kNothing;
+    }else if(GM.mouse_status_ == MouseStatus::kReleased){
+      GM.mouse_status_ = MouseStatus::kNothing;
       if(ui_is_drawing_){
         ui_is_drawing_ = 0;
         mouse_position_ = static_cast<sf::Vector2f>(
@@ -99,74 +99,73 @@ void UserInterface::update(sf::RenderWindow &window){
     }
   }else if((status_ui_ == kSelection|| 
           status_ui_ == kMultiselect) && 
-           mouse_status_ == kPressed){
-    mouse_status_ = kNothing;
+           GM.mouse_status_ == MouseStatus::kPressed){
+    GM.mouse_status_ = MouseStatus::kNothing;
     mouse_position_ = static_cast<sf::Vector2f>(
                        sf::Mouse::getPosition(window));
+    //We check if there's any entity in the position the user clicked
     GM.selected_id_ = GM.scene_-> checkCollision(mouse_position_);
-    //Get Drawable 
-    // 0 - nothing
-      // 1 - Background
-      // 2 - Rect
-      // 3 - Label
-      // 4 - Sprite
-    /*if(GM.selected_type_ == 0){
-      edit_type_ui_ = UiEditType::kNull;
-      GM.background_selection_ = nullptr;
-      GM.rect_selection_ = nullptr;
-      GM.label_selection_ = nullptr;
-      GM.sprite_selection_ = nullptr;
-    }else if(GM.selected_type_ == 1){
-      GM.background_selection_ = GM.scene_->getBackground(GM.selected_id_);
-      if(status_ui_ == kSelection){
-        edit_type_ui_ = kBackground;
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      }
+    DrawableEntity *aux = GM.scene_->getDrawableEntity(GM.selected_id_);
+    //We reset all the selection variables of the game manager to nullptr
+    GM.background_selection_ = nullptr;
+    GM.rect_selection_ = nullptr;
+    GM.label_selection_ = nullptr;
+    GM.sprite_selection_ = nullptr;
+    GM.wall_selection_ = nullptr;
+    GM.brick_selection_ = nullptr;
+    GM.ball_selection_ = nullptr;
+    GM.player_selection_ = nullptr;
+    //The click mouse was in an empty position
+    if(aux == nullptr){
+      edit_type_ui_ = kNull;
+      
+    }else{
+      Entity::Type entity_type = aux->type();
       //We don't want to be able to multi select the background, as there's
       //no sense in moving it
-    }else if(GM.selected_type_ == 2){
-      GM.rect_selection_ = GM.scene_->getRect(GM.selected_id_);
-      if(status_ui_ == kSelection){
+      if(status_ui_ == kMultiselect && entity_type != Entity::kBackground){
+        edit_type_ui_ = kMulti;
+        aux->tag_ = (aux->tag_) ? 0 : GM.selected_item_tag_;
+      }//We check the type of the drawable entity we have selected and store it
+      //in the game manager slection
+      else if(entity_type == Entity::kRect){
         edit_type_ui_ = kRect;
-        GM.background_selection_ = nullptr;
-        GM.label_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      }else if(status_ui_ == kMultiselect){
-        edit_type_ui_ = kMulti;
-        GM.rect_selection_->tag_ = (GM.rect_selection_->tag_) ?
-                                    0 : GM.selected_item_tag_;
-      }
-    } else if(GM.selected_type_ == 3){
-      GM.label_selection_ = GM.scene_->getLabel(GM.selected_id_);
-      if(status_ui_ == kSelection){
+        Rect *rect = static_cast<Rect*>(aux);
+        GM.rect_selection_ = rect;
+      }else if(entity_type == Entity::kBackground){
+        edit_type_ui_ = kBackground;
+        Background *bg = static_cast<Background*>(aux);
+        GM.background_selection_ = bg;
+      }else if(entity_type == Entity::kLabel){
         edit_type_ui_ = kLabel;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = nullptr;
-        GM.sprite_selection_ = nullptr;
-      }else if(status_ui_ == kMultiselect){
-        edit_type_ui_ = kMulti;
-        GM.label_selection_->tag_ = (GM.label_selection_->tag_) ?
-                                     0 : GM.selected_item_tag_;
-      }
-    } else if(GM.selected_type_ == 4){
-      GM.sprite_selection_ = GM.scene_->getSprite(GM.selected_id_); 
-      if(status_ui_ == kSelection){
+        Label *label = static_cast<Label*>(aux);
+        GM.label_selection_ = label;
+      }else if(entity_type == Entity::kSprite){
         edit_type_ui_ = kSprite;
-        GM.background_selection_ = nullptr;
-        GM.rect_selection_ = nullptr;
-        GM.label_selection_ = nullptr;        
-      }else if(status_ui_ == kMultiselect){
-        edit_type_ui_ = kMulti;
-        GM.sprite_selection_->tag_ = (GM.sprite_selection_->tag_) ?
-                                      0 : GM.selected_item_tag_;
-      }      
-    }*/
+        Sprite *sprite = static_cast<Sprite*>(aux);
+        GM.sprite_selection_ = sprite; 
+      }else if(entity_type == Entity::kWall){
+        edit_type_ui_ = kWall;
+        Wall *wall = static_cast<Wall*>(aux);
+        GM.wall_selection_ = wall;
+      }else if(entity_type == Entity::kBrick){
+        edit_type_ui_ = kBrick;
+        Brick *brick = static_cast<Brick*>(aux);
+        GM.brick_selection_ = brick;
+      }else if(entity_type == Entity::kBall){
+        edit_type_ui_ = kBall;
+        Ball *ball = static_cast<Ball*>(aux);
+        GM.ball_selection_ = ball;
+      }else if(entity_type == Entity::kPlayer){
+        edit_type_ui_ = kPlayer;
+        Player *player = static_cast<Player*>(aux);
+        GM.player_selection_ = player;
+      }
+    }
   }
   else if(status_ui_ == kWrite && 
-           mouse_status_ == kPressed){
-    mouse_status_ = kNothing;
+           GM.mouse_status_ == MouseStatus::kPressed){
+    GM.mouse_status_ = MouseStatus::kNothing;
     Label *tmp_label = POOL.getLabel();
     //If the limit of labels hasn't been reached
     if(tmp_label != nullptr){
@@ -201,7 +200,7 @@ void UserInterface::renderUI(sf::RenderWindow &window){
         GM.scene_->removeDrawableEntity(GM.rect_selection_->id());
         POOL.returnRect(*GM.rect_selection_);
         GM.rect_selection_ = nullptr;
-        edit_type_ui_ = UiEditType::kNull;
+        edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kLabel){
       UiLoadLabelValuesEdit(*GM.label_selection_);
@@ -240,6 +239,21 @@ void UserInterface::renderUI(sf::RenderWindow &window){
       }
       if (ImGui::Button("DeleteBackground")) {
         GM.scene_->removeDrawableEntity(GM.background_selection_->id());
+        POOL.returnBackground(*GM.background_selection_);
+        GM.background_selection_ = nullptr;
+        edit_type_ui_ = kNull;
+      }
+    }else if(edit_type_ui_ == kWall){
+      //UiLoadBackgroundValuesEdit(*GM.background_selection_);
+      ImGui::Text("The actual z-order is: %i", 
+                  GM.wall_selection_->z_order_);
+      ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
+      if(ImGui::Button("change z-order")){
+        GM.scene_->changeZOrderDrawableEntity(GM.wall_selection_->id(),
+                                          ui_z_order);
+      }
+      if (ImGui::Button("DeleteBackground")) {
+        GM.scene_->removeDrawableEntity(GM.wall_selection_->id());
         POOL.returnBackground(*GM.background_selection_);
         GM.background_selection_ = nullptr;
         edit_type_ui_ = kNull;

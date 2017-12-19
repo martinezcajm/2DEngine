@@ -114,6 +114,50 @@ Background* Pool::getBackground(){
   }
 }
 
+Wall* Pool::getWall(){
+  Wall* aux_wall;
+  if(wall_pool_.size() > 0){
+    aux_wall = wall_pool_.back();
+    wall_pool_.pop_back();
+    return aux_wall;
+  }else{
+    return Wall::CreateWall();
+  }
+}
+
+Brick* Pool::getBrick(){
+  Brick* aux_brick;
+  if(brick_pool_.size() > 0){
+    aux_brick = brick_pool_.back();
+    brick_pool_.pop_back();
+    return aux_brick;
+  }else{
+    return Brick::CreateBrick();
+  }
+}
+
+Ball* Pool::getBall(){
+  Ball* aux_ball;
+  if(ball_pool_.size() > 0){
+    aux_ball = ball_pool_.back();
+    ball_pool_.pop_back();
+    return aux_ball;
+  }else{
+    return Ball::CreateBall();
+  }
+}
+
+Player* Pool::getPlayer(){
+  Player* aux_player;
+  if(player_pool_.size() > 0){
+    aux_player = player_pool_.back();
+    player_pool_.pop_back();
+    return aux_player;
+  }else{
+    return Player::CreatePlayer();
+  }
+}
+
 void Pool::returnRect(Rect &rect){
   rect.unuse();
   rect_pool_.push_back(&rect);
@@ -134,3 +178,22 @@ void Pool::returnBackground(Background &background){
   bg_pool_.push_back(&background);
 }
 
+void Pool::returnWall(Wall &wall){
+  wall.unuse();
+  wall_pool_.push_back(&wall);
+}
+
+void Pool::returnBrick(Brick &brick){
+  brick.unuse();
+  brick_pool_.push_back(&brick);
+}
+
+void Pool::returnBall(Ball &ball){
+  ball.unuse();
+  ball_pool_.push_back(&ball);
+}
+
+void Pool::returnPlayer(Player &player){
+  player.unuse();
+  player_pool_.push_back(&player);
+}

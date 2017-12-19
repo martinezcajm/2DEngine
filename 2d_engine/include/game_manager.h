@@ -7,6 +7,10 @@
 #include "sprite.h"
 #include "scene.h"
 #include "native_dialogs.h"
+#include "wall.h"
+#include "brick.h"
+#include "ball.h"
+#include "player.h"
 
 typedef enum UiStatus
 {
@@ -87,6 +91,10 @@ public:
   Label *label_selection_;
   Sprite *sprite_selection_;
   Background *background_selection_;
+  Wall *wall_selection_;
+  Brick *brick_selection_;
+  Ball *ball_selection_;
+  Player *player_selection_;
 
   //Fonts supported by the app 
   //TODO charge them through an ini file
