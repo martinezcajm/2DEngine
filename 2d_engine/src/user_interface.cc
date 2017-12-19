@@ -259,7 +259,8 @@ void UserInterface::renderUI(sf::RenderWindow &window){
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kBrick){
-      UiLoadRectValuesEdit(*GM.brick_selection_ );
+      UiLoadRectValuesEdit(*GM.brick_selection_);
+      UiLoadBrickValuesEdit(*GM.brick_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   GM.brick_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -274,7 +275,8 @@ void UserInterface::renderUI(sf::RenderWindow &window){
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kBall){
-      UiLoadCommonValuesEdit(*GM.ball_selection_  );
+      UiLoadCommonValuesEdit(*GM.ball_selection_);
+      UiLoadBallValuesEdit(*GM.ball_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   GM.ball_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -290,6 +292,7 @@ void UserInterface::renderUI(sf::RenderWindow &window){
       }
     }else if(edit_type_ui_ == kPlayer){
       UiLoadCommonValuesEdit(*GM.player_selection_);
+      UiLoadPlayerValuesEdit(*GM.player_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   GM.player_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -409,6 +412,29 @@ void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
     ImGui::Checkbox("Scrolls Horizontally)", &scrolls_horizontally);
     bg.scrolls_vertically_ = scrolls_vertically? 1 : 0;
     bg.scrolls_horizontally_ = scrolls_horizontally? 1 : 0;
+    ImGui::TreePop();
+  }
+}
+
+void UserInterface::UiLoadPlayerValuesEdit(Player &player){
+  if (ImGui::TreeNode("speed")){
+    ImGui::InputInt("speedx", &player.speed_x_, 1, 1);
+    ImGui::InputInt("speedy", &player.speed_y_, 1, 1);
+    ImGui::TreePop();
+  }
+}
+
+void UserInterface::UiLoadBallValuesEdit(Ball &ball){
+  if (ImGui::TreeNode("speed")){
+    ImGui::InputInt("speedx", &ball.speed_x_, 1, 1);
+    ImGui::InputInt("speedy", &ball.speed_y_, 1, 1);
+    ImGui::TreePop();
+  }
+}
+
+void UserInterface::UiLoadBrickValuesEdit(Brick &brick){
+  if (ImGui::TreeNode("speed")){
+    ImGui::InputInt("lives", &brick.lives_, 1, 1);
     ImGui::TreePop();
   }
 }

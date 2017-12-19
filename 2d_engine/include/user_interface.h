@@ -54,7 +54,7 @@ class UserInterface{
   * @return void
   */
   ~UserInterface();
-  /** @Inits the user interface
+  /** @brief Inits the user interface
   *
   * Function in charge of initializing all the necesary to use the user
   * interface
@@ -63,7 +63,7 @@ class UserInterface{
   * @param window window to which the UI will be binded.
   */
   void init(sf::RenderWindow &window);
-  /** @Renders the UI
+  /** @brief Renders the UI
   *
   * Function in charge of rendering the UI
   *
@@ -71,7 +71,7 @@ class UserInterface{
   * @param window window to which the UI will be drawn.
   */
   void renderUI(sf::RenderWindow &window);
-  /** @Checks the inputs
+  /** @brief Checks the inputs
   *
   * Checks the inputs and updates the UI accordly.
   *
@@ -81,47 +81,82 @@ class UserInterface{
   */
   void processInput(sf::RenderWindow &window, sf::Event &event);
   
+  /** @brief Checks the inputs
+  *
+  * Checks the inputs and updates the UI accordly.
+  *
+  * @return void
+  * @param window sfml from which we will process the events
+  * @param event 
+  */
   void update(sf::RenderWindow &window);
 
-  /** @Loads the edit values of Drawable entity
+  /** @brief Loads the edit values of Drawable entity
   *
   * Loads the edit values of Drawable entity: transformations, color, 
   * position...
   *
   * @return void
-  * @param reference to the drawable entity whose values will be loaded at the 
-  * UI
+  * @param d_entity reference to the drawable entity whose values will be
+  * loaded at the UI
   */
   void UiLoadCommonValuesEdit(DrawableEntity &d_entity);
-  /** @Loads the edit values of Rect entity
+  /** @brief Loads the edit values of Rect entity
   *
   * Loads the edit values of Rect entity: fill color, is_solid, size...
   *
   * @return void
-  * @param reference to the rect whose values will be loaded at the UI
+  * @param rect reference to the rect whose values will be loaded at the UI
   * 
   */
   void UiLoadRectValuesEdit(Rect &rect);
-  /** @Loads the edit values of Label entity
+  /** @brief Loads the edit values of Label entity
   *
   * Loads the edit values of Label entity: text, font_size...
   *
   * @return void
-  * @param reference to the label whose values will be loaded at the UI
+  * @param label reference to the label whose values will be loaded at the UI
   * 
   */
   void UiLoadLabelValuesEdit(Label &label);
-  /** @Loads the edit values of Background entity
+  /** @brief Loads the edit values of Background entity
   *
   * Loads the edit values of Background entity: speed, vertical movememnt, 
   * horizaontal_movement...
   *
   * @return void
-  * @param reference to the background whose values will be loaded at the UI
+  * @param bg reference to the background whose values will be loaded at the UI
   * 
   */
   void UiLoadBackgroundValuesEdit(Background &bg);
-  /** @Loads the mode menu of the UI
+  /** @brief Loads the edit values of Player entity
+  *
+  * Loads the edit values of Player entity: speedx, speedy
+  *
+  * @return void
+  * @param player reference to the player whose values will be loaded at the UI
+  * 
+  */
+  void UiLoadPlayerValuesEdit(Player &player);
+  /** @brief Loads the edit values of Ball entity
+  *
+  * Loads the edit values of Ball entity: speedx, speedy
+  *
+  * @return void
+  * @param ball reference to the ball whose values will be loaded at the UI
+  * 
+  */
+  void UiLoadBallValuesEdit(Ball &ball);
+  /** @brief Loads the edit values of Brick entity
+  *
+  * Loads the edit values of Brick entity: lives
+  *
+  * @return void
+  * @param brick reference to the brick whose values will be loaded at the UI
+  * 
+  */
+  void UiLoadBrickValuesEdit(Brick &brick);
+  /** @brief Loads the mode menu of the UI
   *
   * Loads the mode menu with the different buttons to chose in which mode is
   * working the UI
