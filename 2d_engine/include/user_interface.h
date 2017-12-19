@@ -7,8 +7,35 @@
 #include "game_manager.h"
 #include "pool.h"
 
+
+
 class UserInterface{
  public:
+  enum UiStatus
+  {
+    kIdle,
+    kDraw,
+    kSelection,
+    kWrite,
+    kMultiselect
+  };
+
+  enum UiEditType
+  {
+    kNull,
+    kRect,
+    kLabel,
+    kSprite,
+    kBackground,
+    kMulti
+  };
+
+  enum MouseStatus
+  {
+    kNothing,
+    kPressed,
+    kReleased
+  };
   /** @brief Contructor of the UI
   *
   * Contructor of the UI
@@ -23,13 +50,35 @@ class UserInterface{
   * @return void
   */
   ~UserInterface();
+  /** @Inits the user interface
+  *
+  * Function in charge of initializing all the necesary to use the user
+  * interface
+  *
+  * @return void
+  * @param window window to which the UI will be binded.
+  */
+  void init(sf::RenderWindow &window);
   /** @Renders the UI
   *
   * Function in charge of rendering the UI
   *
   * @return void
+  * @param window window to which the UI will be drawn.
   */
-  void renderUI();
+  void renderUI(sf::RenderWindow &window);
+  /** @Checks the inputs
+  *
+  * Checks the inputs and updates the UI accordly.
+  *
+  * @return void
+  * @param window sfml from which we will process the events
+  * @param event 
+  */
+  void processInput(sf::RenderWindow &window, sf::Event &event);
+  
+  void update(sf::RenderWindow &window);
+
   /** @Loads the edit values of Drawable entity
   *
   * Loads the edit values of Drawable entity: transformations, color, 
@@ -77,7 +126,7 @@ class UserInterface{
   * 
   */
   void UiLoadMenu();
-  /** @Loads the game mode menu
+  /** @brief Loads the game mode menu
   *
   * Only part of the UI that will be shown in game mode, this allows us to
   * change between game mode and edit mode
@@ -86,9 +135,27 @@ class UserInterface{
   * 
   */
   void UiStartGameMenu();
+  /** @brief Loads texture manager menu
+  *
+  * Shows the textures that were created for the scene
+  *
+  * @return void
+  * 
+  */
+  void UiTextureManager();
 
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
+  // Status update for UI
+  uint8_t ui_is_drawing_;
+  sf::Vector2f mouse_position_;
+  sf::Vector2f draw_origin_point_; //position for drawing rects 
+  sf::Clock deltaClock_; //delta clock used for the UI updates
+  Rect* drawing_rect_; //pointer to a rect that is being drawn at screen
+  UiStatus status_ui_; //active mode of UI
+  UiEditType edit_type_ui_; //edition type of UI
+  MouseStatus mouse_status_; //mouse status for the UI
+  uint8_t selected_texture_ = 1;
  private:
   char const *kFilterPatternsJson[1] = { "*.json" };
   char const *kFilterPatternsImage[3] = { "*.png","*.jpeg", "*.jpg" };

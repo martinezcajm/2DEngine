@@ -1,3 +1,6 @@
+// label.h
+// Jose Maria Martinez
+// Header of the functions of the 2d entity label.
 #ifndef __LABEL_H__
 #define __LABEL_H__ 1
 

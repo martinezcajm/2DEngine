@@ -1,4 +1,7 @@
-//Comments can be found at the header
+// sprite.cc
+// Jose Maria Martinez
+// Implementation of sprite. Representation of a Rectangle in the engine.
+//Comments for the functions can be found at the header
 #include "sprite.h"
 
 uint32_t Sprite::total_sprites_ = 1;
@@ -7,7 +10,7 @@ Sprite::Sprite() : DrawableEntity() {
   own_texture_ = nullptr;
   origin_ = SpriteOrigin::kSpriteOrigin_Unknown;
   total_sprites_ ++;
-  texture_dir_ = "../data/fonts/arial.ttf";
+  texture_dir_ = "";
   type_ = kSprite;
 }
 
@@ -17,16 +20,18 @@ Sprite::~Sprite(){
 
 void Sprite::init(const float px, const float py,
                   const float rotation, const float scalex, const float scaley,
-                  const sf::Texture &texture){
+                  const sf::Texture &texture, const std::string &file_path){
   release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   sprite_.setTexture(texture);
   origin_ = SpriteOrigin::kSpriteOrigin_Handler;
+  texture_dir_ = file_path;
 }
 
 void Sprite::init(const float px, const float py,
                   const float rotation, const float scalex, const float scaley,
-                  const sf::Texture& texture, uint8_t &error_ocurred){
+                  const sf::Texture& texture, uint8_t &error_ocurred,
+                  const std::string &file_path){
   release();
   DrawableEntity::init(255,255,255,255, px, py, rotation, scalex, scaley);
   error_ocurred = 0;
@@ -38,6 +43,7 @@ void Sprite::init(const float px, const float py,
   } 
   sprite_.setTexture(*own_texture_);
   origin_ = SpriteOrigin::kSpriteOrigin_Memory;
+  texture_dir_ = file_path;
 }
 
 uint8_t Sprite::init(const float px, const float py,
@@ -72,13 +78,8 @@ Sprite* Sprite::CreateSprite(){
   }
 }
 
-//TODO externalizar accion release y usarlo en los init
 void Sprite::unuse(){
-  /*if(origin_ != kSpriteOrigin_Handler && own_texture_ != nullptr){
-    delete own_texture_;
-    own_texture_ = nullptr;
-  }
-  origin_ = SpriteOrigin::kSpriteOrigin_Unknown;*/
+  texture_dir_ = "";
   release();
   DrawableEntity::unuse();
 }

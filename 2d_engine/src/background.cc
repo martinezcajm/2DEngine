@@ -1,4 +1,8 @@
-//Comments can be found at the header
+// background.cc
+// Jose Maria Martinez
+// Implementation of the background graphical entity. Has auto scroll 
+//functionalities and is a child of sprite.
+//Comments for the functions can be found at the header
 #include "background.h"
 
 Background::Background() : Sprite(){

@@ -1,4 +1,8 @@
-//Comments can be found at the header
+// pool.cc
+// Jose Maria Martinez
+// Implementation of entity. Pooling used for reusing the entities used while
+// iterating with the engine. 
+//Comments for the functions can be found at the header
 #include "pool.h"
 
 Pool::Pool(){

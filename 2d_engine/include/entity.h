@@ -1,3 +1,6 @@
+// entity.h
+// Jose Maria Martinez
+// Header of the functions of the entity interface.
 #ifndef __ENTITY_H__
 #define __ENTITY_H__ 1
 

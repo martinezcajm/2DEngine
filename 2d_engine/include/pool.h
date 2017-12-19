@@ -1,3 +1,6 @@
+// pool.h
+// Jose Maria Martinez
+// Header of the functions of the pooling engine.
 #ifndef __POOL_H__
 #define __POOL_H__ 1
 

@@ -1,3 +1,6 @@
+// background.h
+// Jose Maria Martinez
+// Header of the functions of the 2d entity background.
 #ifndef __BACKGROUND_H__
 #define __BACKGROUND_H__ 1
 
