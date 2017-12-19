@@ -1,4 +1,8 @@
-//Comments can be found at the header
+// label.cc
+// Jose Maria Martinez
+// Implementation of the label entity. Representation of a text in the engine.
+// that will have the engine
+//Comments for the functions can be found at the header
 
 #include <string.h>
 #include "label.h"

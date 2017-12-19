@@ -1,4 +1,8 @@
-//Comments can be found at the header
+// drawable_entity.cc
+// Jose Maria Martinez
+// Implementation of the drawable entity. Abstract interface for the graphical
+// 2D entities
+//Comments for the functions can be found at the header
 
 #include "drawable_entity.h"
 

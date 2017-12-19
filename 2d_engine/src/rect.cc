@@ -1,4 +1,7 @@
-//Comments can be found at the header
+// rect.cc
+// Jose Maria Martinez
+// Implementation of rect. Representation of a Rectangle in the engine.
+//Comments for the functions can be found at the header
 #include "rect.h"
 
 uint32_t Rect::total_rects_ = 0;

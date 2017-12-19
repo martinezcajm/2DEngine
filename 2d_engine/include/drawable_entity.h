@@ -1,3 +1,6 @@
+// drawable_entity.h
+// Jose Maria Martinez
+// Header of the functions of the drawable entity interface.
 #ifndef __DRAWABLE_ENTITY_H__
 #define __DRAWABLE_ENTITY_H__ 1
 

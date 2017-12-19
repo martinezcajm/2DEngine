@@ -1,4 +1,7 @@
-//Comments can be found at the header
+// sprite.cc
+// Jose Maria Martinez
+// Implementation of sprite. Representation of a Rectangle in the engine.
+//Comments for the functions can be found at the header
 #include "sprite.h"
 
 uint32_t Sprite::total_sprites_ = 1;

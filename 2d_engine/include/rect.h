@@ -1,3 +1,6 @@
+// rect.h
+// Jose Maria Martinez
+// Header of the functions of the 2d entity rect.
 #ifndef __RECT_H__
 #define __RECT_H__ 1
 

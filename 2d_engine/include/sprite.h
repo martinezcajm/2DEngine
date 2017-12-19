@@ -1,3 +1,6 @@
+// sprite.h
+// Jose Maria Martinez
+// Header of the functions of the 2d entity sprite.
 #ifndef __SPRITE_H__
 #define __SPRITE_H__ 1
 
