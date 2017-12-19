@@ -466,7 +466,7 @@ void UserInterface::UiLoadMenu(){
   ImGui::PopStyleColor(2);
   if (ImGui::TreeNode("Scene options")){
     if (ImGui::Button("Load")) {
-      GM.scene_->loadScene("../data/scene.json", GM.arial_);
+      //GM.scene_->loadScene("../data/scene.json", GM.arial_);
       std::string path = "";
       path = GM.native_dialog_->openFileDialog(
           "Select the scene to load",
