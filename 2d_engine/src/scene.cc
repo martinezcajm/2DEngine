@@ -156,12 +156,12 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
         if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
-            j_sprite["scale_"]["y"], *texture);
+            j_sprite["scale_"]["y"], *texture, texture_path);
         // init by memory
         }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],
-            j_sprite["scale_"]["y"], *texture, error_code);      
+            j_sprite["scale_"]["y"], *texture, error_code, texture_path);      
         }else if(j_sprite["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
           sprite->init(j_sprite["position_"]["x"], j_sprite["position_"]["y"],
             j_sprite["rotation_"], j_sprite["scale_"]["x"],

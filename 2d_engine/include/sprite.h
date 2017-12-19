@@ -14,19 +14,19 @@ typedef enum SpriteOrigin
   kSpriteOrigin_Handler
 } SpriteOrigin;
 
-/** @Graphic entity Sprite
+/** @brief Graphic entity Sprite
 *
 * Class used to represent a sprite. 
 *
 */
 class Sprite : public DrawableEntity{
  public:
-  /** @Deletes a sprite
+  /** @brief Deletes a sprite
   *
   * In case the sprite stored it's own texture in the hip it needs to free it.
   */
   virtual ~Sprite();
-  /** @Initializes the sprite using a texture
+  /** @brief Initializes the sprite using a texture
   *
   * Initializes the position and transformations of a sprite using an 
   * sf::Texture as texture.
@@ -41,8 +41,8 @@ class Sprite : public DrawableEntity{
   */
   void init(const float px, const float py,
             const float rotation, const float scalex, const float scaley,
-            const sf::Texture &texture);
-  /** @Initializes the sprite using a buffer from memory
+            const sf::Texture &texture, const std::string &file_path);
+  /** @brief Initializes the sprite using a buffer from memory
   *
   * Initializes an Sprite with its own texture that will be stored in memory.
   * In case the allocation of the texture fails it will return a 0. If all 
@@ -59,8 +59,9 @@ class Sprite : public DrawableEntity{
   */
   void init(const float px, const float py,
             const float rotation, const float scalex, const float scaley,
-            const sf::Texture& texture, uint8_t &error_ocurred);
-  /** @Initializes the sprite using an image file
+            const sf::Texture& texture, uint8_t &error_ocurred,
+            const std::string &file_path);
+  /** @brief Initializes the sprite using an image file
   *
   * Initializes an Sprite with its own texture through an image file.
   * In case the allocation of the texture fails it will return a 0. If all 
@@ -78,7 +79,7 @@ class Sprite : public DrawableEntity{
   uint8_t init(const float px, const float py,
                const float rotation, const float scalex, const float scaley,
                const std::string &file_path);
-  /** @Draws the graphic entity Sprite
+  /** @brief Draws the graphic entity Sprite
   *
   * Draws the sprite using SFML to the window passed by reference 
   *
@@ -86,7 +87,7 @@ class Sprite : public DrawableEntity{
   * @param window SFML RenderWindow passed by reference
   */
   virtual void draw(sf::RenderWindow &window) override;
-  /** @Factory that creates sprites
+  /** @brief Factory that creates sprites
   *
   * Checks that the number of sprites didn't pass the maxim amount established
   * If you wish to create a Sprite you must use this method. In case the
@@ -97,7 +98,7 @@ class Sprite : public DrawableEntity{
   * sprites has been reached
   */
   static Sprite* CreateSprite();
-  /** @Resets the values of the sprite
+  /** @brief Resets the values of the sprite
   *
   * Sets the attributes of the sprite to a default value
   * to return it to a pool and being able to reuse it later.
@@ -105,7 +106,7 @@ class Sprite : public DrawableEntity{
   * @return void
   */
   virtual void unuse() override;
-  /** @Getter for origin
+  /** @brief Getter for origin
   * Returns the origin of the texture, it will vary depending on how the 
   * sprite was initiallized
   *
@@ -134,21 +135,21 @@ class Sprite : public DrawableEntity{
 
  protected:
   static uint32_t total_sprites_;
-  /** @Sprite constructor
+  /** @brief Sprite constructor
   *
   * Sprite constructor used by the factory to create sprite
   *
   * @return *Sprite
   */
   Sprite();
-  /** @Sprite copy constructor
+  /** @brief Sprite copy constructor
   *
   * Sprite copy constructor without anything to disable it.
   *
   * @return *Sprite
   */
   Sprite(const Sprite& o){};
-  //A texture owned only by this sprite, it will be freed by the sprite ones
+  //A texture owned only by this sprite, it will be freed by the sprite once
   //it's life ends (not necessarily destruction)
   sf::Texture *own_texture_;
   /** @brief releases the texture of the sprite
