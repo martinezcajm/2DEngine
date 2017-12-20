@@ -157,14 +157,6 @@ class UserInterface{
   * 
   */
   void UiStartGameMenu();
-  /** @brief Loads texture manager menu
-  *
-  * Shows the textures that were created for the scene
-  *
-  * @return void
-  * 
-  */
-  void UiTextureManager();
 
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
@@ -172,7 +164,7 @@ class UserInterface{
   uint8_t ui_is_drawing_;
   sf::Vector2f mouse_position_;
   sf::Vector2f draw_origin_point_; //position for drawing rects 
-  sf::Clock deltaClock_; //delta clock used for the UI updates
+  //sf::Clock deltaClock_; //delta clock used for the UI updates
   Rect* drawing_rect_; //pointer to a rect that is being drawn at screen
   UiStatus status_ui_; //active mode of UI
   UiEditType edit_type_ui_; //edition type of UI
@@ -181,6 +173,15 @@ class UserInterface{
  private:
   char const *kFilterPatternsJson[1] = { "*.json" };
   char const *kFilterPatternsImage[3] = { "*.png","*.jpeg", "*.jpg" };
+  //Used for the edit mode of the UI
+  Rect *rect_selection_;
+  Label *label_selection_;
+  Sprite *sprite_selection_;
+  Background *background_selection_;
+  Wall *wall_selection_;
+  Brick *brick_selection_;
+  Ball *ball_selection_;
+  Player *player_selection_;
 };
 
 #endif

@@ -23,8 +23,18 @@ void UserInterface::init(sf::RenderWindow &window){
   draw_origin_point_.x = 0;
   draw_origin_point_.y = 0;
   ui_is_drawing_ = 0;
-  deltaClock_.restart();
+  //deltaClock_.restart();
   drawing_rect_ = nullptr;
+
+  rect_selection_ = nullptr;
+  label_selection_ = nullptr;
+  sprite_selection_ = nullptr;
+  background_selection_ = nullptr;
+  wall_selection_ = nullptr;
+  brick_selection_ = nullptr;
+  ball_selection_ = nullptr;
+  player_selection_ = nullptr;
+
   ImGui::SFML::Init(window);
 }
 
@@ -78,14 +88,14 @@ void UserInterface::update(sf::RenderWindow &window){
     GM.selected_id_ = GM.scene_-> checkCollision(mouse_position_);
     DrawableEntity *aux = GM.scene_->getDrawableEntity(GM.selected_id_);
     //We reset all the selection variables of the game manager to nullptr
-    GM.background_selection_ = nullptr;
-    GM.rect_selection_ = nullptr;
-    GM.label_selection_ = nullptr;
-    GM.sprite_selection_ = nullptr;
-    GM.wall_selection_ = nullptr;
-    GM.brick_selection_ = nullptr;
-    GM.ball_selection_ = nullptr;
-    GM.player_selection_ = nullptr;
+    background_selection_ = nullptr;
+    rect_selection_ = nullptr;
+    label_selection_ = nullptr;
+    sprite_selection_ = nullptr;
+    wall_selection_ = nullptr;
+    brick_selection_ = nullptr;
+    ball_selection_ = nullptr;
+    player_selection_ = nullptr;
     //The click mouse was in an empty position
     if(aux == nullptr){
       edit_type_ui_ = kNull;
@@ -102,35 +112,35 @@ void UserInterface::update(sf::RenderWindow &window){
       else if(entity_type == Entity::kRect){
         edit_type_ui_ = kRect;
         Rect *rect = static_cast<Rect*>(aux);
-        GM.rect_selection_ = rect;
+        rect_selection_ = rect;
       }else if(entity_type == Entity::kBackground){
         edit_type_ui_ = kBackground;
         Background *bg = static_cast<Background*>(aux);
-        GM.background_selection_ = bg;
+        background_selection_ = bg;
       }else if(entity_type == Entity::kLabel){
         edit_type_ui_ = kLabel;
         Label *label = static_cast<Label*>(aux);
-        GM.label_selection_ = label;
+        label_selection_ = label;
       }else if(entity_type == Entity::kSprite){
         edit_type_ui_ = kSprite;
         Sprite *sprite = static_cast<Sprite*>(aux);
-        GM.sprite_selection_ = sprite; 
+        sprite_selection_ = sprite; 
       }else if(entity_type == Entity::kWall){
         edit_type_ui_ = kWall;
         Wall *wall = static_cast<Wall*>(aux);
-        GM.wall_selection_ = wall;
+        wall_selection_ = wall;
       }else if(entity_type == Entity::kBrick){
         edit_type_ui_ = kBrick;
         Brick *brick = static_cast<Brick*>(aux);
-        GM.brick_selection_ = brick;
+        brick_selection_ = brick;
       }else if(entity_type == Entity::kBall){
         edit_type_ui_ = kBall;
         Ball *ball = static_cast<Ball*>(aux);
-        GM.ball_selection_ = ball;
+        ball_selection_ = ball;
       }else if(entity_type == Entity::kPlayer){
         edit_type_ui_ = kPlayer;
         Player *player = static_cast<Player*>(aux);
-        GM.player_selection_ = player;
+        player_selection_ = player;
       }
     }
   }
@@ -150,131 +160,134 @@ void UserInterface::update(sf::RenderWindow &window){
     }
   }
   
-  ImGui::SFML::Update(window, deltaClock_.restart());
+  ImGui::SFML::Update(window, GM.deltaClock_.restart());
 }
 
 void UserInterface::renderUI(sf::RenderWindow &window){
   UiLoadMenu();    
   UiStartGameMenu();
-  UiTextureManager();
+  //UiTextureManager();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
     static int32_t ui_z_order = 0;
     if(edit_type_ui_ == kRect){
-      UiLoadRectValuesEdit(*GM.rect_selection_);
-      ImGui::Text("The actual z-order is: %i", GM.rect_selection_->z_order_);
+      UiLoadRectValuesEdit(*rect_selection_);
+      ImGui::Text("The actual z-order is: %i", rect_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.rect_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(rect_selection_->id(),
+                                              ui_z_order);
       }
       if (ImGui::Button("DeleteRect")) {
-        GM.scene_->removeDrawableEntity(GM.rect_selection_->id());
-        POOL.returnRect(*GM.rect_selection_);
-        GM.rect_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(rect_selection_->id());
+        POOL.returnRect(*rect_selection_);
+        rect_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kLabel){
-      UiLoadLabelValuesEdit(*GM.label_selection_);
-      ImGui::Text("The actual z-order is: %i", GM.label_selection_->z_order_);
+      UiLoadLabelValuesEdit(*label_selection_);
+      ImGui::Text("The actual z-order is: %i", label_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.label_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(label_selection_->id(),
+                                              ui_z_order);
       }
       if (ImGui::Button("DeleteLabel")) {
-        GM.scene_->removeDrawableEntity(GM.label_selection_->id());
-        POOL.returnLabel(*GM.label_selection_);
-        GM.label_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(label_selection_->id());
+        POOL.returnLabel(*label_selection_);
+        label_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kSprite){
-      UiLoadCommonValuesEdit(*GM.sprite_selection_);
-      ImGui::Text("The actual z-order is: %i", GM.sprite_selection_->z_order_);
+      UiLoadCommonValuesEdit(*sprite_selection_);
+      ImGui::Text("The actual z-order is: %i", sprite_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.sprite_selection_->id(),ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(sprite_selection_->id(),
+                                              ui_z_order);
       }
       if (ImGui::Button("DeleteSprite")) {
-        GM.scene_->removeDrawableEntity(GM.sprite_selection_->id());
-        POOL.returnSprite(*GM.sprite_selection_);
-        GM.sprite_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(sprite_selection_->id());
+        POOL.returnSprite(*sprite_selection_);
+        sprite_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kBackground){
-      UiLoadBackgroundValuesEdit(*GM.background_selection_);
+      UiLoadBackgroundValuesEdit(*background_selection_);
       ImGui::Text("The actual z-order is: %i", 
-                  GM.background_selection_->z_order_);
+                  background_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.background_selection_->id(),
-                                          ui_z_order);
+        GM.scene_->changeZOrderDrawableEntity(background_selection_->id(),
+                                              ui_z_order);
       }
       if (ImGui::Button("DeleteBackground")) {
-        GM.scene_->removeDrawableEntity(GM.background_selection_->id());
-        POOL.returnBackground(*GM.background_selection_);
-        GM.background_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(background_selection_->id());
+        POOL.returnBackground(*background_selection_);
+        background_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kWall){
-      UiLoadRectValuesEdit(*GM.wall_selection_);
+      UiLoadRectValuesEdit(*wall_selection_);
       ImGui::Text("The actual z-order is: %i", 
-                  GM.wall_selection_->z_order_);
+                  wall_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.wall_selection_->id(),
+        GM.scene_->changeZOrderDrawableEntity(wall_selection_->id(),
                                           ui_z_order);
       }
       if (ImGui::Button("DeleteWall")) {
-        GM.scene_->removeDrawableEntity(GM.wall_selection_->id());
-        POOL.returnWall(*GM.wall_selection_);
-        GM.wall_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(wall_selection_->id());
+        POOL.returnWall(*wall_selection_);
+        wall_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kBrick){
-      UiLoadRectValuesEdit(*GM.brick_selection_);
-      UiLoadBrickValuesEdit(*GM.brick_selection_);
+      UiLoadRectValuesEdit(*brick_selection_);
+      UiLoadBrickValuesEdit(*brick_selection_);
       ImGui::Text("The actual z-order is: %i", 
-                  GM.brick_selection_->z_order_);
+                  brick_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.brick_selection_->id(),
+        GM.scene_->changeZOrderDrawableEntity(brick_selection_->id(),
                                           ui_z_order);
       }
       if (ImGui::Button("DeleteBrick")) {
-        GM.scene_->removeDrawableEntity(GM.brick_selection_->id());
-        POOL.returnBrick(*GM.brick_selection_);
-        GM.brick_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(brick_selection_->id());
+        POOL.returnBrick(*brick_selection_);
+        brick_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kBall){
-      UiLoadCommonValuesEdit(*GM.ball_selection_);
-      UiLoadBallValuesEdit(*GM.ball_selection_);
+      UiLoadCommonValuesEdit(*ball_selection_);
+      UiLoadBallValuesEdit(*ball_selection_);
       ImGui::Text("The actual z-order is: %i", 
-                  GM.ball_selection_->z_order_);
+                  ball_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.ball_selection_->id(),
+        GM.scene_->changeZOrderDrawableEntity(ball_selection_->id(),
                                           ui_z_order);
       }
       if (ImGui::Button("DeleteBall")) {
-        GM.scene_->removeDrawableEntity(GM.ball_selection_->id());
-        POOL.returnBall(*GM.ball_selection_);
-        GM.ball_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(ball_selection_->id());
+        POOL.returnBall(*ball_selection_);
+        ball_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kPlayer){
-      UiLoadCommonValuesEdit(*GM.player_selection_);
-      UiLoadPlayerValuesEdit(*GM.player_selection_);
+      UiLoadCommonValuesEdit(*player_selection_);
+      UiLoadPlayerValuesEdit(*player_selection_);
       ImGui::Text("The actual z-order is: %i", 
-                  GM.player_selection_->z_order_);
+                  player_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
       if(ImGui::Button("change z-order")){
-        GM.scene_->changeZOrderDrawableEntity(GM.player_selection_->id(),
+        GM.scene_->changeZOrderDrawableEntity(player_selection_->id(),
                                           ui_z_order);
       }
       if (ImGui::Button("DeletePlayer")) {
-        GM.scene_->removeDrawableEntity(GM.player_selection_->id());
-        POOL.returnPlayer(*GM.player_selection_);
-        GM.player_selection_ = nullptr;
+        GM.scene_->removeDrawableEntity(player_selection_->id());
+        POOL.returnPlayer(*player_selection_);
+        player_selection_ = nullptr;
         edit_type_ui_ = kNull;
       }
     }else if(edit_type_ui_ == kMulti){
@@ -667,7 +680,7 @@ void UserInterface::UiLoadMenu(){
   ImGui::End();
 }
 
-void UserInterface::UiTextureManager(){
+/*void UserInterface::UiTextureManager(){
   ImGui::Begin("Textures");
   const char* listbox_items[] = { "Texture1", "Texture2", "Texture3"};
             static int listbox_item_current = 1;
@@ -695,14 +708,4 @@ void UserInterface::UiTextureManager(){
 
   }
   ImGui::End();
-}
-
-/*
-  sf::Texture texture;
-  texture.loadFromFile("../data/enemy.png");
-  GM.scene_->addSprite(*sprite_test);
-  Sprite *sprite_test2 = POOL.getSprite();
-  uint8_t error;
-  sprite_test2->init(300,400,0,1,1,texture,error);
-  GM.scene_->addSprite(*sprite_test2);
-  */
+}*/
