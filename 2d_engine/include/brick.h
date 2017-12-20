@@ -47,13 +47,15 @@ class Brick : public Rect{
   * @param fc_a alpha channel of the fill color 
   * @param px x position in the window
   * @param py y position in the window
+  * @param rotation rotation in degrees
   * @param scalex scale quantity at x axis
   * @param scaley scale quantity at y axis
+  * @param lives lives of the brick
   */
   void init(float width, float height, uint8_t sc_r,
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
-            float scalex, float scaley, uint8_t lives);
+            float rotation, float scalex, float scaley, uint8_t lives);
 
   /** @brief Updates the brick in the loop
   *
