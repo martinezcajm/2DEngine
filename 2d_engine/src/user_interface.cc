@@ -417,23 +417,23 @@ void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
 }
 
 void UserInterface::UiLoadPlayerValuesEdit(Player &player){
-  if (ImGui::TreeNode("speed")){
-    ImGui::InputInt("speedx", &player.speed_x_, 1, 1);
-    ImGui::InputInt("speedy", &player.speed_y_, 1, 1);
+  if (ImGui::TreeNode("speed player")){
+    ImGui::InputInt("speedx", &player.speed_.x, 1, 1);
+    ImGui::InputInt("speedy", &player.speed_.y, 1, 1);
     ImGui::TreePop();
   }
 }
 
 void UserInterface::UiLoadBallValuesEdit(Ball &ball){
-  if (ImGui::TreeNode("speed")){
-    ImGui::InputInt("speedx", &ball.speed_x_, 1, 1);
-    ImGui::InputInt("speedy", &ball.speed_y_, 1, 1);
+  if (ImGui::TreeNode("speed ball")){
+    ImGui::InputInt("speedx", &ball.speed_.x, 1, 1);
+    ImGui::InputInt("speedy", &ball.speed_.y, 1, 1);
     ImGui::TreePop();
   }
 }
 
 void UserInterface::UiLoadBrickValuesEdit(Brick &brick){
-  if (ImGui::TreeNode("speed")){
+  if (ImGui::TreeNode("lives brick")){
     ImGui::InputInt("lives", &brick.lives_, 1, 1);
     ImGui::TreePop();
   }
@@ -613,14 +613,102 @@ void UserInterface::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
-        Sprite *tmp_sprite = POOL.getSprite();
+        Player *tmp_player = POOL.getPlayer();
         //If the limit of sprites hasn't been reached
-        if(tmp_sprite != nullptr){
-          GM.scene_->addDrawableEntity(*tmp_sprite);
-          tmp_sprite->init(0,0,
-                           0,1,1,
+        if(tmp_player != nullptr){
+          GM.scene_->addDrawableEntity(*tmp_player);
+          tmp_player->init(0,0,
+                           1,1,
+                           1,1,
                            path);
         }
+      }
+    }
+    if (ImGui::Button("Ball")) {
+      std::string path = "";
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the ball",
+          "../data/",
+          3,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Ball *tmp_ball = POOL.getBall();
+        //If the limit of sprites hasn't been reached
+        if(tmp_ball != nullptr){
+          GM.scene_->addDrawableEntity(*tmp_ball);
+          tmp_ball->init(0,0,
+                         1,1,
+                         1,1,
+                         path);
+        }
+      }
+    }
+    ImGui::TreePop();
+  }
+  if(ImGui::TreeNode("Game objects creation")){
+    if (ImGui::Button("Player")) {
+      std::string path = "";
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the player",
+          "../data/",
+          3,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Player *tmp_player = POOL.getPlayer();
+        //If the limit of sprites hasn't been reached
+        if(tmp_player != nullptr){
+          GM.scene_->addDrawableEntity(*tmp_player);
+          tmp_player->init(0,0,
+                           1,1,
+                           1,1,
+                           path);
+        }
+      }
+    }
+    if (ImGui::Button("Ball")) {
+      std::string path = "";
+      path = GM.native_dialog_->openFileDialog(
+          "Select an image for the ball",
+          "../data/",
+          3,
+          kFilterPatternsImage,
+          NULL);
+      if (path != "") {
+        Ball *tmp_ball = POOL.getBall();
+        //If the limit of sprites hasn't been reached
+        if(tmp_ball != nullptr){
+          GM.scene_->addDrawableEntity(*tmp_ball);
+          tmp_ball->init(0,0,
+                         1,1,
+                         1,1,
+                         path);
+        }
+      }
+    }
+    if (ImGui::Button("Brick")) {
+      Brick *tmp_brick = POOL.getBrick();
+      //If the limit of sprites hasn't been reached
+      if(tmp_brick != nullptr){
+        GM.scene_->addDrawableEntity(*tmp_brick);
+        tmp_brick->init(70,40,
+                       255,0,0,255,
+                       0,255,0,255,
+                       0,0,
+                       1,1,1);
+      }
+    }
+    if (ImGui::Button("Wall")) {
+      Wall *tmp_wall = POOL.getWall();
+      //If the limit of sprites hasn't been reached
+      if(tmp_wall != nullptr){
+        GM.scene_->addDrawableEntity(*tmp_wall);
+        tmp_wall->init(30,796,
+                       255,0,0,255,
+                       0,255,0,255,
+                       2,2,
+                       1,1);
       }
     }
     ImGui::TreePop();

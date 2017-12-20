@@ -63,7 +63,7 @@ class Brick : public Rect{
   */
   void update() override;
   
-  int16_t lives_;
+  int lives_;
  private:
   /** @Brick constructor
   *
