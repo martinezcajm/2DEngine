@@ -9,6 +9,7 @@ uint32_t Entity::total_ids_ = 1;
 
 Entity::Entity() {
   tag_ = 0;
+  selection_tag_ = 0;
   active_ = 0;
   id_ = total_ids_;
   total_ids_ ++;
@@ -42,6 +43,7 @@ Entity::Type Entity::type(){
 }
 
 void Entity::unuse(){
+  selection_tag_ = 0;
   tag_ = 0;
   active_ = 0;
 }

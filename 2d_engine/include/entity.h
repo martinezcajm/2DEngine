@@ -85,6 +85,7 @@ class Entity{
 
   //Data members
   int tag_;
+  uint8_t selection_tag_;
   uint8_t active_;
  protected:
   Type type_;

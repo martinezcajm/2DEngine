@@ -13,7 +13,7 @@ cl /nologo /Zi /GR- /EHs /c /MD ..\src\game_manager.cc -I ..\include -I ..\deps\
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\entity.cc -I ..\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\drawable_entity.cc -I ..\include  -I ..\deps\SFML\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\rect.cc -I ..\include  -I ..\deps\SFML\include
-cl /nologo /Zi /GR- /EHs /c /MD ..\src\label.cc -I ..\include  -I ..\deps\SFML\include
+cl /nologo /Zi /GR- /EHs /c /MD ..\src\label.cc -I ..\include  -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\sprite.cc -I ..\include  -I ..\deps\SFML\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\background.cc -I ..\include -I ..\deps\SFML\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\ball.cc -I ..\include -I ..\deps\SFML\include

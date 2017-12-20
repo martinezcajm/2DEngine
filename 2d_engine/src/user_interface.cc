@@ -106,7 +106,7 @@ void UserInterface::update(sf::RenderWindow &window, Scene &scene){
       //no sense in moving it
       if(status_ui_ == kMultiselect && entity_type != Entity::kBackground){
         edit_type_ui_ = kMulti;
-        aux->tag_ = (aux->tag_) ? 0 : GM.selected_item_tag_;
+        aux->selection_tag_ = (aux->selection_tag_)?0 : GM.selected_item_tag_;
       }//We check the type of the drawable entity we have selected and store it
       //in the game manager slection
       else if(entity_type == Entity::kRect){
