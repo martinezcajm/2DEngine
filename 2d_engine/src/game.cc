@@ -98,16 +98,8 @@ void Game::processInput(){
           GM.player1Right_ = 1;
         }
 
-        // Player 2
-        if(GM.window_->event_.key.code == sf::Keyboard::A){
-          GM.player2Left_ = 1;
-        }
-        if(GM.window_->event_.key.code == sf::Keyboard::B){
-          GM.player2Right_ = 1;
-        }
-
         if(GM.window_->event_.key.code == sf::Keyboard::Return){
-          GM.newGame_ = 0;
+          GM.new_game_ = 0;
         }
       }
     }else if(GM.window_->event_.type == sf::Event::KeyReleased){
@@ -117,14 +109,6 @@ void Game::processInput(){
       }
       if(GM.window_->event_.key.code == sf::Keyboard::Right){
         GM.player1Right_ = 0;
-      }
-
-      // Player 2
-      if(GM.window_->event_.key.code == sf::Keyboard::A){
-        GM.player2Left_ = 0;
-      }
-      if(GM.window_->event_.key.code == sf::Keyboard::B){
-        GM.player2Right_ = 0;
       }
     }
   }
@@ -155,6 +139,7 @@ void Game::updateGame(){
   //effective
   ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
   
+  //scene_->is_game_over_ = 1;
   
   // TODO: Check game input value
   scene_->update();  

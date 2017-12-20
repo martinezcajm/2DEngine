@@ -47,7 +47,8 @@ uint8_t Ball::init(const float px, const float py,
 }
 
 void Ball::update(){
-
+  
+  
   if(active_){
     position_.x += speed_.x;
     position_.y += speed_.y;

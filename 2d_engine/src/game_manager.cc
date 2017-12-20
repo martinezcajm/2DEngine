@@ -22,19 +22,14 @@ GameManager::GameManager(){
   native_dialog_ = new Native_dialogs();
 
   // Default GameParams
-  player_speed_ = 5;
-  players_ = 1;
   lives_ = 3;
-  speed_y_ball_ = 1;
   score_ = 0;
   hight_score_ = 0;
-  round_ = 1;
-  isBallInMovement_ = 1;
 
-  player1Left_ = 1;
-  player1Right_ = 1;
-  player2Left_ = 1;
-  player2Right_ = 1;
+  isBallInMovement_ = 1;
+  player_speed_ = 5;
+  player1Left_ = 0;
+  player1Right_ = 0;
 }
 
 GameManager& GameManager::instance(){

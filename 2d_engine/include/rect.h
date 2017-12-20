@@ -98,7 +98,7 @@ class Rect : public DrawableEntity{
   */
   sf::FloatRect getBoundaries() override;
   
-  static const uint8_t kMaxRects = 50;
+  static const uint8_t kMaxRects = 100;
   uint8_t is_solid_;
   //Contains the width and height
   sf::Vector2f dimensions_;

@@ -91,20 +91,15 @@ public:
 
   
   // Arcanoid Status
-  int32_t player_speed_;
   uint8_t player1Left_;
   uint8_t player1Right_;
-  uint8_t player2Left_;
-  uint8_t player2Right_;
-  uint8_t newGame_;
+  uint8_t new_game_;
 
   uint8_t isBallInMovement_;
-  uint8_t players_;
-  uint8_t lives_;
-  int32_t speed_y_ball_;
-  uint32_t score_;
-  uint32_t hight_score_;
-  uint32_t round_;
+  int player_speed_;
+  int lives_;
+  int score_;
+  int hight_score_;
 };
 
 #endif

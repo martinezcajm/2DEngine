@@ -25,6 +25,10 @@ void Brick::init(float width, float height, uint8_t sc_r,
 }
 
 void Brick::update(){
-
+  if (lives_ <= 0){
+    active_ = 0;
+  }else{
+    active_ = 1;
+  }
 
 }

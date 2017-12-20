@@ -151,6 +151,7 @@ class Scene{
   */
   void update();
 
+  uint8_t is_game_over_;
  private:
   std::unordered_map<std::string, sf::Texture*> map_texture_;
 
