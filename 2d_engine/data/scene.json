@@ -1,7 +1,7 @@
 {
   "Backgrounds": [
     {
-      "active_": 0,
+      "active_": 1,
       "background_position_": {
         "x": 0,
         "y": -2761
@@ -33,8 +33,8 @@
         "y": -3
       },
       "tag_": 0,
-      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\bg.png",
-      "z_order_": 0
+      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\bg.png",
+      "z_order_": -1
     }
   ],
   "Labels": [
@@ -115,7 +115,7 @@
         "y": 1.0
       },
       "tag_": 1,
-      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\spaceShip.png",
+      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\spaceShip.png",
       "z_order_": 0
     },
     {
@@ -137,7 +137,7 @@
         "y": 1.0
       },
       "tag_": 1,
-      "texture_dir_": "C:\\ESAT\\2pa_ma_martinezcajm\\2d_engine\\data\\enemy.png",
+      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\enemy.png",
       "z_order_": 0
     }
   ],

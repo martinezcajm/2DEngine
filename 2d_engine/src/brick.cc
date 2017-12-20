@@ -17,10 +17,10 @@ Brick* Brick::CreateBrick(){
 void Brick::init(float width, float height, uint8_t sc_r,
                 uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
                 uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
-                float scalex, float scaley, uint8_t lives){
+                float rotation, float scalex, float scaley, uint8_t lives){
   
   Rect::init(1, width, height, sc_r, sc_g, sc_b, sc_a, fc_r, fc_g, fc_b, fc_a, 
-    px, py, 0.0f, scalex, scaley);
+    px, py, rotation, scalex, scaley);
   lives_ = lives;  
 }
 

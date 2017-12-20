@@ -695,7 +695,7 @@ void UserInterface::UiLoadMenu(){
         tmp_brick->init(70,40,
                        255,0,0,255,
                        0,255,0,255,
-                       0,0,
+                       0,0,0,
                        1,1,1);
       }
     }
@@ -707,7 +707,7 @@ void UserInterface::UiLoadMenu(){
         tmp_wall->init(30,796,
                        255,0,0,255,
                        0,255,0,255,
-                       2,2,
+                       2,2,0,
                        1,1);
       }
     }

@@ -41,6 +41,18 @@ void Scene::cleanScene(){
       case Entity::kSprite:
         POOL.returnSprite(*static_cast<Sprite*>(it->second));
         break;
+      case Entity::kWall:
+        POOL.returnWall(*static_cast<Wall*>(it->second));
+        break;
+      case Entity::kBrick:
+        POOL.returnBrick(*static_cast<Brick*>(it->second));
+        break;
+      case Entity::kBall:
+        POOL.returnBall(*static_cast<Ball*>(it->second));
+        break;
+      case Entity::kPlayer:
+        POOL.returnPlayer(*static_cast<Player*>(it->second));
+        break;
     }
   }
 
@@ -232,6 +244,190 @@ void Scene::loadScene(const std::string scene_path, const sf::Font& font){
       }
     }
   }
+
+  
+  for (json::iterator it = j_scene["Walls"].begin(); it 
+  != j_scene["Walls"].end(); ++it) {
+
+    json j_wall = (json)*it;
+    // Create Wall    
+    Wall *wall = POOL.getWall();
+    if(wall!= nullptr){
+      wall->init(j_wall["dimensions_"]["x"], j_wall["dimensions_"]["y"], 
+                 j_wall["color_"]["r"], j_wall["color_"]["g"], 
+                 j_wall["color_"]["b"], j_wall["color_"]["a"], 
+                 j_wall["rgba_fill_"]["r"], j_wall["rgba_fill_"]["g"], 
+                 j_wall["rgba_fill_"]["b"], j_wall["rgba_fill_"]["a"], 
+                 j_wall["position_"]["x"], j_wall["position_"]["y"], 
+                 j_wall["rotation_"], j_wall["scale_"]["x"], 
+                 j_wall["scale_"]["y"]);
+
+      wall->tag_ = j_wall["tag_"];
+      wall->active_ = j_wall["active_"];
+      wall->z_order_ = j_wall["z_order_"];
+
+      this->addDrawableEntity(*wall);
+    }
+  }
+  
+  for (json::iterator it = j_scene["Bricks"].begin(); it 
+  != j_scene["Bricks"].end(); ++it) {
+
+    json j_brick = (json)*it;
+    // Create Wall    
+    Brick *brick = POOL.getBrick();
+    if(brick!= nullptr){
+      brick->init(j_brick["dimensions_"]["x"], j_brick["dimensions_"]["y"], 
+                 j_brick["color_"]["r"], j_brick["color_"]["g"], 
+                 j_brick["color_"]["b"], j_brick["color_"]["a"], 
+                 j_brick["rgba_fill_"]["r"], j_brick["rgba_fill_"]["g"], 
+                 j_brick["rgba_fill_"]["b"], j_brick["rgba_fill_"]["a"], 
+                 j_brick["position_"]["x"], j_brick["position_"]["y"], 
+                 j_brick["rotation_"], j_brick["scale_"]["x"], 
+                 j_brick["scale_"]["y"], j_brick["lives_"]);
+
+      brick->tag_ = j_brick["tag_"];
+      brick->active_ = j_brick["active_"];
+      brick->z_order_ = j_brick["z_order_"];
+
+      this->addDrawableEntity(*brick);
+    }
+  }
+
+  for (json::iterator it = j_scene["Balls"].begin(); it 
+  != j_scene["Balls"].end(); ++it) {
+
+    json j_ball = (json)*it;    
+    // Create Ball    
+    Ball *ball = POOL.getBall();
+
+    if(ball!= nullptr){
+      uint8_t error_code = 0;  
+
+      std::string texture_path = j_ball["texture_dir_"];
+
+      if(error_code == 0){
+        // init using an image file
+        if(j_ball["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
+          ball->init(j_ball["position_"]["x"], j_ball["position_"]["y"],
+            j_ball["scale_"]["x"], j_ball["scale_"]["y"], 
+            j_ball["speed_"]["x"], j_ball["speed_"]["y"], 
+            texture_path);
+        }else{
+          // We need a texture in the mapping
+          sf::Texture *texture = this->getTexture(texture_path);
+
+          if(texture == nullptr){
+            texture = new sf::Texture();
+            if(texture != nullptr){
+              texture->loadFromFile(texture_path);  
+              this->addTexture(*texture, texture_path);
+            }else{
+              error_code = 1;
+            }
+          }
+          // init by handle
+          if(j_ball["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
+            ball->init(j_ball["position_"]["x"], j_ball["position_"]["y"],
+              j_ball["scale_"]["x"], j_ball["scale_"]["y"], 
+              j_ball["speed_"]["x"], j_ball["speed_"]["y"], 
+              *texture, texture_path);
+          // init by memory
+          }else if(j_ball["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
+            ball->init(j_ball["position_"]["x"], j_ball["position_"]["y"],
+              j_ball["scale_"]["x"], j_ball["scale_"]["y"], 
+              j_ball["speed_"]["x"], j_ball["speed_"]["y"], 
+              *texture, error_code, texture_path);      
+          }else{
+            error_code = 1; //No es un ball valido
+          }
+        }
+      }
+
+      if(error_code == 0){
+        ball->tag_ = j_ball["tag_"];
+        ball->active_ = j_ball["active_"];
+        ball->z_order_ = j_ball["z_order_"];
+        ball->color_.r = j_ball["color_"]["r"];
+        ball->color_.g = j_ball["color_"]["g"];
+        ball->color_.b = j_ball["color_"]["b"];
+        ball->color_.a = j_ball["color_"]["a"];
+
+        this->addDrawableEntity(*ball);
+      }else{
+        // if has error building the ball, return it to the pool
+        POOL.returnBall(*ball);
+      }
+    }
+  }
+  
+
+  for (json::iterator it = j_scene["Players"].begin(); it 
+  != j_scene["Players"].end(); ++it) {
+
+    json j_player = (json)*it;    
+    // Create Player    
+    Player *player = POOL.getPlayer();
+
+    if(player!= nullptr){
+      uint8_t error_code = 0;  
+
+      std::string texture_path = j_player["texture_dir_"];
+
+      if(error_code == 0){
+        // init using an image file
+        if(j_player["origin_"] == SpriteOrigin::kSpriteOrigin_Image){
+          player->init(j_player["position_"]["x"], j_player["position_"]["y"],
+            j_player["scale_"]["x"], j_player["scale_"]["y"], 
+            j_player["speed_"]["x"], j_player["speed_"]["y"], 
+            texture_path);
+        }else{
+          // We need a texture in the mapping
+          sf::Texture *texture = this->getTexture(texture_path);
+
+          if(texture == nullptr){
+            texture = new sf::Texture();
+            if(texture != nullptr){
+              texture->loadFromFile(texture_path);  
+              this->addTexture(*texture, texture_path);
+            }else{
+              error_code = 1;
+            }
+          }
+          // init by handle
+          if(j_player["origin_"] == SpriteOrigin::kSpriteOrigin_Handler){ 
+            player->init(j_player["position_"]["x"], j_player["position_"]["y"],
+              j_player["scale_"]["x"], j_player["scale_"]["y"], 
+              j_player["speed_"]["x"], j_player["speed_"]["y"], 
+              *texture, texture_path);
+          // init by memory
+          }else if(j_player["origin_"] == SpriteOrigin::kSpriteOrigin_Memory){ 
+            player->init(j_player["position_"]["x"], j_player["position_"]["y"],
+              j_player["scale_"]["x"], j_player["scale_"]["y"], 
+              j_player["speed_"]["x"], j_player["speed_"]["y"], 
+              *texture, error_code, texture_path);      
+          }else{
+            error_code = 1; //No es un player valido
+          }
+        }
+      }
+
+      if(error_code == 0){
+        player->tag_ = j_player["tag_"];
+        player->active_ = j_player["active_"];
+        player->z_order_ = j_player["z_order_"];
+        player->color_.r = j_player["color_"]["r"];
+        player->color_.g = j_player["color_"]["g"];
+        player->color_.b = j_player["color_"]["b"];
+        player->color_.a = j_player["color_"]["a"];
+
+        this->addDrawableEntity(*player);
+      }else{
+        // if has error building the player, return it to the pool
+        POOL.returnPlayer(*player);
+      }
+    }
+  }
 }
 
 void Scene::saveScene(const std::string scene_path){  
@@ -241,6 +437,10 @@ void Scene::saveScene(const std::string scene_path){
   json j_labels;
   json j_sprites;
   json j_textures;
+  json j_walls;
+  json j_bricks;
+  json j_balls;
+  json j_players;
 
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
     map_drawable_entity_.begin(); it != map_drawable_entity_.end(); ++it) {
@@ -248,11 +448,21 @@ void Scene::saveScene(const std::string scene_path){
     json j_label;
     json j_rect;
     json j_sprite;
-    json j_background;
+    json j_background;    
+    json j_wall;
+    json j_brick;
+    json j_ball;
+    json j_player;
+
     Label* label_tmp = nullptr;
     Rect* rect_tmp = nullptr;
     Sprite* sprite_tmp = nullptr;
     Background* background_tmp = nullptr;
+    
+    Wall* wall_tmp = nullptr;
+    Brick* brick_tmp = nullptr;
+    Ball* ball_tmp = nullptr;
+    Player* player_tmp = nullptr;
 
     switch(it->second->type())
     {
@@ -352,7 +562,102 @@ void Scene::saveScene(const std::string scene_path){
           background_tmp->background_position_.y;
 
         j_backgrounds.push_back(j_background);  
+        break;
         
+      case Entity::kWall:
+        wall_tmp = static_cast<Wall*>(it->second);
+
+        j_wall["tag_"] = wall_tmp->tag_;
+        j_wall["active_"] = wall_tmp->active_;
+        j_wall["z_order_"] = wall_tmp->z_order_;
+        j_wall["rotation_"] = wall_tmp->rotation_;
+        j_wall["position_"]["x"] = wall_tmp->position_.x;
+        j_wall["position_"]["y"] = wall_tmp->position_.y;
+        j_wall["scale_"]["x"] =wall_tmp->scale_.x;
+        j_wall["scale_"]["y"] = wall_tmp->scale_.y;
+        j_wall["color_"]["r"] = wall_tmp->color_.r;
+        j_wall["color_"]["g"] = wall_tmp->color_.g;
+        j_wall["color_"]["b"] = wall_tmp->color_.b;
+        j_wall["color_"]["a"] = wall_tmp->color_.a;
+        j_wall["is_solid_"] = wall_tmp->is_solid_;
+        j_wall["dimensions_"]["x"] = wall_tmp->dimensions_.x;
+        j_wall["dimensions_"]["y"] = wall_tmp->dimensions_.y;
+        j_wall["rgba_fill_"]["r"] = wall_tmp->rgba_fill_.r;
+        j_wall["rgba_fill_"]["g"] = wall_tmp->rgba_fill_.g;
+        j_wall["rgba_fill_"]["b"] = wall_tmp->rgba_fill_.b;
+        j_wall["rgba_fill_"]["a"] = wall_tmp->rgba_fill_.a;
+
+        j_walls.push_back(j_wall);
+        break;
+      case Entity::kBrick:
+        brick_tmp = static_cast<Brick*>(it->second);
+
+        j_brick["tag_"] = brick_tmp->tag_;
+        j_brick["active_"] = brick_tmp->active_;
+        j_brick["z_order_"] = brick_tmp->z_order_;
+        j_brick["rotation_"] = brick_tmp->rotation_;
+        j_brick["position_"]["x"] = brick_tmp->position_.x;
+        j_brick["position_"]["y"] = brick_tmp->position_.y;
+        j_brick["scale_"]["x"] =brick_tmp->scale_.x;
+        j_brick["scale_"]["y"] = brick_tmp->scale_.y;
+        j_brick["color_"]["r"] = brick_tmp->color_.r;
+        j_brick["color_"]["g"] = brick_tmp->color_.g;
+        j_brick["color_"]["b"] = brick_tmp->color_.b;
+        j_brick["color_"]["a"] = brick_tmp->color_.a;
+        j_brick["is_solid_"] = brick_tmp->is_solid_;
+        j_brick["dimensions_"]["x"] = brick_tmp->dimensions_.x;
+        j_brick["dimensions_"]["y"] = brick_tmp->dimensions_.y;
+        j_brick["rgba_fill_"]["r"] = brick_tmp->rgba_fill_.r;
+        j_brick["rgba_fill_"]["g"] = brick_tmp->rgba_fill_.g;
+        j_brick["rgba_fill_"]["b"] = brick_tmp->rgba_fill_.b;
+        j_brick["rgba_fill_"]["a"] = brick_tmp->rgba_fill_.a;
+        j_brick["lives_"] = brick_tmp->lives_;
+
+        j_bricks.push_back(j_brick);
+        break;
+      case Entity::kBall:
+        ball_tmp = static_cast<Ball*>(it->second);
+
+        j_ball["tag_"] = ball_tmp->tag_;    
+        j_ball["active_"] = ball_tmp->active_;
+        j_ball["z_order_"] = ball_tmp->z_order_;
+        j_ball["rotation_"] = ball_tmp->rotation_;
+        j_ball["position_"]["x"] = ball_tmp->position_.x;
+        j_ball["position_"]["y"] = ball_tmp->position_.y;
+        j_ball["scale_"]["x"] = ball_tmp->scale_.x;
+        j_ball["scale_"]["y"] = ball_tmp->scale_.y;
+        j_ball["color_"]["r"] = ball_tmp->color_.r;
+        j_ball["color_"]["g"] = ball_tmp->color_.g;
+        j_ball["color_"]["b"] = ball_tmp->color_.b;
+        j_ball["color_"]["a"] = ball_tmp->color_.a;
+        j_ball["texture_dir_"] = ball_tmp->texture_dir_;
+        j_ball["origin_"] = ball_tmp->origin();
+        j_ball["speed_"]["x"] = ball_tmp->speed_.x;
+        j_ball["speed_"]["y"] = ball_tmp->speed_.y;
+    
+        j_balls.push_back(j_ball);
+        break;
+      case Entity::kPlayer:
+        player_tmp = static_cast<Player*>(it->second);
+
+        j_player["tag_"] = player_tmp->tag_;    
+        j_player["active_"] = player_tmp->active_;
+        j_player["z_order_"] = player_tmp->z_order_;
+        j_player["rotation_"] = player_tmp->rotation_;
+        j_player["position_"]["x"] = player_tmp->position_.x;
+        j_player["position_"]["y"] = player_tmp->position_.y;
+        j_player["scale_"]["x"] = player_tmp->scale_.x;
+        j_player["scale_"]["y"] = player_tmp->scale_.y;
+        j_player["color_"]["r"] = player_tmp->color_.r;
+        j_player["color_"]["g"] = player_tmp->color_.g;
+        j_player["color_"]["b"] = player_tmp->color_.b;
+        j_player["color_"]["a"] = player_tmp->color_.a;
+        j_player["texture_dir_"] = player_tmp->texture_dir_;
+        j_player["origin_"] = player_tmp->origin();
+        j_player["speed_"]["x"] = player_tmp->speed_.x;
+        j_player["speed_"]["y"] = player_tmp->speed_.y;
+    
+        j_players.push_back(j_player);
         break;
     }
   }
@@ -372,6 +677,10 @@ void Scene::saveScene(const std::string scene_path){
   j_scene["Sprites"] = { j_sprites };
   j_scene["Backgrounds"] = { j_backgrounds };
   j_scene["Textures"] = { j_textures };
+  j_scene["Walls"] = { j_walls };
+  j_scene["Bricks"] = { j_bricks };
+  j_scene["Balls"] = { j_balls };
+  j_scene["Players"] = { j_players };
 
   std::ofstream o(scene_path);
   o << std::setw(2) << j_scene << std::endl;  
