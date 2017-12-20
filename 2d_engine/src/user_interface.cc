@@ -277,7 +277,7 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
       }
     }else if(edit_type_ui_ == kPlayer){
       UiLoadCommonValuesEdit(*player_selection_);
-      UiLoadPlayerValuesEdit(*player_selection_);
+      //UiLoadPlayerValuesEdit(*player_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   player_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -301,7 +301,7 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
       }
       if (ImGui::Button("Move selected items")) {
         std::list<DrawableEntity*> selected = 
-        scene.getDrawableEntitiesByTag(GM.selected_item_tag_);
+        scene.getDrawableEntitiesBySelectionTag(GM.selected_item_tag_);
         for (std::list<DrawableEntity*>::const_iterator it =
              selected.begin(); it != selected.end(); ++it) {
           (*it)->move(px, py);
@@ -405,13 +405,13 @@ void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
   }
 }
 
-void UserInterface::UiLoadPlayerValuesEdit(Player &player){
+/*void UserInterface::UiLoadPlayerValuesEdit(Player &player){
   if (ImGui::TreeNode("speed player")){
     ImGui::InputInt("speedx", &player.speed_.x, 1, 1);
     ImGui::InputInt("speedy", &player.speed_.y, 1, 1);
     ImGui::TreePop();
   }
-}
+}*/
 
 void UserInterface::UiLoadBallValuesEdit(Ball &ball){
   if (ImGui::TreeNode("speed ball")){
@@ -687,13 +687,13 @@ void UserInterface::UiLoadMenu(Scene &scene){
 
 void UserInterface::UiGameParameters(){
   ImGui::Begin("Game Parameters");
-  static bool is_ball_moving = GM.isBallInMovement_? true : false; 
+  static bool is_ball_moving = GM.is_ball_in_movement_? true : false; 
   ImGui::InputInt("player speed", &GM.player_speed_, 1, 1);
   ImGui::InputInt("lives", &GM.lives_, 1, 1);
   ImGui::InputInt("score", &GM.score_, 1, 1);
   ImGui::InputInt("high score", &GM.hight_score_, 1, 1);
   ImGui::Checkbox("Ball in movement", &is_ball_moving);
-  GM.isBallInMovement_ = is_ball_moving? 1 : 0;
+  GM.is_ball_in_movement_ = is_ball_moving? 1 : 0;
   ImGui::End();
 }
 
