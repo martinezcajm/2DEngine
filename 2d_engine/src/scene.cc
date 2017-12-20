@@ -469,7 +469,7 @@ void Scene::saveScene(const std::string scene_path){
         label_tmp = static_cast<Label*>(it->second);
 
         j_label["tag_"] =label_tmp->tag_;    
-        j_label["active_"] = label_tmp->tag_;
+        j_label["active_"] = label_tmp->active_;
         j_label["z_order_"] = label_tmp->z_order_;
         j_label["rotation_"] = label_tmp->rotation_;
         j_label["position_"]["x"] = label_tmp->position_.x;
