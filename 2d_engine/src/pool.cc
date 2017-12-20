@@ -20,6 +20,10 @@ void Pool::init(){
   Label* aux_label = nullptr;
   Sprite* aux_sprite = nullptr;
   Background* aux_background = nullptr;
+  Wall *aux_wall = nullptr;
+  Brick *aux_brick = nullptr;
+  Ball *aux_ball = nullptr;
+  Player *aux_player = nullptr;
 
   for(int i = 0; i<start_rects_; i++){
     aux_rect = Rect::CreateRect();
@@ -37,6 +41,22 @@ void Pool::init(){
     aux_background = Background::CreateBackground();
     if(aux_background!=nullptr) bg_pool_.push_back(aux_background);
   }
+  for(int i = 0; i<start_walls_; i++){
+    aux_wall = Wall::CreateWall();
+    if(aux_wall!=nullptr) wall_pool_.push_back(aux_wall);
+  }
+  for(int i = 0; i<start_bricks_; i++){
+    aux_brick = Brick::CreateBrick();
+    if(aux_brick!=nullptr) brick_pool_.push_back(aux_brick);
+  }
+  for(int i = 0; i<start_balls_; i++){
+    aux_ball = Ball::CreateBall();
+    if(aux_ball!=nullptr) ball_pool_.push_back(aux_ball);
+  }
+  for(int i = 0; i<start_players_; i++){
+    aux_player = Player::CreatePlayer();
+    if(aux_player!=nullptr) player_pool_.push_back(aux_player);
+  }
 }
 
 void Pool::free(){
@@ -44,6 +64,10 @@ void Pool::free(){
   Label *label_aux_delete = nullptr;
   Sprite *sprite_aux_delete = nullptr;
   Background *background_aux_delete = nullptr;
+  Wall *wall_aux_delete = nullptr;
+  Brick *brick_aux_delete = nullptr;
+  Ball *ball_aux_delete = nullptr;
+  Player *player_aux_delete = nullptr;
 
   while(rect_pool_.size() > 0){
     rect_aux_delete = rect_pool_.back();
@@ -67,6 +91,30 @@ void Pool::free(){
     background_aux_delete = bg_pool_.back();
     bg_pool_.pop_back();
     delete background_aux_delete;
+  }
+
+  while(wall_pool_.size() > 0){
+    wall_aux_delete = wall_pool_.back();
+    wall_pool_.pop_back();
+    delete wall_aux_delete;
+  }
+
+  while(brick_pool_.size() > 0){
+    brick_aux_delete = brick_pool_.back();
+    brick_pool_.pop_back();
+    delete brick_aux_delete;
+  }
+
+  while(ball_pool_.size() > 0){
+    ball_aux_delete = ball_pool_.back();
+    ball_pool_.pop_back();
+    delete ball_aux_delete;
+  }
+
+  while(player_pool_.size() > 0){
+    player_aux_delete = player_pool_.back();
+    player_pool_.pop_back();
+    delete player_aux_delete;
   }
 }
 
