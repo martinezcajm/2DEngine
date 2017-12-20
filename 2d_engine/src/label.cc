@@ -71,11 +71,11 @@ void Label::unuse(){
 
 void Label::update(){
   if(tag_ == 10){
-    memcpy(&text_, GM.score_, 4);
+    memcpy(&text_, &GM.score_, 4);
   }else if(tag_ == 11){
-    memcpy(&text_, GM.hight_score_, 4);
-  }else if(tag == 12){
-    memcpy(&text_, GM.lives_, 4);
+    memcpy(&text_, &GM.hight_score_, 4);
+  }else if(tag_ == 12){
+    memcpy(&text_, &GM.lives_, 4);
   }
 
 }
