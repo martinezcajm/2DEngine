@@ -313,6 +313,10 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
 }
 
 void UserInterface::UiLoadCommonValuesEdit(DrawableEntity &d_entity){
+  if (ImGui::TreeNode("Tag")){
+    ImGui::InputInt("tag", &d_entity.tag_, 1.0f, 1.0f);
+    ImGui::TreePop();
+  } 
   if (ImGui::TreeNode("Position")){
     ImGui::InputFloat("x", &d_entity.position_.x, 1.0f, 1.0f);
     ImGui::InputFloat("y", &d_entity.position_.y, 1.0f, 1.0f);

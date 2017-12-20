@@ -84,7 +84,7 @@ class Entity{
   Type type();
 
   //Data members
-  uint32_t tag_;
+  int tag_;
   uint8_t active_;
  protected:
   Type type_;

@@ -5,6 +5,7 @@
 #define __LABEL_H__ 1
 
 #include "drawable_entity.h"
+#include "game_manager.h"
 
 /** @brief Graphic entity Label
 *
@@ -100,6 +101,7 @@ class Label : public DrawableEntity{
   */
   sf::FloatRect getBoundaries() override;
   
+  GameManager& GM = GameManager::instance();
   static const uint8_t kMaxLabels = 50;
   static const uint8_t kTextMaxSize = 50;
   int32_t font_size_;
