@@ -2,6 +2,7 @@
 #define __BALL_H__ 1
 
 #include "sprite.h"
+#include "game_manager.h"
 
 /** @Graphic entity Ball
 *
@@ -99,6 +100,7 @@ class Ball : public Sprite{
   virtual void update() override;
   
   sf::Vector2i speed_;
+  GameManager& GM = GameManager::instance();
  protected:
   /** @Ball constructor
   *

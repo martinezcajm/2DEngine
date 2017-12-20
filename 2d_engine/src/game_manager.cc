@@ -26,7 +26,7 @@ GameManager::GameManager(){
   score_ = 0;
   hight_score_ = 0;
 
-  isBallInMovement_ = 1;
+  is_ball_in_movement_ = 0;
   player_speed_ = 5;
   player1Left_ = 0;
   player1Right_ = 0;

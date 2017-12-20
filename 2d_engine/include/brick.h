@@ -2,6 +2,7 @@
 #define __BRICK_H__ 1
 
 #include "rect.h"
+#include "game_manager.h"
 
 /** 
 *
@@ -66,6 +67,8 @@ class Brick : public Rect{
   void update() override;
   
   int lives_;
+  int score_;
+  GameManager& GM = GameManager::instance();
  private:
   /** @Brick constructor
   *

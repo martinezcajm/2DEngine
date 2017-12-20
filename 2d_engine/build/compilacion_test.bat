@@ -16,8 +16,8 @@ cl /nologo /Zi /GR- /EHs /c /MD ..\src\rect.cc -I ..\include  -I ..\deps\SFML\in
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\label.cc -I ..\include  -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\sprite.cc -I ..\include  -I ..\deps\SFML\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\background.cc -I ..\include -I ..\deps\SFML\include
-cl /nologo /Zi /GR- /EHs /c /MD ..\src\ball.cc -I ..\include -I ..\deps\SFML\include
-cl /nologo /Zi /GR- /EHs /c /MD ..\src\brick.cc -I ..\include -I ..\deps\SFML\include
+cl /nologo /Zi /GR- /EHs /c /MD ..\src\ball.cc -I ..\include -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs
+cl /nologo /Zi /GR- /EHs /c /MD ..\src\brick.cc -I ..\include -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\wall.cc -I ..\include -I ..\deps\SFML\include
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\player.cc -I ..\include -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs
 cl /nologo /Zi /GR- /EHs /c /MD ..\src\pool.cc -I ..\include -I ..\deps\SFML\include -I ..\deps\tinyfiledialogs

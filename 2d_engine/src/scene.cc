@@ -62,6 +62,7 @@ void Scene::cleanScene(){
 }
 
 void Scene::loadScene(const std::string scene_path, const sf::Font& font){
+  scene_path_ = scene_path;
   //TODO  
   std::ifstream i(scene_path);
   json j_scene;
@@ -741,18 +742,23 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
   return return_list;
 }
 
+std::list<DrawableEntity*> Scene::getDrawableEntitiesBySelectionTag(
+  uint32_t selection_tag){
+  std::list<DrawableEntity*> return_list;
+  
+  for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
+       map_drawable_entity_.begin(); it != map_drawable_entity_.end(); ++it) {
+
+    if(it->second->selection_tag_ == selection_tag){
+      return_list.push_back(it->second);
+    }
+  }
+
+  return return_list;
+}
+
 void Scene::update(){
 
-  std::list<DrawableEntity*> list_tmp;
-  Ball* ball_tmp;
-  Brick* brick_tmp;
-  Player* player_tmp;
-  sf::Vector2f posTop;
-  sf::Vector2f posDown;
-  sf::Vector2f posLeft;
-  sf::Vector2f posRight;
-  sf::FloatRect fRect;
-  uint8_t count_bricks_;
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
        map_drawable_entity_.begin(); it != map_drawable_entity_.end(); ++it) {
           
@@ -764,128 +770,143 @@ void Scene::update(){
         break;
       case Entity::kBall:
         ball_tmp = static_cast<Ball*>(it->second);
-        // Check Collision with Walls
-        list_tmp = getDrawableEntitiesByTag(10);
-        for (std::list<DrawableEntity*>::const_iterator it2 =
-          list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
 
-          if((*it2)->active_){
-            fRect =  it->second->getBoundaries();
-            posTop.x = fRect.left + (fRect.width / 2);
-            posTop.y = fRect.top;
 
-            posDown.x = fRect.left + (fRect.width / 2);
-            posDown.y = fRect.top + fRect.height;
+        if(ball_tmp->position_.y > 750){
+          list_tmp = getDrawableEntitiesByTag(12);
+          for (std::list<DrawableEntity*>::const_iterator it2 =
+            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
 
-            posLeft.x = fRect.left;
-            posLeft.y = fRect.top + (fRect.height / 2);
-
-            posRight.x = fRect.left + fRect.width;
-            posRight.y = fRect.top + (fRect.height / 2);
-
-            if((*it2)->checkCollision(posTop)){
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posDown)){
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posLeft)){
-              ball_tmp->speed_.x *= -1;
-            }else if((*it2)->checkCollision(posRight)){
-              ball_tmp->speed_.x *= -1;
-            }
+            // Reset Player position
+            player_tmp = static_cast<Player*>(*it2);
+            player_tmp->position_.x = 275;
+            player_tmp->position_.y = 725;
           }
         }
+        else{
+          // Check Collision with Walls
+          list_tmp = getDrawableEntitiesByTag(10);
+          for (std::list<DrawableEntity*>::const_iterator it2 =
+            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
 
-        // Check Collision with Bricks
-        list_tmp = getDrawableEntitiesByTag(11);
-        count_bricks_ = 0;
-        for (std::list<DrawableEntity*>::const_iterator it2 =
-          list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+            if((*it2)->active_){
+              fRect =  it->second->getBoundaries();
+              posTop.x = fRect.left + (fRect.width / 2);
+              posTop.y = fRect.top;
 
-          if((*it2)->active_){
-            count_bricks_ += 1;
-            fRect =  it->second->getBoundaries();
-            posTop.x = fRect.left + (fRect.width / 2);
-            posTop.y = fRect.top;
+              posDown.x = fRect.left + (fRect.width / 2);
+              posDown.y = fRect.top + fRect.height;
 
-            posDown.x = fRect.left + (fRect.width / 2);
-            posDown.y = fRect.top + fRect.height;
+              posLeft.x = fRect.left;
+              posLeft.y = fRect.top + (fRect.height / 2);
 
-            posLeft.x = fRect.left;
-            posLeft.y = fRect.top + (fRect.height / 2);
+              posRight.x = fRect.left + fRect.width;
+              posRight.y = fRect.top + (fRect.height / 2);
 
-            posRight.x = fRect.left + fRect.width;
-            posRight.y = fRect.top + (fRect.height / 2);
-
-            if((*it2)->checkCollision(posTop)){
-              brick_tmp = static_cast<Brick*>(*it2);
-              brick_tmp->lives_ -= 1;
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posDown)){
-              brick_tmp = static_cast<Brick*>(*it2);
-              brick_tmp->lives_ -= 1;
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posLeft)){
-              brick_tmp = static_cast<Brick*>(*it2);
-              brick_tmp->lives_ -= 1;
-              ball_tmp->speed_.x *= -1;
-            }else if((*it2)->checkCollision(posRight)){
-              brick_tmp = static_cast<Brick*>(*it2);
-              brick_tmp->lives_ -= 1;
-              ball_tmp->speed_.x *= -1;
+              if((*it2)->checkCollision(posTop)){
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posDown)){
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posLeft)){
+                ball_tmp->speed_.x *= -1;
+              }else if((*it2)->checkCollision(posRight)){
+                ball_tmp->speed_.x *= -1;
+              }
             }
           }
-        }
-        if(count_bricks_ == 0){
-          is_game_over_ = 1;
-        }
 
-        list_tmp = getDrawableEntitiesByTag(12);
-        for (std::list<DrawableEntity*>::const_iterator it2 =
-          list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+          // Check Collision with Bricks
+          list_tmp = getDrawableEntitiesByTag(11);
+          count_bricks_ = 0;
+          for (std::list<DrawableEntity*>::const_iterator it2 =
+            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
 
-          if((*it2)->active_){
-            fRect =  it->second->getBoundaries();
-            posTop.x = fRect.left + (fRect.width / 2);
-            posTop.y = fRect.top;
+            if((*it2)->active_){
+              count_bricks_ += 1;
+              fRect =  it->second->getBoundaries();
+              posTop.x = fRect.left + (fRect.width / 2);
+              posTop.y = fRect.top;
 
-            posDown.x = fRect.left + (fRect.width / 2);
-            posDown.y = fRect.top + fRect.height;
+              posDown.x = fRect.left + (fRect.width / 2);
+              posDown.y = fRect.top + fRect.height;
 
-            posLeft.x = fRect.left;
-            posLeft.y = fRect.top + (fRect.height / 2);
+              posLeft.x = fRect.left;
+              posLeft.y = fRect.top + (fRect.height / 2);
 
-            posRight.x = fRect.left + fRect.width;
-            posRight.y = fRect.top + (fRect.height / 2);
+              posRight.x = fRect.left + fRect.width;
+              posRight.y = fRect.top + (fRect.height / 2);
 
-            if((*it2)->checkCollision(posTop)){
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posDown)){
-              fRect =  (*it2)->getBoundaries();
-              //player_tmp = static_cast<Player*>(*it2);
-              ball_tmp->speed_.y *= -1;
-              
-              if(posDown.x < fRect.left + (fRect.width / 6)){
-                ball_tmp->speed_.x = -6;
-              }else if(posDown.x < fRect.left + ((fRect.width / 6) * 2)){
-                ball_tmp->speed_.x = -4;
-              }else if(posDown.x < fRect.left + ((fRect.width / 6) * 3)){
-                ball_tmp->speed_.x = -2;
-              }else if(posDown.x < fRect.left + ((fRect.width / 6) * 4)){
-                ball_tmp->speed_.x = 2;
-              }else if(posDown.x < fRect.left + ((fRect.width / 6) * 5)){
-                ball_tmp->speed_.x = 4;
-              }else{
-                ball_tmp->speed_.x = 6;                
-              }              
+              if((*it2)->checkCollision(posTop)){
+                brick_tmp = static_cast<Brick*>(*it2);
+                brick_tmp->lives_ -= 1;
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posDown)){
+                brick_tmp = static_cast<Brick*>(*it2);
+                brick_tmp->lives_ -= 1;
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posLeft)){
+                brick_tmp = static_cast<Brick*>(*it2);
+                brick_tmp->lives_ -= 1;
+                ball_tmp->speed_.x *= -1;
+              }else if((*it2)->checkCollision(posRight)){
+                brick_tmp = static_cast<Brick*>(*it2);
+                brick_tmp->lives_ -= 1;
+                ball_tmp->speed_.x *= -1;
+              }
+            }
+          }
+          if(count_bricks_ == 0){
+            is_game_over_ = 1;
+          }
 
-            }else if((*it2)->checkCollision(posLeft)){
-              player_tmp = static_cast<Player*>(*it2);
-              ball_tmp->speed_.x = -8;
-              ball_tmp->speed_.y *= -1;
-            }else if((*it2)->checkCollision(posRight)){
-              player_tmp = static_cast<Player*>(*it2);
-              ball_tmp->speed_.x = 8;
-              ball_tmp->speed_.y *= -1;
+          // Check Collision with Player
+          list_tmp = getDrawableEntitiesByTag(12);
+          for (std::list<DrawableEntity*>::const_iterator it2 =
+            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+
+            if((*it2)->active_){
+              fRect =  it->second->getBoundaries();
+              posTop.x = fRect.left + (fRect.width / 2);
+              posTop.y = fRect.top;
+
+              posDown.x = fRect.left + (fRect.width / 2);
+              posDown.y = fRect.top + fRect.height;
+
+              posLeft.x = fRect.left;
+              posLeft.y = fRect.top + (fRect.height / 2);
+
+              posRight.x = fRect.left + fRect.width;
+              posRight.y = fRect.top + (fRect.height / 2);
+
+              if((*it2)->checkCollision(posTop)){
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posDown)){
+                fRect =  (*it2)->getBoundaries();              
+                ball_tmp->speed_.y *= -1;
+                
+                if(posDown.x < fRect.left + (fRect.width / 6)){
+                  ball_tmp->speed_.x = -6;
+                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 2)){
+                  ball_tmp->speed_.x = -4;
+                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 3)){
+                  ball_tmp->speed_.x = -2;
+                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 4)){
+                  ball_tmp->speed_.x = 2;
+                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 5)){
+                  ball_tmp->speed_.x = 4;
+                }else{
+                  ball_tmp->speed_.x = 6;                
+                }              
+
+              }else if((*it2)->checkCollision(posLeft)){
+                player_tmp = static_cast<Player*>(*it2);
+                ball_tmp->speed_.x = -8;
+                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(posRight)){
+                player_tmp = static_cast<Player*>(*it2);
+                ball_tmp->speed_.x = 8;
+                ball_tmp->speed_.y *= -1;
+              }
             }
           }
         }

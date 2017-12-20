@@ -135,6 +135,15 @@ class Scene{
   * @param tag Tag to seach
   */
   std::list<DrawableEntity*> getDrawableEntitiesByTag(const uint32_t tag);
+  /** @Get a list of entities with a specific tag
+  *
+  *  Return the entities with the tag specified in params
+  *
+  * @return list<DrawableEntity*> Return the list of DrawableEntity
+  * @param selection_tag Tag to seach
+  */
+  std::list<DrawableEntity*> getDrawableEntitiesBySelectionTag(
+    uint32_t selection_tag);
   /** @Draw all elemnts of the scene
   *
   *  Draw all elemnts of the scene
@@ -152,6 +161,7 @@ class Scene{
   void update();
 
   uint8_t is_game_over_;
+  std::string scene_path_;
  private:
   std::unordered_map<std::string, sf::Texture*> map_texture_;
 
@@ -163,6 +173,18 @@ class Scene{
 
   Pool& POOL = Pool::instance();
   Scene(const Scene& other){};
+  
+  // Variables used in update method
+  std::list<DrawableEntity*> list_tmp;
+  Ball* ball_tmp;
+  Brick* brick_tmp;
+  Player* player_tmp;
+  sf::Vector2f posTop;
+  sf::Vector2f posDown;
+  sf::Vector2f posLeft;
+  sf::Vector2f posRight;
+  sf::FloatRect fRect;
+  uint8_t count_bricks_;
 };
 
 #endif

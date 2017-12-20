@@ -101,6 +101,10 @@ void Game::processInput(){
         if(GM.window_->event_.key.code == sf::Keyboard::Return){
           GM.new_game_ = 0;
         }
+        
+        if(GM.window_->event_.key.code == sf::Keyboard::Space){
+          GM.is_ball_in_movement_ = 1;
+        }
       }
     }else if(GM.window_->event_.type == sf::Event::KeyReleased){
       // Player 1
@@ -119,7 +123,8 @@ void Game::updateEditor(){
   if(!GM.window_->isOpen()){
     GM.game_over_ = 1;
   }
-  ui_->update(*GM.window_->sfml_window_, *scene_);
+
+  ui_->update(*GM.window_->sfml_window_, *scene_);  
 }
 
 void Game::renderEditor(){
@@ -142,7 +147,10 @@ void Game::updateGame(){
   //scene_->is_game_over_ = 1;
   
   // TODO: Check game input value
-  scene_->update();  
+  
+  if(GM.is_ball_in_movement_){
+    scene_->update();  
+  }
 
 /*
   GM.player1Left_ = 1;

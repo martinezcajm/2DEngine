@@ -33,7 +33,7 @@
         "y": 0
       },
       "tag_": 0,
-      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\bg.png",
+      "texture_dir_": "..\\data\\bg.png",
       "z_order_": -1
     }
   ],
@@ -58,10 +58,10 @@
       },
       "speed_": {
         "x": 1,
-        "y": 1
+        "y": 3
       },
       "tag_": 13,
-      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\ball.png",
+      "texture_dir_": "..\\data\\ball.png",
       "z_order_": 0
     }
   ],
@@ -1350,7 +1350,7 @@
         "y": 1
       },
       "tag_": 12,
-      "texture_dir_": "C:\\Users\\VSPC-Inferno\\Documents\\ESAT\\PA\\2pa_ma_martinezcajm\\2d_engine\\data\\player.png",
+      "texture_dir_": "..\\data\\player.png",
       "z_order_": 0
     }
   ],

@@ -81,21 +81,19 @@ public:
   uint8_t selected_type_;
   uint32_t selected_id_;
   
-
   //Fonts supported by the app 
   //TODO charge them through an ini file
   sf::Font arial_;
   sf::Font verdana_;
   //tag that is related to a selected item
   static const uint32_t selected_item_tag_ = 1;
-
   
   // Arcanoid Status
   uint8_t player1Left_;
   uint8_t player1Right_;
   uint8_t new_game_;
 
-  uint8_t isBallInMovement_;
+  uint8_t is_ball_in_movement_;
   int player_speed_;
   int lives_;
   int score_;

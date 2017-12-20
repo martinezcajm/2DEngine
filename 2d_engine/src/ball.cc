@@ -46,9 +46,16 @@ uint8_t Ball::init(const float px, const float py,
   return Sprite::init(px, py, 0.0f, scalex, scaley, file_path);  
 }
 
-void Ball::update(){
-  
-  
+void Ball::update(){  
+  if(position_.y > 750){
+    GM.lives_ -= 1;
+    GM.is_ball_in_movement_ = 0;
+    position_.x = 312;
+    position_.y = 705;
+    speed_.x = 1;
+    speed_.y = 3;
+  }
+
   if(active_){
     position_.x += speed_.x;
     position_.y += speed_.y;

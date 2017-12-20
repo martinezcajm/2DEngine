@@ -48,9 +48,7 @@ uint8_t Player::init(const float px, const float py,
   return Sprite::init(px, py, 0.0f, scalex, scaley, file_path);
 }
 
-void Player::update(){
-
-  
+void Player::update(){  
   if(GM.player1Left_ && GM.player1Right_){
     speed_.x = 0;
   }else if(GM.player1Left_){
