@@ -52,9 +52,15 @@ void Player::update(){
   if(GM.player1Left_ && GM.player1Right_){
     speed_.x = 0;
   }else if(GM.player1Left_){
-    speed_.x = GM.player_speed_;
+    if(position_.x > 32)
+      speed_.x = -1 *GM.player_speed_;
+    else
+      speed_.x = 0;
   }else if(GM.player1Right_){
-    speed_.x = -1 * GM.player_speed_;
+    if(position_.x < 510)
+      speed_.x =  GM.player_speed_;
+    else
+      speed_.x = 0;
   }else{
     speed_.x = 0;
   }
