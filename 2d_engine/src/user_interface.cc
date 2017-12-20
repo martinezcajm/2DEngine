@@ -546,6 +546,11 @@ void UserInterface::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
+        std::string str("2d_engine");        
+        std::size_t found = path.find(str);        
+        path.replace(found, 9, "..");        
+        path = path.substr(found);
+        
         Background *tmp_bg = POOL.getBackground();
         //If the limit of backgrounds hasn't been reached
         if(tmp_bg != nullptr){
@@ -565,6 +570,11 @@ void UserInterface::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
+        std::string str("2d_engine");        
+        std::size_t found = path.find(str);        
+        path.replace(found, 9, "..");        
+        path = path.substr(found);
+
         Sprite *tmp_sprite = POOL.getSprite();
         //If the limit of sprites hasn't been reached
         if(tmp_sprite != nullptr){
@@ -587,6 +597,11 @@ void UserInterface::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
+        std::string str("2d_engine");        
+        std::size_t found = path.find(str);        
+        path.replace(found, 9, "..");        
+        path = path.substr(found);
+
         Player *tmp_player = POOL.getPlayer();
         //If the limit of sprites hasn't been reached
         if(tmp_player != nullptr){
@@ -607,6 +622,11 @@ void UserInterface::UiLoadMenu(){
           kFilterPatternsImage,
           NULL);
       if (path != "") {
+        std::string str("2d_engine");        
+        std::size_t found = path.find(str);        
+        path.replace(found, 9, "..");        
+        path = path.substr(found);
+
         Ball *tmp_ball = POOL.getBall();
         //If the limit of sprites hasn't been reached
         if(tmp_ball != nullptr){
