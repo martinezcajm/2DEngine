@@ -6,7 +6,7 @@
 
 #include "sprite.h"
 
-/** @Graphic entity Background.
+/** @brief Graphic entity Background.
 *
 * Class used to represent backgrounds. Used to stablish continuous movement 
 * to a sprite.
@@ -14,14 +14,14 @@
 */
 class Background : public Sprite{
  public:
-  /** @Destroys the Background
+  /** @brief Destroys the Background
   *
   * Destructor of the background
   *
   * @return void
   */
   virtual ~Background();
-  /** @Initializes the backgorund using a texture
+  /** @brief Initializes the backgorund using a texture
   *
   * Initializes the width height and path of a background
   *
@@ -41,7 +41,7 @@ class Background : public Sprite{
   * @return void
   */
   void update() override;
-  /** @Draws the graphic entity Background
+  /** @brief Draws the graphic entity Background
   *
   * Draws the background using SFML to the window passed by reference, note
   * that the background doesn't use the transformationso of it's parent,
@@ -51,7 +51,7 @@ class Background : public Sprite{
   * @param window SFML RenderWindow passed by reference
   */
   void draw(sf::RenderWindow &window) override;
-  /** @Factory that creates backgrounds
+  /** @brief Factory that creates backgrounds
   *
   * Checks that the number of sprites didn't pass the maxim amount established
   * If you wish to create a Background you must use this method. In case the
@@ -64,7 +64,7 @@ class Background : public Sprite{
   * maximum of sprites has been reached
   */
   static Background* CreateBackground();
-  /** @Resets the values of the background
+  /** @brief Resets the values of the background
   *
   * Sets the attributes of the background to a default value
   * to return it to a pool and being able to reuse it later.
@@ -82,14 +82,14 @@ class Background : public Sprite{
   sf::Vector2i background_position_;
 
  private:
-  /** @Background constructor
+  /** @brief Background constructor
   *
   * Background constructor used by the factory to create backgrounds
   *
   * @return *Background
   */
   Background();
-  /** @Background copy constructor
+  /** @brief Background copy constructor
   *
   * Background copy constructor without anything to disable it.
   *

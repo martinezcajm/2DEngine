@@ -6,7 +6,7 @@
 
 #include <cstdint>
 
-/** @entity
+/** @brief entity
 *
 * Atomic class of the elements of our engine.
 *
@@ -23,28 +23,28 @@ class Entity{
     kBall = 6,
     kPlayer = 7
   };
-  /** @Entity constructor
+  /** @brief Entity constructor
   *
   * Base constructor of entity
   *
   * @return *Entity
   */
   Entity();
-  /** @Destroys the Entity
+  /** @brief Destroys the Entity
   *
   * Destructor of the entity
   *
   * @return void
   */
   virtual ~Entity() = 0 {};
-  /** @Entity copy constructor
+  /** @brief Entity copy constructor
   *
   * Personal Entity copy constructor taking into account the id.
   *
   * @return *Entity
   */
   Entity(const Entity& o);
-  /** @Initializes the Entity
+  /** @brief Initializes the Entity
   *
   * Initializes an entity with a tag
   *
@@ -52,7 +52,7 @@ class Entity{
   * @param tag unsigned int used to group entities
   */
   void init(const uint32_t tag);
-  /** @Initializes the Entity
+  /** @brief Initializes the Entity
   *
   * Initializes an entity with default values
   *
@@ -67,7 +67,7 @@ class Entity{
   * @return uint32_t id of the entity
   */
   uint32_t id();
-  /** @Resets the values of the entity
+  /** @brief Resets the values of the entity
   *
   * Sets the attributes of the object to return it to a pool and being able
   * to reuse it later. 

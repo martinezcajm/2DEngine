@@ -23,7 +23,7 @@ class DrawableEntity : public Entity{
   * @return *DrawableEntity
   */
   DrawableEntity();
-  /** @Destroys the Drawable entity
+  /** @brief Destroys the Drawable entity
   *
   * Destructor of the drawable entity
   *
@@ -102,7 +102,7 @@ class DrawableEntity : public Entity{
   * @return sf::FloatRect boundaries of the entity.
   */
   virtual sf::FloatRect getBoundaries() = 0;
-  /** @Resets the values of the entity
+  /** @brief Resets the values of the entity
   *
   * Sets the attributes of the object to return it to a pool and being able
   * to reuse it later.

@@ -27,35 +27,6 @@ void UserInterface::init(sf::RenderWindow &window){
   drawing_rect_ = nullptr;
   ImGui::SFML::Init(window);
 }
-//TODO First basic refactoring check if event is necessary
-/*void UserInterface::processInput(sf::RenderWindow &window, sf::Event &event){
-
-  //We check sfml and imgui events
-  while (window.pollEvent(event)){
-    ImGui::SFML::ProcessEvent(event);
-    if (event.type == sf::Event::MouseButtonPressed && 
-        event.mouseButton.button == sf::Mouse::Left &&
-        !ImGui::IsAnyWindowHovered()) {
-      mouse_status_ = kPressed;
-    }
-    if (event.type == sf::Event::MouseButtonReleased && 
-        event.mouseButton.button == sf::Mouse::Left ) {
-      mouse_status_ = kReleased;
-    }
-    if (event.type == sf::Event::Closed) {
-      window.close();
-      GM.game_over_ = 1;
-    }
-    if(event.type == sf::Event::KeyPressed){  
-      // Exit if press ESC    
-      if (event.key.code == sf::Keyboard::Escape)
-      {
-        window.close();
-        GM.game_over_ = 1;
-      }
-    }
-  }
-}*/
 
 void UserInterface::update(sf::RenderWindow &window){
   // Actualizar estados
@@ -601,46 +572,6 @@ void UserInterface::UiLoadMenu(){
           tmp_sprite->init(0,0,
                            0,1,1,
                            path);
-        }
-      }
-    }
-    if (ImGui::Button("Player")) {
-      std::string path = "";
-      path = GM.native_dialog_->openFileDialog(
-          "Select an image for the player",
-          "../data/",
-          3,
-          kFilterPatternsImage,
-          NULL);
-      if (path != "") {
-        Player *tmp_player = POOL.getPlayer();
-        //If the limit of sprites hasn't been reached
-        if(tmp_player != nullptr){
-          GM.scene_->addDrawableEntity(*tmp_player);
-          tmp_player->init(0,0,
-                           1,1,
-                           1,1,
-                           path);
-        }
-      }
-    }
-    if (ImGui::Button("Ball")) {
-      std::string path = "";
-      path = GM.native_dialog_->openFileDialog(
-          "Select an image for the ball",
-          "../data/",
-          3,
-          kFilterPatternsImage,
-          NULL);
-      if (path != "") {
-        Ball *tmp_ball = POOL.getBall();
-        //If the limit of sprites hasn't been reached
-        if(tmp_ball != nullptr){
-          GM.scene_->addDrawableEntity(*tmp_ball);
-          tmp_ball->init(0,0,
-                         1,1,
-                         1,1,
-                         path);
         }
       }
     }

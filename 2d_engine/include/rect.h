@@ -6,21 +6,21 @@
 
 #include "drawable_entity.h"
 
-/** @Graphic entity Label
+/** @brief raphic entity Label
 *
 * Class used to represent Rectangles.
 *
 */
 class Rect : public DrawableEntity{
  public:
-  /** @Destroys the Rect
+  /** @brief Destroys the Rect
   *
   * Destructor of the rect
   *
   * @return void
   */
   virtual ~Rect();
-  /** @Initializes the Rect
+  /** @brief Initializes the Rect
   *
   * Initializes the different values of a rect
   *
@@ -46,7 +46,7 @@ class Rect : public DrawableEntity{
             uint8_t sc_g, uint8_t sc_b, uint8_t sc_a, uint8_t fc_r,
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
             float rotation, float scalex, float scaley);
-  /** @Draws the graphic entity Rectangle
+  /** @brief Draws the graphic entity Rectangle
   *
   * Draws the rectangle using SFML to the window passed by reference 
   *
@@ -54,7 +54,7 @@ class Rect : public DrawableEntity{
   * @param window SFML RenderWindow passed by reference
   */
   void draw(sf::RenderWindow &window) override;
-  /** @Changes the size of the rect
+  /** @brief Changes the size of the rect
   *
   * Sets the value of width and height for the rect to the ones indicated by 
   *parameter. 
@@ -63,7 +63,7 @@ class Rect : public DrawableEntity{
   * @height new height of the rectangle
   */
   void resize(const float width, const float height);
-  /** @Factory that creates rect
+  /** @brief Factory that creates rect
   *
   * Checks that the number of rects didn't pass the maxim amount established
   * If you wish to create a Rect you must use this method. In case the maximum
@@ -74,7 +74,7 @@ class Rect : public DrawableEntity{
   *has been reached
   */
   static Rect* CreateRect();
-  /** @Resets the values of the rect
+  /** @brief Resets the values of the rect
   *
   * Sets the attributes of the rect to a default value
   * to return it to a pool and being able to reuse it later.
@@ -104,14 +104,14 @@ class Rect : public DrawableEntity{
   sf::Vector2f dimensions_;
   sf::Color rgba_fill_;
 protected:
-  /** @Rect constructor
+  /** @brief Rect constructor
   *
   * Rect constructor used by the factory to create rects
   *
   * @return *Rect
   */
   Rect();
-  /** @Rect copy constructor
+  /** @brief Rect copy constructor
   *
   * Rect copy constructor without anything to disable it.
   *

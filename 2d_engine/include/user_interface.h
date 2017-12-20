@@ -34,12 +34,6 @@ class UserInterface{
     kPlayer
   };
 
-  /*enum MouseStatus
-  {
-    kNothing,
-    kPressed,
-    kReleased
-  };*/
   /** @brief Contructor of the UI
   *
   * Contructor of the UI
@@ -71,26 +65,15 @@ class UserInterface{
   * @param window window to which the UI will be drawn.
   */
   void renderUI(sf::RenderWindow &window);
-  /** @brief Checks the inputs
+  /** @brief Updates the internal logic of the UI
   *
-  * Checks the inputs and updates the UI accordly.
-  *
-  * @return void
-  * @param window sfml from which we will process the events
-  * @param event 
-  */
-  void processInput(sf::RenderWindow &window, sf::Event &event);
-  
-  /** @brief Checks the inputs
-  *
-  * Checks the inputs and updates the UI accordly.
+  * Updates the scene depending on the mode the UI is. It also mantains the
+  * main consistency between the status of the UI.
   *
   * @return void
-  * @param window sfml from which we will process the events
-  * @param event 
+  * @param window we will check for the mouse position and update
   */
   void update(sf::RenderWindow &window);
-
   /** @brief Loads the edit values of Drawable entity
   *
   * Loads the edit values of Drawable entity: transformations, color, 

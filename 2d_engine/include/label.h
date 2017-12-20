@@ -6,21 +6,21 @@
 
 #include "drawable_entity.h"
 
-/** @Graphic entity Label
+/** @brief Graphic entity Label
 *
 * Class used to represent text.
 *
 */
 class Label : public DrawableEntity{
  public:
-  /** @Destroys the label
+  /** @brief Destroys the label
   *
   * Destructor of the label
   *
   * @return void
   */
   virtual ~Label();
-  /** @Initializes the Label
+  /** @brief Initializes the Label
   *
   * Initializes a label
   *
@@ -41,7 +41,7 @@ class Label : public DrawableEntity{
             const float px, const float py,
             const float rotation, const float scalex, const float scaley,
             const char* text, const sf::Font &font);
-  /** @Draws the graphic entity Label
+  /** @brief Draws the graphic entity Label
   *
   * Draws the label using SFML to the window passed by reference 
   *
@@ -49,7 +49,7 @@ class Label : public DrawableEntity{
   * @param window SFML RenderWindow passed by reference
   */
   void draw(sf::RenderWindow &window) override;
-  /** @Setter for text value
+  /** @brief Setter for text value
   *
   * Changes  the text value of the label
   *
@@ -57,7 +57,7 @@ class Label : public DrawableEntity{
   * @param &text reference to the new string we wish to show within the label
   */
   void set_font(const sf::Font  &font);
-  /** @Setter for font_size value
+  /** @brief Setter for font_size value
   *
   * Changes the font size of the label
   *
@@ -65,7 +65,7 @@ class Label : public DrawableEntity{
   * @param &font_size reference to the new font size of our label
   */
   void set_font_size(const int32_t &font_size);
-  /** @Factory that creates labels
+  /** @brief Factory that creates labels
   *
   * Checks that the number of labels didn't pass the maxim amount established
   * If you wish to create a Label you must use this method. In case the maximum
@@ -76,7 +76,7 @@ class Label : public DrawableEntity{
   * labels has been reached
   */
   static Label* CreateLabel();
-  /** @Resets the values of the label
+  /** @brief Resets the values of the label
   *
   * Sets the attributes of the label to a default value
   * to return it to a pool and being able to reuse it later.
@@ -109,14 +109,14 @@ class Label : public DrawableEntity{
   //Font of the text
   const sf::Font *font_;
  private:
-  /** @Label constructor
+  /** @brief Label constructor
   *
   * Label constructor used by the factory to create labels
   *
   * @return *Label
   */
   Label();
-  /** @Label copy constructor
+  /** @brief Label copy constructor
   *
   * Label copy constructor without anything to disable it.
   *
