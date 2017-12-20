@@ -166,6 +166,7 @@ void UserInterface::update(sf::RenderWindow &window, Scene &scene){
 void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
   UiLoadMenu(scene);    
   UiStartGameMenu();
+  UiGameParameters();
   //UiTextureManager();
   ImGui::Begin("Selection");
   if (ImGui::CollapsingHeader("Edit")){
@@ -681,6 +682,18 @@ void UserInterface::UiLoadMenu(Scene &scene){
     }
     ImGui::TreePop();
   }
+  ImGui::End();
+}
+
+void UserInterface::UiGameParameters(){
+  ImGui::Begin("Game Parameters");
+  static bool is_ball_moving = GM.isBallInMovement_? true : false; 
+  ImGui::InputInt("player speed", &GM.player_speed_, 1, 1);
+  ImGui::InputInt("lives", &GM.lives_, 1, 1);
+  ImGui::InputInt("score", &GM.score_, 1, 1);
+  ImGui::InputInt("high score", &GM.hight_score_, 1, 1);
+  ImGui::Checkbox("Ball in movement", &is_ball_moving);
+  GM.isBallInMovement_ = is_ball_moving? 1 : 0;
   ImGui::End();
 }
 

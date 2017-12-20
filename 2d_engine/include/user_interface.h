@@ -161,6 +161,16 @@ class UserInterface{
   * 
   */
   void UiStartGameMenu();
+  /** @brief Loads the game parameters menu
+  *
+  * This menu is used to change the game parameters, the ones linked to the 
+  * game manager
+  *
+  * @return void
+  * @param Scene the scene to Load/Save
+  * 
+  */
+  void UiGameParameters();
 
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();
