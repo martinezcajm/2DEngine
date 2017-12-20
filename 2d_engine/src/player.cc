@@ -49,5 +49,15 @@ uint8_t Player::init(const float px, const float py,
 }
 
 void Player::update(){
+  if(GM.player1Left_ && GM.player1Right_){
+    speed_.x = 0;
+  }else if(GM.player1Left_){
+    speed_.x = GM.player_speed_;
+  }else if(GM.player1Right_){
+    speed_.x = -1 * GM.player_speed_;
+  }else{
+    speed_.x = 0;
+  }
 
+  position_.x += speed_.x;
 }

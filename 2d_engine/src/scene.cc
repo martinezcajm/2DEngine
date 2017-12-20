@@ -28,8 +28,7 @@ void Scene::cleanScene(){
     
     switch(it->second->type())
     {
-      case Entity::kRect:
-        
+      case Entity::kRect:        
         POOL.returnRect(*static_cast<Rect*>(it->second));
         break;
       case Entity::kBackground:
@@ -745,7 +744,7 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
 void Scene::update(){
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
        map_drawable_entity_.begin(); it != map_drawable_entity_.end(); ++it) {
-      
+          
     it->second->update();    
   }
 }

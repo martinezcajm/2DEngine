@@ -2,6 +2,7 @@
 #define __PLAYER_H__ 1
 
 #include "sprite.h"
+#include "game_manager.h"
 
 /** @Graphic entity Player
 *
@@ -101,6 +102,7 @@ class Player : public Sprite{
   virtual void update() override;
   
   sf::Vector2i speed_;
+  GameManager& GM = GameManager::instance();
  protected:
   /** @Player constructor
   *
@@ -116,7 +118,7 @@ class Player : public Sprite{
   * @return *Player
   */
   Player(const Player& o){};
- private:  
+ private: 
 };
 
 #endif

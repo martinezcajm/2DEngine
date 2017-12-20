@@ -2,7 +2,7 @@
 #define __GAME_MANAGER_H__ 1
 
 #include "window.h"
-#include "scene.h"
+//#include "scene.h"
 #include "native_dialogs.h"
 
 /*typedef enum UiStatus
@@ -64,7 +64,7 @@ public:
   uint8_t is_editor_;
   Window *window_;
   sf::Vector2u *window_size_;
-  Scene *scene_;
+  //Scene *scene_;
   Native_dialogs *native_dialog_;
   
   // Status update for UI
@@ -91,14 +91,17 @@ public:
 
   
   // Arcanoid Status
+  int32_t player_speed_;
   uint8_t player1Left_;
   uint8_t player1Right_;
   uint8_t player2Left_;
   uint8_t player2Right_;
   uint8_t newGame_;
 
+  uint8_t isBallInMovement_;
   uint8_t players_;
   uint8_t lives_;
+  int32_t speed_y_ball_;
   uint32_t score_;
   uint32_t hight_score_;
   uint32_t round_;

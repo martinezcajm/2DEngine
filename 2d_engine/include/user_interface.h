@@ -6,6 +6,7 @@
 
 #include "game_manager.h"
 #include "pool.h"
+#include "scene.h"
 
 
 
@@ -63,8 +64,9 @@ class UserInterface{
   *
   * @return void
   * @param window window to which the UI will be drawn.
+  * @param Scene the scene to render
   */
-  void renderUI(sf::RenderWindow &window);
+  void renderUI(sf::RenderWindow &window, Scene &scene);
   /** @brief Updates the internal logic of the UI
   *
   * Updates the scene depending on the mode the UI is. It also mantains the
@@ -72,8 +74,9 @@ class UserInterface{
   *
   * @return void
   * @param window we will check for the mouse position and update
+  * @param Scene the scene to update
   */
-  void update(sf::RenderWindow &window);
+  void update(sf::RenderWindow &window, Scene &scene);
   /** @brief Loads the edit values of Drawable entity
   *
   * Loads the edit values of Drawable entity: transformations, color, 
@@ -147,13 +150,14 @@ class UserInterface{
   * @return void
   * 
   */
-  void UiLoadMenu();
+  void UiLoadMenu(Scene &scene);
   /** @brief Loads the game mode menu
   *
   * Only part of the UI that will be shown in game mode, this allows us to
   * change between game mode and edit mode
   *
   * @return void
+  * @param Scene the scene to Load/Save
   * 
   */
   void UiStartGameMenu();

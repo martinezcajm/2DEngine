@@ -99,7 +99,169 @@
       "z_order_": 0
     }
   ],
-  "Labels": null,
+  "Labels": [
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 650.0,
+        "y": 90.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "10000",
+      "z_order_": 0
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 643.0,
+        "y": 150.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "HightScore",
+      "z_order_": 0
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 655.0,
+        "y": 180.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "12000",
+      "z_order_": 0
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 639.0,
+        "y": 60.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "Score",
+      "z_order_": 0
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 0,
+      "position_": {
+        "x": 665.0,
+        "y": 109.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "Hello world",
+      "z_order_": 1
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 642.0,
+        "y": 250.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "Lives:",
+      "z_order_": 0
+    },
+    {
+      "active_": 0,
+      "color_": {
+        "a": 255,
+        "b": 0,
+        "g": 0,
+        "r": 255
+      },
+      "font_size_": 30,
+      "position_": {
+        "x": 730.0,
+        "y": 250.0
+      },
+      "rotation_": 0.0,
+      "scale_": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "style_": 0,
+      "tag_": 0,
+      "text_": "3",
+      "z_order_": 0
+    }
+  ],
   "Players": [
     {
       "active_": 1,
@@ -146,7 +308,7 @@
       },
       "is_solid_": 1,
       "position_": {
-        "x": 770.0,
+        "x": 600.0,
         "y": 2.0
       },
       "rgba_fill_": {
@@ -173,12 +335,12 @@
       },
       "dimensions_": {
         "x": 30.0,
-        "y": 796.0
+        "y": 620.0
       },
       "is_solid_": 1,
       "position_": {
-        "x": 385.0,
-        "y": -385.0
+        "x": 305.0,
+        "y": -294.0
       },
       "rgba_fill_": {
         "a": 255,
@@ -204,12 +366,12 @@
       },
       "dimensions_": {
         "x": 30.0,
-        "y": 796.0
+        "y": 620.0
       },
       "is_solid_": 1,
       "position_": {
-        "x": 385.0,
-        "y": 410.0
+        "x": 305.0,
+        "y": 495.0
       },
       "rgba_fill_": {
         "a": 255,
