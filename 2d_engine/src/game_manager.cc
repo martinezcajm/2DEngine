@@ -8,7 +8,7 @@ GameManager::GameManager(){
   window_ = Window::CreateWindow(*window_size_, "My Window");
   //status_ui_ = UiStatus::kIdle;
   //edit_type_ui_ = UiEditType::kNull;
-  game_over_ = false;
+  close_game_ = false;
   mouse_status_ = MouseStatus::kNothing;
   //mouse_position_.x = 0;
   //mouse_position_.y = 0;
@@ -24,9 +24,11 @@ GameManager::GameManager(){
   // Default GameParams
   lives_ = 3;
   score_ = 0;
-  hight_score_ = 0;
+  highest_score_ = 0;
 
   is_ball_in_movement_ = 0;
+  game_over_ = 0;
+  new_game_ = 0;
   player_speed_ = 5;
   player1Left_ = 0;
   player1Right_ = 0;

@@ -14,7 +14,7 @@ Game::Game(){ }
 Game::~Game(){ }
 
 void Game::init(){
-  GM.game_over_ = 0;
+  GM.close_game_ = 0;
   GM.is_editor_ = 1;
   //ImGui::SFML::Init(*GM.window_->sfml_window_);
   POOL.init();
@@ -48,7 +48,7 @@ void Game::finish(){
 void Game::mainLoop(){
   init();
 
-  while(!GM.game_over_){
+  while(!GM.close_game_){
     processInput();
     //ui_->processInput(*GM.window_->sfml_window_, GM.window_->event_);
     if(GM.is_editor_){
@@ -80,13 +80,13 @@ void Game::processInput(){
     }
     if (GM.window_->event_.type == sf::Event::Closed) {
       GM.window_->sfml_window_->close();
-      GM.game_over_ = 1;
+      GM.close_game_ = 1;
     }
     if(GM.window_->event_.type == sf::Event::KeyPressed){  
       // Exit if press ESC    
       if (GM.window_->event_.key.code == sf::Keyboard::Escape){
         GM.window_->sfml_window_->close();
-        GM.game_over_ = 1;
+        GM.close_game_ = 1;
       }
       else
       {
@@ -98,8 +98,9 @@ void Game::processInput(){
           GM.player1Right_ = 1;
         }
 
-        if(GM.window_->event_.key.code == sf::Keyboard::Return){
-          GM.new_game_ = 0;
+        if(GM.window_->event_.key.code == sf::Keyboard::Return && 
+          GM.game_over_ == 1){
+          GM.new_game_ = 1;
         }
         
         if(GM.window_->event_.key.code == sf::Keyboard::Space){
@@ -121,7 +122,7 @@ void Game::processInput(){
 void Game::updateEditor(){
   // If window is close then finish the excution
   if(!GM.window_->isOpen()){
-    GM.game_over_ = 1;
+    GM.close_game_ = 1;
   }
 
   ui_->update(*GM.window_->sfml_window_, *scene_);  
@@ -143,20 +144,19 @@ void Game::updateGame(){
   //We are still rendering a part of the UI, so we need the update to be 
   //effective
   ImGui::SFML::Update(*GM.window_->sfml_window_, GM.deltaClock_.restart());
-  
-  //scene_->is_game_over_ = 1;
-  
+    
   // TODO: Check game input value
-  
-  if(GM.is_ball_in_movement_){
+  if(GM.new_game_){
+    scene_->loadScene(scene_->scene_path_, GM.arial_);
+    GM.game_over_= 0;
+    GM.new_game_= 0;
+    GM.score_ = 0;
+    GM.lives_ = 3;
+    GM.is_ball_in_movement_ = 0;
+  }
+  if(!GM.game_over_ && GM.is_ball_in_movement_){
     scene_->update();  
   }
-
-/*
-  GM.player1Left_ = 1;
-  GM.player1Right_ = 1;
-  GM.player2Left_ = 1;
-  GM.player2Right_ = 1;*/
 }
 
 void Game::renderGame(){  

@@ -54,8 +54,15 @@ void Ball::update(){
     position_.y = 705;
     speed_.x = 1;
     speed_.y = 3;
+
+    if(GM.lives_ == 0){
+      GM.game_over_ = 1;
+    }
   }
 
+  if(GM.score_ > GM.highest_score_){
+    GM.highest_score_ = GM.score_;
+  }
   if(active_){
     position_.x += speed_.x;
     position_.y += speed_.y;

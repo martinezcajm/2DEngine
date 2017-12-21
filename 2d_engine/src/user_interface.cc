@@ -691,7 +691,7 @@ void UserInterface::UiGameParameters(){
   ImGui::InputInt("player speed", &GM.player_speed_, 1, 1);
   ImGui::InputInt("lives", &GM.lives_, 1, 1);
   ImGui::InputInt("score", &GM.score_, 1, 1);
-  ImGui::InputInt("high score", &GM.hight_score_, 1, 1);
+  ImGui::InputInt("high score", &GM.highest_score_, 1, 1);
   ImGui::Checkbox("Ball in movement", &is_ball_moving);
   GM.is_ball_in_movement_ = is_ball_moving? 1 : 0;
   ImGui::End();

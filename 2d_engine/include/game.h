@@ -90,7 +90,6 @@ class  Game{
   Pool& POOL = Pool::instance();
   UserInterface *ui_;
   Scene *scene_;
-  bool game_over_;
   char const *kFilterPatternsJson[1] = { "*.json" };
   char const *kFilterPatternsImage[3] = { "*.png","*.jpeg", "*.jpg" };
  private:

@@ -758,7 +758,6 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesBySelectionTag(
 }
 
 void Scene::update(){
-
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
        map_drawable_entity_.begin(); it != map_drawable_entity_.end(); ++it) {
           

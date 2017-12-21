@@ -60,7 +60,7 @@ public:
   static GameManager& instance();
 
   // Elements of the game
-  uint8_t game_over_;
+  uint8_t close_game_;
   uint8_t is_editor_;
   Window *window_;
   sf::Vector2u *window_size_;
@@ -92,12 +92,13 @@ public:
   uint8_t player1Left_;
   uint8_t player1Right_;
   uint8_t new_game_;
+  uint8_t game_over_;
 
   uint8_t is_ball_in_movement_;
   int player_speed_;
   int lives_;
   int score_;
-  int hight_score_;
+  int highest_score_;
 };
 
 #endif

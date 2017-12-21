@@ -70,11 +70,11 @@ void Label::unuse(){
 }
 
 void Label::update(){
-  if(tag_ == 10){
+  if(tag_ == 14){
     sprintf_s(text_, sizeof(text_), "%d", GM.score_);
-  }else if(tag_ == 11){
-    sprintf_s(text_, sizeof(text_), "%d", GM.hight_score_);
-  }else if(tag_ == 12){
+  }else if(tag_ == 15){
+    sprintf_s(text_, sizeof(text_), "%d", GM.highest_score_);
+  }else if(tag_ == 16){
     sprintf_s(text_, sizeof(text_), "%d", GM.lives_);
   }
 
