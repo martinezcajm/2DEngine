@@ -365,7 +365,8 @@ void UserInterface::UiLoadRectValuesEdit(Rect &rect){
     ImGui::InputFloat("width", 
     &rect.dimensions_.x, 1.0f, 1.0f);
     ImGui::InputFloat("height", &rect.dimensions_.y, 1.0f, 1.0f);
-    static bool is_solid = rect.is_solid_? true : false;
+    static bool is_solid = false;
+    is_solid = rect.is_solid_? true : false;
     ImGui::Checkbox("Solid", &is_solid);
     rect.is_solid_ = is_solid? 1 : 0;
     ImGui::TreePop();
@@ -393,8 +394,11 @@ void UserInterface::UiLoadLabelValuesEdit(Label &label){
 
 void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
   if (ImGui::TreeNode("movement")){
-    static bool scrolls_vertically = bg.scrolls_vertically_? true : false;
-    static bool scrolls_horizontally = bg.scrolls_horizontally_? true : false; 
+    static bool scrolls_vertically = false;
+    static bool scrolls_horizontally = false;
+
+    scrolls_vertically = bg.scrolls_vertically_? true : false;
+    scrolls_horizontally = bg.scrolls_horizontally_? true : false; 
     ImGui::InputInt("speedx", &bg.speed_.x, 1, 1);
     ImGui::InputInt("speedy", &bg.speed_.y, 1, 1);
     ImGui::Checkbox("Scrolls Vertically)", &scrolls_vertically);
@@ -687,7 +691,8 @@ void UserInterface::UiLoadMenu(Scene &scene){
 
 void UserInterface::UiGameParameters(){
   ImGui::Begin("Game Parameters");
-  static bool is_ball_moving = GM.is_ball_in_movement_? true : false; 
+  static bool is_ball_moving = false;
+  is_ball_moving = GM.is_ball_in_movement_? true : false; 
   ImGui::InputInt("player speed", &GM.player_speed_, 1, 1);
   ImGui::InputInt("lives", &GM.lives_, 1, 1);
   ImGui::InputInt("score", &GM.score_, 1, 1);
