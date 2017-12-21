@@ -409,14 +409,6 @@ void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
   }
 }
 
-/*void UserInterface::UiLoadPlayerValuesEdit(Player &player){
-  if (ImGui::TreeNode("speed player")){
-    ImGui::InputInt("speedx", &player.speed_.x, 1, 1);
-    ImGui::InputInt("speedy", &player.speed_.y, 1, 1);
-    ImGui::TreePop();
-  }
-}*/
-
 void UserInterface::UiLoadBallValuesEdit(Ball &ball){
   if (ImGui::TreeNode("speed ball")){
     ImGui::InputInt("speedx", &ball.speed_.x, 1, 1);
@@ -428,6 +420,10 @@ void UserInterface::UiLoadBallValuesEdit(Ball &ball){
 void UserInterface::UiLoadBrickValuesEdit(Brick &brick){
   if (ImGui::TreeNode("lives brick")){
     ImGui::InputInt("lives", &brick.lives_, 1, 1);
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("score brick")){
+    ImGui::InputInt("score", &brick.score_, 1, 1);
     ImGui::TreePop();
   }
 }
@@ -701,33 +697,3 @@ void UserInterface::UiGameParameters(){
   GM.is_ball_in_movement_ = is_ball_moving? 1 : 0;
   ImGui::End();
 }
-
-/*void UserInterface::UiTextureManager(){
-  ImGui::Begin("Textures");
-  const char* listbox_items[] = { "Texture1", "Texture2", "Texture3"};
-            static int listbox_item_current = 1;
-            ImGui::ListBox("", &listbox_item_current, listbox_items, 3, 3);
-  if (ImGui::Button("Create Texture")) {
-    std::string path = "";
-    path = GM.native_dialog_->openFileDialog(
-        "Select an image for the texture",
-        "../data/",
-        3,
-        kFilterPatternsImage,
-        NULL);
-    if (path != "") {
-      sf::Texture *tmp_texture = nullptr;
-      tmp_texture = GM.scene_->getTexture(path);
-      if(tmp_texture == nullptr){
-        tmp_texture->loadFromFile(path);
-        GM.scene_->addTexture(*tmp_texture, path);
-      }else{
-        //The texture already exists. TODO open an error window
-      }
-    }
-  }
-  if(ImGui::Button("Sprite from texture")){
-
-  }
-  ImGui::End();
-}*/
