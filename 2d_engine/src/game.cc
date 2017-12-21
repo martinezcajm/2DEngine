@@ -23,6 +23,7 @@ void Game::init(){
   ui_->init(*GM.window_->sfml_window_);
 
   scene_ = new Scene();
+  scene_->is_game_over_ = 0;
 }
 
 void Game::finish(){
@@ -141,9 +142,14 @@ void Game::updateGame(){
     GM.score_ = 0;
     GM.lives_ = 3;
     GM.is_ball_in_movement_ = 0;
+    scene_->is_game_over_ = 0;
   }
   if(!GM.game_over_ && GM.is_ball_in_movement_){
     scene_->update();  
+  }
+  if(scene_->is_game_over_){
+    GM.game_over_= 1;
+    scene_->is_game_over_ = 0;
   }
 }
 
