@@ -277,7 +277,7 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
       }
     }else if(edit_type_ui_ == kPlayer){
       UiLoadCommonValuesEdit(*player_selection_);
-      UiLoadPlayerValuesEdit(*player_selection_);
+      //UiLoadPlayerValuesEdit(*player_selection_);
       ImGui::Text("The actual z-order is: %i", 
                   player_selection_->z_order_);
       ImGui::InputInt("New z-order", &ui_z_order, 1, 1);
@@ -301,7 +301,7 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
       }
       if (ImGui::Button("Move selected items")) {
         std::list<DrawableEntity*> selected = 
-        scene.getDrawableEntitiesByTag(GM.selected_item_tag_);
+        scene.getDrawableEntitiesBySelectionTag(GM.selected_item_tag_);
         for (std::list<DrawableEntity*>::const_iterator it =
              selected.begin(); it != selected.end(); ++it) {
           (*it)->move(px, py);
@@ -365,7 +365,8 @@ void UserInterface::UiLoadRectValuesEdit(Rect &rect){
     ImGui::InputFloat("width", 
     &rect.dimensions_.x, 1.0f, 1.0f);
     ImGui::InputFloat("height", &rect.dimensions_.y, 1.0f, 1.0f);
-    static bool is_solid = rect.is_solid_? true : false;
+    static bool is_solid = false;
+    is_solid = rect.is_solid_? true : false;
     ImGui::Checkbox("Solid", &is_solid);
     rect.is_solid_ = is_solid? 1 : 0;
     ImGui::TreePop();
@@ -393,22 +394,17 @@ void UserInterface::UiLoadLabelValuesEdit(Label &label){
 
 void UserInterface::UiLoadBackgroundValuesEdit(Background &bg){
   if (ImGui::TreeNode("movement")){
-    static bool scrolls_vertically = bg.scrolls_vertically_? true : false;
-    static bool scrolls_horizontally = bg.scrolls_horizontally_? true : false; 
+    static bool scrolls_vertically = false;
+    static bool scrolls_horizontally = false;
+
+    scrolls_vertically = bg.scrolls_vertically_? true : false;
+    scrolls_horizontally = bg.scrolls_horizontally_? true : false; 
     ImGui::InputInt("speedx", &bg.speed_.x, 1, 1);
     ImGui::InputInt("speedy", &bg.speed_.y, 1, 1);
     ImGui::Checkbox("Scrolls Vertically)", &scrolls_vertically);
     ImGui::Checkbox("Scrolls Horizontally)", &scrolls_horizontally);
     bg.scrolls_vertically_ = scrolls_vertically? 1 : 0;
     bg.scrolls_horizontally_ = scrolls_horizontally? 1 : 0;
-    ImGui::TreePop();
-  }
-}
-
-void UserInterface::UiLoadPlayerValuesEdit(Player &player){
-  if (ImGui::TreeNode("speed player")){
-    ImGui::InputInt("speedx", &player.speed_.x, 1, 1);
-    ImGui::InputInt("speedy", &player.speed_.y, 1, 1);
     ImGui::TreePop();
   }
 }
@@ -424,6 +420,10 @@ void UserInterface::UiLoadBallValuesEdit(Ball &ball){
 void UserInterface::UiLoadBrickValuesEdit(Brick &brick){
   if (ImGui::TreeNode("lives brick")){
     ImGui::InputInt("lives", &brick.lives_, 1, 1);
+    ImGui::TreePop();
+  }
+  if (ImGui::TreeNode("score brick")){
+    ImGui::InputInt("score", &brick.score_, 1, 1);
     ImGui::TreePop();
   }
 }
@@ -687,7 +687,8 @@ void UserInterface::UiLoadMenu(Scene &scene){
 
 void UserInterface::UiGameParameters(){
   ImGui::Begin("Game Parameters");
-  static bool is_ball_moving = GM.is_ball_in_movement_? true : false; 
+  static bool is_ball_moving = false;
+  is_ball_moving = GM.is_ball_in_movement_? true : false; 
   ImGui::InputInt("player speed", &GM.player_speed_, 1, 1);
   ImGui::InputInt("lives", &GM.lives_, 1, 1);
   ImGui::InputInt("score", &GM.score_, 1, 1);
@@ -696,33 +697,3 @@ void UserInterface::UiGameParameters(){
   GM.is_ball_in_movement_ = is_ball_moving? 1 : 0;
   ImGui::End();
 }
-
-/*void UserInterface::UiTextureManager(){
-  ImGui::Begin("Textures");
-  const char* listbox_items[] = { "Texture1", "Texture2", "Texture3"};
-            static int listbox_item_current = 1;
-            ImGui::ListBox("", &listbox_item_current, listbox_items, 3, 3);
-  if (ImGui::Button("Create Texture")) {
-    std::string path = "";
-    path = GM.native_dialog_->openFileDialog(
-        "Select an image for the texture",
-        "../data/",
-        3,
-        kFilterPatternsImage,
-        NULL);
-    if (path != "") {
-      sf::Texture *tmp_texture = nullptr;
-      tmp_texture = GM.scene_->getTexture(path);
-      if(tmp_texture == nullptr){
-        tmp_texture->loadFromFile(path);
-        GM.scene_->addTexture(*tmp_texture, path);
-      }else{
-        //The texture already exists. TODO open an error window
-      }
-    }
-  }
-  if(ImGui::Button("Sprite from texture")){
-
-  }
-  ImGui::End();
-}*/
