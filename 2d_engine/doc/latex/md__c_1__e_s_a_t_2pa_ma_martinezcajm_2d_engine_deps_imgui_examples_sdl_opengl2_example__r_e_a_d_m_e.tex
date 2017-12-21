@@ -1,0 +1,37 @@
+
+\begin{DoxyItemize}
+\item On Windows with Visual Studio\textquotesingle{}s C\+LI
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+set SDL2DIR=path\_to\_your\_sdl2\_folder
+cl /Zi /MD /I %SDL2DIR%\(\backslash\)include /I ..\(\backslash\).. main.cpp imgui\_impl\_sdl.cpp ..\(\backslash\)..\(\backslash\)imgui*.cpp /link
+       /LIBPATH:%SDL2DIR%\(\backslash\)lib SDL2.lib SDL2main.lib opengl32.lib /subsystem:console
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Linux and similar Unixes
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+c++ `sdl2-config --cflags` -I ../.. main.cpp imgui\_impl\_sdl.cpp ../../imgui*.cpp `sdl2-config --libs` -lGL
+       -o sdl2example
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Mac OS X
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+brew install sdl2
+c++ `sdl2-config --cflags` -I ../.. main.cpp imgui\_impl\_sdl.cpp ../../imgui*.cpp `sdl2-config --libs`
+       -framework OpenGl -o sdl2example
+\end{DoxyCode}
+ 

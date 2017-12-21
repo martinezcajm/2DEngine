@@ -1,0 +1,242 @@
+\hypertarget{class_ball}{}\section{Ball Class Reference}
+\label{class_ball}\index{Ball@{Ball}}
+
+
+Graphic entity \hyperlink{class_ball}{Ball}.  
+
+
+
+
+{\ttfamily \#include $<$ball.\+h$>$}
+
+Inheritance diagram for Ball\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_ball}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_ball_a78aa1f06b39fc9f81df82bef399c475c}{$\sim$\+Ball} ()
+\begin{DoxyCompactList}\small\item\em Deletes a ball. \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_a29f8aab00cd8c1211e68926779504bab}{init} (const float px, const float py, const float scalex, const float scaley, const int32\+\_\+t speed\+\_\+x, const int32\+\_\+t speed\+\_\+y, const sf\+::\+Texture \&texture, const std\+::string \&texture\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Initializes the ball using a texture. \end{DoxyCompactList}\item 
+void \hyperlink{class_ball_aa243193c3b41a94fa289a7b341fc53c4}{init} (const float px, const float py, const float scalex, const float scaley, const int32\+\_\+t speed\+\_\+x, const int32\+\_\+t speed\+\_\+y, const sf\+::\+Texture \&texture, uint8\+\_\+t \&error\+\_\+ocurred, const std\+::string \&texture\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Initializes the ball using a buffer from memory for the texture. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{class_ball_ad0c5b2700e8eae3c810d5dfe075f7673}{init} (const float px, const float py, const float scalex, const float scaley, const int32\+\_\+t speed\+\_\+x, const int32\+\_\+t speed\+\_\+y, const std\+::string \&file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Initializes the ball using an image file for the texture. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_ball_a26c877660343d086a9d45891659474f8}{update} () override
+\begin{DoxyCompactList}\small\item\em Updates the ball in the loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_ball}{Ball} $\ast$ \hyperlink{class_ball_a2b93a708ec2a680459ef59979eb8b070}{Create\+Ball} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ball_a0da8727a1581537a062d580caa8fa0d6}\label{class_ball_a0da8727a1581537a062d580caa8fa0d6}} 
+sf\+::\+Vector2i {\bfseries speed\+\_\+}
+\item 
+\mbox{\Hypertarget{class_ball_ab45d162868bc2a245ab32034c1ec03a9}\label{class_ball_ab45d162868bc2a245ab32034c1ec03a9}} 
+\hyperlink{class_game_manager}{Game\+Manager} \& {\bfseries GM} = \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{Game\+Manager\+::instance}()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ball_a86a144d3dad6c953e422e32435923bbb}{Ball} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_ball}{Ball} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_ball_a6587e385ce0f6bfd3772368159e54271}{Ball} (const \hyperlink{class_ball}{Ball} \&o)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_ball}{Ball} copy constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Graphic entity \hyperlink{class_ball}{Ball}. 
+
+Class used to represent a ball. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ball_a78aa1f06b39fc9f81df82bef399c475c}\label{class_ball_a78aa1f06b39fc9f81df82bef399c475c}} 
+\index{Ball@{Ball}!````~Ball@{$\sim$\+Ball}}
+\index{````~Ball@{$\sim$\+Ball}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{$\sim$\+Ball()}{~Ball()}}
+{\footnotesize\ttfamily virtual Ball\+::$\sim$\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Deletes a ball. 
+
+In case the ball stored it\textquotesingle{}s own texture in the hip it needs to free it. \mbox{\Hypertarget{class_ball_a86a144d3dad6c953e422e32435923bbb}\label{class_ball_a86a144d3dad6c953e422e32435923bbb}} 
+\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{Ball()}{Ball()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ball\+::\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\hyperlink{class_ball}{Ball} constructor. 
+
+\hyperlink{class_ball}{Ball} constructor used by the factory to create ball
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Ball 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ball_a6587e385ce0f6bfd3772368159e54271}\label{class_ball_a6587e385ce0f6bfd3772368159e54271}} 
+\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{Ball()}{Ball()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ball\+::\+Ball (\begin{DoxyParamCaption}\item[{const \hyperlink{class_ball}{Ball} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\hyperlink{class_ball}{Ball} copy constructor. 
+
+\hyperlink{class_ball}{Ball} copy constructor without anything to disable it.
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Ball 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ball_a2b93a708ec2a680459ef59979eb8b070}\label{class_ball_a2b93a708ec2a680459ef59979eb8b070}} 
+\index{Ball@{Ball}!Create\+Ball@{Create\+Ball}}
+\index{Create\+Ball@{Create\+Ball}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{Create\+Ball()}{CreateBall()}}
+{\footnotesize\ttfamily static \hyperlink{class_ball}{Ball}$\ast$ Ball\+::\+Create\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+that creates balls
+
+Checks that the number of balls didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_ball}{Ball} you must use this method. In case the maximum amount of balls has been reached it will return nullptr. Otherwise it will return a pointer to a ball.
+
+\begin{DoxyReturn}{Returns}
+Ball$\ast$ returns the ball created or nullptr if the maximum of balls has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ball_a29f8aab00cd8c1211e68926779504bab}\label{class_ball_a29f8aab00cd8c1211e68926779504bab}} 
+\index{Ball@{Ball}!init@{init}}
+\index{init@{init}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Ball\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const int32\+\_\+t}]{speed\+\_\+x,  }\item[{const int32\+\_\+t}]{speed\+\_\+y,  }\item[{const sf\+::\+Texture \&}]{texture,  }\item[{const std\+::string \&}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Initializes the ball using a texture. 
+
+Initializes the position and transformations of a ball using an sf\+::\+Texture as texture.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the ball \\
+\hline
+{\em py} & position y of the ball \\
+\hline
+{\em scalex} & x scale value of the ball \\
+\hline
+{\em scaley} & y scale value of the ball \\
+\hline
+{\em speed\+\_\+x} & speed of the ball in the x-\/axis \\
+\hline
+{\em speed\+\_\+y} & speed of the ball in the y-\/axis \\
+\hline
+{\em texture} & that will use the ball \\
+\hline
+{\em file\+\_\+path} & image that will be used for the texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ball_aa243193c3b41a94fa289a7b341fc53c4}\label{class_ball_aa243193c3b41a94fa289a7b341fc53c4}} 
+\index{Ball@{Ball}!init@{init}}
+\index{init@{init}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Ball\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const int32\+\_\+t}]{speed\+\_\+x,  }\item[{const int32\+\_\+t}]{speed\+\_\+y,  }\item[{const sf\+::\+Texture \&}]{texture,  }\item[{uint8\+\_\+t \&}]{error\+\_\+ocurred,  }\item[{const std\+::string \&}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Initializes the ball using a buffer from memory for the texture. 
+
+Initializes the position and transformations of a ball using an sf\+::\+Texture as texture from memory.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the ball \\
+\hline
+{\em py} & position y of the ball \\
+\hline
+{\em scalex} & x scale value of the ball \\
+\hline
+{\em scaley} & y scale value of the ball \\
+\hline
+{\em speed\+\_\+x} & speed of the ball in the x-\/axis \\
+\hline
+{\em speed\+\_\+y} & speed of the ball in the y-\/axis \\
+\hline
+{\em texture} & that will use the ball \\
+\hline
+{\em error\+\_\+ocurred} & indicates if there was an error in the execution \\
+\hline
+{\em file\+\_\+path} & image that will be used for the texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ball_ad0c5b2700e8eae3c810d5dfe075f7673}\label{class_ball_ad0c5b2700e8eae3c810d5dfe075f7673}} 
+\index{Ball@{Ball}!init@{init}}
+\index{init@{init}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily uint8\+\_\+t Ball\+::init (\begin{DoxyParamCaption}\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const int32\+\_\+t}]{speed\+\_\+x,  }\item[{const int32\+\_\+t}]{speed\+\_\+y,  }\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Initializes the ball using an image file for the texture. 
+
+Initializes the position and transformations of a ball using an file as texture.
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t indicates if there was an error in the execution error-\/$>$1 ok-\/$>$0 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em px} & position x of the ball \\
+\hline
+{\em py} & position y of the ball \\
+\hline
+{\em scalex} & x scale value of the ball \\
+\hline
+{\em scaley} & y scale value of the ball \\
+\hline
+{\em speed\+\_\+x} & speed of the ball in the x-\/axis \\
+\hline
+{\em speed\+\_\+y} & speed of the ball in the y-\/axis \\
+\hline
+{\em file\+\_\+path} & image that will be used for the texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ball_a26c877660343d086a9d45891659474f8}\label{class_ball_a26c877660343d086a9d45891659474f8}} 
+\index{Ball@{Ball}!update@{update}}
+\index{update@{update}!Ball@{Ball}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Ball\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the ball in the loop. 
+
+Implementation of the update interface
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_sprite_a1070fccd6830382b72e3f3a8785afc8c}{Sprite}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/ball.\+h\end{DoxyCompactItemize}

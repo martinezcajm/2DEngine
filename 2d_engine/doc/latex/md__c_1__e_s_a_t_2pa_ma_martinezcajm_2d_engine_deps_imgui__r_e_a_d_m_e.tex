@@ -1,0 +1,249 @@
+\href{https://travis-ci.org/ocornut/imgui}{\tt } \href{https://scan.coverity.com/projects/4720}{\tt }
+
+(This library is free but needs your support to sustain its development. There are lots of desirable new features and maintenance to do. If you are an individual using dear imgui, please consider donating via Patreon or Pay\+Pal. If your company is using dear imgui, please consider financial support (e.\+g. sponsoring a few weeks/months of development). I can invoice for private support, custom development etc. E-\/mail\+: omarcornut at gmail.)
+
+Monthly donations via Patreon\+: ~\newline
+\href{http://www.patreon.com/imgui}{\tt }
+
+One-\/off donations via Pay\+Pal\+: ~\newline
+\href{https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5Q73FPZ9C526U}{\tt }
+
+Dear Im\+Gui is a bloat-\/free graphical user interface library for C++. It outputs optimized vertex buffers that you can render anytime in your 3\+D-\/pipeline enabled application. It is fast, portable, renderer agnostic and self-\/contained (no external dependencies).
+
+Dear Im\+Gui is designed to enable fast iteration and empower programmers to create content creation tools and visualization/ debug tools (as opposed to UI for the average end-\/user). It favors simplicity and productivity toward this goal, and thus lacks certain features normally found in more high-\/level libraries.
+
+Dear Im\+Gui is particularly suited to integration in realtime 3D applications, fullscreen applications, embedded applications, games, or any applications on consoles platforms where operating system features are non-\/standard.
+
+Dear Im\+Gui is self-\/contained within a few files that you can easily copy and compile into your application/engine\+:
+
+
+\begin{DoxyItemize}
+\item imgui.\+cpp
+\item \hyperlink{imgui_8h_source}{imgui.\+h}
+\item imgui\+\_\+demo.\+cpp
+\item imgui\+\_\+draw.\+cpp
+\item \hyperlink{imgui__internal_8h_source}{imgui\+\_\+internal.\+h}
+\item imconfig.\+h (empty by default, user-\/editable)
+\item \hyperlink{stb__rect__pack_8h_source}{stb\+\_\+rect\+\_\+pack.\+h}
+\item \hyperlink{stb__textedit_8h_source}{stb\+\_\+textedit.\+h}
+\item \hyperlink{stb__truetype_8h_source}{stb\+\_\+truetype.\+h}
+\end{DoxyItemize}
+
+No specific build process is required. You can add the .cpp files to your project or \#include them from an existing file.
+
+Your code passes mouse/keyboard inputs and settings to Dear Im\+Gui (see example applications for more details). After Dear Im\+Gui is setup, you can use it like in this example\+:
+
+
+
+Dear Im\+Gui outputs vertex buffers and simple command-\/lists that you can render in your application. The number of draw calls and state changes is typically very small. Because it doesn\textquotesingle{}t know or touch graphics state directly, you can call Im\+Gui commands anywhere in your code (e.\+g. in the middle of a running algorithm, or in the middle of your own rendering process). Refer to the sample applications in the examples/ folder for instructions on how to integrate dear imgui with your existing codebase.
+
+{\itshape A common misunderstanding is to think that immediate mode gui == immediate mode rendering, which usually implies hammering your driver/\+G\+PU with a bunch of inefficient draw calls and state changes, as the gui functions are called by the user. This is N\+OT what Dear Im\+Gui does. Dear Im\+Gui outputs vertex buffers and a small list of draw calls batches. It never touches your G\+PU directly. The draw call batches are decently optimal and you can render them later, in your app or even remotely.}
+
+Dear Im\+Gui allows you create elaborate tools as well as very short-\/lived ones. On the extreme side of short-\/liveness\+: using the Edit\&Continue feature of modern compilers you can add a few widgets to tweaks variables while your application is running, and remove the code a minute later! Dear Im\+Gui is not just for tweaking values. You can use it to trace a running algorithm by just emitting text commands. You can use it along with your own reflection data to browse your dataset live. You can use it to expose the internals of a subsystem in your engine, to create a logger, an inspection tool, a profiler, a debugger, an entire game making editor/framework, etc.
+
+\subsection*{Binaries/\+Demo }
+
+You should be able to build the examples from sources (tested on Windows/\+Mac/\+Linux). If you don\textquotesingle{}t, let me know! If you want to have a quick look at some Dear Im\+Gui features, you can download Windows binaries of the demo app here\+:
+\begin{DoxyItemize}
+\item \href{http://www.miracleworld.net/imgui/binaries/imgui-demo-binaries-20171013.zip}{\tt imgui-\/demo-\/binaries-\/20171013.\+zip} (Windows binaries, Dear Im\+Gui 1.\+52 W\+IP built 2017/10/13, 5 executables)
+\end{DoxyItemize}
+
+\subsection*{Bindings }
+
+Integrating Dear Im\+Gui within your custom engine is a matter of wiring mouse/keyboard inputs and providing a render function that can bind a texture and render simple textured triangles. The examples/ folder is populated with applications doing just that. If you are an experienced programmer it should take you less than an hour to integrate Dear Im\+Gui in your custom engine, but make sure to spend time reading the F\+AQ, the comments and other documentation!
+
+{\itshape NB\+: those third-\/party bindings may be more or less maintained, more or less close to the spirit of original A\+PI and therefore I cannot give much guarantee about them. People who create language bindings sometimes haven\textquotesingle{}t used the C++ A\+PI themselves (for the good reason that they aren\textquotesingle{}t C++ users). Dear Im\+Gui was designed with C++ in mind and some of the subtleties may be lost in translation with other languages. If your language supports it, I would suggest replicating the function overloading and default parameters used in the original, else the A\+PI may be harder to use. In doubt, please check the original C++ version first!}
+
+Languages\+:
+\begin{DoxyItemize}
+\item C (cimgui)\+: thin c-\/api wrapper for Im\+Gui \href{https://github.com/Extrawurst/cimgui}{\tt https\+://github.\+com/\+Extrawurst/cimgui}
+\item C\#/.Net (Im\+Gui.\+N\+ET)\+: An Im\+Gui wrapper for .N\+ET Core \href{https://github.com/mellinoe/ImGui.NET}{\tt https\+://github.\+com/mellinoe/\+Im\+Gui.\+N\+ET}
+\item D (Derelict\+Imgui)\+: Dynamic bindings for the D programming language\+: \href{https://github.com/Extrawurst/DerelictImgui}{\tt https\+://github.\+com/\+Extrawurst/\+Derelict\+Imgui}
+\item Go (go-\/imgui)\+: \href{https://github.com/Armored-Dragon/go-imgui}{\tt https\+://github.\+com/\+Armored-\/\+Dragon/go-\/imgui}
+\item Lua\+: \href{https://github.com/patrickriordan/imgui_lua_bindings}{\tt https\+://github.\+com/patrickriordan/imgui\+\_\+lua\+\_\+bindings}
+\item Pascal (imgui-\/pas) \href{https://github.com/dpethes/imgui-pas}{\tt https\+://github.\+com/dpethes/imgui-\/pas}
+\item Python (Cy\+Im\+Gui)\+: Python bindings for dear imgui using Cython\+: \href{https://github.com/chromy/cyimgui}{\tt https\+://github.\+com/chromy/cyimgui}
+\item Python (pyimgui)\+: Another Python bindings for dear imgui\+: \href{https://github.com/swistakm/pyimgui}{\tt https\+://github.\+com/swistakm/pyimgui}
+\item Rust (imgui-\/rs)\+: Rust bindings for dear imgui \href{https://github.com/Gekkio/imgui-rs}{\tt https\+://github.\+com/\+Gekkio/imgui-\/rs}
+\end{DoxyItemize}
+
+Frameworks\+:
+\begin{DoxyItemize}
+\item Main Im\+Gui repository include examples for Direct\+X9, Direct\+X10, Direct\+X11, Open\+G\+L2/3, Vulkan, Allegro 5, S\+D\+L+\+G\+L2/3, i\+OS and Marmalade\+: \href{https://github.com/ocornut/imgui/tree/master/examples}{\tt https\+://github.\+com/ocornut/imgui/tree/master/examples}
+\item Unmerged PR\+: Direct\+X12\+: \href{https://github.com/ocornut/imgui/pull/301}{\tt https\+://github.\+com/ocornut/imgui/pull/301}
+\item Unmerged PR\+: S\+D\+L2 + Open\+G\+L\+ES + Emscripten\+: \href{https://github.com/ocornut/imgui/pull/336}{\tt https\+://github.\+com/ocornut/imgui/pull/336}
+\item Unmerged PR\+: Free\+Glut + Open\+G\+L2\+: \href{https://github.com/ocornut/imgui/pull/801}{\tt https\+://github.\+com/ocornut/imgui/pull/801}
+\item Unmerged PR\+: Native Win32 and O\+SX\+: \href{https://github.com/ocornut/imgui/pull/281}{\tt https\+://github.\+com/ocornut/imgui/pull/281}
+\item Unmerged PR\+: Android\+: \href{https://github.com/ocornut/imgui/pull/421}{\tt https\+://github.\+com/ocornut/imgui/pull/421}
+\item Cinder\+: \href{https://github.com/simongeilfus/Cinder-ImGui}{\tt https\+://github.\+com/simongeilfus/\+Cinder-\/\+Im\+Gui}
+\item cocos2d-\/x\+: \href{https://github.com/c0i/imguix}{\tt https\+://github.\+com/c0i/imguix} \href{https://github.com/ocornut/imgui/issues/551}{\tt https\+://github.\+com/ocornut/imgui/issues/551}
+\item Flexium/\+S\+F\+ML (Flex\+G\+UI)\+: \href{https://github.com/DXsmiley/FlexGUI}{\tt https\+://github.\+com/\+D\+Xsmiley/\+Flex\+G\+UI}
+\item Irrlicht (Irr\+I\+M\+G\+UI)\+: \href{https://github.com/ZahlGraf/IrrIMGUI}{\tt https\+://github.\+com/\+Zahl\+Graf/\+Irr\+I\+M\+G\+UI}
+\item Ogre\+: \href{https://bitbucket.org/LMCrashy/ogreimgui/src}{\tt https\+://bitbucket.\+org/\+L\+M\+Crashy/ogreimgui/src}
+\item open\+Frameworks (ofx\+Im\+Gui)\+: \href{https://github.com/jvcleave/ofxImGui}{\tt https\+://github.\+com/jvcleave/ofx\+Im\+Gui}
+\item LÖ\+VE\+: \href{https://github.com/slages/love-imgui}{\tt https\+://github.\+com/slages/love-\/imgui}
+\item Nano\+RT (software raytraced) \href{https://github.com/syoyo/imgui/tree/nanort/examples/raytrace_example}{\tt https\+://github.\+com/syoyo/imgui/tree/nanort/examples/raytrace\+\_\+example}
+\item Qt3d \href{https://github.com/alpqr/imgui-qt3d}{\tt https\+://github.\+com/alpqr/imgui-\/qt3d}
+\item Unreal Engine 4\+: \href{https://github.com/segross/UnrealImGui}{\tt https\+://github.\+com/segross/\+Unreal\+Im\+Gui} or \href{https://github.com/sronsse/UnrealEngine_ImGui}{\tt https\+://github.\+com/sronsse/\+Unreal\+Engine\+\_\+\+Im\+Gui}
+\item S\+F\+ML\+: \href{https://github.com/EliasD/imgui-sfml}{\tt https\+://github.\+com/\+Elias\+D/imgui-\/sfml} or \href{https://github.com/Mischa-Alff/imgui-backends}{\tt https\+://github.\+com/\+Mischa-\/\+Alff/imgui-\/backends}
+\end{DoxyItemize}
+
+For other bindings\+: see \href{https://github.com/ocornut/imgui/wiki/Links/}{\tt this page}. Please contact me with the Issues tracker or Twitter to fix/update this list.
+
+\subsection*{Gallery }
+
+See the \href{https://github.com/ocornut/imgui/issues/123}{\tt Screenshots Thread} for some user creations. Also see the \href{https://github.com/ocornut/imgui/issues/1273}{\tt Mega screenshots} for an idea of the available features.
+
+ \href{https://cloud.githubusercontent.com/assets/8225057/20628927/33e14cac-b329-11e6-80f6-9524e93b048a.png}{\tt } 
+
+\href{https://raw.githubusercontent.com/wiki/ocornut/imgui/web/v148/profiler.png}{\tt }
+
+
+
+  
+
+Dear Im\+Gui can load T\+T\+F/\+O\+TF fonts. U\+T\+F-\/8 is supported for text display and input. Here using Arial Unicode font to display Japanese. Initialize custom font with\+: 
+\begin{DoxyCode}
+ImGuiIO& io = ImGui::GetIO();
+io.Fonts->AddFontFromFileTTF("ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
+
+// For Microsoft IME, pass your HWND to enable IME positioning:
+io.ImeWindowHandle = my\_hwnd;
+\end{DoxyCode}
+ 
+
+\subsection*{References }
+
+The Immediate Mode G\+UI paradigm may at first appear unusual to some users. This is mainly because \char`\"{}\+Retained Mode\char`\"{} G\+U\+Is have been so widespread and predominant. The following links can give you a better understanding about how Immediate Mode G\+U\+Is works.
+\begin{DoxyItemize}
+\item \href{http://www.johno.se/book/imgui.html}{\tt Johannes \textquotesingle{}johno\textquotesingle{} Norneby\textquotesingle{}s article}.
+\item \href{http://www.cse.chalmers.se/edu/year/2011/course/TDA361/Advanced%20Computer%20Graphics/IMGUI.pdf}{\tt A presentation by Rickard Gustafsson and Johannes Algelind}.
+\item \href{http://iki.fi/sol/imgui/}{\tt Jari Komppa\textquotesingle{}s tutorial on building an Im\+Gui library}.
+\item \href{https://mollyrocket.com/861}{\tt Casey Muratori\textquotesingle{}s original video that popularized the concept}.
+\item \href{https://www.youtube.com/watch?v=LSRJ1jZq90k}{\tt Nicolas Guillemot\textquotesingle{}s Cpp\+Con\textquotesingle{}16 flashtalk about Dear Im\+Gui}.
+\item \href{http://perso.univ-lyon1.fr/thierry.excoffier/ZMW/}{\tt Thierry Excoffier\textquotesingle{}s Zero Memory Widget}.
+\end{DoxyItemize}
+
+See the \href{https://github.com/ocornut/imgui/wiki/Links}{\tt Links page} for third-\/party bindings to different languages and frameworks.
+
+\subsection*{Frequently Asked Question (F\+AQ) }
+
+{\bfseries Where is the documentation?}
+
+
+\begin{DoxyItemize}
+\item The documentation is at the top of imgui.\+cpp + effectively \hyperlink{imgui_8h_source}{imgui.\+h}.
+\item Example code is in imgui\+\_\+demo.\+cpp and particularly the Im\+Gui\+::\+Show\+Test\+Window() function. It covers most features of Im\+Gui so you can read the code and call the function itself to see its output.
+\item Standalone example applications using e.\+g. Open\+G\+L/\+DirectX are provided in the examples/ folder.
+\item We obviously needs better documentation! Consider contributing or becoming a \href{http://www.patreon.com/imgui}{\tt Patron} to promote this effort.
+\end{DoxyItemize}
+
+{\bfseries Which version should I get?}
+
+I occasionally tag \href{https://github.com/ocornut/imgui/releases}{\tt Releases} but it is generally safe and recommended to sync to master. The library is fairly stable and regressions tend to be fixed fast when reported. You may also want to checkout the \href{https://github.com/ocornut/imgui/tree/navigation}{\tt navigation branch} if you want to use Dear Im\+Gui with a gamepad (it is also possible to map keyboard inputs to some degree). The Navigation branch is being kept up to date with Master.
+
+{\bfseries Why the odd dual naming, \char`\"{}dear imgui\char`\"{} vs \char`\"{}\+Im\+Gui\char`\"{}?}
+
+The library started its life and is best known as \char`\"{}\+Im\+Gui\char`\"{} only due to the fact that I didn\textquotesingle{}t give it a proper name when I released it. However, the term I\+M\+G\+UI (immediate-\/mode graphical user interface) was coined before and is being used in variety of other situations. It seemed confusing and unfair to hog the name. To reduce the ambiguity without affecting existing codebases, I have decided on an alternate, longer name \char`\"{}dear imgui\char`\"{} that people can use to refer to this specific library in ambiguous situations.
+
+{\bfseries What is Im\+Texture\+ID and how do I display an image?} ~\newline
+{\bfseries I integrated Dear Im\+Gui in my engine and the text or lines are blurry..} ~\newline
+{\bfseries I integrated Dear Im\+Gui in my engine and some elements are disappearing when I move windows around..} ~\newline
+{\bfseries How can I have multiple widgets with the same label? Can I have widget without a label? (Yes). A primer on labels/\+I\+Ds.} ~\newline
+{\bfseries How can I tell when Dear Im\+Gui wants my mouse/keyboard inputs VS when I can pass them to my application?} ~\newline
+{\bfseries How can I load a different font than the default?} ~\newline
+{\bfseries How can I easily use icons in my application?} ~\newline
+{\bfseries How can I load multiple fonts?} ~\newline
+{\bfseries How can I display and input non-\/latin characters such as Chinese, Japanese, Korean, Cyrillic?} ~\newline
+{\bfseries How can I preserve my Dear Im\+Gui context across reloading a D\+LL? (loss of the global/static variables)} ~\newline
+{\bfseries How can I use the drawing facilities without an Dear Im\+Gui window? (using \hyperlink{struct_im_draw_list}{Im\+Draw\+List} A\+PI)}
+
+See the F\+AQ in imgui.\+cpp for answers.
+
+{\bfseries How do you use Dear Im\+Gui on a platform that may not have a mouse or keyboard?}
+
+I recommend using \href{http://synergy-project.org}{\tt Synergy} (\href{https://github.com/symless/synergy}{\tt sources}). In particular, the {\itshape src/micro/u\+Synergy.\+c} file contains a small client that you can use on any platform to connect to your host PC. You can seamlessly use your PC input devices from a video game console or a tablet. Dear Im\+Gui allows to increase the hit box of widgets (via the {\itshape style.\+Touch\+Padding} setting) to accommodate a little for the lack of precision of touch inputs, but it is recommended you use a mouse to allow optimising for screen real-\/estate. You can also checkout the beta \href{https://github.com/ocornut/imgui/tree/navigation}{\tt navigation branch} which provides support for using Dear Im\+Gui with a game controller.
+
+{\bfseries Can you create elaborate/serious tools with Dear Im\+Gui?}
+
+Yes. People have written game editors, data browsers, debuggers, profilers and all sort of non-\/trivial tools with the library. In my experience the simplicity of the A\+PI is very empowering. Your UI runs close to your live data. Make the tools always-\/on and everybody in the team will be inclined to create new tools (as opposed to more \char`\"{}offline\char`\"{} UI toolkits where only a fraction of your team effectively creates tools).
+
+Dear Im\+Gui is very programmer centric and the immediate-\/mode G\+UI paradigm might requires you to readjust some habits before you can realize its full potential. Dear Im\+Gui is about making things that are simple, efficient and powerful.
+
+{\bfseries Is Dear Im\+Gui fast?}
+
+Probably fast enough for most uses. Down to the foundation of its visual design, Dear Im\+Gui is engineered to be fairly performant both in term of C\+PU and G\+PU usage. Running elaborate code and creating elaborate UI will of course have a cost but Dear Im\+Gui aims to minimize it.
+
+Mileage may vary but the following screenshot can give you a rough idea of the cost of running and rendering UI code (In the case of a trivial demo application like this one, your driver/os setup are likely to be the bottleneck. Testing performance as part of a real application is recommended).
+
+
+
+This is showing framerate for the full application loop on my 2011 i\+Mac running Windows 7, Open\+GL, A\+MD Radeon HD 6700M with an optimized executable. In contrast, librairies featuring higher-\/quality rendering and layouting techniques may have a higher resources footprint.
+
+If you intend to display large lists of items (say, 1000+) it can be beneficial for your code to perform clipping manually -\/ one way is using helpers such as \hyperlink{struct_im_gui_list_clipper}{Im\+Gui\+List\+Clipper} -\/ in order to avoid submitting them to Dear Im\+Gui in the first place. Even though Im\+Gui will discard your clipped items it still needs to calculate their size and that overhead will add up if you have thousands of items. If you can handle clipping and height positionning yourself then browsing a list with millions of items isn\textquotesingle{}t a problem.
+
+{\bfseries Can you reskin the look of Dear Im\+Gui?}
+
+You can alter the look of the interface to some degree\+: changing colors, sizes, padding, rounding, fonts. However, as Dear Im\+Gui is designed and optimised to create debug tools, the amount of skinning you can apply is limited. There is only so much you can stray away from the default look and feel of the interface. Below is a screenshot from \href{https://github.com/nem0/LumixEngine}{\tt Lumix\+Engine} with custom colors + a docking/tabs extension (both of which you can find in the Issues section and will eventually be merged)\+:
+
+
+
+{\bfseries Why using C++ (as opposed to C)?}
+
+Dear Im\+Gui takes advantage of a few C++ languages features for convenience but nothing anywhere Boost-\/insanity/quagmire. Dear Im\+Gui does N\+OT require C++11 so it can be used with most old C++ compilers. Dear Im\+Gui doesn\textquotesingle{}t use any C++ header file. Language-\/wise, function overloading and default parameters are used to make the A\+PI easier to use and code more terse. Doing so I believe the A\+PI is sitting on a sweet spot and giving up on those features would make the A\+PI more cumbersome. Other features such as namespace, constructors and templates (in the case of the Im\+Vector$<$$>$ class) are also relied on as a convenience.
+
+There is an reasonably maintained \href{https://github.com/Extrawurst/cimgui}{\tt c-\/api for Im\+Gui} by Stephan Dilly designed for binding in other languages. I would suggest using your target language functionalities to try replicating the function overloading and default parameters used in C++ else the A\+PI may be harder to use. Also see \href{https://github.com/ocornut/imgui/wiki/Links}{\tt Links} for third-\/party bindings to other languages.
+
+\subsection*{Support dear imgui }
+
+{\bfseries How can I help financing further development of Dear Im\+Gui?}
+
+Your contributions are keeping the library alive. If you are an individual using dear imgui, please consider donating to enable me to spend more time improving the library.
+
+Monthly donations via Patreon\+: ~\newline
+\href{http://www.patreon.com/imgui}{\tt }
+
+One-\/off donations via Pay\+Pal\+: ~\newline
+\href{https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5Q73FPZ9C526U}{\tt }
+
+If your company uses dear imgui, please consider financial support (e.\+g. sponsoring a few weeks/months of development). I can invoice for private support, custom development etc. E-\/mail\+: omarcornut at gmail. Thanks!
+
+\subsection*{Credits }
+
+Developed by \href{http://www.miracleworld.net}{\tt Omar Cornut} and every direct or indirect contributors to the Git\+Hub. The early version of this library was developed with the support of \href{http://www.mediamolecule.com}{\tt Media Molecule} and first used internally on the game \href{http://tearaway.mediamolecule.com}{\tt Tearaway}.
+
+I first discovered imgui principles at \href{http://www.q-games.com}{\tt Q-\/\+Games} where Atman had dropped his own simple imgui implementation in the codebase, which I spent quite some time improving and thinking about. It turned out that Atman was exposed to the concept directly by working with Casey. When I moved to Media Molecule I rewrote a new library trying to overcome the flaws and limitations of the first one I\textquotesingle{}ve worked with. It became this library and since then I have spent an unreasonable amount of time iterating on it.
+
+Embeds \href{http://upperbounds.net}{\tt Proggy\+Clean.\+ttf} font by Tristan Grimmer (M\+IT license).
+
+Embeds \href{https://github.com/nothings/stb/}{\tt stb\+\_\+textedit.\+h, stb\+\_\+truetype.\+h, stb\+\_\+rectpack.\+h} by Sean Barrett (public domain).
+
+Inspiration, feedback, and testing for early versions\+: Casey Muratori, Atman Binstock, Mikko Mononen, Emmanuel Briney, Stefan Kamoda, Anton Mikhailov, Matt Willis. And everybody posting feedback, questions and patches on the Git\+Hub.
+
+Ongoing dear imgui development is financially supported on \href{http://www.patreon.com/imgui}{\tt {\bfseries Patreon}}.
+
+Double-\/chocolate sponsors\+:
+\begin{DoxyItemize}
+\item Media Molecule
+\item Mobigame
+\item Insomniac Games (sponsored the gamepad/keyboard navigation branch)
+\item Aras Pranckevičius
+\item Lizardcube
+\item Greggman
+\end{DoxyItemize}
+
+Salty caramel supporters\+:
+\begin{DoxyItemize}
+\item Jetha Chan, Wild Sheep Studio, Pastagames, Mārtiņš Možeiko, Daniel Collin, Recognition Robotics, Chris Genova, ikrima, Glenn Fiedler, Geoffrey Evans, Dakko Dakko, Mercury Labs, Singularity Demo Group, Mischa Alff, Sebastien Ronsse.
+\end{DoxyItemize}
+
+Caramel supporters\+:
+\begin{DoxyItemize}
+\item Michel Courtine, César Leblic, Dale Kim, Alex Evans, Rui Figueira, Paul Patrashcu, Jerome Lanquetot, Ctrl Alt Ninja, Paul Fleming, Neil Henning, Stephan Dilly, Neil Blakey-\/\+Milner, Aleksei, Neilo\+GD, Justin Paver, Finite\+Sol, Vincent Pancaldi, James Billot, Robin Hübner, furrtek, Eric, Simon Barratt, \hyperlink{class_game}{Game} Atelier, Julian Bosch, Simon Lundmark, Vincent Hamm, Farhan Wali, Jeff Roberts, Matt Reyer, Colin Riley, Victor Martins, Josh Simmons, Garrett Hoofman, Sergio Gonzales, Andrew Berridge, Roy Eltham, \hyperlink{class_game}{Game} Preservation Society, Kit framework, Josh Faust, Martin Donlon, Quinton, Felix, Andrew Belt, Codecat, Cort Stratton, Claudio Canepa, Doug Mc\+Nabb, Emmanuel Julien, Guillaume Chereau, Jeffrey Slutter, Jeremiah Deckard, r-\/lyeh, Roger Clark, Nekith, Joshua Fisher, Malte Hoffmann, Mustafa Karaalioglu, Merlyn Morgan-\/\+Graham, Per Vognsen, Fabian Giesen, Jan Staubach, Matt Hargett, John Shearer, Jesse Chounard, kingcoopa, Miloš Tošić.
+\end{DoxyItemize}
+
+And other supporters; thanks! (Please contact me or PR if you would like to be added or removed from this list)
+
+\subsection*{License }
+
+Dear Im\+Gui is licensed under the M\+IT License, see L\+I\+C\+E\+N\+SE for more information. 

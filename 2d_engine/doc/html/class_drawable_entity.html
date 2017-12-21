@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: DrawableEntity Class Reference</title>
+<title>2D_game: DrawableEntity Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -63,9 +63,12 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_drawable_entity-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">DrawableEntity Class Reference</div>  </div>
+<div class="title">DrawableEntity Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Drawable entity.  
+ <a href="class_drawable_entity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="drawable__entity_8h_source.html">drawable_entity.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -74,48 +77,75 @@ Inheritance diagram for DrawableEntity:</div>
  <div class="center">
   <img src="class_drawable_entity.png" usemap="#DrawableEntity_map" alt=""/>
   <map id="DrawableEntity_map" name="DrawableEntity_map">
-<area href="class_entity.html" alt="Entity" shape="rect" coords="107,0,204,24"/>
-<area href="class_label.html" alt="Label" shape="rect" coords="0,112,97,136"/>
-<area href="class_rect.html" alt="Rect" shape="rect" coords="107,112,204,136"/>
-<area href="class_sprite.html" alt="Sprite" shape="rect" coords="214,112,311,136"/>
-<area href="class_background.html" alt="Background" shape="rect" coords="214,168,311,192"/>
+<area href="class_entity.html" title="entity " alt="Entity" shape="rect" coords="107,0,204,24"/>
+<area href="class_label.html" title="Graphic entity Label. " alt="Label" shape="rect" coords="0,112,97,136"/>
+<area href="class_rect.html" title="raphic entity Label " alt="Rect" shape="rect" coords="107,112,204,136"/>
+<area href="class_sprite.html" title="Graphic entity Sprite. " alt="Sprite" shape="rect" coords="374,112,471,136"/>
+<area href="class_brick.html" alt="Brick" shape="rect" coords="53,168,150,192"/>
+<area href="class_wall.html" alt="Wall" shape="rect" coords="160,168,257,192"/>
+<area href="class_background.html" title="Graphic entity Background. " alt="Background" shape="rect" coords="267,168,364,192"/>
+<area href="class_ball.html" title="Graphic entity Ball. " alt="Ball" shape="rect" coords="374,168,471,192"/>
+<area href="class_player.html" title="Graphic entity Player. " alt="Player" shape="rect" coords="481,168,578,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8e9f9afa7c76fdc19e27ca0975ffcb21"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a8e9f9afa7c76fdc19e27ca0975ffcb21">DrawableEntity</a> ()</td></tr>
+<tr class="memdesc:a8e9f9afa7c76fdc19e27ca0975ffcb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drawable entity constructor.  <a href="#a8e9f9afa7c76fdc19e27ca0975ffcb21">More...</a><br /></td></tr>
 <tr class="separator:a8e9f9afa7c76fdc19e27ca0975ffcb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e70c62078d6a05b4cfc7b83c7b48859"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a8e70c62078d6a05b4cfc7b83c7b48859">~DrawableEntity</a> ()</td></tr>
-<tr class="separator:a8e70c62078d6a05b4cfc7b83c7b48859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af688295ed4873a01b32862c3c0241933"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#af688295ed4873a01b32862c3c0241933">~DrawableEntity</a> ()</td></tr>
+<tr class="memdesc:af688295ed4873a01b32862c3c0241933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the Drawable entity.  <a href="#af688295ed4873a01b32862c3c0241933">More...</a><br /></td></tr>
+<tr class="separator:af688295ed4873a01b32862c3c0241933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3893879bf0710a7f5c5e7eb758ad7e96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a3893879bf0710a7f5c5e7eb758ad7e96">init</a> (const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a, const float px, const float py, const float rotation, const float scalex, const float scaley)</td></tr>
+<tr class="memdesc:a3893879bf0710a7f5c5e7eb758ad7e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the drawable entity.  <a href="#a3893879bf0710a7f5c5e7eb758ad7e96">More...</a><br /></td></tr>
 <tr class="separator:a3893879bf0710a7f5c5e7eb758ad7e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a016d3d0cc80f9834918de44e0adb19fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a016d3d0cc80f9834918de44e0adb19fb">move</a> (const float px, const float py)</td></tr>
 <tr class="memdesc:a016d3d0cc80f9834918de44e0adb19fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">moves the entity  <a href="#a016d3d0cc80f9834918de44e0adb19fb">More...</a><br /></td></tr>
 <tr class="separator:a016d3d0cc80f9834918de44e0adb19fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31ea3607cab83dc56103de086764369e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a31ea3607cab83dc56103de086764369e">draw</a> (sf::RenderWindow &amp;window, const sf::Drawable &amp;entity, const sf::Vector2f &amp;rotation_origin)</td></tr>
-<tr class="memdesc:a31ea3607cab83dc56103de086764369e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws a drawable entity  <a href="#a31ea3607cab83dc56103de086764369e">More...</a><br /></td></tr>
-<tr class="separator:a31ea3607cab83dc56103de086764369e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c71a16b70006246b445b546b71a5b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#aa8c71a16b70006246b445b546b71a5b3">checkCollision</a> (const sf::Vector2f &amp;position, const sf::FloatRect &amp;boundaries)</td></tr>
-<tr class="separator:aa8c71a16b70006246b445b546b71a5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1f94327e78e0b3607ece6a66bf9f01c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#ab1f94327e78e0b3607ece6a66bf9f01c">unuse</a> ()</td></tr>
-<tr class="separator:ab1f94327e78e0b3607ece6a66bf9f01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0db9c1325defed216d66a5b4cc755e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a0b0db9c1325defed216d66a5b4cc755e">draw</a> (sf::RenderWindow &amp;window)=0</td></tr>
+<tr class="memdesc:a0b0db9c1325defed216d66a5b4cc755e"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface implementation of draw  <a href="#a0b0db9c1325defed216d66a5b4cc755e">More...</a><br /></td></tr>
+<tr class="separator:a0b0db9c1325defed216d66a5b4cc755e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ad5dfa5e9a5c366e05ba28bb469557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a41ad5dfa5e9a5c366e05ba28bb469557">drawWithTransform</a> (sf::RenderWindow &amp;window, const sf::Drawable &amp;entity, const sf::Vector2f &amp;rotation_origin)</td></tr>
+<tr class="memdesc:a41ad5dfa5e9a5c366e05ba28bb469557"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws a drawable entity  <a href="#a41ad5dfa5e9a5c366e05ba28bb469557">More...</a><br /></td></tr>
+<tr class="separator:a41ad5dfa5e9a5c366e05ba28bb469557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4488d49a6e020b228aae6887ca6b644e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a4488d49a6e020b228aae6887ca6b644e">checkCollision</a> (const sf::Vector2f &amp;position)</td></tr>
+<tr class="memdesc:a4488d49a6e020b228aae6887ca6b644e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a point collides with the entity.  <a href="#a4488d49a6e020b228aae6887ca6b644e">More...</a><br /></td></tr>
+<tr class="separator:a4488d49a6e020b228aae6887ca6b644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565c4767989b6390b06b52137b249ce5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a565c4767989b6390b06b52137b249ce5">checkCollision</a> (<a class="el" href="class_drawable_entity.html">DrawableEntity</a> &amp;entity)</td></tr>
+<tr class="memdesc:a565c4767989b6390b06b52137b249ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an entity collides with this entity.  <a href="#a565c4767989b6390b06b52137b249ce5">More...</a><br /></td></tr>
+<tr class="separator:a565c4767989b6390b06b52137b249ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a352a101e3be05d25e1a10e5f72ccb9e3"><td class="memItemLeft" align="right" valign="top">virtual sf::FloatRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#a352a101e3be05d25e1a10e5f72ccb9e3">getBoundaries</a> ()=0</td></tr>
+<tr class="memdesc:a352a101e3be05d25e1a10e5f72ccb9e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the boundaries of the drawable entity  <a href="#a352a101e3be05d25e1a10e5f72ccb9e3">More...</a><br /></td></tr>
+<tr class="separator:a352a101e3be05d25e1a10e5f72ccb9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabea8715834f6cee7fd36b038d1a4843"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#aabea8715834f6cee7fd36b038d1a4843">unuse</a> () override</td></tr>
+<tr class="memdesc:aabea8715834f6cee7fd36b038d1a4843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the values of the entity.  <a href="#aabea8715834f6cee7fd36b038d1a4843">More...</a><br /></td></tr>
+<tr class="separator:aabea8715834f6cee7fd36b038d1a4843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbf8317de062a2e0e79f646dbe75249c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_entity.html#acbf8317de062a2e0e79f646dbe75249c">update</a> ()=0</td></tr>
+<tr class="memdesc:acbf8317de062a2e0e79f646dbe75249c"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface Update method  <a href="#acbf8317de062a2e0e79f646dbe75249c">More...</a><br /></td></tr>
+<tr class="separator:acbf8317de062a2e0e79f646dbe75249c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
 <tr class="memitem:a980f368aa07ce358583982821533a54a inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a980f368aa07ce358583982821533a54a">Entity</a> ()</td></tr>
+<tr class="memdesc:a980f368aa07ce358583982821533a54a inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_entity.html" title="entity ">Entity</a> constructor.  <a href="class_entity.html#a980f368aa07ce358583982821533a54a">More...</a><br /></td></tr>
 <tr class="separator:a980f368aa07ce358583982821533a54a inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a> ()</td></tr>
-<tr class="separator:adf6d3f7cb1b2ba029b6b048a395cc8ae inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6216319e71da21b7708bbfeb537c4d0f inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a6216319e71da21b7708bbfeb537c4d0f">~Entity</a> ()=0</td></tr>
+<tr class="memdesc:a6216319e71da21b7708bbfeb537c4d0f inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="class_entity.html#a6216319e71da21b7708bbfeb537c4d0f">More...</a><br /></td></tr>
+<tr class="separator:a6216319e71da21b7708bbfeb537c4d0f inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad758dc48d715e48ada4193517f1d32ea inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ad758dc48d715e48ada4193517f1d32ea">Entity</a> (const <a class="el" href="class_entity.html">Entity</a> &amp;o)</td></tr>
+<tr class="memdesc:ad758dc48d715e48ada4193517f1d32ea inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_entity.html" title="entity ">Entity</a> copy constructor.  <a href="class_entity.html#ad758dc48d715e48ada4193517f1d32ea">More...</a><br /></td></tr>
 <tr class="separator:ad758dc48d715e48ada4193517f1d32ea inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085fa2dd2c2b1f3f60d601a68d5c6773 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a085fa2dd2c2b1f3f60d601a68d5c6773">init</a> (const uint32_t tag)</td></tr>
+<tr class="memdesc:a085fa2dd2c2b1f3f60d601a68d5c6773 inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="class_entity.html#a085fa2dd2c2b1f3f60d601a68d5c6773">More...</a><br /></td></tr>
 <tr class="separator:a085fa2dd2c2b1f3f60d601a68d5c6773 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93bfb0b92c06297c207fad4164810fed inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a93bfb0b92c06297c207fad4164810fed">init</a> ()</td></tr>
+<tr class="memdesc:a93bfb0b92c06297c207fad4164810fed inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="class_entity.html#a93bfb0b92c06297c207fad4164810fed">More...</a><br /></td></tr>
 <tr class="separator:a93bfb0b92c06297c207fad4164810fed inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4a75e659a4426f57f5c1d44f1b8ef34 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="ae4a75e659a4426f57f5c1d44f1b8ef34"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> ()</td></tr>
+<tr class="memitem:ae4a75e659a4426f57f5c1d44f1b8ef34 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ae4a75e659a4426f57f5c1d44f1b8ef34">id</a> ()</td></tr>
+<tr class="memdesc:ae4a75e659a4426f57f5c1d44f1b8ef34 inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the id.  <a href="class_entity.html#ae4a75e659a4426f57f5c1d44f1b8ef34">More...</a><br /></td></tr>
 <tr class="separator:ae4a75e659a4426f57f5c1d44f1b8ef34 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40f9e3ddaa375d33c930c6b57f4c9c5 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ad40f9e3ddaa375d33c930c6b57f4c9c5">unuse</a> ()</td></tr>
-<tr class="separator:ad40f9e3ddaa375d33c930c6b57f4c9c5 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57c1ccf94325b1b771f4656178ab2b81 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a57c1ccf94325b1b771f4656178ab2b81">type</a> ()</td></tr>
+<tr class="memdesc:a57c1ccf94325b1b771f4656178ab2b81 inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the type.  <a href="class_entity.html#a57c1ccf94325b1b771f4656178ab2b81">More...</a><br /></td></tr>
+<tr class="separator:a57c1ccf94325b1b771f4656178ab2b81 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -135,15 +165,39 @@ sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>scale_</b></t
 sf::Color&#160;</td><td class="memItemRight" valign="bottom"><b>color_</b></td></tr>
 <tr class="separator:ad424f3d5b9ddbc6c556fbc64642e9153"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:a8003da23696e58c9904b80b952ba802f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="a8003da23696e58c9904b80b952ba802f"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag_</b></td></tr>
-<tr class="separator:a8003da23696e58c9904b80b952ba802f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f75ea7b1041547a1b610a9b2f064c0 inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="aa9f75ea7b1041547a1b610a9b2f064c0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>tag_</b></td></tr>
+<tr class="separator:aa9f75ea7b1041547a1b610a9b2f064c0 inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f99bc47ee1c35ac95a36a5facd15e5d inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="a6f99bc47ee1c35ac95a36a5facd15e5d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>selection_tag_</b></td></tr>
+<tr class="separator:a6f99bc47ee1c35ac95a36a5facd15e5d inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7816e789062febe058b98ce695539c59 inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="a7816e789062febe058b98ce695539c59"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></tr>
 <tr class="separator:a7816e789062febe058b98ce695539c59 inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
+<tr class="memitem:a0e96d5b4903c3e32e07780aa12fe075b inherit pub_types_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="a0e96d5b4903c3e32e07780aa12fe075b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Type</b> { <br />
+&#160;&#160;<b>kRect</b> = 0, 
+<b>kBackground</b> = 1, 
+<b>kLabel</b> = 2, 
+<b>kSprite</b> = 3, 
+<br />
+&#160;&#160;<b>kWall</b> = 4, 
+<b>kBrick</b> = 5, 
+<b>kBall</b> = 6, 
+<b>kPlayer</b> = 7
+<br />
+ }</td></tr>
+<tr class="separator:a0e96d5b4903c3e32e07780aa12fe075b inherit pub_types_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
+<tr class="memitem:a4fa6e00c39af69477dc64c27e29ab77e inherit pro_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a id="a4fa6e00c39af69477dc64c27e29ab77e"></a>
+Type&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b></td></tr>
+<tr class="separator:a4fa6e00c39af69477dc64c27e29ab77e inherit pro_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>entity</p>
+<div class="textblock"><p>Drawable entity. </p>
 <p>Class used to specify the common methods and attributes of the entities that can be drawn. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8e9f9afa7c76fdc19e27ca0975ffcb21"></a>
@@ -160,35 +214,45 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>entity constructor</p>
+
+<p>Drawable entity constructor. </p>
 <p>Drawable entity constructor</p>
 <dl class="section return"><dt>Returns</dt><dd>*DrawableEntity </dd></dl>
 
 </div>
 </div>
-<a id="a8e70c62078d6a05b4cfc7b83c7b48859"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e70c62078d6a05b4cfc7b83c7b48859">&#9670;&nbsp;</a></span>~DrawableEntity()</h2>
+<a id="af688295ed4873a01b32862c3c0241933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af688295ed4873a01b32862c3c0241933">&#9670;&nbsp;</a></span>~DrawableEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">DrawableEntity::~DrawableEntity </td>
+          <td class="memname">virtual DrawableEntity::~DrawableEntity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>the Drawable entity</p>
+
+<p>Destroys the Drawable entity. </p>
 <p>Destructor of the drawable entity</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa8c71a16b70006246b445b546b71a5b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8c71a16b70006246b445b546b71a5b3">&#9670;&nbsp;</a></span>checkCollision()</h2>
+<a id="a4488d49a6e020b228aae6887ca6b644e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4488d49a6e020b228aae6887ca6b644e">&#9670;&nbsp;</a></span>checkCollision() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,35 +261,98 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
           <td class="memname">bool DrawableEntity::checkCollision </td>
           <td>(</td>
           <td class="paramtype">const sf::Vector2f &amp;&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const sf::FloatRect &amp;&#160;</td>
-          <td class="paramname"><em>boundaries</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>if a point collides with the entity</p>
+
+<p>Checks if a point collides with the entity. </p>
 <p>Checks if the point passed by reference collides with the boundaries.</p>
 <dl class="section return"><dt>Returns</dt><dd>bool returns true if the point collides and false if not. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sf::Vector2f</td><td>point to check if collides with the entity </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a31ea3607cab83dc56103de086764369e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31ea3607cab83dc56103de086764369e">&#9670;&nbsp;</a></span>draw()</h2>
+<a id="a565c4767989b6390b06b52137b249ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565c4767989b6390b06b52137b249ce5">&#9670;&nbsp;</a></span>checkCollision() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DrawableEntity::draw </td>
+          <td class="memname">bool DrawableEntity::checkCollision </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_drawable_entity.html">DrawableEntity</a> &amp;&#160;</td>
+          <td class="paramname"><em>entity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an entity collides with this entity. </p>
+<p>Checks if the entity passed by reference collides with the boundaries.</p>
+<dl class="section return"><dt>Returns</dt><dd>bool returns true if the point collides and false if not. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a></td><td>entity to check if there's a collision </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0b0db9c1325defed216d66a5b4cc755e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0db9c1325defed216d66a5b4cc755e">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void DrawableEntity::draw </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>interface implementation of draw </p>
+<p>Abstract implementation of the draw method for their children, needs the window were the entity will be drawn</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>window in wich the entity will be drawn. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_sprite.html#a067dfc27f53ce4d983db29407be1c11e">Sprite</a>, <a class="el" href="class_rect.html#a57801edbfb2c000c631a610c59e7ff20">Rect</a>, <a class="el" href="class_background.html#a257183f6d077bbee005760813dbb0592">Background</a>, and <a class="el" href="class_label.html#aa0e2a948b68c7b70dde12b06b83a0cb1">Label</a>.</p>
+
+</div>
+</div>
+<a id="a41ad5dfa5e9a5c366e05ba28bb469557"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41ad5dfa5e9a5c366e05ba28bb469557">&#9670;&nbsp;</a></span>drawWithTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawableEntity::drawWithTransform </td>
           <td>(</td>
           <td class="paramtype">sf::RenderWindow &amp;&#160;</td>
           <td class="paramname"><em>window</em>, </td>
@@ -260,6 +387,37 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a352a101e3be05d25e1a10e5f72ccb9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a352a101e3be05d25e1a10e5f72ccb9e3">&#9670;&nbsp;</a></span>getBoundaries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sf::FloatRect DrawableEntity::getBoundaries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>gets the boundaries of the drawable entity </p>
+<p>Definition of the getBoundaries interface.</p>
+<dl class="section return"><dt>Returns</dt><dd>sf::FloatRect boundaries of the entity. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_sprite.html#add63c87af068cdcdb536eb1c82644ab4">Sprite</a>, <a class="el" href="class_label.html#a3eb456d7295b3d5af615b3dc6e761f4b">Label</a>, and <a class="el" href="class_rect.html#a17056b26af5522b024e9628386d34335">Rect</a>.</p>
 
 </div>
 </div>
@@ -330,7 +488,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the drawable entity</p>
+
+<p>Initializes the drawable entity. </p>
 <p>Initializes the drawable entity</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -389,28 +548,72 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
 
 </div>
 </div>
-<a id="ab1f94327e78e0b3607ece6a66bf9f01c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1f94327e78e0b3607ece6a66bf9f01c">&#9670;&nbsp;</a></span>unuse()</h2>
+<a id="aabea8715834f6cee7fd36b038d1a4843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabea8715834f6cee7fd36b038d1a4843">&#9670;&nbsp;</a></span>unuse()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DrawableEntity::unuse </td>
+          <td class="memname">virtual void DrawableEntity::unuse </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>the values of the entity</p>
+
+<p>Resets the values of the entity. </p>
 <p>Sets the attributes of the object to return it to a pool and being able to reuse it later.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_entity.html#a7b87e24b0d790b2c182fad8aa572455c">Entity</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_sprite.html#a26066db75daec637f436d4635418059a">Sprite</a>, <a class="el" href="class_label.html#aa6a355fe8daa25c3739affcf66d66f7f">Label</a>, <a class="el" href="class_rect.html#a85afbe7fde3b74bd81c07cc58d5c61bd">Rect</a>, and <a class="el" href="class_background.html#ad3559e8684aca155ae68d53374f3540d">Background</a>.</p>
+
+</div>
+</div>
+<a id="acbf8317de062a2e0e79f646dbe75249c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbf8317de062a2e0e79f646dbe75249c">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void DrawableEntity::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>interface Update method </p>
+<p>Definition of the update interface for the drawable entities</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Implemented in <a class="el" href="class_sprite.html#a1070fccd6830382b72e3f3a8785afc8c">Sprite</a>, <a class="el" href="class_player.html#abe7d0a24ffd93ba0bc4eea860b10eb09">Player</a>, <a class="el" href="class_ball.html#a26c877660343d086a9d45891659474f8">Ball</a>, <a class="el" href="class_label.html#adcd154f9e53d277c1b7a11bd058936a0">Label</a>, <a class="el" href="class_rect.html#af74b7ea3228d0d7b4c40bb8fe6daed63">Rect</a>, <a class="el" href="class_brick.html#a4debb742abe5d19442d910bb8ecf083e">Brick</a>, and <a class="el" href="class_background.html#af4a37c0ac474de5f65130cbef3d61379">Background</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="drawable__entity_8h_source.html">drawable_entity.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="drawable__entity_8h_source.html">drawable_entity.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

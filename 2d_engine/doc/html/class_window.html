@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: Window Class Reference</title>
+<title>2D_game: Window Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -74,19 +74,25 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0530ead23b2c91ef90a5f98e4df41cb8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a0530ead23b2c91ef90a5f98e4df41cb8">isOpen</a> ()</td></tr>
+<tr class="memdesc:a0530ead23b2c91ef90a5f98e4df41cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the window is open.  <a href="#a0530ead23b2c91ef90a5f98e4df41cb8">More...</a><br /></td></tr>
 <tr class="separator:a0530ead23b2c91ef90a5f98e4df41cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afadfafa5a0b9472554759004aafb327e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#afadfafa5a0b9472554759004aafb327e">display</a> ()</td></tr>
+<tr class="memdesc:afadfafa5a0b9472554759004aafb327e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the window.  <a href="#afadfafa5a0b9472554759004aafb327e">More...</a><br /></td></tr>
 <tr class="separator:afadfafa5a0b9472554759004aafb327e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35055c04498121d39741bfcd5082705b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a35055c04498121d39741bfcd5082705b">close</a> ()</td></tr>
+<tr class="memdesc:a35055c04498121d39741bfcd5082705b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the window.  <a href="#a35055c04498121d39741bfcd5082705b">More...</a><br /></td></tr>
 <tr class="separator:a35055c04498121d39741bfcd5082705b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38bc43bdd1a97e5de7f346ba4c3957ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a38bc43bdd1a97e5de7f346ba4c3957ef">clear</a> ()</td></tr>
+<tr class="memdesc:a38bc43bdd1a97e5de7f346ba4c3957ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the window.  <a href="#a38bc43bdd1a97e5de7f346ba4c3957ef">More...</a><br /></td></tr>
 <tr class="separator:a38bc43bdd1a97e5de7f346ba4c3957ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfb2d5826942693e289d13f314a341f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#adfb2d5826942693e289d13f314a341f7">draw</a> (const sf::Drawable &amp;drawable)</td></tr>
+<tr class="memdesc:adfb2d5826942693e289d13f314a341f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a drawable object.  <a href="#adfb2d5826942693e289d13f314a341f7">More...</a><br /></td></tr>
 <tr class="separator:adfb2d5826942693e289d13f314a341f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac23ace79f02693ff5463f91dba8bb38b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ac23ace79f02693ff5463f91dba8bb38b">CreateWindow</a> (const sf::Vector2u size, const sf::String &amp;title, unsigned int frameRateLimit=60)</td></tr>
+<tr class="memdesc:ac23ace79f02693ff5463f91dba8bb38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory that creates windows.  <a href="#ac23ace79f02693ff5463f91dba8bb38b">More...</a><br /></td></tr>
 <tr class="separator:ac23ace79f02693ff5463f91dba8bb38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -125,7 +131,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the window</p>
+
+<p>Clear the window. </p>
 <p>Clear the window and put it black.</p>
 <dl class="section return"><dt>Returns</dt><dd>void. </dd></dl>
 
@@ -145,7 +152,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the window</p>
+
+<p>Close the window. </p>
 <p>Close the window.</p>
 <dl class="section return"><dt>Returns</dt><dd>void. </dd></dl>
 
@@ -190,7 +198,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
   </tr>
 </table>
 </div><div class="memdoc">
-<p>that creates windows</p>
+
+<p>Factory that creates windows. </p>
 <p>Checks that the number of window didn't pass the maxim established. In case the maximum of window has been reached it will return nullptr.</p>
 <dl class="section return"><dt>Returns</dt><dd>Window* returns a pointer to the <a class="el" href="class_window.html">Window</a> created or nullptr if the maximum of windows has been reached </dd></dl>
 
@@ -210,7 +219,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the window</p>
+
+<p>Display the window. </p>
 <p>Display on screen the elements that has been rendered to the window so far.</p>
 <dl class="section return"><dt>Returns</dt><dd>void. </dd></dl>
 
@@ -231,7 +241,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a drawable object.</p>
+
+<p>Draw a drawable object. </p>
 <p>Draw a drawable object to the render-target.</p>
 <dl class="section return"><dt>Returns</dt><dd>void. </dd></dl>
 
@@ -251,14 +262,15 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kMaxW
         </tr>
       </table>
 </div><div class="memdoc">
-<p>if the window is open</p>
+
+<p>Checks if the window is open. </p>
 <p>Checks if the window is open.</p>
 <dl class="section return"><dt>Returns</dt><dd>bool returns true if the window is open and false if not. </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="window_8h_source.html">window.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="window_8h_source.html">window.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

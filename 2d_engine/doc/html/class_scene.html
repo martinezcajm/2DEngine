@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: Scene Class Reference</title>
+<title>2D_game: Scene Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -60,6 +60,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_scene-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Scene Class Reference</div>  </div>
@@ -71,165 +72,86 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6c4a04bd6fb848a1bdf8d1a82792c1ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a6c4a04bd6fb848a1bdf8d1a82792c1ef">cleanScene</a> ()</td></tr>
+<tr class="memdesc:a6c4a04bd6fb848a1bdf8d1a82792c1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean the scene.  <a href="#a6c4a04bd6fb848a1bdf8d1a82792c1ef">More...</a><br /></td></tr>
 <tr class="separator:a6c4a04bd6fb848a1bdf8d1a82792c1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca9bd4059c420909135294125b591682"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aca9bd4059c420909135294125b591682">loadScene</a> (const std::string scene_path, const sf::Font &amp;font)</td></tr>
+<tr class="memdesc:aca9bd4059c420909135294125b591682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a scene.  <a href="#aca9bd4059c420909135294125b591682">More...</a><br /></td></tr>
 <tr class="separator:aca9bd4059c420909135294125b591682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70c218eb67b3507a56486e1dd945f095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a70c218eb67b3507a56486e1dd945f095">saveScene</a> (const std::string scene_path)</td></tr>
+<tr class="memdesc:a70c218eb67b3507a56486e1dd945f095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a scene.  <a href="#a70c218eb67b3507a56486e1dd945f095">More...</a><br /></td></tr>
 <tr class="separator:a70c218eb67b3507a56486e1dd945f095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07d6d13ed45e8882192bed7330e5383a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a07d6d13ed45e8882192bed7330e5383a">addBackground</a> (<a class="el" href="class_background.html">Background</a> &amp;background)</td></tr>
-<tr class="separator:a07d6d13ed45e8882192bed7330e5383a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade83d8b5c8b13f12b11c9ef07507163d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_background.html">Background</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ade83d8b5c8b13f12b11c9ef07507163d">getBackground</a> (const uint32_t background_id)</td></tr>
-<tr class="separator:ade83d8b5c8b13f12b11c9ef07507163d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33e4cfa3d8433c5ccb8842ca65d85c70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a33e4cfa3d8433c5ccb8842ca65d85c70">removeBackground</a> (const uint32_t background_id)</td></tr>
-<tr class="separator:a33e4cfa3d8433c5ccb8842ca65d85c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95b1dd31805e0734f66fb9f131166fa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a95b1dd31805e0734f66fb9f131166fa4">changeZOrderBackground</a> (const uint32_t background_id, const int32_t newZOrder)</td></tr>
-<tr class="separator:a95b1dd31805e0734f66fb9f131166fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ef42ab154353fa7881f9f7382f43b1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a2ef42ab154353fa7881f9f7382f43b1f">addRect</a> (<a class="el" href="class_rect.html">Rect</a> &amp;rect)</td></tr>
-<tr class="separator:a2ef42ab154353fa7881f9f7382f43b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff9132084e8edf5eee4f992233dc2e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#abff9132084e8edf5eee4f992233dc2e3">getRect</a> (const uint32_t rect_id)</td></tr>
-<tr class="separator:abff9132084e8edf5eee4f992233dc2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e0fa3c3898c30822e14fdaa963eaa62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a1e0fa3c3898c30822e14fdaa963eaa62">removeRect</a> (const uint32_t rect_id)</td></tr>
-<tr class="separator:a1e0fa3c3898c30822e14fdaa963eaa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2976ddb158bde51704f40cf0266e10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aee2976ddb158bde51704f40cf0266e10">changeZOrderRect</a> (const uint32_t rect_id, const int32_t newZOrder)</td></tr>
-<tr class="separator:aee2976ddb158bde51704f40cf0266e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4327310c11ae2f3130ddb61ed20cfda3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a4327310c11ae2f3130ddb61ed20cfda3">addLabel</a> (<a class="el" href="class_label.html">Label</a> &amp;label)</td></tr>
-<tr class="separator:a4327310c11ae2f3130ddb61ed20cfda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa65487dbbc075503ccf386df47b5cbc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_label.html">Label</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa65487dbbc075503ccf386df47b5cbc8">getLabel</a> (const uint32_t label_id)</td></tr>
-<tr class="separator:aa65487dbbc075503ccf386df47b5cbc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8e9f99810684c6bd397477972691cb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ac8e9f99810684c6bd397477972691cb8">removeLabel</a> (const uint32_t label_id)</td></tr>
-<tr class="separator:ac8e9f99810684c6bd397477972691cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7dc181963c83afe8d3863e4226a3bd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ac7dc181963c83afe8d3863e4226a3bd2">changeZOrderLabel</a> (const uint32_t label_id, const int32_t newZOrder)</td></tr>
-<tr class="separator:ac7dc181963c83afe8d3863e4226a3bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7bada9fa9ea8dbeee358693b44e540e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ac7bada9fa9ea8dbeee358693b44e540e">addSprite</a> (<a class="el" href="class_sprite.html">Sprite</a> &amp;sprite)</td></tr>
-<tr class="separator:ac7bada9fa9ea8dbeee358693b44e540e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45418063b55b68e440cac7fab52e3c51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a45418063b55b68e440cac7fab52e3c51">getSprite</a> (const uint32_t sprite_id)</td></tr>
-<tr class="separator:a45418063b55b68e440cac7fab52e3c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6033b04f27e305069727d210e86b3902"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a6033b04f27e305069727d210e86b3902">removeSprite</a> (const uint32_t sprite_id)</td></tr>
-<tr class="separator:a6033b04f27e305069727d210e86b3902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3913b5c955c938f6bbd84d3e78bebcad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a3913b5c955c938f6bbd84d3e78bebcad">changeZOrderSprite</a> (const uint32_t sprite_id, const int32_t newZOrder)</td></tr>
-<tr class="separator:a3913b5c955c938f6bbd84d3e78bebcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f922487ee93dc5bf7c9ca446d05864"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ad4f922487ee93dc5bf7c9ca446d05864">addDrawableEntity</a> (<a class="el" href="class_drawable_entity.html">DrawableEntity</a> &amp;drawable_entity)</td></tr>
+<tr class="memdesc:ad4f922487ee93dc5bf7c9ca446d05864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to the scene.  <a href="#ad4f922487ee93dc5bf7c9ca446d05864">More...</a><br /></td></tr>
+<tr class="separator:ad4f922487ee93dc5bf7c9ca446d05864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56474670cf57cc422adcbd3c4368137"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_drawable_entity.html">DrawableEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab56474670cf57cc422adcbd3c4368137">getDrawableEntity</a> (const uint32_t drawable_entity_id)</td></tr>
+<tr class="memdesc:ab56474670cf57cc422adcbd3c4368137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> from the scene.  <a href="#ab56474670cf57cc422adcbd3c4368137">More...</a><br /></td></tr>
+<tr class="separator:ab56474670cf57cc422adcbd3c4368137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7d7ad9e17a99a035f0a8ecb5495cd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ade7d7ad9e17a99a035f0a8ecb5495cd4">removeDrawableEntity</a> (const uint32_t drawable_entity_id)</td></tr>
+<tr class="memdesc:ade7d7ad9e17a99a035f0a8ecb5495cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> of the scene.  <a href="#ade7d7ad9e17a99a035f0a8ecb5495cd4">More...</a><br /></td></tr>
+<tr class="separator:ade7d7ad9e17a99a035f0a8ecb5495cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf79f183e4780f8c256238abb9f8a1b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#abf79f183e4780f8c256238abb9f8a1b0">changeZOrderDrawableEntity</a> (const uint32_t drawable_entity_id, const int32_t newZOrder)</td></tr>
+<tr class="memdesc:abf79f183e4780f8c256238abb9f8a1b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the z-order of a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> of the scene.  <a href="#abf79f183e4780f8c256238abb9f8a1b0">More...</a><br /></td></tr>
+<tr class="separator:abf79f183e4780f8c256238abb9f8a1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c686656e9ad8e20f85f7997c4bc747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ad7c686656e9ad8e20f85f7997c4bc747">addTexture</a> (sf::Texture &amp;texture, const std::string texture_path)</td></tr>
 <tr class="memdesc:ad7c686656e9ad8e20f85f7997c4bc747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture ///.  <a href="#ad7c686656e9ad8e20f85f7997c4bc747">More...</a><br /></td></tr>
 <tr class="separator:ad7c686656e9ad8e20f85f7997c4bc747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c7233bcc955b7b71156b31205ec2360"><td class="memItemLeft" align="right" valign="top">sf::Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a1c7233bcc955b7b71156b31205ec2360">getTexture</a> (const std::string texture_path)</td></tr>
+<tr class="memdesc:a1c7233bcc955b7b71156b31205ec2360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a Texture from the scene.  <a href="#a1c7233bcc955b7b71156b31205ec2360">More...</a><br /></td></tr>
 <tr class="separator:a1c7233bcc955b7b71156b31205ec2360"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6418fa4353c7d079b42e11af7343c8a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a6418fa4353c7d079b42e11af7343c8a9">removeTexture</a> (const std::string texture_path)</td></tr>
+<tr class="memdesc:a6418fa4353c7d079b42e11af7343c8a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a Texture of the scene.  <a href="#a6418fa4353c7d079b42e11af7343c8a9">More...</a><br /></td></tr>
 <tr class="separator:a6418fa4353c7d079b42e11af7343c8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a29c60fda35f60e0d2ab54b497955ec"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a8a29c60fda35f60e0d2ab54b497955ec">checkCollision</a> (sf::Vector2f &amp;position, uint8_t *type)</td></tr>
-<tr class="separator:a8a29c60fda35f60e0d2ab54b497955ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53baaa91f1356e5fe9abc9b5a1cffb94"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="class_drawable_entity.html">DrawableEntity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a53baaa91f1356e5fe9abc9b5a1cffb94">getDrawableEntitiesByTag</a> (const uint32_t tag)</td></tr>
-<tr class="separator:a53baaa91f1356e5fe9abc9b5a1cffb94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e853e94e486af7dcd0d74434453a8e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab4e853e94e486af7dcd0d74434453a8e">checkCollision</a> (sf::Vector2f &amp;position)</td></tr>
+<tr class="memdesc:ab4e853e94e486af7dcd0d74434453a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if some element collision with a point.  <a href="#ab4e853e94e486af7dcd0d74434453a8e">More...</a><br /></td></tr>
+<tr class="separator:ab4e853e94e486af7dcd0d74434453a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a589e481e1ee58d356f1424a20f9decff"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="class_drawable_entity.html">DrawableEntity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a589e481e1ee58d356f1424a20f9decff">getDrawableEntitiesByTag</a> (const int tag)</td></tr>
+<tr class="memdesc:a589e481e1ee58d356f1424a20f9decff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of entities with a specific tag.  <a href="#a589e481e1ee58d356f1424a20f9decff">More...</a><br /></td></tr>
+<tr class="separator:a589e481e1ee58d356f1424a20f9decff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b92c636fdf1158bd7408e1c56edd7e"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="class_drawable_entity.html">DrawableEntity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a03b92c636fdf1158bd7408e1c56edd7e">getDrawableEntitiesBySelectionTag</a> (uint8_t selection_tag)</td></tr>
+<tr class="memdesc:a03b92c636fdf1158bd7408e1c56edd7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of entities with a specific tag.  <a href="#a03b92c636fdf1158bd7408e1c56edd7e">More...</a><br /></td></tr>
+<tr class="separator:a03b92c636fdf1158bd7408e1c56edd7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae27f4327ca363cc9cad8ab553504e2d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ae27f4327ca363cc9cad8ab553504e2d5">drawScene</a> ()</td></tr>
+<tr class="memdesc:ae27f4327ca363cc9cad8ab553504e2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw all elemnts of the scene.  <a href="#ae27f4327ca363cc9cad8ab553504e2d5">More...</a><br /></td></tr>
 <tr class="separator:ae27f4327ca363cc9cad8ab553504e2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa24c7e636c10e4e42650c1374b90bb80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa24c7e636c10e4e42650c1374b90bb80">update</a> ()</td></tr>
+<tr class="memdesc:aa24c7e636c10e4e42650c1374b90bb80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the elements of the scene.  <a href="#aa24c7e636c10e4e42650c1374b90bb80">More...</a><br /></td></tr>
 <tr class="separator:aa24c7e636c10e4e42650c1374b90bb80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:abdb8454b82384169c1ea58773a542b39"><td class="memItemLeft" align="right" valign="top"><a id="abdb8454b82384169c1ea58773a542b39"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>is_game_over_</b></td></tr>
+<tr class="separator:abdb8454b82384169c1ea58773a542b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9373f97e6410aafccfccf2315a278764"><td class="memItemLeft" align="right" valign="top"><a id="a9373f97e6410aafccfccf2315a278764"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>scene_path_</b></td></tr>
+<tr class="separator:a9373f97e6410aafccfccf2315a278764"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that create and manage a scene</p>
 <p>This class create and manage the scene and all the elements that form it. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a07d6d13ed45e8882192bed7330e5383a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07d6d13ed45e8882192bed7330e5383a">&#9670;&nbsp;</a></span>addBackground()</h2>
+<a id="ad4f922487ee93dc5bf7c9ca446d05864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f922487ee93dc5bf7c9ca446d05864">&#9670;&nbsp;</a></span>addDrawableEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Scene::addBackground </td>
+          <td class="memname">void Scene::addDrawableEntity </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_background.html">Background</a> &amp;&#160;</td>
-          <td class="paramname"><em>background</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_drawable_entity.html">DrawableEntity</a> &amp;&#160;</td>
+          <td class="paramname"><em>drawable_entity</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_background.html">Background</a> to the scene</p>
-<p>Add a <a class="el" href="class_background.html">Background</a> in the mappings that form the scene</p>
+
+<p>Add a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to the scene. </p>
+<p>Add a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> in the mappings that form the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">background</td><td>Reference of the <a class="el" href="class_background.html">Background</a> to add </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4327310c11ae2f3130ddb61ed20cfda3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4327310c11ae2f3130ddb61ed20cfda3">&#9670;&nbsp;</a></span>addLabel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::addLabel </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_label.html">Label</a> &amp;&#160;</td>
-          <td class="paramname"><em>label</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_label.html">Label</a> to the scene</p>
-<p>Add a <a class="el" href="class_label.html">Label</a> in the mappings that form the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label</td><td>Reference of the <a class="el" href="class_label.html">Label</a> to add </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2ef42ab154353fa7881f9f7382f43b1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ef42ab154353fa7881f9f7382f43b1f">&#9670;&nbsp;</a></span>addRect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::addRect </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_rect.html">Rect</a> &amp;&#160;</td>
-          <td class="paramname"><em>rect</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_rect.html">Rect</a> to the scene</p>
-<p>Add a <a class="el" href="class_rect.html">Rect</a> in the mappings that form the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rect</td><td>Reference of the <a class="el" href="class_rect.html">Rect</a> to add </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac7bada9fa9ea8dbeee358693b44e540e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7bada9fa9ea8dbeee358693b44e540e">&#9670;&nbsp;</a></span>addSprite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::addSprite </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_sprite.html">Sprite</a> &amp;&#160;</td>
-          <td class="paramname"><em>sprite</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_sprite.html">Sprite</a> to the scene</p>
-<p>Add a <a class="el" href="class_sprite.html">Sprite</a> in the mappings that form the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sprite</td><td>Reference of the <a class="el" href="class_sprite.html">Sprite</a> to add </td></tr>
+    <tr><td class="paramname">drawable_entity</td><td>Reference of the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to add </td></tr>
   </table>
   </dd>
 </dl>
@@ -263,7 +185,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Texture ///. </p>
-<p>a Texture to the scene</p>
+<p>Add a Texture to the scene</p>
 <p>Add a Texture in the mappings that form the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -276,17 +198,17 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a95b1dd31805e0734f66fb9f131166fa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95b1dd31805e0734f66fb9f131166fa4">&#9670;&nbsp;</a></span>changeZOrderBackground()</h2>
+<a id="abf79f183e4780f8c256238abb9f8a1b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf79f183e4780f8c256238abb9f8a1b0">&#9670;&nbsp;</a></span>changeZOrderDrawableEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Scene::changeZOrderBackground </td>
+          <td class="memname">void Scene::changeZOrderDrawableEntity </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>background_id</em>, </td>
+          <td class="paramname"><em>drawable_entity_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -301,135 +223,22 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the z-order of a <a class="el" href="class_background.html">Background</a> of the scene</p>
-<p>Change the z-order of a <a class="el" href="class_background.html">Background</a> of the scene.</p>
+
+<p>Change the z-order of a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> of the scene. </p>
+<p>Change the z-order of a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> of the scene.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">background_id</td><td>Id of the <a class="el" href="class_background.html">Background</a> to change the z-order </td></tr>
-    <tr><td class="paramname">newZOrder</td><td>New z-order of the <a class="el" href="class_background.html">Background</a> </td></tr>
+    <tr><td class="paramname">drawable_entity_id</td><td>Id of the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to change the z-order </td></tr>
+    <tr><td class="paramname">newZOrder</td><td>New z-order of the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac7dc181963c83afe8d3863e4226a3bd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7dc181963c83afe8d3863e4226a3bd2">&#9670;&nbsp;</a></span>changeZOrderLabel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::changeZOrderLabel </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>label_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int32_t&#160;</td>
-          <td class="paramname"><em>newZOrder</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>the z-order of a <a class="el" href="class_label.html">Label</a> of the scene</p>
-<p>Change the z-order of a <a class="el" href="class_label.html">Label</a> of the scene.</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label_id</td><td>Id of the <a class="el" href="class_label.html">Label</a> to change the z-order </td></tr>
-    <tr><td class="paramname">newZOrder</td><td>New z-order of the <a class="el" href="class_label.html">Label</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aee2976ddb158bde51704f40cf0266e10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee2976ddb158bde51704f40cf0266e10">&#9670;&nbsp;</a></span>changeZOrderRect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::changeZOrderRect </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>rect_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int32_t&#160;</td>
-          <td class="paramname"><em>newZOrder</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>the z-order of a <a class="el" href="class_rect.html">Rect</a> of the scene</p>
-<p>Change the z-order of a <a class="el" href="class_rect.html">Rect</a> of the scene.</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rect_id</td><td>Id of the <a class="el" href="class_rect.html">Rect</a> to change the z-order </td></tr>
-    <tr><td class="paramname">newZOrder</td><td>New z-order of the <a class="el" href="class_rect.html">Rect</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3913b5c955c938f6bbd84d3e78bebcad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3913b5c955c938f6bbd84d3e78bebcad">&#9670;&nbsp;</a></span>changeZOrderSprite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::changeZOrderSprite </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>sprite_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int32_t&#160;</td>
-          <td class="paramname"><em>newZOrder</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>the z-order of a <a class="el" href="class_sprite.html">Sprite</a> of the scene</p>
-<p>Change the z-order of a <a class="el" href="class_sprite.html">Sprite</a> of the scene.</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sprite_id</td><td>Id of the <a class="el" href="class_sprite.html">Sprite</a> to change the z-order </td></tr>
-    <tr><td class="paramname">newZOrder</td><td>New z-order of the <a class="el" href="class_sprite.html">Sprite</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a8a29c60fda35f60e0d2ab54b497955ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a29c60fda35f60e0d2ab54b497955ec">&#9670;&nbsp;</a></span>checkCollision()</h2>
+<a id="ab4e853e94e486af7dcd0d74434453a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4e853e94e486af7dcd0d74434453a8e">&#9670;&nbsp;</a></span>checkCollision()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,28 +247,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">uint32_t Scene::checkCollision </td>
           <td>(</td>
           <td class="paramtype">sf::Vector2f &amp;&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>if some element collision with a point</p>
+
+<p>Check if some element collision with a point. </p>
 <p>Check if some element of the scene have a colision with a point specified in the parameters</p>
 <dl class="section return"><dt>Returns</dt><dd>uint32_t Return the id of the first element that have a collision. Return 0 if any element have collision. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>The point to check the collision </td></tr>
-    <tr><td class="paramname">type</td><td>The typeof element that colision. 0 - No colision, 1 - <a class="el" href="class_background.html">Background</a>, 2 - <a class="el" href="class_rect.html">Rect</a>, 3 - <a class="el" href="class_label.html">Label</a>, 4 - <a class="el" href="class_sprite.html">Sprite</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -480,8 +279,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the scene</p>
-<p>Clean all maps of the scene and return the elements to the <a class="el" href="class_pool.html">Pool</a></p>
+
+<p>Clean the scene. </p>
+<p>Clean all maps of the scene and return the elements to the <a class="el" href="class_pool.html" title="Class in charge of managing the pools. ">Pool</a></p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -500,41 +300,43 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>all elemnts of the scene</p>
+
+<p>Draw all elemnts of the scene. </p>
 <p>Draw all elemnts of the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
-<a id="ade83d8b5c8b13f12b11c9ef07507163d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade83d8b5c8b13f12b11c9ef07507163d">&#9670;&nbsp;</a></span>getBackground()</h2>
+<a id="a03b92c636fdf1158bd7408e1c56edd7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03b92c636fdf1158bd7408e1c56edd7e">&#9670;&nbsp;</a></span>getDrawableEntitiesBySelectionTag()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_background.html">Background</a>* Scene::getBackground </td>
+          <td class="memname">std::list&lt;<a class="el" href="class_drawable_entity.html">DrawableEntity</a>*&gt; Scene::getDrawableEntitiesBySelectionTag </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>background_id</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>selection_tag</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_background.html">Background</a> from the scene</p>
-<p>Returns the <a class="el" href="class_background.html">Background</a> with the specified id from the scene</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_background.html">Background</a> Return the <a class="el" href="class_background.html">Background</a> with the id specified </dd></dl>
+
+<p>Get a list of entities with a specific tag. </p>
+<p>Return the entities with the tag specified in params</p>
+<dl class="section return"><dt>Returns</dt><dd>list&lt;DrawableEntity*&gt; Return the list of <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">background_id</td><td>Id of the <a class="el" href="class_background.html">Background</a> to return </td></tr>
+    <tr><td class="paramname">selection_tag</td><td>Tag to seach </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a53baaa91f1356e5fe9abc9b5a1cffb94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53baaa91f1356e5fe9abc9b5a1cffb94">&#9670;&nbsp;</a></span>getDrawableEntitiesByTag()</h2>
+<a id="a589e481e1ee58d356f1424a20f9decff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a589e481e1ee58d356f1424a20f9decff">&#9670;&nbsp;</a></span>getDrawableEntitiesByTag()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -542,15 +344,16 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">std::list&lt;<a class="el" href="class_drawable_entity.html">DrawableEntity</a>*&gt; Scene::getDrawableEntitiesByTag </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>tag</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a list of entities with a specific tag</p>
+
+<p>Get a list of entities with a specific tag. </p>
 <p>Return the entities with the tag specified in params</p>
-<dl class="section return"><dt>Returns</dt><dd>list&lt;DrawableEntity*&gt; Return the list of <a class="el" href="class_drawable_entity.html">DrawableEntity</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>list&lt;DrawableEntity*&gt; Return the list of <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tag</td><td>Tag to seach </td></tr>
@@ -560,81 +363,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa65487dbbc075503ccf386df47b5cbc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa65487dbbc075503ccf386df47b5cbc8">&#9670;&nbsp;</a></span>getLabel()</h2>
+<a id="ab56474670cf57cc422adcbd3c4368137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab56474670cf57cc422adcbd3c4368137">&#9670;&nbsp;</a></span>getDrawableEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_label.html">Label</a>* Scene::getLabel </td>
+          <td class="memname"><a class="el" href="class_drawable_entity.html">DrawableEntity</a>* Scene::getDrawableEntity </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>label_id</em></td><td>)</td>
+          <td class="paramname"><em>drawable_entity_id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_label.html">Label</a> from the scene</p>
-<p>Returns the <a class="el" href="class_label.html">Label</a> with the specified id from the scene</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_label.html">Label</a> Return the <a class="el" href="class_label.html">Label</a> with the id specified </dd></dl>
+
+<p>Get a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> from the scene. </p>
+<p>Returns the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> with the specified id from the scene</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> Return the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> with the id specified </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">label_id</td><td>Id of the <a class="el" href="class_label.html">Label</a> to return </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="abff9132084e8edf5eee4f992233dc2e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff9132084e8edf5eee4f992233dc2e3">&#9670;&nbsp;</a></span>getRect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_rect.html">Rect</a>* Scene::getRect </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>rect_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_rect.html">Rect</a> from the scene</p>
-<p>Returns the <a class="el" href="class_rect.html">Rect</a> with the specified id from the scene</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_rect.html">Rect</a> Return the <a class="el" href="class_rect.html">Rect</a> with the id specified </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rect_id</td><td>Id of the <a class="el" href="class_rect.html">Rect</a> to return </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a45418063b55b68e440cac7fab52e3c51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45418063b55b68e440cac7fab52e3c51">&#9670;&nbsp;</a></span>getSprite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_sprite.html">Sprite</a>* Scene::getSprite </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>sprite_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_sprite.html">Sprite</a> from the scene</p>
-<p>Returns the <a class="el" href="class_sprite.html">Sprite</a> with the specified id from the scene</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_sprite.html">Sprite</a> Return the <a class="el" href="class_sprite.html">Sprite</a> with the id specified </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sprite_id</td><td>Id of the <a class="el" href="class_sprite.html">Sprite</a> to return </td></tr>
+    <tr><td class="paramname">drawable_entity_id</td><td>Id of the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to return </td></tr>
   </table>
   </dd>
 </dl>
@@ -656,7 +406,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a Texture from the scene</p>
+
+<p>Get a Texture from the scene. </p>
 <p>Returns the Texture with the specified path from the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>sf::Texture Return the texture with the path specified </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -693,7 +444,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a scene</p>
+
+<p>Load a scene. </p>
 <p>Load a scene from a file with format json. Put to the labels the font of the parameter.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -706,108 +458,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a33e4cfa3d8433c5ccb8842ca65d85c70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33e4cfa3d8433c5ccb8842ca65d85c70">&#9670;&nbsp;</a></span>removeBackground()</h2>
+<a id="ade7d7ad9e17a99a035f0a8ecb5495cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade7d7ad9e17a99a035f0a8ecb5495cd4">&#9670;&nbsp;</a></span>removeDrawableEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Scene::removeBackground </td>
+          <td class="memname">void Scene::removeDrawableEntity </td>
           <td>(</td>
           <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>background_id</em></td><td>)</td>
+          <td class="paramname"><em>drawable_entity_id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_background.html">Background</a> of the scene</p>
-<p>Remove the <a class="el" href="class_background.html">Background</a> with the specified id of the scene</p>
+
+<p>Remove a <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> of the scene. </p>
+<p>Remove the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> with the specified id of the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">background_id</td><td>Id of the <a class="el" href="class_background.html">Background</a> to remove </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac8e9f99810684c6bd397477972691cb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8e9f99810684c6bd397477972691cb8">&#9670;&nbsp;</a></span>removeLabel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::removeLabel </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>label_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_label.html">Label</a> of the scene</p>
-<p>Remove the <a class="el" href="class_label.html">Label</a> with the specified id of the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label_id</td><td>Id of the <a class="el" href="class_label.html">Label</a> to remove </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a1e0fa3c3898c30822e14fdaa963eaa62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e0fa3c3898c30822e14fdaa963eaa62">&#9670;&nbsp;</a></span>removeRect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::removeRect </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>rect_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_rect.html">Rect</a> of the scene</p>
-<p>Remove the <a class="el" href="class_rect.html">Rect</a> with the specified id of the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rect_id</td><td>Id of the <a class="el" href="class_rect.html">Rect</a> to remove </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a6033b04f27e305069727d210e86b3902"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6033b04f27e305069727d210e86b3902">&#9670;&nbsp;</a></span>removeSprite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::removeSprite </td>
-          <td>(</td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>sprite_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a <a class="el" href="class_sprite.html">Sprite</a> of the scene</p>
-<p>Remove the <a class="el" href="class_sprite.html">Sprite</a> with the specified id of the scene</p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sprite_id</td><td>Id of the <a class="el" href="class_sprite.html">Sprite</a> to remove </td></tr>
+    <tr><td class="paramname">drawable_entity_id</td><td>Id of the <a class="el" href="class_drawable_entity.html" title="Drawable entity. ">DrawableEntity</a> to remove </td></tr>
   </table>
   </dd>
 </dl>
@@ -829,7 +501,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a Texture of the scene</p>
+
+<p>Remove a Texture of the scene. </p>
 <p>Remove the Texture with the specified path of the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -856,7 +529,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a scene</p>
+
+<p>Save a scene. </p>
 <p>Save a scene in a file with format json.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -883,7 +557,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the elements of the scene</p>
+
+<p>Update the elements of the scene. </p>
 <p>Call to Update of the all elements of the scene</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -896,7 +571,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="scene_8h_source.html">scene.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="scene_8h_source.html">scene.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

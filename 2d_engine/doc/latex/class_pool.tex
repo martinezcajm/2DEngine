@@ -2,36 +2,57 @@
 \label{class_pool}\index{Pool@{Pool}}
 
 
+Class in charge of managing the pools.  
+
+
+
+
 {\ttfamily \#include $<$pool.\+h$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}{init} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the pool. \end{DoxyCompactList}\item 
 void \hyperlink{class_pool_aa2bcc7b11c5f0a438b1fe5405ba698ff}{free} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees the pull. \end{DoxyCompactList}\item 
 \hyperlink{class_rect}{Rect} $\ast$ \hyperlink{class_pool_a2ea49e227ce14fcb926d451f9f59e452}{get\+Rect} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_rect}{Rect}. \end{DoxyCompactList}\item 
 \hyperlink{class_label}{Label} $\ast$ \hyperlink{class_pool_a13ce02d7dbee29305a83dcdb22a01661}{get\+Label} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_label}{Label}. \end{DoxyCompactList}\item 
 \hyperlink{class_sprite}{Sprite} $\ast$ \hyperlink{class_pool_abd15708186d45b2e45312c872dd84384}{get\+Sprite} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_sprite}{Sprite}. \end{DoxyCompactList}\item 
 \hyperlink{class_background}{Background} $\ast$ \hyperlink{class_pool_a367c875efe93a27fea4bcaf0ed281abd}{get\+Background} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_background}{Background}. \end{DoxyCompactList}\item 
+\hyperlink{class_wall}{Wall} $\ast$ \hyperlink{class_pool_a0ac76b81263346b168a482c6407ae9e0}{get\+Wall} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_wall}{Wall}. \end{DoxyCompactList}\item 
+\hyperlink{class_brick}{Brick} $\ast$ \hyperlink{class_pool_a9a51a508e2d90cb62888dd64ebf16a92}{get\+Brick} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_brick}{Brick}. \end{DoxyCompactList}\item 
+\hyperlink{class_ball}{Ball} $\ast$ \hyperlink{class_pool_a6a45dbea615300cf7baa1c449983f9ce}{get\+Ball} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_brick}{Brick}. \end{DoxyCompactList}\item 
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_pool_a15d6bbd0901a4a77fd55eb0b69d965ef}{get\+Player} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a \hyperlink{class_player}{Player}. \end{DoxyCompactList}\item 
 void \hyperlink{class_pool_a3b5250c08babf163d9d4877c7a2a6f40}{return\+Rect} (\hyperlink{class_rect}{Rect} \&rect)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds an existing rect to the pool. \end{DoxyCompactList}\item 
 void \hyperlink{class_pool_a2a38a2d1aa883152d27fa213ac2cc2e8}{return\+Label} (\hyperlink{class_label}{Label} \&label)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds an existing label to the pool. \end{DoxyCompactList}\item 
 void \hyperlink{class_pool_a227334c0983a0c1bf42d72a44fcfee8f}{return\+Sprite} (\hyperlink{class_sprite}{Sprite} \&sprite)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds an existing sprite to the pool. \end{DoxyCompactList}\item 
 void \hyperlink{class_pool_af6234b218a3dd72a440a3381b35c9e36}{return\+Background} (\hyperlink{class_background}{Background} \&background)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds an existing background to the pool. \end{DoxyCompactList}\item 
+void \hyperlink{class_pool_a883e139a1b626e514a7e70dd3385e17e}{return\+Wall} (\hyperlink{class_wall}{Wall} \&wall)
+\begin{DoxyCompactList}\small\item\em Adds an existing wall to the pool. \end{DoxyCompactList}\item 
+void \hyperlink{class_pool_a0d8fb68bad74c14b0130a96032cc5067}{return\+Brick} (\hyperlink{class_brick}{Brick} \&brick)
+\begin{DoxyCompactList}\small\item\em Adds an existing brick to the pool. \end{DoxyCompactList}\item 
+void \hyperlink{class_pool_a0da5595d7b9e70aed2dd807ee4a6ae26}{return\+Ball} (\hyperlink{class_ball}{Ball} \&ball)
+\begin{DoxyCompactList}\small\item\em Adds an existing ball to the pool. \end{DoxyCompactList}\item 
+void \hyperlink{class_pool_a3e6ed735e15ad548db48a0cefbb5b821}{return\+Player} (\hyperlink{class_player}{Player} \&player)
+\begin{DoxyCompactList}\small\item\em Adds an existing \hyperlink{class_player}{Player} to the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_pool}{Pool} \& \hyperlink{class_pool_a20e44e0054d4eedf57f1943b87c06e20}{instance} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the instance of our pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,11 +67,23 @@ std\+::vector$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries sprite\+
 \item 
 \mbox{\Hypertarget{class_pool_a11e4e7ab2e2d9307e7ec5dd56ffc84ed}\label{class_pool_a11e4e7ab2e2d9307e7ec5dd56ffc84ed}} 
 std\+::vector$<$ \hyperlink{class_background}{Background} $\ast$ $>$ {\bfseries bg\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_abc1ff43b1ca086e39f573836c65075fe}\label{class_pool_abc1ff43b1ca086e39f573836c65075fe}} 
+std\+::vector$<$ \hyperlink{class_wall}{Wall} $\ast$ $>$ {\bfseries wall\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_ac21fb5d80b85cfe7d71990cd18812039}\label{class_pool_ac21fb5d80b85cfe7d71990cd18812039}} 
+std\+::vector$<$ \hyperlink{class_brick}{Brick} $\ast$ $>$ {\bfseries brick\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_a965526b277fd41a49c09526b2286f144}\label{class_pool_a965526b277fd41a49c09526b2286f144}} 
+std\+::vector$<$ \hyperlink{class_ball}{Ball} $\ast$ $>$ {\bfseries ball\+\_\+pool\+\_\+}
+\item 
+\mbox{\Hypertarget{class_pool_a915954cdebfdc2c6fe4e2cb30b426865}\label{class_pool_a915954cdebfdc2c6fe4e2cb30b426865}} 
+std\+::vector$<$ \hyperlink{class_player}{Player} $\ast$ $>$ {\bfseries player\+\_\+pool\+\_\+}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-in charge of managing the pools
+Class in charge of managing the pools. 
 
 Singleton of pools used to reuse the diverse graphical entities of the application avoiding this way the destruction of objects during execution as much as possible 
 
@@ -61,7 +94,9 @@ Singleton of pools used to reuse the diverse graphical entities of the applicati
 \subsubsection{\texorpdfstring{free()}{free()}}
 {\footnotesize\ttfamily void Pool\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the pull
+
+
+Frees the pull. 
 
 Frees all the elements stored in the pools.
 
@@ -74,12 +109,44 @@ void
 \subsubsection{\texorpdfstring{get\+Background()}{getBackground()}}
 {\footnotesize\ttfamily \hyperlink{class_background}{Background}$\ast$ Pool\+::get\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-a \hyperlink{class_background}{Background}
+
+
+Retrieves a \hyperlink{class_background}{Background}. 
 
 Returns a \hyperlink{class_background}{Background} from the pool, if the pool doesn\textquotesingle{}t have more backgrounds it creates one using the background factory. If the max of backgrounds has been reached it returns null ptr.
 
 \begin{DoxyReturn}{Returns}
 Background$\ast$ pointer to background if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a6a45dbea615300cf7baa1c449983f9ce}\label{class_pool_a6a45dbea615300cf7baa1c449983f9ce}} 
+\index{Pool@{Pool}!get\+Ball@{get\+Ball}}
+\index{get\+Ball@{get\+Ball}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Ball()}{getBall()}}
+{\footnotesize\ttfamily \hyperlink{class_ball}{Ball}$\ast$ Pool\+::get\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a \hyperlink{class_brick}{Brick}. 
+
+Returns a \hyperlink{class_brick}{Brick} from the pool, if the pool doesn\textquotesingle{}t have more bricks it creates one using the brick factory. If the max of bricks has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Brick$\ast$ pointer to brick if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a9a51a508e2d90cb62888dd64ebf16a92}\label{class_pool_a9a51a508e2d90cb62888dd64ebf16a92}} 
+\index{Pool@{Pool}!get\+Brick@{get\+Brick}}
+\index{get\+Brick@{get\+Brick}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Brick()}{getBrick()}}
+{\footnotesize\ttfamily \hyperlink{class_brick}{Brick}$\ast$ Pool\+::get\+Brick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a \hyperlink{class_brick}{Brick}. 
+
+Returns a \hyperlink{class_brick}{Brick} from the pool, if the pool doesn\textquotesingle{}t have more bricks it creates one using the brick factory. If the max of bricks has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Brick$\ast$ pointer to brick if possible, nullptr if the maxim has been reached 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_pool_a13ce02d7dbee29305a83dcdb22a01661}\label{class_pool_a13ce02d7dbee29305a83dcdb22a01661}} 
 \index{Pool@{Pool}!get\+Label@{get\+Label}}
@@ -87,12 +154,29 @@ Background$\ast$ pointer to background if possible, nullptr if the maxim has bee
 \subsubsection{\texorpdfstring{get\+Label()}{getLabel()}}
 {\footnotesize\ttfamily \hyperlink{class_label}{Label}$\ast$ Pool\+::get\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-a \hyperlink{class_label}{Label}
+
+
+Retrieves a \hyperlink{class_label}{Label}. 
 
 Returns a \hyperlink{class_label}{Label} from the pool, if the pool doesn\textquotesingle{}t have more labels it creates one using the label factory. If the max of labels has been reached it returns null ptr.
 
 \begin{DoxyReturn}{Returns}
 Label$\ast$ pointer to label if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a15d6bbd0901a4a77fd55eb0b69d965ef}\label{class_pool_a15d6bbd0901a4a77fd55eb0b69d965ef}} 
+\index{Pool@{Pool}!get\+Player@{get\+Player}}
+\index{get\+Player@{get\+Player}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Player()}{getPlayer()}}
+{\footnotesize\ttfamily \hyperlink{class_player}{Player}$\ast$ Pool\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a \hyperlink{class_player}{Player}. 
+
+Returns a \hyperlink{class_player}{Player} from the pool, if the pool doesn\textquotesingle{}t have more players it creates one using the player factory. If the max of players has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ pointer to player if possible, nullptr if the maxim has been reached 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_pool_a2ea49e227ce14fcb926d451f9f59e452}\label{class_pool_a2ea49e227ce14fcb926d451f9f59e452}} 
 \index{Pool@{Pool}!get\+Rect@{get\+Rect}}
@@ -100,7 +184,9 @@ Label$\ast$ pointer to label if possible, nullptr if the maxim has been reached
 \subsubsection{\texorpdfstring{get\+Rect()}{getRect()}}
 {\footnotesize\ttfamily \hyperlink{class_rect}{Rect}$\ast$ Pool\+::get\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-a \hyperlink{class_rect}{Rect}
+
+
+Retrieves a \hyperlink{class_rect}{Rect}. 
 
 Returns a \hyperlink{class_rect}{Rect} from the pool, if the pool doesn\textquotesingle{}t have more rects it creates one using the rect factory. If the max of rects has been reached it returns null ptr.
 
@@ -113,12 +199,29 @@ Rect$\ast$ pointer to rect if possible, nullptr if the maxim has been reached
 \subsubsection{\texorpdfstring{get\+Sprite()}{getSprite()}}
 {\footnotesize\ttfamily \hyperlink{class_sprite}{Sprite}$\ast$ Pool\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-a \hyperlink{class_sprite}{Sprite}
+
+
+Retrieves a \hyperlink{class_sprite}{Sprite}. 
 
 Returns a \hyperlink{class_sprite}{Sprite} from the pool, if the pool doesn\textquotesingle{}t have more sprites it creates one using the sprite factory. If the max of sprites has been reached it returns null ptr.
 
 \begin{DoxyReturn}{Returns}
 Sprite$\ast$ pointer to sprite if possible, nullptr if the maxim has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a0ac76b81263346b168a482c6407ae9e0}\label{class_pool_a0ac76b81263346b168a482c6407ae9e0}} 
+\index{Pool@{Pool}!get\+Wall@{get\+Wall}}
+\index{get\+Wall@{get\+Wall}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{get\+Wall()}{getWall()}}
+{\footnotesize\ttfamily \hyperlink{class_wall}{Wall}$\ast$ Pool\+::get\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a \hyperlink{class_wall}{Wall}. 
+
+Returns a \hyperlink{class_wall}{Wall} from the pool, if the pool doesn\textquotesingle{}t have more walls it creates one using the wall factory. If the max of walls has been reached it returns null ptr.
+
+\begin{DoxyReturn}{Returns}
+Wall$\ast$ pointer to wall if possible, nullptr if the maxim has been reached 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}\label{class_pool_a7b5bfb074b19ea0169edf7c2d73b2f6e}} 
 \index{Pool@{Pool}!init@{init}}
@@ -126,7 +229,9 @@ Sprite$\ast$ pointer to sprite if possible, nullptr if the maxim has been reache
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void Pool\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the pool
+
+
+Initializes the pool. 
 
 Initializes the pool creating the first instances of the elements.
 
@@ -139,7 +244,9 @@ void
 \subsubsection{\texorpdfstring{instance()}{instance()}}
 {\footnotesize\ttfamily static \hyperlink{class_pool}{Pool}\& Pool\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-the instance of our pool
+
+
+Gets the instance of our pool. 
 
 In charge of creating our singleton of pools in case it doesn\textquotesingle{}t exist or return it\textquotesingle{}s instance if it exists.
 
@@ -152,9 +259,41 @@ In charge of creating our singleton of pools in case it doesn\textquotesingle{}t
 \subsubsection{\texorpdfstring{return\+Background()}{returnBackground()}}
 {\footnotesize\ttfamily void Pool\+::return\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{class_background}{Background} \&}]{background }\end{DoxyParamCaption})}
 
-an existing background to the pool
+
+
+Adds an existing background to the pool. 
 
 Recieves an existing background and resets it\textquotesingle{}s value using the unuse function of background
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a0da5595d7b9e70aed2dd807ee4a6ae26}\label{class_pool_a0da5595d7b9e70aed2dd807ee4a6ae26}} 
+\index{Pool@{Pool}!return\+Ball@{return\+Ball}}
+\index{return\+Ball@{return\+Ball}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Ball()}{returnBall()}}
+{\footnotesize\ttfamily void Pool\+::return\+Ball (\begin{DoxyParamCaption}\item[{\hyperlink{class_ball}{Ball} \&}]{ball }\end{DoxyParamCaption})}
+
+
+
+Adds an existing ball to the pool. 
+
+Recieves an existing ball and resets it\textquotesingle{}s value using the unuse function of ball
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a0d8fb68bad74c14b0130a96032cc5067}\label{class_pool_a0d8fb68bad74c14b0130a96032cc5067}} 
+\index{Pool@{Pool}!return\+Brick@{return\+Brick}}
+\index{return\+Brick@{return\+Brick}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Brick()}{returnBrick()}}
+{\footnotesize\ttfamily void Pool\+::return\+Brick (\begin{DoxyParamCaption}\item[{\hyperlink{class_brick}{Brick} \&}]{brick }\end{DoxyParamCaption})}
+
+
+
+Adds an existing brick to the pool. 
+
+Recieves an existing brick and resets it\textquotesingle{}s value using the unuse function of brick
 
 \begin{DoxyReturn}{Returns}
 void 
@@ -165,9 +304,26 @@ void
 \subsubsection{\texorpdfstring{return\+Label()}{returnLabel()}}
 {\footnotesize\ttfamily void Pool\+::return\+Label (\begin{DoxyParamCaption}\item[{\hyperlink{class_label}{Label} \&}]{label }\end{DoxyParamCaption})}
 
-an existing label to the pool
+
+
+Adds an existing label to the pool. 
 
 Recieves an existing label and resets it\textquotesingle{}s value using the unuse function of label
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a3e6ed735e15ad548db48a0cefbb5b821}\label{class_pool_a3e6ed735e15ad548db48a0cefbb5b821}} 
+\index{Pool@{Pool}!return\+Player@{return\+Player}}
+\index{return\+Player@{return\+Player}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Player()}{returnPlayer()}}
+{\footnotesize\ttfamily void Pool\+::return\+Player (\begin{DoxyParamCaption}\item[{\hyperlink{class_player}{Player} \&}]{player }\end{DoxyParamCaption})}
+
+
+
+Adds an existing \hyperlink{class_player}{Player} to the pool. 
+
+Recieves an existing player and resets it\textquotesingle{}s value using the unuse function of player
 
 \begin{DoxyReturn}{Returns}
 void 
@@ -178,7 +334,9 @@ void
 \subsubsection{\texorpdfstring{return\+Rect()}{returnRect()}}
 {\footnotesize\ttfamily void Pool\+::return\+Rect (\begin{DoxyParamCaption}\item[{\hyperlink{class_rect}{Rect} \&}]{rect }\end{DoxyParamCaption})}
 
-an existing rect to the pool
+
+
+Adds an existing rect to the pool. 
 
 Recieves an existing rect and resets it\textquotesingle{}s value using the unuse function of rect
 
@@ -191,9 +349,26 @@ void
 \subsubsection{\texorpdfstring{return\+Sprite()}{returnSprite()}}
 {\footnotesize\ttfamily void Pool\+::return\+Sprite (\begin{DoxyParamCaption}\item[{\hyperlink{class_sprite}{Sprite} \&}]{sprite }\end{DoxyParamCaption})}
 
-an existing sprite to the pool
+
+
+Adds an existing sprite to the pool. 
 
 Recieves an existing sprite and resets it\textquotesingle{}s value using the unuse function of sprite
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pool_a883e139a1b626e514a7e70dd3385e17e}\label{class_pool_a883e139a1b626e514a7e70dd3385e17e}} 
+\index{Pool@{Pool}!return\+Wall@{return\+Wall}}
+\index{return\+Wall@{return\+Wall}!Pool@{Pool}}
+\subsubsection{\texorpdfstring{return\+Wall()}{returnWall()}}
+{\footnotesize\ttfamily void Pool\+::return\+Wall (\begin{DoxyParamCaption}\item[{\hyperlink{class_wall}{Wall} \&}]{wall }\end{DoxyParamCaption})}
+
+
+
+Adds an existing wall to the pool. 
+
+Recieves an existing wall and resets it\textquotesingle{}s value using the unuse function of wall
 
 \begin{DoxyReturn}{Returns}
 void 
@@ -202,4 +377,4 @@ void
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/pool.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/pool.\+h\end{DoxyCompactItemize}

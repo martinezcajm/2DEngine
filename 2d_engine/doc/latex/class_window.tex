@@ -8,20 +8,20 @@
 \begin{DoxyCompactItemize}
 \item 
 bool \hyperlink{class_window_a0530ead23b2c91ef90a5f98e4df41cb8}{is\+Open} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the window is open. \end{DoxyCompactList}\item 
 void \hyperlink{class_window_afadfafa5a0b9472554759004aafb327e}{display} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Display the window. \end{DoxyCompactList}\item 
 void \hyperlink{class_window_a35055c04498121d39741bfcd5082705b}{close} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Close the window. \end{DoxyCompactList}\item 
 void \hyperlink{class_window_a38bc43bdd1a97e5de7f346ba4c3957ef}{clear} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Clear the window. \end{DoxyCompactList}\item 
 void \hyperlink{class_window_adfb2d5826942693e289d13f314a341f7}{draw} (const sf\+::\+Drawable \&drawable)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draw a drawable object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_window}{Window} $\ast$ \hyperlink{class_window_ac23ace79f02693ff5463f91dba8bb38b}{Create\+Window} (const sf\+::\+Vector2u size, const sf\+::\+String \&title, unsigned int frame\+Rate\+Limit=60)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Factory that creates windows. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,7 +54,9 @@ This class create and manage the windows of the game editor
 \subsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily void Window\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the window
+
+
+Clear the window. 
 
 Clear the window and put it black.
 
@@ -67,7 +69,9 @@ void.
 \subsubsection{\texorpdfstring{close()}{close()}}
 {\footnotesize\ttfamily void Window\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the window
+
+
+Close the window. 
 
 Close the window.
 
@@ -80,7 +84,9 @@ void.
 \subsubsection{\texorpdfstring{Create\+Window()}{CreateWindow()}}
 {\footnotesize\ttfamily static \hyperlink{class_window}{Window}$\ast$ Window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2u}]{size,  }\item[{const sf\+::\+String \&}]{title,  }\item[{unsigned int}]{frame\+Rate\+Limit = {\ttfamily 60} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-that creates windows
+
+
+Factory that creates windows. 
 
 Checks that the number of window didn\textquotesingle{}t pass the maxim established. In case the maximum of window has been reached it will return nullptr.
 
@@ -93,7 +99,9 @@ Window$\ast$ returns a pointer to the \hyperlink{class_window}{Window} created o
 \subsubsection{\texorpdfstring{display()}{display()}}
 {\footnotesize\ttfamily void Window\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the window
+
+
+Display the window. 
 
 Display on screen the elements that has been rendered to the window so far.
 
@@ -106,7 +114,9 @@ void.
 \subsubsection{\texorpdfstring{draw()}{draw()}}
 {\footnotesize\ttfamily void Window\+::draw (\begin{DoxyParamCaption}\item[{const sf\+::\+Drawable \&}]{drawable }\end{DoxyParamCaption})}
 
-a drawable object.
+
+
+Draw a drawable object. 
 
 Draw a drawable object to the render-\/target.
 
@@ -119,7 +129,9 @@ void.
 \subsubsection{\texorpdfstring{is\+Open()}{isOpen()}}
 {\footnotesize\ttfamily bool Window\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-if the window is open
+
+
+Checks if the window is open. 
 
 Checks if the window is open.
 
@@ -130,4 +142,4 @@ bool returns true if the window is open and false if not.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/window.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/window.\+h\end{DoxyCompactItemize}

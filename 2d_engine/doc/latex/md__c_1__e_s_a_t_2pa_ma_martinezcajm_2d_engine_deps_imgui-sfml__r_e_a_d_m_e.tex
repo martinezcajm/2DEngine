@@ -1,0 +1,172 @@
+Library which allows you to use \href{https://github.com/ocornut/imgui}{\tt Im\+Gui} with \href{https://github.com/SFML/SFML}{\tt S\+F\+ML}
+
+
+
+Based on \href{https://github.com/Mischa-Alff/imgui-backends}{\tt this repository} with big improvements and changes.
+
+\subsection*{How-\/to }
+
+
+\begin{DoxyItemize}
+\item \href{https://eliasdaler.github.io/using-imgui-with-sfml-pt1}{\tt {\bfseries Detailed tutorial on my blog}}
+\item \href{https://eliasdaler.github.io/using-imgui-with-sfml-pt2/}{\tt {\bfseries Using Im\+Gui with modern C++ and S\+TL}}
+\item \href{https://en.sfml-dev.org/forums/index.php?topic=20137.0}{\tt {\bfseries Thread on S\+F\+ML forums}}. Feel free to ask your questions there.
+\end{DoxyItemize}
+
+Setting up\+:
+
+
+\begin{DoxyItemize}
+\item Download \href{https://github.com/ocornut/imgui}{\tt Im\+Gui}
+\item Add Im\+Gui folder to your include directories
+\item Add {\ttfamily imgui.\+cpp} and {\ttfamily imgui\+\_\+draw.\+cpp} to your build/project
+\item Copy the contents of {\ttfamily \hyperlink{imconfig-_s_f_m_l_8h_source}{imconfig-\/\+S\+F\+M\+L.\+h}} to your {\ttfamily imconfig.\+h} file. (to be able to cast {\ttfamily \hyperlink{struct_im_vec2}{Im\+Vec2}} to {\ttfamily sf\+::\+Vector2f} and vice versa)
+\item Add a folder which contains {\ttfamily \hyperlink{imgui-_s_f_m_l_8h_source}{imgui-\/\+S\+F\+M\+L.\+h}} to your include directories
+\item Add {\ttfamily imgui-\/\+S\+F\+M\+L.\+cpp} to your build/project
+\end{DoxyItemize}
+
+In your code\+:
+
+
+\begin{DoxyItemize}
+\item Call {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Init} and pass your {\ttfamily \hyperlink{classsf_1_1_window}{sf\+::\+Window}} + {\ttfamily \hyperlink{classsf_1_1_render_target}{sf\+::\+Render\+Target}} or {\ttfamily \hyperlink{classsf_1_1_render_window}{sf\+::\+Render\+Window}} there. You can create your font atlas and pass the pointer in Init too, otherwise the default internal font atlas will be created for you.
+\item For each iteration of a game loop\+:
+\begin{DoxyItemize}
+\item Poll and process events\+:
+
+```c++ \hyperlink{classsf_1_1_event}{sf\+::\+Event} event; while (window.\+poll\+Event(event)) \{ Im\+Gui\+::\+S\+F\+M\+L\+::\+Process\+Event(event); ... \} ```
+\item Call {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Update(window, delta\+Time)} where {\ttfamily delta\+Time} is {\ttfamily \hyperlink{classsf_1_1_time}{sf\+::\+Time}}. You can also pass mouse\+Position and display\+Size yourself instead of passing the window.
+\item Call Im\+Gui functions ({\ttfamily Im\+Gui\+::\+Begin()}, {\ttfamily Im\+Gui\+::\+Button()}, etc.)
+\item Call {\ttfamily Im\+Gui\+::\+End\+Frame} if you update more than once before rendering (you\textquotesingle{}ll need to include {\ttfamily \hyperlink{imgui__internal_8h_source}{imgui\+\_\+internal.\+h}} for that)
+\item Call {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Render(window)}
+\end{DoxyItemize}
+\item Call {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Shutdown()} at the end of your program
+\end{DoxyItemize}
+
+{\bfseries If you only draw Im\+Gui widgets without any S\+F\+ML stuff, then you\textquotesingle{}ll have to call window.\+reset\+G\+L\+States() before rendering anything. You only need to do it once.}
+
+\subsection*{Example code }
+
+See example file \href{examples/main.cpp}{\tt here}
+
+
+\begin{DoxyCode}
+\{c++\}
+#include "imgui.h"
+#include "imgui-SFML.h"
+
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+
+int main()
+\{
+    sf::RenderWindow window(sf::VideoMode(640, 480), "ImGui + SFML = <3");
+    window.setFramerateLimit(60);
+    ImGui::SFML::Init(window);
+
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
+    sf::Clock deltaClock;
+    while (window.isOpen()) \{
+        sf::Event event;
+        while (window.pollEvent(event)) \{
+            ImGui::SFML::ProcessEvent(event);
+
+            if (event.type == sf::Event::Closed) \{
+                window.close();
+            \}
+        \}
+
+        ImGui::SFML::Update(window, deltaClock.restart());
+
+        ImGui::Begin("Hello, world!");
+        ImGui::Button("Look at this pretty button");
+        ImGui::End();
+
+        window.clear();
+        window.draw(shape);
+        ImGui::SFML::Render(window);
+        window.display();
+    \}
+
+    ImGui::SFML::Shutdown();
+\}
+\end{DoxyCode}
+
+
+\subsection*{Fonts how-\/to }
+
+Default font is loaded if you don\textquotesingle{}t pass false in {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Init}. Call {\ttfamily Im\+Gui\+::\+S\+F\+M\+L\+::\+Init(window, false);} if you don\textquotesingle{}t want default font to be loaded.
+
+
+\begin{DoxyItemize}
+\item Load your fonts like this\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+\{c++\}
+IO.Fonts->Clear(); // clear fonts if you loaded some before (even if only default one was loaded)
+// IO.Fonts->AddFontDefault(); // this will load default font as well
+IO.Fonts->AddFontFromFileTTF("font1.ttf", 8.f);
+IO.Fonts->AddFontFromFileTTF("font2.ttf", 12.f);
+
+ImGui::SFML::UpdateFontTexture(); // important call: updates font texture
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item And use them like this\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+\{c++\}
+ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
+ImGui::Button("Look at this pretty button");
+ImGui::PopFont();
+
+ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+ImGui::TextUnformatted("IT WORKS!");
+ImGui::PopFont();
+\end{DoxyCode}
+
+
+The first loaded font is treated as the default one and doesn\textquotesingle{}t need to be pushed with {\ttfamily Im\+Gui\+::\+Push\+Font}.
+
+\subsection*{C\+Make how-\/to }
+
+
+\begin{DoxyItemize}
+\item Checkout the repository as a submoudle
+\item Set I\+M\+G\+U\+I\+\_\+\+R\+O\+OT
+\item Modify your builds to copy imgui-\/\+S\+F\+ML and dependencies (sfml) to your project 
+\begin{DoxyCode}
+add\_subdirectory(repos/imgui-sfml)
+include\_directories("$\{IMGUI\_SFML\_INCLUDE\_DIRS\}")
+add\_executable(MY\_PROJECT $\{IMGUI\_SOURCES\} $\{IMGUI\_SFML\_SOURCES\} $\{SRCS\})
+...
+target\_link\_libraries(MY\_PROJECT $\{IMGUI\_SFML\_DEPENDENCIES\})
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+\subsection*{S\+F\+ML related Im\+Gui overloads / new widgets }
+
+There are some useful overloads implemented for S\+F\+ML objects (see header for overloads)\+: 
+\begin{DoxyCode}
+\{c++\}
+ImGui::Image(const sf::Sprite& sprite);
+ImGui::Image(const sf::Texture& texture);
+ImGui::ImageButton(const sf::Sprite& sprite);
+ImGui::ImageButton(const sf::Texture& texture);
+\end{DoxyCode}
+
+
+\subsection*{License }
+
+This library is licensed under the M\+IT License, see L\+I\+C\+E\+N\+SE for more information. 

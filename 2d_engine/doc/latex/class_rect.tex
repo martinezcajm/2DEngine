@@ -2,34 +2,41 @@
 \label{class_rect}\index{Rect@{Rect}}
 
 
+raphic entity \hyperlink{class_label}{Label}  
+
+
+
+
 {\ttfamily \#include $<$rect.\+h$>$}
 
 Inheritance diagram for Rect\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{class_rect}
+\includegraphics[height=4.000000cm]{class_rect}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_rect_af5c075b863024c3e39add95e07d10f39}{$\sim$\+Rect} ()
-\item 
+virtual \hyperlink{class_rect_a46a2a29ee00ff71d28ccdf9b0f217be9}{$\sim$\+Rect} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_rect}{Rect}. \end{DoxyCompactList}\item 
 void \hyperlink{class_rect_aa780623e4639a2679ed300424142d50d}{init} (uint8\+\_\+t is\+\_\+solid, float width, float height, uint8\+\_\+t sc\+\_\+r, uint8\+\_\+t sc\+\_\+g, uint8\+\_\+t sc\+\_\+b, uint8\+\_\+t sc\+\_\+a, uint8\+\_\+t fc\+\_\+r, uint8\+\_\+t fc\+\_\+g, uint8\+\_\+t fc\+\_\+b, uint8\+\_\+t fc\+\_\+a, float px, float py, float rotation, float scalex, float scaley)
-\item 
-void \hyperlink{class_rect_aa131d780f6ebb75e9057c01221486adc}{draw} (sf\+::\+Render\+Window \&window)
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_rect}{Rect}. \end{DoxyCompactList}\item 
+void \hyperlink{class_rect_a57801edbfb2c000c631a610c59e7ff20}{draw} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Draws the graphic entity Rectangle. \end{DoxyCompactList}\item 
 void \hyperlink{class_rect_ab7593e78f2fbc2354d8ef832ac3625a7}{resize} (const float width, const float height)
-\item 
-bool \hyperlink{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}{check\+Collision} (const sf\+::\+Vector2f \&position)
-\item 
-void \hyperlink{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}{unuse} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Changes the size of the rect. \end{DoxyCompactList}\item 
+void \hyperlink{class_rect_a85afbe7fde3b74bd81c07cc58d5c61bd}{unuse} () override
+\begin{DoxyCompactList}\small\item\em Resets the values of the rect. \end{DoxyCompactList}\item 
+void \hyperlink{class_rect_af74b7ea3228d0d7b4c40bb8fe6daed63}{update} () override
+\begin{DoxyCompactList}\small\item\em Updates the rect in the loop. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \hyperlink{class_rect_a17056b26af5522b024e9628386d34335}{get\+Boundaries} () override
+\begin{DoxyCompactList}\small\item\em gets the boundaries of the rect entity \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_rect}{Rect} $\ast$ \hyperlink{class_rect_ac9283327c926d453d0cd5a49ded8d150}{Create\+Rect} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Factory that creates rect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,65 +53,102 @@ sf\+::\+Color {\bfseries rgba\+\_\+fill\+\_\+}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_rect_a18981822ae235d9ed80b6dd9ba257fcc}\label{class_rect_a18981822ae235d9ed80b6dd9ba257fcc}} 
-static const uint8\+\_\+t {\bfseries k\+Max\+Rects} = 50
+static const uint8\+\_\+t {\bfseries k\+Max\+Rects} = 100
 \end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rect_a911e531b86de33734dd7de3456722115}{Rect} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_rect}{Rect} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_rect_af7bc3c8e555de1401faff38c7e348a24}{Rect} (const \hyperlink{class_rect}{Rect} \&o)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_rect}{Rect} copy constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_rect_a5fc34a318a2dde90d5a700b7649224d1}\label{class_rect_a5fc34a318a2dde90d5a700b7649224d1}} 
+static uint32\+\_\+t {\bfseries total\+\_\+rects\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-entity \hyperlink{class_label}{Label}
+raphic entity \hyperlink{class_label}{Label} 
 
 Class used to represent Rectangles. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_rect_af5c075b863024c3e39add95e07d10f39}\label{class_rect_af5c075b863024c3e39add95e07d10f39}} 
+\mbox{\Hypertarget{class_rect_a46a2a29ee00ff71d28ccdf9b0f217be9}\label{class_rect_a46a2a29ee00ff71d28ccdf9b0f217be9}} 
 \index{Rect@{Rect}!````~Rect@{$\sim$\+Rect}}
 \index{````~Rect@{$\sim$\+Rect}!Rect@{Rect}}
 \subsubsection{\texorpdfstring{$\sim$\+Rect()}{~Rect()}}
-{\footnotesize\ttfamily Rect\+::$\sim$\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual Rect\+::$\sim$\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-the \hyperlink{class_rect}{Rect}
+
+
+Destroys the \hyperlink{class_rect}{Rect}. 
 
 Destructor of the rect
 
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_rect_a911e531b86de33734dd7de3456722115}\label{class_rect_a911e531b86de33734dd7de3456722115}} 
+\index{Rect@{Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{Rect()}{Rect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Rect\+::\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\hyperlink{class_rect}{Rect} constructor. 
+
+\hyperlink{class_rect}{Rect} constructor used by the factory to create rects
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Rect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rect_af7bc3c8e555de1401faff38c7e348a24}\label{class_rect_af7bc3c8e555de1401faff38c7e348a24}} 
+\index{Rect@{Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{Rect()}{Rect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Rect\+::\+Rect (\begin{DoxyParamCaption}\item[{const \hyperlink{class_rect}{Rect} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\hyperlink{class_rect}{Rect} copy constructor. 
+
+\hyperlink{class_rect}{Rect} copy constructor without anything to disable it.
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Rect 
+\end{DoxyReturn}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}\label{class_rect_afb4fd23ac0ebf55ef7d9c1bcdcc7ff30}} 
-\index{Rect@{Rect}!check\+Collision@{check\+Collision}}
-\index{check\+Collision@{check\+Collision}!Rect@{Rect}}
-\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
-{\footnotesize\ttfamily bool Rect\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
-
-if a point collides with the rect
-
-Checks if the point passed by reference collides with the rect.
-
-\begin{DoxyReturn}{Returns}
-bool returns true if the point collides and false if not. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_rect_ac9283327c926d453d0cd5a49ded8d150}\label{class_rect_ac9283327c926d453d0cd5a49ded8d150}} 
 \index{Rect@{Rect}!Create\+Rect@{Create\+Rect}}
 \index{Create\+Rect@{Create\+Rect}!Rect@{Rect}}
 \subsubsection{\texorpdfstring{Create\+Rect()}{CreateRect()}}
 {\footnotesize\ttfamily static \hyperlink{class_rect}{Rect}$\ast$ Rect\+::\+Create\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-that creates rect
+
+
+Factory that creates rect. 
 
 Checks that the number of rects didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_rect}{Rect} you must use this method. In case the maximum amount of rects has been reached it will return nullptr. Otherwise it will return a pointer to a rect.
 
 \begin{DoxyReturn}{Returns}
 Rect$\ast$ returns the rect created or nullptr if the maximum of rects has been reached 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_rect_aa131d780f6ebb75e9057c01221486adc}\label{class_rect_aa131d780f6ebb75e9057c01221486adc}} 
+\mbox{\Hypertarget{class_rect_a57801edbfb2c000c631a610c59e7ff20}\label{class_rect_a57801edbfb2c000c631a610c59e7ff20}} 
 \index{Rect@{Rect}!draw@{draw}}
 \index{draw@{draw}!Rect@{Rect}}
 \subsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Rect\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Rect\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the graphic entity Rectangle
+
+
+Draws the graphic entity Rectangle. 
 
 Draws the rectangle using S\+F\+ML to the window passed by reference
 
@@ -116,13 +160,38 @@ void
 {\em window} & S\+F\+ML Render\+Window passed by reference \\
 \hline
 \end{DoxyParams}
+
+
+Implements \hyperlink{class_drawable_entity_a0b0db9c1325defed216d66a5b4cc755e}{Drawable\+Entity}.
+
+\mbox{\Hypertarget{class_rect_a17056b26af5522b024e9628386d34335}\label{class_rect_a17056b26af5522b024e9628386d34335}} 
+\index{Rect@{Rect}!get\+Boundaries@{get\+Boundaries}}
+\index{get\+Boundaries@{get\+Boundaries}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{get\+Boundaries()}{getBoundaries()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Rect\+::get\+Boundaries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+gets the boundaries of the rect entity 
+
+Implementation of the get\+Boundaries interface. Gets the boundaries of the \hyperlink{class_rect}{Rect} as an sf\+::\+Float\+Rect taking into account it\textquotesingle{}s transformations.
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Float\+Rect boundaries of the rect. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_drawable_entity_a352a101e3be05d25e1a10e5f72ccb9e3}{Drawable\+Entity}.
+
 \mbox{\Hypertarget{class_rect_aa780623e4639a2679ed300424142d50d}\label{class_rect_aa780623e4639a2679ed300424142d50d}} 
 \index{Rect@{Rect}!init@{init}}
 \index{init@{init}!Rect@{Rect}}
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void Rect\+::init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{is\+\_\+solid,  }\item[{float}]{width,  }\item[{float}]{height,  }\item[{uint8\+\_\+t}]{sc\+\_\+r,  }\item[{uint8\+\_\+t}]{sc\+\_\+g,  }\item[{uint8\+\_\+t}]{sc\+\_\+b,  }\item[{uint8\+\_\+t}]{sc\+\_\+a,  }\item[{uint8\+\_\+t}]{fc\+\_\+r,  }\item[{uint8\+\_\+t}]{fc\+\_\+g,  }\item[{uint8\+\_\+t}]{fc\+\_\+b,  }\item[{uint8\+\_\+t}]{fc\+\_\+a,  }\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{rotation,  }\item[{float}]{scalex,  }\item[{float}]{scaley }\end{DoxyParamCaption})}
 
-the \hyperlink{class_rect}{Rect}
+
+
+Initializes the \hyperlink{class_rect}{Rect}. 
 
 Initializes the different values of a rect
 
@@ -170,17 +239,21 @@ void
 \subsubsection{\texorpdfstring{resize()}{resize()}}
 {\footnotesize\ttfamily void Rect\+::resize (\begin{DoxyParamCaption}\item[{const float}]{width,  }\item[{const float}]{height }\end{DoxyParamCaption})}
 
-the size of the rect
+
+
+Changes the size of the rect. 
 
 Sets the value of width and height for the rect to the ones indicated by parameter.
 
-new width of the rectangle  new height of the rectangle \mbox{\Hypertarget{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}\label{class_rect_a31c7cbadb97080dfb559f3d04acc0bc9}} 
+new width of the rectangle  new height of the rectangle \mbox{\Hypertarget{class_rect_a85afbe7fde3b74bd81c07cc58d5c61bd}\label{class_rect_a85afbe7fde3b74bd81c07cc58d5c61bd}} 
 \index{Rect@{Rect}!unuse@{unuse}}
 \index{unuse@{unuse}!Rect@{Rect}}
 \subsubsection{\texorpdfstring{unuse()}{unuse()}}
-{\footnotesize\ttfamily void Rect\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Rect\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the values of the rect
+
+
+Resets the values of the rect. 
 
 Sets the attributes of the rect to a default value to return it to a pool and being able to reuse it later.
 
@@ -189,6 +262,29 @@ void
 \end{DoxyReturn}
 
 
+Reimplemented from \hyperlink{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}{Drawable\+Entity}.
+
+\mbox{\Hypertarget{class_rect_af74b7ea3228d0d7b4c40bb8fe6daed63}\label{class_rect_af74b7ea3228d0d7b4c40bb8fe6daed63}} 
+\index{Rect@{Rect}!update@{update}}
+\index{update@{update}!Rect@{Rect}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Rect\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the rect in the loop. 
+
+Implementation of the update interface
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}{Drawable\+Entity}.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/rect.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/rect.\+h\end{DoxyCompactItemize}

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['finish',['finish',['../class_game.html#a4a803542276ea0497ad3a87b8983dd67',1,'Game']]],
-  ['free',['free',['../class_pool.html#aa2bcc7b11c5f0a438b1fe5405ba698ff',1,'Pool']]]
+  ['entity',['Entity',['../class_entity.html#a980f368aa07ce358583982821533a54a',1,'Entity::Entity()'],['../class_entity.html#ad758dc48d715e48ada4193517f1d32ea',1,'Entity::Entity(const Entity &amp;o)']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: Pool Class Reference</title>
+<title>2D_game: Pool Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -68,34 +68,72 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Class in charge of managing the pools.  
+ <a href="class_pool.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pool_8h_source.html">pool.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b5bfb074b19ea0169edf7c2d73b2f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a7b5bfb074b19ea0169edf7c2d73b2f6e">init</a> ()</td></tr>
+<tr class="memdesc:a7b5bfb074b19ea0169edf7c2d73b2f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the pool.  <a href="#a7b5bfb074b19ea0169edf7c2d73b2f6e">More...</a><br /></td></tr>
 <tr class="separator:a7b5bfb074b19ea0169edf7c2d73b2f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2bcc7b11c5f0a438b1fe5405ba698ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#aa2bcc7b11c5f0a438b1fe5405ba698ff">free</a> ()</td></tr>
+<tr class="memdesc:aa2bcc7b11c5f0a438b1fe5405ba698ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the pull.  <a href="#aa2bcc7b11c5f0a438b1fe5405ba698ff">More...</a><br /></td></tr>
 <tr class="separator:aa2bcc7b11c5f0a438b1fe5405ba698ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ea49e227ce14fcb926d451f9f59e452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a2ea49e227ce14fcb926d451f9f59e452">getRect</a> ()</td></tr>
+<tr class="memdesc:a2ea49e227ce14fcb926d451f9f59e452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_rect.html" title="raphic entity Label ">Rect</a>.  <a href="#a2ea49e227ce14fcb926d451f9f59e452">More...</a><br /></td></tr>
 <tr class="separator:a2ea49e227ce14fcb926d451f9f59e452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13ce02d7dbee29305a83dcdb22a01661"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_label.html">Label</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a13ce02d7dbee29305a83dcdb22a01661">getLabel</a> ()</td></tr>
+<tr class="memdesc:a13ce02d7dbee29305a83dcdb22a01661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_label.html" title="Graphic entity Label. ">Label</a>.  <a href="#a13ce02d7dbee29305a83dcdb22a01661">More...</a><br /></td></tr>
 <tr class="separator:a13ce02d7dbee29305a83dcdb22a01661"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd15708186d45b2e45312c872dd84384"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#abd15708186d45b2e45312c872dd84384">getSprite</a> ()</td></tr>
+<tr class="memdesc:abd15708186d45b2e45312c872dd84384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_sprite.html" title="Graphic entity Sprite. ">Sprite</a>.  <a href="#abd15708186d45b2e45312c872dd84384">More...</a><br /></td></tr>
 <tr class="separator:abd15708186d45b2e45312c872dd84384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367c875efe93a27fea4bcaf0ed281abd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_background.html">Background</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a367c875efe93a27fea4bcaf0ed281abd">getBackground</a> ()</td></tr>
+<tr class="memdesc:a367c875efe93a27fea4bcaf0ed281abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_background.html" title="Graphic entity Background. ">Background</a>.  <a href="#a367c875efe93a27fea4bcaf0ed281abd">More...</a><br /></td></tr>
 <tr class="separator:a367c875efe93a27fea4bcaf0ed281abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac76b81263346b168a482c6407ae9e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_wall.html">Wall</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a0ac76b81263346b168a482c6407ae9e0">getWall</a> ()</td></tr>
+<tr class="memdesc:a0ac76b81263346b168a482c6407ae9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_wall.html">Wall</a>.  <a href="#a0ac76b81263346b168a482c6407ae9e0">More...</a><br /></td></tr>
+<tr class="separator:a0ac76b81263346b168a482c6407ae9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a51a508e2d90cb62888dd64ebf16a92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brick.html">Brick</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a9a51a508e2d90cb62888dd64ebf16a92">getBrick</a> ()</td></tr>
+<tr class="memdesc:a9a51a508e2d90cb62888dd64ebf16a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_brick.html">Brick</a>.  <a href="#a9a51a508e2d90cb62888dd64ebf16a92">More...</a><br /></td></tr>
+<tr class="separator:a9a51a508e2d90cb62888dd64ebf16a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a45dbea615300cf7baa1c449983f9ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ball.html">Ball</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a6a45dbea615300cf7baa1c449983f9ce">getBall</a> ()</td></tr>
+<tr class="memdesc:a6a45dbea615300cf7baa1c449983f9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_brick.html">Brick</a>.  <a href="#a6a45dbea615300cf7baa1c449983f9ce">More...</a><br /></td></tr>
+<tr class="separator:a6a45dbea615300cf7baa1c449983f9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d6bbd0901a4a77fd55eb0b69d965ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a15d6bbd0901a4a77fd55eb0b69d965ef">getPlayer</a> ()</td></tr>
+<tr class="memdesc:a15d6bbd0901a4a77fd55eb0b69d965ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_player.html" title="Graphic entity Player. ">Player</a>.  <a href="#a15d6bbd0901a4a77fd55eb0b69d965ef">More...</a><br /></td></tr>
+<tr class="separator:a15d6bbd0901a4a77fd55eb0b69d965ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b5250c08babf163d9d4877c7a2a6f40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a3b5250c08babf163d9d4877c7a2a6f40">returnRect</a> (<a class="el" href="class_rect.html">Rect</a> &amp;rect)</td></tr>
+<tr class="memdesc:a3b5250c08babf163d9d4877c7a2a6f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing rect to the pool.  <a href="#a3b5250c08babf163d9d4877c7a2a6f40">More...</a><br /></td></tr>
 <tr class="separator:a3b5250c08babf163d9d4877c7a2a6f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a38a2d1aa883152d27fa213ac2cc2e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a2a38a2d1aa883152d27fa213ac2cc2e8">returnLabel</a> (<a class="el" href="class_label.html">Label</a> &amp;label)</td></tr>
+<tr class="memdesc:a2a38a2d1aa883152d27fa213ac2cc2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing label to the pool.  <a href="#a2a38a2d1aa883152d27fa213ac2cc2e8">More...</a><br /></td></tr>
 <tr class="separator:a2a38a2d1aa883152d27fa213ac2cc2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a227334c0983a0c1bf42d72a44fcfee8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a227334c0983a0c1bf42d72a44fcfee8f">returnSprite</a> (<a class="el" href="class_sprite.html">Sprite</a> &amp;sprite)</td></tr>
+<tr class="memdesc:a227334c0983a0c1bf42d72a44fcfee8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing sprite to the pool.  <a href="#a227334c0983a0c1bf42d72a44fcfee8f">More...</a><br /></td></tr>
 <tr class="separator:a227334c0983a0c1bf42d72a44fcfee8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6234b218a3dd72a440a3381b35c9e36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#af6234b218a3dd72a440a3381b35c9e36">returnBackground</a> (<a class="el" href="class_background.html">Background</a> &amp;background)</td></tr>
+<tr class="memdesc:af6234b218a3dd72a440a3381b35c9e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing background to the pool.  <a href="#af6234b218a3dd72a440a3381b35c9e36">More...</a><br /></td></tr>
 <tr class="separator:af6234b218a3dd72a440a3381b35c9e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883e139a1b626e514a7e70dd3385e17e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a883e139a1b626e514a7e70dd3385e17e">returnWall</a> (<a class="el" href="class_wall.html">Wall</a> &amp;wall)</td></tr>
+<tr class="memdesc:a883e139a1b626e514a7e70dd3385e17e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing wall to the pool.  <a href="#a883e139a1b626e514a7e70dd3385e17e">More...</a><br /></td></tr>
+<tr class="separator:a883e139a1b626e514a7e70dd3385e17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8fb68bad74c14b0130a96032cc5067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a0d8fb68bad74c14b0130a96032cc5067">returnBrick</a> (<a class="el" href="class_brick.html">Brick</a> &amp;brick)</td></tr>
+<tr class="memdesc:a0d8fb68bad74c14b0130a96032cc5067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing brick to the pool.  <a href="#a0d8fb68bad74c14b0130a96032cc5067">More...</a><br /></td></tr>
+<tr class="separator:a0d8fb68bad74c14b0130a96032cc5067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da5595d7b9e70aed2dd807ee4a6ae26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a0da5595d7b9e70aed2dd807ee4a6ae26">returnBall</a> (<a class="el" href="class_ball.html">Ball</a> &amp;ball)</td></tr>
+<tr class="memdesc:a0da5595d7b9e70aed2dd807ee4a6ae26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing ball to the pool.  <a href="#a0da5595d7b9e70aed2dd807ee4a6ae26">More...</a><br /></td></tr>
+<tr class="separator:a0da5595d7b9e70aed2dd807ee4a6ae26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e6ed735e15ad548db48a0cefbb5b821"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a3e6ed735e15ad548db48a0cefbb5b821">returnPlayer</a> (<a class="el" href="class_player.html">Player</a> &amp;player)</td></tr>
+<tr class="memdesc:a3e6ed735e15ad548db48a0cefbb5b821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing <a class="el" href="class_player.html" title="Graphic entity Player. ">Player</a> to the pool.  <a href="#a3e6ed735e15ad548db48a0cefbb5b821">More...</a><br /></td></tr>
+<tr class="separator:a3e6ed735e15ad548db48a0cefbb5b821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a20e44e0054d4eedf57f1943b87c06e20"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_pool.html">Pool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pool.html#a20e44e0054d4eedf57f1943b87c06e20">instance</a> ()</td></tr>
+<tr class="memdesc:a20e44e0054d4eedf57f1943b87c06e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the instance of our pool.  <a href="#a20e44e0054d4eedf57f1943b87c06e20">More...</a><br /></td></tr>
 <tr class="separator:a20e44e0054d4eedf57f1943b87c06e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -112,9 +150,21 @@ std::vector&lt; <a class="el" href="class_sprite.html">Sprite</a> * &gt;&#160;</
 <tr class="memitem:a11e4e7ab2e2d9307e7ec5dd56ffc84ed"><td class="memItemLeft" align="right" valign="top"><a id="a11e4e7ab2e2d9307e7ec5dd56ffc84ed"></a>
 std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_pool_</b></td></tr>
 <tr class="separator:a11e4e7ab2e2d9307e7ec5dd56ffc84ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc1ff43b1ca086e39f573836c65075fe"><td class="memItemLeft" align="right" valign="top"><a id="abc1ff43b1ca086e39f573836c65075fe"></a>
+std::vector&lt; <a class="el" href="class_wall.html">Wall</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>wall_pool_</b></td></tr>
+<tr class="separator:abc1ff43b1ca086e39f573836c65075fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21fb5d80b85cfe7d71990cd18812039"><td class="memItemLeft" align="right" valign="top"><a id="ac21fb5d80b85cfe7d71990cd18812039"></a>
+std::vector&lt; <a class="el" href="class_brick.html">Brick</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>brick_pool_</b></td></tr>
+<tr class="separator:ac21fb5d80b85cfe7d71990cd18812039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965526b277fd41a49c09526b2286f144"><td class="memItemLeft" align="right" valign="top"><a id="a965526b277fd41a49c09526b2286f144"></a>
+std::vector&lt; <a class="el" href="class_ball.html">Ball</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ball_pool_</b></td></tr>
+<tr class="separator:a965526b277fd41a49c09526b2286f144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915954cdebfdc2c6fe4e2cb30b426865"><td class="memItemLeft" align="right" valign="top"><a id="a915954cdebfdc2c6fe4e2cb30b426865"></a>
+std::vector&lt; <a class="el" href="class_player.html">Player</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>player_pool_</b></td></tr>
+<tr class="separator:a915954cdebfdc2c6fe4e2cb30b426865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>in charge of managing the pools</p>
+<div class="textblock"><p>Class in charge of managing the pools. </p>
 <p>Singleton of pools used to reuse the diverse graphical entities of the application avoiding this way the destruction of objects during execution as much as possible </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa2bcc7b11c5f0a438b1fe5405ba698ff"></a>
@@ -131,7 +181,8 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the pull</p>
+
+<p>Frees the pull. </p>
 <p>Frees all the elements stored in the pools.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
@@ -151,9 +202,52 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_background.html">Background</a></p>
-<p>Returns a <a class="el" href="class_background.html">Background</a> from the pool, if the pool doesn't have more backgrounds it creates one using the background factory. If the max of backgrounds has been reached it returns null ptr.</p>
+
+<p>Retrieves a <a class="el" href="class_background.html" title="Graphic entity Background. ">Background</a>. </p>
+<p>Returns a <a class="el" href="class_background.html" title="Graphic entity Background. ">Background</a> from the pool, if the pool doesn't have more backgrounds it creates one using the background factory. If the max of backgrounds has been reached it returns null ptr.</p>
 <dl class="section return"><dt>Returns</dt><dd>Background* pointer to background if possible, nullptr if the maxim has been reached </dd></dl>
+
+</div>
+</div>
+<a id="a6a45dbea615300cf7baa1c449983f9ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a45dbea615300cf7baa1c449983f9ce">&#9670;&nbsp;</a></span>getBall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ball.html">Ball</a>* Pool::getBall </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a <a class="el" href="class_brick.html">Brick</a>. </p>
+<p>Returns a <a class="el" href="class_brick.html">Brick</a> from the pool, if the pool doesn't have more bricks it creates one using the brick factory. If the max of bricks has been reached it returns null ptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Brick* pointer to brick if possible, nullptr if the maxim has been reached </dd></dl>
+
+</div>
+</div>
+<a id="a9a51a508e2d90cb62888dd64ebf16a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a51a508e2d90cb62888dd64ebf16a92">&#9670;&nbsp;</a></span>getBrick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_brick.html">Brick</a>* Pool::getBrick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a <a class="el" href="class_brick.html">Brick</a>. </p>
+<p>Returns a <a class="el" href="class_brick.html">Brick</a> from the pool, if the pool doesn't have more bricks it creates one using the brick factory. If the max of bricks has been reached it returns null ptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Brick* pointer to brick if possible, nullptr if the maxim has been reached </dd></dl>
 
 </div>
 </div>
@@ -171,9 +265,31 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_label.html">Label</a></p>
-<p>Returns a <a class="el" href="class_label.html">Label</a> from the pool, if the pool doesn't have more labels it creates one using the label factory. If the max of labels has been reached it returns null ptr.</p>
+
+<p>Retrieves a <a class="el" href="class_label.html" title="Graphic entity Label. ">Label</a>. </p>
+<p>Returns a <a class="el" href="class_label.html" title="Graphic entity Label. ">Label</a> from the pool, if the pool doesn't have more labels it creates one using the label factory. If the max of labels has been reached it returns null ptr.</p>
 <dl class="section return"><dt>Returns</dt><dd>Label* pointer to label if possible, nullptr if the maxim has been reached </dd></dl>
+
+</div>
+</div>
+<a id="a15d6bbd0901a4a77fd55eb0b69d965ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d6bbd0901a4a77fd55eb0b69d965ef">&#9670;&nbsp;</a></span>getPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_player.html">Player</a>* Pool::getPlayer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a <a class="el" href="class_player.html" title="Graphic entity Player. ">Player</a>. </p>
+<p>Returns a <a class="el" href="class_player.html" title="Graphic entity Player. ">Player</a> from the pool, if the pool doesn't have more players it creates one using the player factory. If the max of players has been reached it returns null ptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Player* pointer to player if possible, nullptr if the maxim has been reached </dd></dl>
 
 </div>
 </div>
@@ -191,8 +307,9 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_rect.html">Rect</a></p>
-<p>Returns a <a class="el" href="class_rect.html">Rect</a> from the pool, if the pool doesn't have more rects it creates one using the rect factory. If the max of rects has been reached it returns null ptr.</p>
+
+<p>Retrieves a <a class="el" href="class_rect.html" title="raphic entity Label ">Rect</a>. </p>
+<p>Returns a <a class="el" href="class_rect.html" title="raphic entity Label ">Rect</a> from the pool, if the pool doesn't have more rects it creates one using the rect factory. If the max of rects has been reached it returns null ptr.</p>
 <dl class="section return"><dt>Returns</dt><dd>Rect* pointer to rect if possible, nullptr if the maxim has been reached </dd></dl>
 
 </div>
@@ -211,9 +328,31 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a <a class="el" href="class_sprite.html">Sprite</a></p>
-<p>Returns a <a class="el" href="class_sprite.html">Sprite</a> from the pool, if the pool doesn't have more sprites it creates one using the sprite factory. If the max of sprites has been reached it returns null ptr.</p>
+
+<p>Retrieves a <a class="el" href="class_sprite.html" title="Graphic entity Sprite. ">Sprite</a>. </p>
+<p>Returns a <a class="el" href="class_sprite.html" title="Graphic entity Sprite. ">Sprite</a> from the pool, if the pool doesn't have more sprites it creates one using the sprite factory. If the max of sprites has been reached it returns null ptr.</p>
 <dl class="section return"><dt>Returns</dt><dd>Sprite* pointer to sprite if possible, nullptr if the maxim has been reached </dd></dl>
+
+</div>
+</div>
+<a id="a0ac76b81263346b168a482c6407ae9e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac76b81263346b168a482c6407ae9e0">&#9670;&nbsp;</a></span>getWall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_wall.html">Wall</a>* Pool::getWall </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a <a class="el" href="class_wall.html">Wall</a>. </p>
+<p>Returns a <a class="el" href="class_wall.html">Wall</a> from the pool, if the pool doesn't have more walls it creates one using the wall factory. If the max of walls has been reached it returns null ptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Wall* pointer to wall if possible, nullptr if the maxim has been reached </dd></dl>
 
 </div>
 </div>
@@ -231,7 +370,8 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the pool</p>
+
+<p>Initializes the pool. </p>
 <p>Initializes the pool creating the first instances of the elements.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
@@ -259,9 +399,10 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
   </tr>
 </table>
 </div><div class="memdoc">
-<p>the instance of our pool</p>
+
+<p>Gets the instance of our pool. </p>
 <p>In charge of creating our singleton of pools in case it doesn't exist or return it's instance if it exists.</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_pool.html">Pool</a>&amp; instance of the pool </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_pool.html" title="Class in charge of managing the pools. ">Pool</a>&amp; instance of the pool </dd></dl>
 
 </div>
 </div>
@@ -280,8 +421,53 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>an existing background to the pool</p>
+
+<p>Adds an existing background to the pool. </p>
 <p>Recieves an existing background and resets it's value using the unuse function of background</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a0da5595d7b9e70aed2dd807ee4a6ae26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0da5595d7b9e70aed2dd807ee4a6ae26">&#9670;&nbsp;</a></span>returnBall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pool::returnBall </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_ball.html">Ball</a> &amp;&#160;</td>
+          <td class="paramname"><em>ball</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an existing ball to the pool. </p>
+<p>Recieves an existing ball and resets it's value using the unuse function of ball</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a0d8fb68bad74c14b0130a96032cc5067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8fb68bad74c14b0130a96032cc5067">&#9670;&nbsp;</a></span>returnBrick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pool::returnBrick </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_brick.html">Brick</a> &amp;&#160;</td>
+          <td class="paramname"><em>brick</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an existing brick to the pool. </p>
+<p>Recieves an existing brick and resets it's value using the unuse function of brick</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -301,8 +487,31 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>an existing label to the pool</p>
+
+<p>Adds an existing label to the pool. </p>
 <p>Recieves an existing label and resets it's value using the unuse function of label</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a3e6ed735e15ad548db48a0cefbb5b821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e6ed735e15ad548db48a0cefbb5b821">&#9670;&nbsp;</a></span>returnPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pool::returnPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a> &amp;&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an existing <a class="el" href="class_player.html" title="Graphic entity Player. ">Player</a> to the pool. </p>
+<p>Recieves an existing player and resets it's value using the unuse function of player</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -322,7 +531,8 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>an existing rect to the pool</p>
+
+<p>Adds an existing rect to the pool. </p>
 <p>Recieves an existing rect and resets it's value using the unuse function of rect</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
@@ -343,14 +553,37 @@ std::vector&lt; <a class="el" href="class_background.html">Background</a> * &gt;
         </tr>
       </table>
 </div><div class="memdoc">
-<p>an existing sprite to the pool</p>
+
+<p>Adds an existing sprite to the pool. </p>
 <p>Recieves an existing sprite and resets it's value using the unuse function of sprite</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
+<a id="a883e139a1b626e514a7e70dd3385e17e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883e139a1b626e514a7e70dd3385e17e">&#9670;&nbsp;</a></span>returnWall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pool::returnWall </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_wall.html">Wall</a> &amp;&#160;</td>
+          <td class="paramname"><em>wall</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an existing wall to the pool. </p>
+<p>Recieves an existing wall and resets it's value using the unuse function of wall</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="pool_8h_source.html">pool.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="pool_8h_source.html">pool.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

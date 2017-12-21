@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: Native_dialogs Class Reference</title>
+<title>2D_game: Native_dialogs Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -69,12 +69,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a325b62ac200ee9d8287a7320643d5385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native__dialogs.html#a325b62ac200ee9d8287a7320643d5385">messageBox</a> (const char *title, const char *message, const char *type, const char *icon, const int defaultButton)</td></tr>
+<tr class="memdesc:a325b62ac200ee9d8287a7320643d5385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a message box native.  <a href="#a325b62ac200ee9d8287a7320643d5385">More...</a><br /></td></tr>
 <tr class="separator:a325b62ac200ee9d8287a7320643d5385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bf815830a674dc34903d272391bcac3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native__dialogs.html#a4bf815830a674dc34903d272391bcac3">saveFileDialog</a> (const char *title, const char *defaultFile, const int numOfFilterPatterns, const char **filterPatterns, const char *singleFilterDescription)</td></tr>
+<tr class="memdesc:a4bf815830a674dc34903d272391bcac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a save file dialog.  <a href="#a4bf815830a674dc34903d272391bcac3">More...</a><br /></td></tr>
 <tr class="separator:a4bf815830a674dc34903d272391bcac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57d8bdda43d74e367598bd5dc530b526"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native__dialogs.html#a57d8bdda43d74e367598bd5dc530b526">openFileDialog</a> (const char *title, const char *defaultFile, const int numOfFilterPatterns, const char **filterPatterns, const char *singleFilterDescription)</td></tr>
+<tr class="memdesc:a57d8bdda43d74e367598bd5dc530b526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a open file dialog.  <a href="#a57d8bdda43d74e367598bd5dc530b526">More...</a><br /></td></tr>
 <tr class="separator:a57d8bdda43d74e367598bd5dc530b526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bdf80cf55d1d5cf2835bc1b3e4084cc"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native__dialogs.html#a8bdf80cf55d1d5cf2835bc1b3e4084cc">selectFolderDialog</a> (const char *title, const char *defaultPath)</td></tr>
+<tr class="memdesc:a8bdf80cf55d1d5cf2835bc1b3e4084cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a select folder dialog.  <a href="#a8bdf80cf55d1d5cf2835bc1b3e4084cc">More...</a><br /></td></tr>
 <tr class="separator:a8bdf80cf55d1d5cf2835bc1b3e4084cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -121,7 +125,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a message box native</p>
+
+<p>Open a message box native. </p>
 <p>Open a mesage box with the introduced message.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -180,7 +185,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a open file dialog</p>
+
+<p>Open a open file dialog. </p>
 <p>Open a native dialog for open a file</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -239,7 +245,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a save file dialog</p>
+
+<p>Open a save file dialog. </p>
 <p>Open a native dialog for save a file</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -280,7 +287,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a select folder dialog</p>
+
+<p>Open a select folder dialog. </p>
 <p>Open a native dialog for select a folder</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -294,7 +302,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="native__dialogs_8h_source.html">native_dialogs.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="native__dialogs_8h_source.html">native_dialogs.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

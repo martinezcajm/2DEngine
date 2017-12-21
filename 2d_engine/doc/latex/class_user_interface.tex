@@ -1,0 +1,394 @@
+\hypertarget{class_user_interface}{}\section{User\+Interface Class Reference}
+\label{class_user_interface}\index{User\+Interface@{User\+Interface}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_interface_aa016e2ebb5d7c599df65bbe2e93c2379}\label{class_user_interface_aa016e2ebb5d7c599df65bbe2e93c2379}} 
+enum {\bfseries Ui\+Status} \{ \newline
+{\bfseries k\+Idle}, 
+{\bfseries k\+Draw}, 
+{\bfseries k\+Selection}, 
+{\bfseries k\+Write}, 
+\newline
+{\bfseries k\+Multiselect}
+ \}
+\item 
+\mbox{\Hypertarget{class_user_interface_a727665d1e9e7abbdf706c131f92575af}\label{class_user_interface_a727665d1e9e7abbdf706c131f92575af}} 
+enum {\bfseries Ui\+Edit\+Type} \{ \newline
+{\bfseries k\+Null}, 
+{\bfseries k\+Rect}, 
+{\bfseries k\+Label}, 
+{\bfseries k\+Sprite}, 
+\newline
+{\bfseries k\+Background}, 
+{\bfseries k\+Multi}, 
+{\bfseries k\+Wall}, 
+{\bfseries k\+Brick}, 
+\newline
+{\bfseries k\+Ball}, 
+{\bfseries k\+Player}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}{User\+Interface} ()
+\begin{DoxyCompactList}\small\item\em Contructor of the UI. \end{DoxyCompactList}\item 
+\hyperlink{class_user_interface_ae588b2ff1711a016dd4c6fc5002c0841}{$\sim$\+User\+Interface} ()
+\begin{DoxyCompactList}\small\item\em Destroys the UI. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a464f85830f41de3b226a722bb436b22d}{init} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Inits the user interface. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_abdff7c45be86654013ba3b90f58205ec}{render\+UI} (sf\+::\+Render\+Window \&window, \hyperlink{class_scene}{Scene} \&scene)
+\begin{DoxyCompactList}\small\item\em Renders the UI. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_aff195015c5cdd156066745882bd3fa2b}{update} (sf\+::\+Render\+Window \&window, \hyperlink{class_scene}{Scene} \&scene)
+\begin{DoxyCompactList}\small\item\em Updates the internal logic of the UI. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_abd2782013953f24723f787302f32e134}{Ui\+Load\+Common\+Values\+Edit} (\hyperlink{class_drawable_entity}{Drawable\+Entity} \&d\+\_\+entity)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of Drawable entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a26d5dac3f33fb986164c6c7c8cfc5545}{Ui\+Load\+Rect\+Values\+Edit} (\hyperlink{class_rect}{Rect} \&rect)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_rect}{Rect} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a586a26b3ec692b0374d3b5042e685a4a}{Ui\+Load\+Label\+Values\+Edit} (\hyperlink{class_label}{Label} \&label)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_label}{Label} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a57b2c3ffd6d2f7e34644e3789be1046e}{Ui\+Load\+Background\+Values\+Edit} (\hyperlink{class_background}{Background} \&bg)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_background}{Background} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a5546e5650bf7c4cdb0e41422655ac729}{Ui\+Load\+Player\+Values\+Edit} (\hyperlink{class_player}{Player} \&player)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_player}{Player} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a94c4746d22e6b1fd0cc04a402b54db27}{Ui\+Load\+Ball\+Values\+Edit} (\hyperlink{class_ball}{Ball} \&ball)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_ball}{Ball} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_ae7c86ad6ac894f930e04bccd7da28f78}{Ui\+Load\+Brick\+Values\+Edit} (\hyperlink{class_brick}{Brick} \&brick)
+\begin{DoxyCompactList}\small\item\em Loads the edit values of \hyperlink{class_brick}{Brick} entity. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_accd4f214f0fd8c55b36546e73a11d45d}{Ui\+Load\+Menu} (\hyperlink{class_scene}{Scene} \&scene)
+\begin{DoxyCompactList}\small\item\em Loads the mode menu of the UI. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_aec5f0cf032066ab142d244bfc9735ae6}{Ui\+Start\+Game\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Loads the game mode menu. \end{DoxyCompactList}\item 
+void \hyperlink{class_user_interface_a4fa32deeece39dc97a231d7add5123d2}{Ui\+Game\+Parameters} ()
+\begin{DoxyCompactList}\small\item\em Loads the game parameters menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_interface_abe6c892ad6e49850ebc8dfeb18b9b2ea}\label{class_user_interface_abe6c892ad6e49850ebc8dfeb18b9b2ea}} 
+\hyperlink{class_game_manager}{Game\+Manager} \& {\bfseries GM} = \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{Game\+Manager\+::instance}()
+\item 
+\mbox{\Hypertarget{class_user_interface_a5cdf09519e08c374c5d8c06d4b7f79ba}\label{class_user_interface_a5cdf09519e08c374c5d8c06d4b7f79ba}} 
+\hyperlink{class_pool}{Pool} \& {\bfseries P\+O\+OL} = \hyperlink{class_pool_a20e44e0054d4eedf57f1943b87c06e20}{Pool\+::instance}()
+\item 
+\mbox{\Hypertarget{class_user_interface_a8b79c4106bdfd6a2e028ff536d4784e7}\label{class_user_interface_a8b79c4106bdfd6a2e028ff536d4784e7}} 
+uint8\+\_\+t {\bfseries ui\+\_\+is\+\_\+drawing\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_a722198e573fa759bab209f579732387a}\label{class_user_interface_a722198e573fa759bab209f579732387a}} 
+sf\+::\+Vector2f {\bfseries mouse\+\_\+position\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_a14f25d82f34107b468ec6fdc38e1863a}\label{class_user_interface_a14f25d82f34107b468ec6fdc38e1863a}} 
+sf\+::\+Vector2f {\bfseries draw\+\_\+origin\+\_\+point\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_a66b686d9ecf576e5d2e0f7209167ee7c}\label{class_user_interface_a66b686d9ecf576e5d2e0f7209167ee7c}} 
+\hyperlink{class_rect}{Rect} $\ast$ {\bfseries drawing\+\_\+rect\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_aec6933edc37df360de4ebe1a2584e701}\label{class_user_interface_aec6933edc37df360de4ebe1a2584e701}} 
+Ui\+Status {\bfseries status\+\_\+ui\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_a4a9fac2665f543689078ced520b744fb}\label{class_user_interface_a4a9fac2665f543689078ced520b744fb}} 
+Ui\+Edit\+Type {\bfseries edit\+\_\+type\+\_\+ui\+\_\+}
+\item 
+\mbox{\Hypertarget{class_user_interface_a22cae55eb570361a8c3fbc6876feac84}\label{class_user_interface_a22cae55eb570361a8c3fbc6876feac84}} 
+uint8\+\_\+t {\bfseries selected\+\_\+texture\+\_\+} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}\label{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}} 
+\index{User\+Interface@{User\+Interface}!User\+Interface@{User\+Interface}}
+\index{User\+Interface@{User\+Interface}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{User\+Interface()}{UserInterface()}}
+{\footnotesize\ttfamily User\+Interface\+::\+User\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Contructor of the UI. 
+
+Contructor of the UI
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+User\+Interface 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_user_interface_ae588b2ff1711a016dd4c6fc5002c0841}\label{class_user_interface_ae588b2ff1711a016dd4c6fc5002c0841}} 
+\index{User\+Interface@{User\+Interface}!````~User\+Interface@{$\sim$\+User\+Interface}}
+\index{````~User\+Interface@{$\sim$\+User\+Interface}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{$\sim$\+User\+Interface()}{~UserInterface()}}
+{\footnotesize\ttfamily User\+Interface\+::$\sim$\+User\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the UI. 
+
+Destructor of the UI
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_interface_a464f85830f41de3b226a722bb436b22d}\label{class_user_interface_a464f85830f41de3b226a722bb436b22d}} 
+\index{User\+Interface@{User\+Interface}!init@{init}}
+\index{init@{init}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void User\+Interface\+::init (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Inits the user interface. 
+
+Function in charge of initializing all the necesary to use the user interface
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & window to which the UI will be binded. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_abdff7c45be86654013ba3b90f58205ec}\label{class_user_interface_abdff7c45be86654013ba3b90f58205ec}} 
+\index{User\+Interface@{User\+Interface}!render\+UI@{render\+UI}}
+\index{render\+UI@{render\+UI}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{render\+U\+I()}{renderUI()}}
+{\footnotesize\ttfamily void User\+Interface\+::render\+UI (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_scene}{Scene} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Renders the UI. 
+
+Function in charge of rendering the UI
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & window to which the UI will be drawn. \\
+\hline
+{\em \hyperlink{class_scene}{Scene}} & the scene to render \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_a4fa32deeece39dc97a231d7add5123d2}\label{class_user_interface_a4fa32deeece39dc97a231d7add5123d2}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Game\+Parameters@{Ui\+Game\+Parameters}}
+\index{Ui\+Game\+Parameters@{Ui\+Game\+Parameters}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Game\+Parameters()}{UiGameParameters()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Game\+Parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the game parameters menu. 
+
+This menu is used to change the game parameters, the ones linked to the game manager
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_scene}{Scene}} & the scene to Load/\+Save \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_a57b2c3ffd6d2f7e34644e3789be1046e}\label{class_user_interface_a57b2c3ffd6d2f7e34644e3789be1046e}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Background\+Values\+Edit@{Ui\+Load\+Background\+Values\+Edit}}
+\index{Ui\+Load\+Background\+Values\+Edit@{Ui\+Load\+Background\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Background\+Values\+Edit()}{UiLoadBackgroundValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Background\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_background}{Background} \&}]{bg }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_background}{Background} entity. 
+
+Loads the edit values of \hyperlink{class_background}{Background} entity\+: speed, vertical movememnt, horizaontal\+\_\+movement...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em bg} & reference to the background whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_a94c4746d22e6b1fd0cc04a402b54db27}\label{class_user_interface_a94c4746d22e6b1fd0cc04a402b54db27}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Ball\+Values\+Edit@{Ui\+Load\+Ball\+Values\+Edit}}
+\index{Ui\+Load\+Ball\+Values\+Edit@{Ui\+Load\+Ball\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Ball\+Values\+Edit()}{UiLoadBallValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Ball\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_ball}{Ball} \&}]{ball }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_ball}{Ball} entity. 
+
+Loads the edit values of \hyperlink{class_ball}{Ball} entity\+: speedx, speedy
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em ball} & reference to the ball whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_ae7c86ad6ac894f930e04bccd7da28f78}\label{class_user_interface_ae7c86ad6ac894f930e04bccd7da28f78}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Brick\+Values\+Edit@{Ui\+Load\+Brick\+Values\+Edit}}
+\index{Ui\+Load\+Brick\+Values\+Edit@{Ui\+Load\+Brick\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Brick\+Values\+Edit()}{UiLoadBrickValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Brick\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_brick}{Brick} \&}]{brick }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_brick}{Brick} entity. 
+
+Loads the edit values of \hyperlink{class_brick}{Brick} entity\+: lives
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em brick} & reference to the brick whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_abd2782013953f24723f787302f32e134}\label{class_user_interface_abd2782013953f24723f787302f32e134}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Common\+Values\+Edit@{Ui\+Load\+Common\+Values\+Edit}}
+\index{Ui\+Load\+Common\+Values\+Edit@{Ui\+Load\+Common\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Common\+Values\+Edit()}{UiLoadCommonValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Common\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_drawable_entity}{Drawable\+Entity} \&}]{d\+\_\+entity }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of Drawable entity. 
+
+Loads the edit values of Drawable entity\+: transformations, color, position...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em d\+\_\+entity} & reference to the drawable entity whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_a586a26b3ec692b0374d3b5042e685a4a}\label{class_user_interface_a586a26b3ec692b0374d3b5042e685a4a}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Label\+Values\+Edit@{Ui\+Load\+Label\+Values\+Edit}}
+\index{Ui\+Load\+Label\+Values\+Edit@{Ui\+Load\+Label\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Label\+Values\+Edit()}{UiLoadLabelValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Label\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_label}{Label} \&}]{label }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_label}{Label} entity. 
+
+Loads the edit values of \hyperlink{class_label}{Label} entity\+: text, font\+\_\+size...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em label} & reference to the label whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_accd4f214f0fd8c55b36546e73a11d45d}\label{class_user_interface_accd4f214f0fd8c55b36546e73a11d45d}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Menu@{Ui\+Load\+Menu}}
+\index{Ui\+Load\+Menu@{Ui\+Load\+Menu}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Menu()}{UiLoadMenu()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Menu (\begin{DoxyParamCaption}\item[{\hyperlink{class_scene}{Scene} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Loads the mode menu of the UI. 
+
+Loads the mode menu with the different buttons to chose in which mode is working the UI
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_user_interface_a5546e5650bf7c4cdb0e41422655ac729}\label{class_user_interface_a5546e5650bf7c4cdb0e41422655ac729}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Player\+Values\+Edit@{Ui\+Load\+Player\+Values\+Edit}}
+\index{Ui\+Load\+Player\+Values\+Edit@{Ui\+Load\+Player\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Player\+Values\+Edit()}{UiLoadPlayerValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Player\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_player}{Player} \&}]{player }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_player}{Player} entity. 
+
+Loads the edit values of \hyperlink{class_player}{Player} entity\+: speedx, speedy
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & reference to the player whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_a26d5dac3f33fb986164c6c7c8cfc5545}\label{class_user_interface_a26d5dac3f33fb986164c6c7c8cfc5545}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Load\+Rect\+Values\+Edit@{Ui\+Load\+Rect\+Values\+Edit}}
+\index{Ui\+Load\+Rect\+Values\+Edit@{Ui\+Load\+Rect\+Values\+Edit}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Load\+Rect\+Values\+Edit()}{UiLoadRectValuesEdit()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Load\+Rect\+Values\+Edit (\begin{DoxyParamCaption}\item[{\hyperlink{class_rect}{Rect} \&}]{rect }\end{DoxyParamCaption})}
+
+
+
+Loads the edit values of \hyperlink{class_rect}{Rect} entity. 
+
+Loads the edit values of \hyperlink{class_rect}{Rect} entity\+: fill color, is\+\_\+solid, size...
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & reference to the rect whose values will be loaded at the UI \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_aec5f0cf032066ab142d244bfc9735ae6}\label{class_user_interface_aec5f0cf032066ab142d244bfc9735ae6}} 
+\index{User\+Interface@{User\+Interface}!Ui\+Start\+Game\+Menu@{Ui\+Start\+Game\+Menu}}
+\index{Ui\+Start\+Game\+Menu@{Ui\+Start\+Game\+Menu}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{Ui\+Start\+Game\+Menu()}{UiStartGameMenu()}}
+{\footnotesize\ttfamily void User\+Interface\+::\+Ui\+Start\+Game\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the game mode menu. 
+
+Only part of the UI that will be shown in game mode, this allows us to change between game mode and edit mode
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_scene}{Scene}} & the scene to Load/\+Save \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_interface_aff195015c5cdd156066745882bd3fa2b}\label{class_user_interface_aff195015c5cdd156066745882bd3fa2b}} 
+\index{User\+Interface@{User\+Interface}!update@{update}}
+\index{update@{update}!User\+Interface@{User\+Interface}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void User\+Interface\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\hyperlink{class_scene}{Scene} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Updates the internal logic of the UI. 
+
+Updates the scene depending on the mode the UI is. It also mantains the main consistency between the status of the UI.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & we will check for the mouse position and update \\
+\hline
+{\em \hyperlink{class_scene}{Scene}} & the scene to update \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/user\+\_\+interface.\+h\end{DoxyCompactItemize}

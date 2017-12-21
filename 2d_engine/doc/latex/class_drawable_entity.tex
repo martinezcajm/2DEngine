@@ -2,31 +2,44 @@
 \label{class_drawable_entity}\index{Drawable\+Entity@{Drawable\+Entity}}
 
 
+Drawable entity.  
+
+
+
+
 {\ttfamily \#include $<$drawable\+\_\+entity.\+h$>$}
 
 Inheritance diagram for Drawable\+Entity\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{class_drawable_entity}
+\includegraphics[height=3.555556cm]{class_drawable_entity}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_drawable_entity_a8e9f9afa7c76fdc19e27ca0975ffcb21}{Drawable\+Entity} ()
-\item 
-\hyperlink{class_drawable_entity_a8e70c62078d6a05b4cfc7b83c7b48859}{$\sim$\+Drawable\+Entity} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Drawable entity constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_drawable_entity_af688295ed4873a01b32862c3c0241933}{$\sim$\+Drawable\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destroys the Drawable entity. \end{DoxyCompactList}\item 
 void \hyperlink{class_drawable_entity_a3893879bf0710a7f5c5e7eb758ad7e96}{init} (const uint8\+\_\+t r, const uint8\+\_\+t g, const uint8\+\_\+t b, const uint8\+\_\+t a, const float px, const float py, const float rotation, const float scalex, const float scaley)
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the drawable entity. \end{DoxyCompactList}\item 
 void \hyperlink{class_drawable_entity_a016d3d0cc80f9834918de44e0adb19fb}{move} (const float px, const float py)
 \begin{DoxyCompactList}\small\item\em moves the entity \end{DoxyCompactList}\item 
-void \hyperlink{class_drawable_entity_a31ea3607cab83dc56103de086764369e}{draw} (sf\+::\+Render\+Window \&window, const sf\+::\+Drawable \&entity, const sf\+::\+Vector2f \&rotation\+\_\+origin)
+virtual void \hyperlink{class_drawable_entity_a0b0db9c1325defed216d66a5b4cc755e}{draw} (sf\+::\+Render\+Window \&window)=0
+\begin{DoxyCompactList}\small\item\em interface implementation of draw \end{DoxyCompactList}\item 
+void \hyperlink{class_drawable_entity_a41ad5dfa5e9a5c366e05ba28bb469557}{draw\+With\+Transform} (sf\+::\+Render\+Window \&window, const sf\+::\+Drawable \&entity, const sf\+::\+Vector2f \&rotation\+\_\+origin)
 \begin{DoxyCompactList}\small\item\em draws a drawable entity \end{DoxyCompactList}\item 
-bool \hyperlink{class_drawable_entity_aa8c71a16b70006246b445b546b71a5b3}{check\+Collision} (const sf\+::\+Vector2f \&position, const sf\+::\+Float\+Rect \&boundaries)
-\item 
-void \hyperlink{class_drawable_entity_ab1f94327e78e0b3607ece6a66bf9f01c}{unuse} ()
-\end{DoxyCompactItemize}
+bool \hyperlink{class_drawable_entity_a4488d49a6e020b228aae6887ca6b644e}{check\+Collision} (const sf\+::\+Vector2f \&position)
+\begin{DoxyCompactList}\small\item\em Checks if a point collides with the entity. \end{DoxyCompactList}\item 
+bool \hyperlink{class_drawable_entity_a565c4767989b6390b06b52137b249ce5}{check\+Collision} (\hyperlink{class_drawable_entity}{Drawable\+Entity} \&entity)
+\begin{DoxyCompactList}\small\item\em Checks if an entity collides with this entity. \end{DoxyCompactList}\item 
+virtual sf\+::\+Float\+Rect \hyperlink{class_drawable_entity_a352a101e3be05d25e1a10e5f72ccb9e3}{get\+Boundaries} ()=0
+\begin{DoxyCompactList}\small\item\em gets the boundaries of the drawable entity \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}{unuse} () override
+\begin{DoxyCompactList}\small\item\em Resets the values of the entity. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}{update} ()=0
+\begin{DoxyCompactList}\small\item\em interface Update method \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,10 +58,11 @@ sf\+::\+Vector2f {\bfseries scale\+\_\+}
 \mbox{\Hypertarget{class_drawable_entity_ad424f3d5b9ddbc6c556fbc64642e9153}\label{class_drawable_entity_ad424f3d5b9ddbc6c556fbc64642e9153}} 
 sf\+::\+Color {\bfseries color\+\_\+}
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-entity
+Drawable entity. 
 
 Class used to specify the common methods and attributes of the entities that can be drawn. 
 
@@ -59,20 +73,24 @@ Class used to specify the common methods and attributes of the entities that can
 \subsubsection{\texorpdfstring{Drawable\+Entity()}{DrawableEntity()}}
 {\footnotesize\ttfamily Drawable\+Entity\+::\+Drawable\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-entity constructor
+
+
+Drawable entity constructor. 
 
 Drawable entity constructor
 
 \begin{DoxyReturn}{Returns}
 $\ast$\+Drawable\+Entity 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_drawable_entity_a8e70c62078d6a05b4cfc7b83c7b48859}\label{class_drawable_entity_a8e70c62078d6a05b4cfc7b83c7b48859}} 
+\mbox{\Hypertarget{class_drawable_entity_af688295ed4873a01b32862c3c0241933}\label{class_drawable_entity_af688295ed4873a01b32862c3c0241933}} 
 \index{Drawable\+Entity@{Drawable\+Entity}!````~Drawable\+Entity@{$\sim$\+Drawable\+Entity}}
 \index{````~Drawable\+Entity@{$\sim$\+Drawable\+Entity}!Drawable\+Entity@{Drawable\+Entity}}
 \subsubsection{\texorpdfstring{$\sim$\+Drawable\+Entity()}{~DrawableEntity()}}
-{\footnotesize\ttfamily Drawable\+Entity\+::$\sim$\+Drawable\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual Drawable\+Entity\+::$\sim$\+Drawable\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-the Drawable entity
+
+
+Destroys the Drawable entity. 
 
 Destructor of the drawable entity
 
@@ -82,24 +100,75 @@ void
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_drawable_entity_aa8c71a16b70006246b445b546b71a5b3}\label{class_drawable_entity_aa8c71a16b70006246b445b546b71a5b3}} 
+\mbox{\Hypertarget{class_drawable_entity_a4488d49a6e020b228aae6887ca6b644e}\label{class_drawable_entity_a4488d49a6e020b228aae6887ca6b644e}} 
 \index{Drawable\+Entity@{Drawable\+Entity}!check\+Collision@{check\+Collision}}
 \index{check\+Collision@{check\+Collision}!Drawable\+Entity@{Drawable\+Entity}}
-\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
-{\footnotesize\ttfamily bool Drawable\+Entity\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position,  }\item[{const sf\+::\+Float\+Rect \&}]{boundaries }\end{DoxyParamCaption})}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Drawable\+Entity\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
 
-if a point collides with the entity
+
+
+Checks if a point collides with the entity. 
 
 Checks if the point passed by reference collides with the boundaries.
 
 \begin{DoxyReturn}{Returns}
 bool returns true if the point collides and false if not. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_drawable_entity_a31ea3607cab83dc56103de086764369e}\label{class_drawable_entity_a31ea3607cab83dc56103de086764369e}} 
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+::\+Vector2f} & point to check if collides with the entity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawable_entity_a565c4767989b6390b06b52137b249ce5}\label{class_drawable_entity_a565c4767989b6390b06b52137b249ce5}} 
+\index{Drawable\+Entity@{Drawable\+Entity}!check\+Collision@{check\+Collision}}
+\index{check\+Collision@{check\+Collision}!Drawable\+Entity@{Drawable\+Entity}}
+\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Drawable\+Entity\+::check\+Collision (\begin{DoxyParamCaption}\item[{\hyperlink{class_drawable_entity}{Drawable\+Entity} \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+Checks if an entity collides with this entity. 
+
+Checks if the entity passed by reference collides with the boundaries.
+
+\begin{DoxyReturn}{Returns}
+bool returns true if the point collides and false if not. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_drawable_entity}{Drawable\+Entity}} & entity to check if there\textquotesingle{}s a collision \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drawable_entity_a0b0db9c1325defed216d66a5b4cc755e}\label{class_drawable_entity_a0b0db9c1325defed216d66a5b4cc755e}} 
 \index{Drawable\+Entity@{Drawable\+Entity}!draw@{draw}}
 \index{draw@{draw}!Drawable\+Entity@{Drawable\+Entity}}
 \subsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Drawable\+Entity\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{const sf\+::\+Drawable \&}]{entity,  }\item[{const sf\+::\+Vector2f \&}]{rotation\+\_\+origin }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual void Drawable\+Entity\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+interface implementation of draw 
+
+Abstract implementation of the draw method for their children, needs the window were the entity will be drawn
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em window} & window in wich the entity will be drawn. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_sprite_a067dfc27f53ce4d983db29407be1c11e}{Sprite}, \hyperlink{class_rect_a57801edbfb2c000c631a610c59e7ff20}{Rect}, \hyperlink{class_background_a257183f6d077bbee005760813dbb0592}{Background}, and \hyperlink{class_label_aa0e2a948b68c7b70dde12b06b83a0cb1}{Label}.
+
+\mbox{\Hypertarget{class_drawable_entity_a41ad5dfa5e9a5c366e05ba28bb469557}\label{class_drawable_entity_a41ad5dfa5e9a5c366e05ba28bb469557}} 
+\index{Drawable\+Entity@{Drawable\+Entity}!draw\+With\+Transform@{draw\+With\+Transform}}
+\index{draw\+With\+Transform@{draw\+With\+Transform}!Drawable\+Entity@{Drawable\+Entity}}
+\subsubsection{\texorpdfstring{draw\+With\+Transform()}{drawWithTransform()}}
+{\footnotesize\ttfamily void Drawable\+Entity\+::draw\+With\+Transform (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{const sf\+::\+Drawable \&}]{entity,  }\item[{const sf\+::\+Vector2f \&}]{rotation\+\_\+origin }\end{DoxyParamCaption})}
 
 
 
@@ -117,13 +186,34 @@ void
 {\em entity} & entity that will be drawn.  origin point from wich the rotation will be done. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_drawable_entity_a352a101e3be05d25e1a10e5f72ccb9e3}\label{class_drawable_entity_a352a101e3be05d25e1a10e5f72ccb9e3}} 
+\index{Drawable\+Entity@{Drawable\+Entity}!get\+Boundaries@{get\+Boundaries}}
+\index{get\+Boundaries@{get\+Boundaries}!Drawable\+Entity@{Drawable\+Entity}}
+\subsubsection{\texorpdfstring{get\+Boundaries()}{getBoundaries()}}
+{\footnotesize\ttfamily virtual sf\+::\+Float\+Rect Drawable\+Entity\+::get\+Boundaries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+gets the boundaries of the drawable entity 
+
+Definition of the get\+Boundaries interface.
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Float\+Rect boundaries of the entity. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_sprite_add63c87af068cdcdb536eb1c82644ab4}{Sprite}, \hyperlink{class_label_a3eb456d7295b3d5af615b3dc6e761f4b}{Label}, and \hyperlink{class_rect_a17056b26af5522b024e9628386d34335}{Rect}.
+
 \mbox{\Hypertarget{class_drawable_entity_a3893879bf0710a7f5c5e7eb758ad7e96}\label{class_drawable_entity_a3893879bf0710a7f5c5e7eb758ad7e96}} 
 \index{Drawable\+Entity@{Drawable\+Entity}!init@{init}}
 \index{init@{init}!Drawable\+Entity@{Drawable\+Entity}}
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void Drawable\+Entity\+::init (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{r,  }\item[{const uint8\+\_\+t}]{g,  }\item[{const uint8\+\_\+t}]{b,  }\item[{const uint8\+\_\+t}]{a,  }\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley }\end{DoxyParamCaption})}
 
-the drawable entity
+
+
+Initializes the drawable entity. 
 
 Initializes the drawable entity
 
@@ -173,13 +263,15 @@ void
 {\em py} & quantity the entity will move in the y axis \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_drawable_entity_ab1f94327e78e0b3607ece6a66bf9f01c}\label{class_drawable_entity_ab1f94327e78e0b3607ece6a66bf9f01c}} 
+\mbox{\Hypertarget{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}\label{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}} 
 \index{Drawable\+Entity@{Drawable\+Entity}!unuse@{unuse}}
 \index{unuse@{unuse}!Drawable\+Entity@{Drawable\+Entity}}
 \subsubsection{\texorpdfstring{unuse()}{unuse()}}
-{\footnotesize\ttfamily void Drawable\+Entity\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual void Drawable\+Entity\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the values of the entity
+
+
+Resets the values of the entity. 
 
 Sets the attributes of the object to return it to a pool and being able to reuse it later.
 
@@ -188,6 +280,33 @@ void
 \end{DoxyReturn}
 
 
+Reimplemented from \hyperlink{class_entity_a7b87e24b0d790b2c182fad8aa572455c}{Entity}.
+
+
+
+Reimplemented in \hyperlink{class_sprite_a26066db75daec637f436d4635418059a}{Sprite}, \hyperlink{class_label_aa6a355fe8daa25c3739affcf66d66f7f}{Label}, \hyperlink{class_rect_a85afbe7fde3b74bd81c07cc58d5c61bd}{Rect}, and \hyperlink{class_background_ad3559e8684aca155ae68d53374f3540d}{Background}.
+
+\mbox{\Hypertarget{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}\label{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}} 
+\index{Drawable\+Entity@{Drawable\+Entity}!update@{update}}
+\index{update@{update}!Drawable\+Entity@{Drawable\+Entity}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Drawable\+Entity\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+interface Update method 
+
+Definition of the update interface for the drawable entities
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_sprite_a1070fccd6830382b72e3f3a8785afc8c}{Sprite}, \hyperlink{class_player_abe7d0a24ffd93ba0bc4eea860b10eb09}{Player}, \hyperlink{class_ball_a26c877660343d086a9d45891659474f8}{Ball}, \hyperlink{class_label_adcd154f9e53d277c1b7a11bd058936a0}{Label}, \hyperlink{class_rect_af74b7ea3228d0d7b4c40bb8fe6daed63}{Rect}, \hyperlink{class_brick_a4debb742abe5d19442d910bb8ecf083e}{Brick}, and \hyperlink{class_background_af4a37c0ac474de5f65130cbef3d61379}{Background}.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/drawable\+\_\+entity.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/drawable\+\_\+entity.\+h\end{DoxyCompactItemize}

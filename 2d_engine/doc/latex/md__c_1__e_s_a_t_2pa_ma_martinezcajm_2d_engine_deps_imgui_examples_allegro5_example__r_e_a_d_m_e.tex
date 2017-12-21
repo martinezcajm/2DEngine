@@ -1,0 +1,23 @@
+
+\begin{DoxyItemize}
+\item On Ubuntu 14.\+04+
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+g++ -I ../imgui main.cpp imgui\_impl\_a5.cpp ../imgui/imgui*.cpp -lallegro -lallegro\_primitives
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Windows with Visual Studio\textquotesingle{}s C\+LI
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+set ALLEGRODIR=path\_to\_your\_allegro5\_folder
+cl /Zi /MD /I %ALLEGRODIR%\(\backslash\)include /I ..\(\backslash\).. main.cpp imgui\_impl\_a5.cpp ..\(\backslash\)..\(\backslash\)imgui*.cpp /link
+       /LIBPATH:%ALLEGRODIR%\(\backslash\)lib allegro-5.0.10-monolith-md.lib user32.lib
+\end{DoxyCode}
+ 

@@ -1,0 +1,37 @@
+
+\begin{DoxyItemize}
+\item On Windows with Visual Studio\textquotesingle{}s C\+LI
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+set SDL2DIR=path\_to\_your\_sdl2\_folder
+cl /Zi /MD /I ..\(\backslash\).. /I ..\(\backslash\)libs\(\backslash\)gl3w /I %SDL2DIR%\(\backslash\)include main.cpp imgui\_impl\_sdl\_gl3.cpp ..\(\backslash\)..\(\backslash\)imgui*.cpp
+       ..\(\backslash\)libs\(\backslash\)gl3w\(\backslash\)GL\(\backslash\)gl3w.c /link /libpath:%SDL2DIR%\(\backslash\)lib\(\backslash\)x86 SDL2.lib SDL2main.lib opengl32.lib /subsystem:console
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Linux and similar Unixes
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+c++ `sdl2-config --cflags` -I ../.. -I ../libs/gl3w main.cpp imgui\_impl\_sdl\_gl3.cpp ../../imgui*.cpp
+       ../libs/gl3w/GL/gl3w.c `sdl2-config --libs` -lGL -ldl -o sdl2example
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Mac OS X
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+brew install sdl2
+c++ `sdl2-config --cflags` -I ../.. -I ../libs/gl3w main.cpp imgui\_impl\_sdl\_gl3.cpp ../../imgui*.cpp
+       ../libs/gl3w/GL/gl3w.c `sdl2-config --libs` -framework OpenGl -framework CoreFoundation -o sdl2example
+\end{DoxyCode}
+ 

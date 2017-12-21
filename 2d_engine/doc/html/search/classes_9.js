@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window',['Window',['../class_window.html',1,'']]]
+  ['userinterface',['UserInterface',['../class_user_interface.html',1,'']]]
 ];
