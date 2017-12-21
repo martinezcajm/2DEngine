@@ -4,15 +4,12 @@
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_game_manager}{Game\+Manager} \& \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{instance} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the instance of our \hyperlink{class_game_manager}{Game\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_game_manager_ad396f4f48d604de789ac92784ef7f981}\label{class_game_manager_ad396f4f48d604de789ac92784ef7f981}} 
-uint32\+\_\+t {\bfseries score\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a81940880b045cfd42329e37b7cfa1a91}\label{class_game_manager_a81940880b045cfd42329e37b7cfa1a91}} 
-uint8\+\_\+t {\bfseries game\+\_\+over\+\_\+}
+\mbox{\Hypertarget{class_game_manager_ad771037d720aa74e89014e014f7bdbf5}\label{class_game_manager_ad771037d720aa74e89014e014f7bdbf5}} 
+uint8\+\_\+t {\bfseries close\+\_\+game\+\_\+}
 \item 
 \mbox{\Hypertarget{class_game_manager_a15c87fb0dc3bda2cbbda5dd336a57a2b}\label{class_game_manager_a15c87fb0dc3bda2cbbda5dd336a57a2b}} 
 uint8\+\_\+t {\bfseries is\+\_\+editor\+\_\+}
@@ -23,32 +20,11 @@ uint8\+\_\+t {\bfseries is\+\_\+editor\+\_\+}
 \mbox{\Hypertarget{class_game_manager_a25947814a10e28bef0924528a93657c7}\label{class_game_manager_a25947814a10e28bef0924528a93657c7}} 
 sf\+::\+Vector2u $\ast$ {\bfseries window\+\_\+size\+\_\+}
 \item 
-\mbox{\Hypertarget{class_game_manager_a911f2466e518111f3ad4e2a6a4763280}\label{class_game_manager_a911f2466e518111f3ad4e2a6a4763280}} 
-\hyperlink{class_scene}{Scene} $\ast$ {\bfseries scene\+\_\+}
-\item 
 \mbox{\Hypertarget{class_game_manager_a56d62e457072c9147cc543216abf9595}\label{class_game_manager_a56d62e457072c9147cc543216abf9595}} 
 \hyperlink{class_native__dialogs}{Native\+\_\+dialogs} $\ast$ {\bfseries native\+\_\+dialog\+\_\+}
 \item 
-\mbox{\Hypertarget{class_game_manager_a5f7a8828ce4430012638d33057697473}\label{class_game_manager_a5f7a8828ce4430012638d33057697473}} 
-uint8\+\_\+t {\bfseries ui\+\_\+is\+\_\+drawing\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a1a53a260fd5cca2b03cadb4b341f503f}\label{class_game_manager_a1a53a260fd5cca2b03cadb4b341f503f}} 
-sf\+::\+Vector2f {\bfseries mouse\+\_\+position\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a3adcaa2c455b4858866d65e092166fcd}\label{class_game_manager_a3adcaa2c455b4858866d65e092166fcd}} 
-sf\+::\+Vector2f {\bfseries draw\+\_\+origin\+\_\+point\+\_\+}
-\item 
 \mbox{\Hypertarget{class_game_manager_ac4b031b19c56f912a03c8949272a3f58}\label{class_game_manager_ac4b031b19c56f912a03c8949272a3f58}} 
 sf\+::\+Clock {\bfseries delta\+Clock\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a997508d81087c8c43a582aee19bbaf00}\label{class_game_manager_a997508d81087c8c43a582aee19bbaf00}} 
-\hyperlink{class_rect}{Rect} $\ast$ {\bfseries drawing\+\_\+rect\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a0698b68fc4f55194a68a4e4dbd2d8c5c}\label{class_game_manager_a0698b68fc4f55194a68a4e4dbd2d8c5c}} 
-Ui\+Status {\bfseries status\+\_\+ui\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a847f49a1b8ebfde618b1496dd73ac284}\label{class_game_manager_a847f49a1b8ebfde618b1496dd73ac284}} 
-Ui\+Edit\+Type {\bfseries edit\+\_\+type\+\_\+ui\+\_\+}
 \item 
 \mbox{\Hypertarget{class_game_manager_a48121c2bb9a61473fc2f693d6db33bee}\label{class_game_manager_a48121c2bb9a61473fc2f693d6db33bee}} 
 Mouse\+Status {\bfseries mouse\+\_\+status\+\_\+}
@@ -59,23 +35,38 @@ uint8\+\_\+t {\bfseries selected\+\_\+type\+\_\+}
 \mbox{\Hypertarget{class_game_manager_a4c9c1a365ad3f8db30406bffa65b2a8a}\label{class_game_manager_a4c9c1a365ad3f8db30406bffa65b2a8a}} 
 uint32\+\_\+t {\bfseries selected\+\_\+id\+\_\+}
 \item 
-\mbox{\Hypertarget{class_game_manager_aa5bd354afb80e72c06c337f429cea333}\label{class_game_manager_aa5bd354afb80e72c06c337f429cea333}} 
-\hyperlink{class_rect}{Rect} $\ast$ {\bfseries rect\+\_\+selection\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a261c6a163e135c248aed7805271b95b8}\label{class_game_manager_a261c6a163e135c248aed7805271b95b8}} 
-\hyperlink{class_label}{Label} $\ast$ {\bfseries label\+\_\+selection\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_a003552c00376d99c1855e7d9dbff69de}\label{class_game_manager_a003552c00376d99c1855e7d9dbff69de}} 
-\hyperlink{class_sprite}{Sprite} $\ast$ {\bfseries sprite\+\_\+selection\+\_\+}
-\item 
-\mbox{\Hypertarget{class_game_manager_af9ea4edd8eac6039bf07364f1e6d5d73}\label{class_game_manager_af9ea4edd8eac6039bf07364f1e6d5d73}} 
-\hyperlink{class_background}{Background} $\ast$ {\bfseries background\+\_\+selection\+\_\+}
-\item 
 \mbox{\Hypertarget{class_game_manager_a1a55c05c5133d56a9a5ba9ee1b2026e8}\label{class_game_manager_a1a55c05c5133d56a9a5ba9ee1b2026e8}} 
 sf\+::\+Font {\bfseries arial\+\_\+}
 \item 
 \mbox{\Hypertarget{class_game_manager_a16df94d56453c106931bf9bb6189bb66}\label{class_game_manager_a16df94d56453c106931bf9bb6189bb66}} 
 sf\+::\+Font {\bfseries verdana\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_add51e6810cc660aecebdf5cbf2d73b50}\label{class_game_manager_add51e6810cc660aecebdf5cbf2d73b50}} 
+uint8\+\_\+t {\bfseries player1\+Left\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a37ec4169d82f25d4470d3f7215073280}\label{class_game_manager_a37ec4169d82f25d4470d3f7215073280}} 
+uint8\+\_\+t {\bfseries player1\+Right\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a1cbf906aa02c7dd30955a6f71eed8038}\label{class_game_manager_a1cbf906aa02c7dd30955a6f71eed8038}} 
+uint8\+\_\+t {\bfseries new\+\_\+game\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a81940880b045cfd42329e37b7cfa1a91}\label{class_game_manager_a81940880b045cfd42329e37b7cfa1a91}} 
+uint8\+\_\+t {\bfseries game\+\_\+over\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a2164107058cfce52b5e8799c09ab8145}\label{class_game_manager_a2164107058cfce52b5e8799c09ab8145}} 
+uint8\+\_\+t {\bfseries is\+\_\+ball\+\_\+in\+\_\+movement\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a204290801fd77870f8224dd4a70e5f65}\label{class_game_manager_a204290801fd77870f8224dd4a70e5f65}} 
+int {\bfseries player\+\_\+speed\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a4f91050afcc4b728ecff51e4062557d9}\label{class_game_manager_a4f91050afcc4b728ecff51e4062557d9}} 
+int {\bfseries lives\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_abbbdc7dc829fb558eeddf8e7aae384e2}\label{class_game_manager_abbbdc7dc829fb558eeddf8e7aae384e2}} 
+int {\bfseries score\+\_\+}
+\item 
+\mbox{\Hypertarget{class_game_manager_a39199aac3993314cd076ed09e8cd4527}\label{class_game_manager_a39199aac3993314cd076ed09e8cd4527}} 
+int {\bfseries highest\+\_\+score\+\_\+}
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
@@ -92,7 +83,9 @@ static const uint32\+\_\+t {\bfseries selected\+\_\+item\+\_\+tag\+\_\+} = 1
 \subsubsection{\texorpdfstring{instance()}{instance()}}
 {\footnotesize\ttfamily static \hyperlink{class_game_manager}{Game\+Manager}\& Game\+Manager\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-the instance of our \hyperlink{class_game_manager}{Game\+Manager}
+
+
+Gets the instance of our \hyperlink{class_game_manager}{Game\+Manager}. 
 
 In charge of creating our \hyperlink{class_game_manager}{Game\+Manager} singleton in case it doesn\textquotesingle{}t exist or return it\textquotesingle{}s instance if it exists.
 
@@ -103,4 +96,4 @@ In charge of creating our \hyperlink{class_game_manager}{Game\+Manager} singleto
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/game\+\_\+manager.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/game\+\_\+manager.\+h\end{DoxyCompactItemize}

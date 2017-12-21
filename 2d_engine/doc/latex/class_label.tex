@@ -2,6 +2,11 @@
 \label{class_label}\index{Label@{Label}}
 
 
+Graphic entity \hyperlink{class_label}{Label}.  
+
+
+
+
 {\ttfamily \#include $<$label.\+h$>$}
 
 Inheritance diagram for Label\+:\begin{figure}[H]
@@ -13,27 +18,32 @@ Inheritance diagram for Label\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_label_a39e1167a9b5827afd888780973d88894}{$\sim$\+Label} ()
-\item 
+virtual \hyperlink{class_label_ae0405d591a2ff63c03b104435e2a3066}{$\sim$\+Label} ()
+\begin{DoxyCompactList}\small\item\em Destroys the label. \end{DoxyCompactList}\item 
 void \hyperlink{class_label_ab69dd0268124ac21d55b87734fd282a0}{init} (const uint8\+\_\+t r, const uint8\+\_\+t g, const uint8\+\_\+t b, const uint8\+\_\+t a, const float px, const float py, const float rotation, const float scalex, const float scaley, const char $\ast$text, const sf\+::\+Font \&font)
-\item 
-void \hyperlink{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}{draw} (sf\+::\+Render\+Window \&window)
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_label}{Label}. \end{DoxyCompactList}\item 
+void \hyperlink{class_label_aa0e2a948b68c7b70dde12b06b83a0cb1}{draw} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Draws the graphic entity \hyperlink{class_label}{Label}. \end{DoxyCompactList}\item 
 void \hyperlink{class_label_affe136b0a2e4a2240ecd30460222811d}{set\+\_\+font} (const sf\+::\+Font \&font)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter for text value. \end{DoxyCompactList}\item 
 void \hyperlink{class_label_a9e794358a782f0a4ba163bcbbe013612}{set\+\_\+font\+\_\+size} (const int32\+\_\+t \&font\+\_\+size)
-\item 
-bool \hyperlink{class_label_ad79f141fe2f04fd095b9507cac2667a6}{check\+Collision} (const sf\+::\+Vector2f \&position)
-\item 
-void \hyperlink{class_label_abafe12b2237df6f7e915d407d8084ec7}{unuse} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setter for font\+\_\+size value. \end{DoxyCompactList}\item 
+void \hyperlink{class_label_aa6a355fe8daa25c3739affcf66d66f7f}{unuse} () override
+\begin{DoxyCompactList}\small\item\em Resets the values of the label. \end{DoxyCompactList}\item 
+void \hyperlink{class_label_adcd154f9e53d277c1b7a11bd058936a0}{update} () override
+\begin{DoxyCompactList}\small\item\em Updates the label in the loop. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \hyperlink{class_label_a3eb456d7295b3d5af615b3dc6e761f4b}{get\+Boundaries} () override
+\begin{DoxyCompactList}\small\item\em gets the boundaries of the label entity \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_label}{Label} $\ast$ \hyperlink{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}{Create\+Label} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Factory that creates labels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_label_a629484d96adf9bc8eab10e24cf5833d7}\label{class_label_a629484d96adf9bc8eab10e24cf5833d7}} 
+\hyperlink{class_game_manager}{Game\+Manager} \& {\bfseries GM} = \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{Game\+Manager\+::instance}()
 \item 
 \mbox{\Hypertarget{class_label_a96bfd593e67f9031a244732fed63358f}\label{class_label_a96bfd593e67f9031a244732fed63358f}} 
 int32\+\_\+t {\bfseries font\+\_\+size\+\_\+}
@@ -56,21 +66,24 @@ static const uint8\+\_\+t {\bfseries k\+Max\+Labels} = 50
 \mbox{\Hypertarget{class_label_a73c9a955b95b4e3dfbba8b4a7771d64a}\label{class_label_a73c9a955b95b4e3dfbba8b4a7771d64a}} 
 static const uint8\+\_\+t {\bfseries k\+Text\+Max\+Size} = 50
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-entity \hyperlink{class_label}{Label}
+Graphic entity \hyperlink{class_label}{Label}. 
 
 Class used to represent text. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_label_a39e1167a9b5827afd888780973d88894}\label{class_label_a39e1167a9b5827afd888780973d88894}} 
+\mbox{\Hypertarget{class_label_ae0405d591a2ff63c03b104435e2a3066}\label{class_label_ae0405d591a2ff63c03b104435e2a3066}} 
 \index{Label@{Label}!````~Label@{$\sim$\+Label}}
 \index{````~Label@{$\sim$\+Label}!Label@{Label}}
 \subsubsection{\texorpdfstring{$\sim$\+Label()}{~Label()}}
-{\footnotesize\ttfamily Label\+::$\sim$\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual Label\+::$\sim$\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-the label
+
+
+Destroys the label. 
 
 Destructor of the label
 
@@ -80,39 +93,30 @@ void
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_label_ad79f141fe2f04fd095b9507cac2667a6}\label{class_label_ad79f141fe2f04fd095b9507cac2667a6}} 
-\index{Label@{Label}!check\+Collision@{check\+Collision}}
-\index{check\+Collision@{check\+Collision}!Label@{Label}}
-\subsubsection{\texorpdfstring{check\+Collision()}{checkCollision()}}
-{\footnotesize\ttfamily bool Label\+::check\+Collision (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{position }\end{DoxyParamCaption})}
-
-if a point collides with the label
-
-Checks if the point passed by reference collides with the label.
-
-\begin{DoxyReturn}{Returns}
-bool returns true if the point collides and false if not. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}\label{class_label_a9331db7ea12bb0bfa69910b9aa2229a4}} 
 \index{Label@{Label}!Create\+Label@{Create\+Label}}
 \index{Create\+Label@{Create\+Label}!Label@{Label}}
 \subsubsection{\texorpdfstring{Create\+Label()}{CreateLabel()}}
 {\footnotesize\ttfamily static \hyperlink{class_label}{Label}$\ast$ Label\+::\+Create\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-that creates labels
+
+
+Factory that creates labels. 
 
 Checks that the number of labels didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_label}{Label} you must use this method. In case the maximum amount of labels has been reached it will return nullptr. Otherwise it will return a pointer to a label.
 
 \begin{DoxyReturn}{Returns}
 Label$\ast$ returns the label created or nullptr if the maximum of labels has been reached 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}\label{class_label_acaf5dfeeab3e46b5795b8cd24c9d94fe}} 
+\mbox{\Hypertarget{class_label_aa0e2a948b68c7b70dde12b06b83a0cb1}\label{class_label_aa0e2a948b68c7b70dde12b06b83a0cb1}} 
 \index{Label@{Label}!draw@{draw}}
 \index{draw@{draw}!Label@{Label}}
 \subsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Label\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Label\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the graphic entity \hyperlink{class_label}{Label}
+
+
+Draws the graphic entity \hyperlink{class_label}{Label}. 
 
 Draws the label using S\+F\+ML to the window passed by reference
 
@@ -124,13 +128,38 @@ void
 {\em window} & S\+F\+ML Render\+Window passed by reference \\
 \hline
 \end{DoxyParams}
+
+
+Implements \hyperlink{class_drawable_entity_a0b0db9c1325defed216d66a5b4cc755e}{Drawable\+Entity}.
+
+\mbox{\Hypertarget{class_label_a3eb456d7295b3d5af615b3dc6e761f4b}\label{class_label_a3eb456d7295b3d5af615b3dc6e761f4b}} 
+\index{Label@{Label}!get\+Boundaries@{get\+Boundaries}}
+\index{get\+Boundaries@{get\+Boundaries}!Label@{Label}}
+\subsubsection{\texorpdfstring{get\+Boundaries()}{getBoundaries()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Label\+::get\+Boundaries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+gets the boundaries of the label entity 
+
+Implementation of the get\+Boundaries interface. Gets the boundaries of the \hyperlink{class_label}{Label} as an sf\+::\+Float\+Rect taking into account it\textquotesingle{}s transformations.
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Float\+Rect boundaries of the label. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_drawable_entity_a352a101e3be05d25e1a10e5f72ccb9e3}{Drawable\+Entity}.
+
 \mbox{\Hypertarget{class_label_ab69dd0268124ac21d55b87734fd282a0}\label{class_label_ab69dd0268124ac21d55b87734fd282a0}} 
 \index{Label@{Label}!init@{init}}
 \index{init@{init}!Label@{Label}}
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void Label\+::init (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{r,  }\item[{const uint8\+\_\+t}]{g,  }\item[{const uint8\+\_\+t}]{b,  }\item[{const uint8\+\_\+t}]{a,  }\item[{const float}]{px,  }\item[{const float}]{py,  }\item[{const float}]{rotation,  }\item[{const float}]{scalex,  }\item[{const float}]{scaley,  }\item[{const char $\ast$}]{text,  }\item[{const sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
 
-the \hyperlink{class_label}{Label}
+
+
+Initializes the \hyperlink{class_label}{Label}. 
 
 Initializes a label
 
@@ -168,7 +197,9 @@ void
 \subsubsection{\texorpdfstring{set\+\_\+font()}{set\_font()}}
 {\footnotesize\ttfamily void Label\+::set\+\_\+font (\begin{DoxyParamCaption}\item[{const sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
 
-for text value
+
+
+Setter for text value. 
 
 Changes the text value of the label
 
@@ -186,7 +217,9 @@ void
 \subsubsection{\texorpdfstring{set\+\_\+font\+\_\+size()}{set\_font\_size()}}
 {\footnotesize\ttfamily void Label\+::set\+\_\+font\+\_\+size (\begin{DoxyParamCaption}\item[{const int32\+\_\+t \&}]{font\+\_\+size }\end{DoxyParamCaption})}
 
-for font\+\_\+size value
+
+
+Setter for font\+\_\+size value. 
 
 Changes the font size of the label
 
@@ -198,13 +231,15 @@ void
 {\em \&font\+\_\+size} & reference to the new font size of our label \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_label_abafe12b2237df6f7e915d407d8084ec7}\label{class_label_abafe12b2237df6f7e915d407d8084ec7}} 
+\mbox{\Hypertarget{class_label_aa6a355fe8daa25c3739affcf66d66f7f}\label{class_label_aa6a355fe8daa25c3739affcf66d66f7f}} 
 \index{Label@{Label}!unuse@{unuse}}
 \index{unuse@{unuse}!Label@{Label}}
 \subsubsection{\texorpdfstring{unuse()}{unuse()}}
-{\footnotesize\ttfamily void Label\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Label\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the values of the label
+
+
+Resets the values of the label. 
 
 Sets the attributes of the label to a default value to return it to a pool and being able to reuse it later.
 
@@ -213,6 +248,29 @@ void
 \end{DoxyReturn}
 
 
+Reimplemented from \hyperlink{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}{Drawable\+Entity}.
+
+\mbox{\Hypertarget{class_label_adcd154f9e53d277c1b7a11bd058936a0}\label{class_label_adcd154f9e53d277c1b7a11bd058936a0}} 
+\index{Label@{Label}!update@{update}}
+\index{update@{update}!Label@{Label}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Label\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the label in the loop. 
+
+Implementation of the update interface
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}{Drawable\+Entity}.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/label.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/label.\+h\end{DoxyCompactItemize}

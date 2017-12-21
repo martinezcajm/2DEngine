@@ -1,0 +1,117 @@
+\hypertarget{class_wall}{}\section{Wall Class Reference}
+\label{class_wall}\index{Wall@{Wall}}
+
+
+{\ttfamily \#include $<$wall.\+h$>$}
+
+Inheritance diagram for Wall\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_wall}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_wall_a794dcff9a7ee62de3e8db816424e0050}{$\sim$\+Wall} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_wall}{Wall}. \end{DoxyCompactList}\item 
+void \hyperlink{class_wall_a49c23105741c9f9d546a131a08573e9f}{init} (float width, float height, uint8\+\_\+t sc\+\_\+r, uint8\+\_\+t sc\+\_\+g, uint8\+\_\+t sc\+\_\+b, uint8\+\_\+t sc\+\_\+a, uint8\+\_\+t fc\+\_\+r, uint8\+\_\+t fc\+\_\+g, uint8\+\_\+t fc\+\_\+b, uint8\+\_\+t fc\+\_\+a, float px, float py, float rotation, float scalex, float scaley)
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_wall}{Wall}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_wall}{Wall} $\ast$ \hyperlink{class_wall_a7f2063fe4fd2f49ebc64f5a6a873bfa3}{Create\+Wall} ()
+\begin{DoxyCompactList}\small\item\em Factory that creates wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class used to represent Walls. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_wall_a794dcff9a7ee62de3e8db816424e0050}\label{class_wall_a794dcff9a7ee62de3e8db816424e0050}} 
+\index{Wall@{Wall}!````~Wall@{$\sim$\+Wall}}
+\index{````~Wall@{$\sim$\+Wall}!Wall@{Wall}}
+\subsubsection{\texorpdfstring{$\sim$\+Wall()}{~Wall()}}
+{\footnotesize\ttfamily virtual Wall\+::$\sim$\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destroys the \hyperlink{class_wall}{Wall}. 
+
+Destructor of the wall
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wall_a7f2063fe4fd2f49ebc64f5a6a873bfa3}\label{class_wall_a7f2063fe4fd2f49ebc64f5a6a873bfa3}} 
+\index{Wall@{Wall}!Create\+Wall@{Create\+Wall}}
+\index{Create\+Wall@{Create\+Wall}!Wall@{Wall}}
+\subsubsection{\texorpdfstring{Create\+Wall()}{CreateWall()}}
+{\footnotesize\ttfamily static \hyperlink{class_wall}{Wall}$\ast$ Wall\+::\+Create\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory that creates wall. 
+
+Checks that the number of walls didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_wall}{Wall} you must use this method. In case the maximum amount of walls has been reached it will return nullptr. Otherwise it will return a pointer to a wall.
+
+\begin{DoxyReturn}{Returns}
+Wall$\ast$ returns the wall created or nullptr if the maximum of walls has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_wall_a49c23105741c9f9d546a131a08573e9f}\label{class_wall_a49c23105741c9f9d546a131a08573e9f}} 
+\index{Wall@{Wall}!init@{init}}
+\index{init@{init}!Wall@{Wall}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Wall\+::init (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{uint8\+\_\+t}]{sc\+\_\+r,  }\item[{uint8\+\_\+t}]{sc\+\_\+g,  }\item[{uint8\+\_\+t}]{sc\+\_\+b,  }\item[{uint8\+\_\+t}]{sc\+\_\+a,  }\item[{uint8\+\_\+t}]{fc\+\_\+r,  }\item[{uint8\+\_\+t}]{fc\+\_\+g,  }\item[{uint8\+\_\+t}]{fc\+\_\+b,  }\item[{uint8\+\_\+t}]{fc\+\_\+a,  }\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{rotation,  }\item[{float}]{scalex,  }\item[{float}]{scaley }\end{DoxyParamCaption})}
+
+
+
+Initializes the \hyperlink{class_wall}{Wall}. 
+
+Initializes the different values of a wall
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width dimension of the wall \\
+\hline
+{\em height} & height dimension of the wall \\
+\hline
+{\em sc\+\_\+r} & color red component of the inner color \\
+\hline
+{\em sc\+\_\+g} & color blue component of the inner color \\
+\hline
+{\em sc\+\_\+b} & color green component of the inner color \\
+\hline
+{\em sc\+\_\+a} & alpha channel of the inner color \\
+\hline
+{\em fc\+\_\+r} & color red component of the fill color \\
+\hline
+{\em fc\+\_\+g} & color blue component of the fill color \\
+\hline
+{\em fc\+\_\+b} & color green component of the fill color \\
+\hline
+{\em fc\+\_\+a} & alpha channel of the fill color \\
+\hline
+{\em px} & x position in the window \\
+\hline
+{\em py} & y position in the window \\
+\hline
+{\em rotation} & rotation in degrees \\
+\hline
+{\em scalex} & scale quantity at x axis \\
+\hline
+{\em scaley} & scale quantity at y axis \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/wall.\+h\end{DoxyCompactItemize}

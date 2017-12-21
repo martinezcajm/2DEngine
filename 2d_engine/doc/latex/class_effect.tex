@@ -1,0 +1,72 @@
+\hypertarget{class_effect}{}\section{Effect Class Reference}
+\label{class_effect}\index{Effect@{Effect}}
+Inheritance diagram for Effect\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_effect}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_effect_ae194f65d0d47fd890f3902dc546c4bb1}\label{class_effect_ae194f65d0d47fd890f3902dc546c4bb1}} 
+const std\+::string \& {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{class_effect_a7f926c8c6b21664461745f4c62cf7d0b}\label{class_effect_a7f926c8c6b21664461745f4c62cf7d0b}} 
+void {\bfseries load} ()
+\item 
+\mbox{\Hypertarget{class_effect_a857a5b45439813ecc71e8e931c98f6a2}\label{class_effect_a857a5b45439813ecc71e8e931c98f6a2}} 
+void {\bfseries update} (float time, float x, float y)
+\item 
+void \hyperlink{class_effect_a6a3a393e127581c7f84e1278b5be0438}{draw} (\hyperlink{classsf_1_1_render_target}{sf\+::\+Render\+Target} \&target, \hyperlink{classsf_1_1_render_states}{sf\+::\+Render\+States} states) const
+\begin{DoxyCompactList}\small\item\em Draw the object to a render target. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_effect_a2a4eaf667af8ea6498b77fe532c5a43d}\label{class_effect_a2a4eaf667af8ea6498b77fe532c5a43d}} 
+static void {\bfseries set\+Font} (const \hyperlink{classsf_1_1_font}{sf\+::\+Font} \&font)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_effect_a6c1c4ec803a1aa5dcbd34a6cf92fd8d5}\label{class_effect_a6c1c4ec803a1aa5dcbd34a6cf92fd8d5}} 
+{\bfseries Effect} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_effect_a406376adb93215da98a51e7eeb4658e6}\label{class_effect_a406376adb93215da98a51e7eeb4658e6}} 
+static const \hyperlink{classsf_1_1_font}{sf\+::\+Font} \& {\bfseries get\+Font} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_effect_a6a3a393e127581c7f84e1278b5be0438}\label{class_effect_a6a3a393e127581c7f84e1278b5be0438}} 
+\index{Effect@{Effect}!draw@{draw}}
+\index{draw@{draw}!Effect@{Effect}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Effect\+::draw (\begin{DoxyParamCaption}\item[{\hyperlink{classsf_1_1_render_target}{sf\+::\+Render\+Target} \&}]{target,  }\item[{\hyperlink{classsf_1_1_render_states}{sf\+::\+Render\+States}}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Draw the object to a render target. 
+
+This is a pure virtual function that has to be implemented by the derived class to define how the drawable should be drawn.
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Render target to draw to \\
+\hline
+{\em states} & Current render states \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classsf_1_1_drawable_a90d2c88bba9b035a0844eccb380ef631}{sf\+::\+Drawable}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/deps/\+S\+F\+M\+L/examples/shader/Effect.\+hpp\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/deps/\+S\+F\+M\+L/examples/shader/Shader.\+cpp\end{DoxyCompactItemize}

@@ -2,44 +2,77 @@
 \label{class_entity}\index{Entity@{Entity}}
 
 
+entity  
+
+
+
+
 {\ttfamily \#include $<$entity.\+h$>$}
 
 Inheritance diagram for Entity\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{class_entity}
+\includegraphics[height=3.555556cm]{class_entity}
 \end{center}
 \end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_entity_a0e96d5b4903c3e32e07780aa12fe075b}\label{class_entity_a0e96d5b4903c3e32e07780aa12fe075b}} 
+enum {\bfseries Type} \{ \newline
+{\bfseries k\+Rect} = 0, 
+{\bfseries k\+Background} = 1, 
+{\bfseries k\+Label} = 2, 
+{\bfseries k\+Sprite} = 3, 
+\newline
+{\bfseries k\+Wall} = 4, 
+{\bfseries k\+Brick} = 5, 
+{\bfseries k\+Ball} = 6, 
+{\bfseries k\+Player} = 7
+ \}
+\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity} ()
-\item 
-\hyperlink{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{$\sim$\+Entity} ()
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_entity}{Entity} constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_entity_a6216319e71da21b7708bbfeb537c4d0f}{$\sim$\+Entity} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_entity}{Entity}. \end{DoxyCompactList}\item 
 \hyperlink{class_entity_ad758dc48d715e48ada4193517f1d32ea}{Entity} (const \hyperlink{class_entity}{Entity} \&o)
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_entity}{Entity} copy constructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_entity_a085fa2dd2c2b1f3f60d601a68d5c6773}{init} (const uint32\+\_\+t tag)
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_entity}{Entity}. \end{DoxyCompactList}\item 
 void \hyperlink{class_entity_a93bfb0b92c06297c207fad4164810fed}{init} ()
-\item 
-\mbox{\Hypertarget{class_entity_ae4a75e659a4426f57f5c1d44f1b8ef34}\label{class_entity_ae4a75e659a4426f57f5c1d44f1b8ef34}} 
-uint32\+\_\+t {\bfseries id} ()
-\item 
-void \hyperlink{class_entity_ad40f9e3ddaa375d33c930c6b57f4c9c5}{unuse} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_entity}{Entity}. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{class_entity_ae4a75e659a4426f57f5c1d44f1b8ef34}{id} ()
+\begin{DoxyCompactList}\small\item\em Getter of the id. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_entity_a7b87e24b0d790b2c182fad8aa572455c}{unuse} ()
+\begin{DoxyCompactList}\small\item\em Resets the values of the entity. \end{DoxyCompactList}\item 
+Type \hyperlink{class_entity_a57c1ccf94325b1b771f4656178ab2b81}{type} ()
+\begin{DoxyCompactList}\small\item\em Getter of the type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_entity_a8003da23696e58c9904b80b952ba802f}\label{class_entity_a8003da23696e58c9904b80b952ba802f}} 
-uint32\+\_\+t {\bfseries tag\+\_\+}
+\mbox{\Hypertarget{class_entity_aa9f75ea7b1041547a1b610a9b2f064c0}\label{class_entity_aa9f75ea7b1041547a1b610a9b2f064c0}} 
+int {\bfseries tag\+\_\+}
+\item 
+\mbox{\Hypertarget{class_entity_a6f99bc47ee1c35ac95a36a5facd15e5d}\label{class_entity_a6f99bc47ee1c35ac95a36a5facd15e5d}} 
+uint8\+\_\+t {\bfseries selection\+\_\+tag\+\_\+}
 \item 
 \mbox{\Hypertarget{class_entity_a7816e789062febe058b98ce695539c59}\label{class_entity_a7816e789062febe058b98ce695539c59}} 
 uint8\+\_\+t {\bfseries active\+\_\+}
 \end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_entity_a4fa6e00c39af69477dc64c27e29ab77e}\label{class_entity_a4fa6e00c39af69477dc64c27e29ab77e}} 
+Type {\bfseries type\+\_\+}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+entity 
+
 Atomic class of the elements of our engine. 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -49,20 +82,24 @@ Atomic class of the elements of our engine.
 \subsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-constructor
+
+
+\hyperlink{class_entity}{Entity} constructor. 
 
 Base constructor of entity
 
 \begin{DoxyReturn}{Returns}
 $\ast$\+Entity 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}\label{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}} 
+\mbox{\Hypertarget{class_entity_a6216319e71da21b7708bbfeb537c4d0f}\label{class_entity_a6216319e71da21b7708bbfeb537c4d0f}} 
 \index{Entity@{Entity}!````~Entity@{$\sim$\+Entity}}
 \index{````~Entity@{$\sim$\+Entity}!Entity@{Entity}}
 \subsubsection{\texorpdfstring{$\sim$\+Entity()}{~Entity()}}
-{\footnotesize\ttfamily Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [pure virtual]}}
 
-the \hyperlink{class_entity}{Entity}
+
+
+Destroys the \hyperlink{class_entity}{Entity}. 
 
 Destructor of the entity
 
@@ -75,7 +112,9 @@ void
 \subsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const \hyperlink{class_entity}{Entity} \&}]{o }\end{DoxyParamCaption})}
 
-copy constructor
+
+
+\hyperlink{class_entity}{Entity} copy constructor. 
 
 Personal \hyperlink{class_entity}{Entity} copy constructor taking into account the id.
 
@@ -85,13 +124,30 @@ $\ast$\+Entity
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_ae4a75e659a4426f57f5c1d44f1b8ef34}\label{class_entity_ae4a75e659a4426f57f5c1d44f1b8ef34}} 
+\index{Entity@{Entity}!id@{id}}
+\index{id@{id}!Entity@{Entity}}
+\subsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily uint32\+\_\+t Entity\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter of the id. 
+
+Returns the value of the id
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t id of the entity 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_entity_a085fa2dd2c2b1f3f60d601a68d5c6773}\label{class_entity_a085fa2dd2c2b1f3f60d601a68d5c6773}} 
 \index{Entity@{Entity}!init@{init}}
 \index{init@{init}!Entity@{Entity}}
 \subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Entity\+::init (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{tag }\end{DoxyParamCaption})}
 
-the \hyperlink{class_entity}{Entity}
+
+
+Initializes the \hyperlink{class_entity}{Entity}. 
 
 Initializes an entity with a tag
 
@@ -109,7 +165,9 @@ void
 \subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Entity\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the \hyperlink{class_entity}{Entity}
+
+
+Initializes the \hyperlink{class_entity}{Entity}. 
 
 Initializes an entity with default values
 
@@ -121,13 +179,30 @@ void
 {\em tag} & unsigned int used to group entities \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_entity_ad40f9e3ddaa375d33c930c6b57f4c9c5}\label{class_entity_ad40f9e3ddaa375d33c930c6b57f4c9c5}} 
+\mbox{\Hypertarget{class_entity_a57c1ccf94325b1b771f4656178ab2b81}\label{class_entity_a57c1ccf94325b1b771f4656178ab2b81}} 
+\index{Entity@{Entity}!type@{type}}
+\index{type@{type}!Entity@{Entity}}
+\subsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily Type Entity\+::type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter of the type. 
+
+Returns the type of the entity
+
+\begin{DoxyReturn}{Returns}
+Type type of the entity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a7b87e24b0d790b2c182fad8aa572455c}\label{class_entity_a7b87e24b0d790b2c182fad8aa572455c}} 
 \index{Entity@{Entity}!unuse@{unuse}}
 \index{unuse@{unuse}!Entity@{Entity}}
 \subsubsection{\texorpdfstring{unuse()}{unuse()}}
-{\footnotesize\ttfamily void Entity\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual void Entity\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-the values of the entity
+
+
+Resets the values of the entity. 
 
 Sets the attributes of the object to return it to a pool and being able to reuse it later.
 
@@ -136,6 +211,10 @@ void
 \end{DoxyReturn}
 
 
+Reimplemented in \hyperlink{class_drawable_entity_aabea8715834f6cee7fd36b038d1a4843}{Drawable\+Entity}, \hyperlink{class_sprite_a26066db75daec637f436d4635418059a}{Sprite}, \hyperlink{class_label_aa6a355fe8daa25c3739affcf66d66f7f}{Label}, \hyperlink{class_rect_a85afbe7fde3b74bd81c07cc58d5c61bd}{Rect}, and \hyperlink{class_background_ad3559e8684aca155ae68d53374f3540d}{Background}.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/entity.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/entity.\+h\end{DoxyCompactItemize}

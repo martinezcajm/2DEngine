@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: Entity Class Reference</title>
+<title>2D_game: Entity Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -59,13 +59,18 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_entity-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Entity Class Reference</div>  </div>
+<div class="title">Entity Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>entity  
+ <a href="class_entity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="entity_8h_source.html">entity.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -74,43 +79,82 @@ Inheritance diagram for Entity:</div>
  <div class="center">
   <img src="class_entity.png" usemap="#Entity_map" alt=""/>
   <map id="Entity_map" name="Entity_map">
-<area href="class_drawable_entity.html" alt="DrawableEntity" shape="rect" coords="107,56,204,80"/>
-<area href="class_label.html" alt="Label" shape="rect" coords="0,112,97,136"/>
-<area href="class_rect.html" alt="Rect" shape="rect" coords="107,112,204,136"/>
-<area href="class_sprite.html" alt="Sprite" shape="rect" coords="214,112,311,136"/>
-<area href="class_background.html" alt="Background" shape="rect" coords="214,168,311,192"/>
+<area href="class_drawable_entity.html" title="Drawable entity. " alt="DrawableEntity" shape="rect" coords="107,56,204,80"/>
+<area href="class_label.html" title="Graphic entity Label. " alt="Label" shape="rect" coords="0,112,97,136"/>
+<area href="class_rect.html" title="raphic entity Label " alt="Rect" shape="rect" coords="107,112,204,136"/>
+<area href="class_sprite.html" title="Graphic entity Sprite. " alt="Sprite" shape="rect" coords="374,112,471,136"/>
+<area href="class_brick.html" alt="Brick" shape="rect" coords="53,168,150,192"/>
+<area href="class_wall.html" alt="Wall" shape="rect" coords="160,168,257,192"/>
+<area href="class_background.html" title="Graphic entity Background. " alt="Background" shape="rect" coords="267,168,364,192"/>
+<area href="class_ball.html" title="Graphic entity Ball. " alt="Ball" shape="rect" coords="374,168,471,192"/>
+<area href="class_player.html" title="Graphic entity Player. " alt="Player" shape="rect" coords="481,168,578,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a0e96d5b4903c3e32e07780aa12fe075b"><td class="memItemLeft" align="right" valign="top"><a id="a0e96d5b4903c3e32e07780aa12fe075b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Type</b> { <br />
+&#160;&#160;<b>kRect</b> = 0, 
+<b>kBackground</b> = 1, 
+<b>kLabel</b> = 2, 
+<b>kSprite</b> = 3, 
+<br />
+&#160;&#160;<b>kWall</b> = 4, 
+<b>kBrick</b> = 5, 
+<b>kBall</b> = 6, 
+<b>kPlayer</b> = 7
+<br />
+ }</td></tr>
+<tr class="separator:a0e96d5b4903c3e32e07780aa12fe075b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a980f368aa07ce358583982821533a54a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a980f368aa07ce358583982821533a54a">Entity</a> ()</td></tr>
+<tr class="memdesc:a980f368aa07ce358583982821533a54a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_entity.html" title="entity ">Entity</a> constructor.  <a href="#a980f368aa07ce358583982821533a54a">More...</a><br /></td></tr>
 <tr class="separator:a980f368aa07ce358583982821533a54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a> ()</td></tr>
-<tr class="separator:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6216319e71da21b7708bbfeb537c4d0f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a6216319e71da21b7708bbfeb537c4d0f">~Entity</a> ()=0</td></tr>
+<tr class="memdesc:a6216319e71da21b7708bbfeb537c4d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="#a6216319e71da21b7708bbfeb537c4d0f">More...</a><br /></td></tr>
+<tr class="separator:a6216319e71da21b7708bbfeb537c4d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad758dc48d715e48ada4193517f1d32ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ad758dc48d715e48ada4193517f1d32ea">Entity</a> (const <a class="el" href="class_entity.html">Entity</a> &amp;o)</td></tr>
+<tr class="memdesc:ad758dc48d715e48ada4193517f1d32ea"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_entity.html" title="entity ">Entity</a> copy constructor.  <a href="#ad758dc48d715e48ada4193517f1d32ea">More...</a><br /></td></tr>
 <tr class="separator:ad758dc48d715e48ada4193517f1d32ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085fa2dd2c2b1f3f60d601a68d5c6773"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a085fa2dd2c2b1f3f60d601a68d5c6773">init</a> (const uint32_t tag)</td></tr>
+<tr class="memdesc:a085fa2dd2c2b1f3f60d601a68d5c6773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="#a085fa2dd2c2b1f3f60d601a68d5c6773">More...</a><br /></td></tr>
 <tr class="separator:a085fa2dd2c2b1f3f60d601a68d5c6773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93bfb0b92c06297c207fad4164810fed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a93bfb0b92c06297c207fad4164810fed">init</a> ()</td></tr>
+<tr class="memdesc:a93bfb0b92c06297c207fad4164810fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>.  <a href="#a93bfb0b92c06297c207fad4164810fed">More...</a><br /></td></tr>
 <tr class="separator:a93bfb0b92c06297c207fad4164810fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4a75e659a4426f57f5c1d44f1b8ef34"><td class="memItemLeft" align="right" valign="top"><a id="ae4a75e659a4426f57f5c1d44f1b8ef34"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> ()</td></tr>
+<tr class="memitem:ae4a75e659a4426f57f5c1d44f1b8ef34"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ae4a75e659a4426f57f5c1d44f1b8ef34">id</a> ()</td></tr>
+<tr class="memdesc:ae4a75e659a4426f57f5c1d44f1b8ef34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the id.  <a href="#ae4a75e659a4426f57f5c1d44f1b8ef34">More...</a><br /></td></tr>
 <tr class="separator:ae4a75e659a4426f57f5c1d44f1b8ef34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40f9e3ddaa375d33c930c6b57f4c9c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ad40f9e3ddaa375d33c930c6b57f4c9c5">unuse</a> ()</td></tr>
-<tr class="separator:ad40f9e3ddaa375d33c930c6b57f4c9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b87e24b0d790b2c182fad8aa572455c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a7b87e24b0d790b2c182fad8aa572455c">unuse</a> ()</td></tr>
+<tr class="memdesc:a7b87e24b0d790b2c182fad8aa572455c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the values of the entity.  <a href="#a7b87e24b0d790b2c182fad8aa572455c">More...</a><br /></td></tr>
+<tr class="separator:a7b87e24b0d790b2c182fad8aa572455c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57c1ccf94325b1b771f4656178ab2b81"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a57c1ccf94325b1b771f4656178ab2b81">type</a> ()</td></tr>
+<tr class="memdesc:a57c1ccf94325b1b771f4656178ab2b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the type.  <a href="#a57c1ccf94325b1b771f4656178ab2b81">More...</a><br /></td></tr>
+<tr class="separator:a57c1ccf94325b1b771f4656178ab2b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8003da23696e58c9904b80b952ba802f"><td class="memItemLeft" align="right" valign="top"><a id="a8003da23696e58c9904b80b952ba802f"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>tag_</b></td></tr>
-<tr class="separator:a8003da23696e58c9904b80b952ba802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f75ea7b1041547a1b610a9b2f064c0"><td class="memItemLeft" align="right" valign="top"><a id="aa9f75ea7b1041547a1b610a9b2f064c0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>tag_</b></td></tr>
+<tr class="separator:aa9f75ea7b1041547a1b610a9b2f064c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f99bc47ee1c35ac95a36a5facd15e5d"><td class="memItemLeft" align="right" valign="top"><a id="a6f99bc47ee1c35ac95a36a5facd15e5d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>selection_tag_</b></td></tr>
+<tr class="separator:a6f99bc47ee1c35ac95a36a5facd15e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7816e789062febe058b98ce695539c59"><td class="memItemLeft" align="right" valign="top"><a id="a7816e789062febe058b98ce695539c59"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></tr>
 <tr class="separator:a7816e789062febe058b98ce695539c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a4fa6e00c39af69477dc64c27e29ab77e"><td class="memItemLeft" align="right" valign="top"><a id="a4fa6e00c39af69477dc64c27e29ab77e"></a>
+Type&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b></td></tr>
+<tr class="separator:a4fa6e00c39af69477dc64c27e29ab77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Atomic class of the elements of our engine. </p>
+<div class="textblock"><p>entity </p>
+<p>Atomic class of the elements of our engine. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a980f368aa07ce358583982821533a54a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a980f368aa07ce358583982821533a54a">&#9670;&nbsp;</a></span>Entity() <span class="overload">[1/2]</span></h2>
@@ -126,27 +170,37 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>constructor</p>
+
+<p><a class="el" href="class_entity.html" title="entity ">Entity</a> constructor. </p>
 <p>Base constructor of entity</p>
 <dl class="section return"><dt>Returns</dt><dd>*Entity </dd></dl>
 
 </div>
 </div>
-<a id="adf6d3f7cb1b2ba029b6b048a395cc8ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf6d3f7cb1b2ba029b6b048a395cc8ae">&#9670;&nbsp;</a></span>~Entity()</h2>
+<a id="a6216319e71da21b7708bbfeb537c4d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6216319e71da21b7708bbfeb537c4d0f">&#9670;&nbsp;</a></span>~Entity()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Entity::~Entity </td>
+          <td class="memname">virtual Entity::~Entity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>the <a class="el" href="class_entity.html">Entity</a></p>
+
+<p>Destroys the <a class="el" href="class_entity.html" title="entity ">Entity</a>. </p>
 <p>Destructor of the entity</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
@@ -167,13 +221,35 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>copy constructor</p>
-<p>Personal <a class="el" href="class_entity.html">Entity</a> copy constructor taking into account the id.</p>
+
+<p><a class="el" href="class_entity.html" title="entity ">Entity</a> copy constructor. </p>
+<p>Personal <a class="el" href="class_entity.html" title="entity ">Entity</a> copy constructor taking into account the id.</p>
 <dl class="section return"><dt>Returns</dt><dd>*Entity </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae4a75e659a4426f57f5c1d44f1b8ef34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a75e659a4426f57f5c1d44f1b8ef34">&#9670;&nbsp;</a></span>id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Entity::id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter of the id. </p>
+<p>Returns the value of the id</p>
+<dl class="section return"><dt>Returns</dt><dd>uint32_t id of the entity </dd></dl>
+
+</div>
+</div>
 <a id="a085fa2dd2c2b1f3f60d601a68d5c6773"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a085fa2dd2c2b1f3f60d601a68d5c6773">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
 
@@ -189,7 +265,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the <a class="el" href="class_entity.html">Entity</a></p>
+
+<p>Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>. </p>
 <p>Initializes an entity with a tag</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -215,7 +292,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the <a class="el" href="class_entity.html">Entity</a></p>
+
+<p>Initializes the <a class="el" href="class_entity.html" title="entity ">Entity</a>. </p>
 <p>Initializes an entity with default values</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -227,28 +305,60 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>active_</b></td></
 
 </div>
 </div>
-<a id="ad40f9e3ddaa375d33c930c6b57f4c9c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad40f9e3ddaa375d33c930c6b57f4c9c5">&#9670;&nbsp;</a></span>unuse()</h2>
+<a id="a57c1ccf94325b1b771f4656178ab2b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57c1ccf94325b1b771f4656178ab2b81">&#9670;&nbsp;</a></span>type()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Entity::unuse </td>
+          <td class="memname">Type Entity::type </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the values of the entity</p>
+
+<p>Getter of the type. </p>
+<p>Returns the type of the entity</p>
+<dl class="section return"><dt>Returns</dt><dd>Type type of the entity </dd></dl>
+
+</div>
+</div>
+<a id="a7b87e24b0d790b2c182fad8aa572455c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b87e24b0d790b2c182fad8aa572455c">&#9670;&nbsp;</a></span>unuse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Entity::unuse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resets the values of the entity. </p>
 <p>Sets the attributes of the object to return it to a pool and being able to reuse it later.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_drawable_entity.html#aabea8715834f6cee7fd36b038d1a4843">DrawableEntity</a>, <a class="el" href="class_sprite.html#a26066db75daec637f436d4635418059a">Sprite</a>, <a class="el" href="class_label.html#aa6a355fe8daa25c3739affcf66d66f7f">Label</a>, <a class="el" href="class_rect.html#a85afbe7fde3b74bd81c07cc58d5c61bd">Rect</a>, and <a class="el" href="class_background.html#ad3559e8684aca155ae68d53374f3540d">Background</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="entity_8h_source.html">entity.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="entity_8h_source.html">entity.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,152 @@
+\hypertarget{class_brick}{}\section{Brick Class Reference}
+\label{class_brick}\index{Brick@{Brick}}
+
+
+{\ttfamily \#include $<$brick.\+h$>$}
+
+Inheritance diagram for Brick\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_brick}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_brick_a8e1f06c7d5ba84454515f016c907098c}{$\sim$\+Brick} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_brick}{Brick}. \end{DoxyCompactList}\item 
+void \hyperlink{class_brick_a7dfd26b24b96fe84b8c8da2094382e4c}{init} (float width, float height, uint8\+\_\+t sc\+\_\+r, uint8\+\_\+t sc\+\_\+g, uint8\+\_\+t sc\+\_\+b, uint8\+\_\+t sc\+\_\+a, uint8\+\_\+t fc\+\_\+r, uint8\+\_\+t fc\+\_\+g, uint8\+\_\+t fc\+\_\+b, uint8\+\_\+t fc\+\_\+a, float px, float py, float rotation, float scalex, float scaley, uint8\+\_\+t lives)
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{class_brick}{Brick}. \end{DoxyCompactList}\item 
+void \hyperlink{class_brick_a4debb742abe5d19442d910bb8ecf083e}{update} () override
+\begin{DoxyCompactList}\small\item\em Updates the brick in the loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_brick}{Brick} $\ast$ \hyperlink{class_brick_aa7612e167304813054c4de49a29c2201}{Create\+Brick} ()
+\begin{DoxyCompactList}\small\item\em Factory that creates brick. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_brick_a012655123280a597376888d88215c40a}\label{class_brick_a012655123280a597376888d88215c40a}} 
+int {\bfseries lives\+\_\+}
+\item 
+\mbox{\Hypertarget{class_brick_a9f21d16b211acd69e0ea121d0ee8b10b}\label{class_brick_a9f21d16b211acd69e0ea121d0ee8b10b}} 
+int {\bfseries score\+\_\+}
+\item 
+\mbox{\Hypertarget{class_brick_a6fc2e95b7409dfc74488c1c5af27107c}\label{class_brick_a6fc2e95b7409dfc74488c1c5af27107c}} 
+\hyperlink{class_game_manager}{Game\+Manager} \& {\bfseries GM} = \hyperlink{class_game_manager_afa37ab23c040b5225d567d4c9ab854e1}{Game\+Manager\+::instance}()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class used to represent Bricks. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_brick_a8e1f06c7d5ba84454515f016c907098c}\label{class_brick_a8e1f06c7d5ba84454515f016c907098c}} 
+\index{Brick@{Brick}!````~Brick@{$\sim$\+Brick}}
+\index{````~Brick@{$\sim$\+Brick}!Brick@{Brick}}
+\subsubsection{\texorpdfstring{$\sim$\+Brick()}{~Brick()}}
+{\footnotesize\ttfamily virtual Brick\+::$\sim$\+Brick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destroys the \hyperlink{class_brick}{Brick}. 
+
+Destructor of the brick
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_brick_aa7612e167304813054c4de49a29c2201}\label{class_brick_aa7612e167304813054c4de49a29c2201}} 
+\index{Brick@{Brick}!Create\+Brick@{Create\+Brick}}
+\index{Create\+Brick@{Create\+Brick}!Brick@{Brick}}
+\subsubsection{\texorpdfstring{Create\+Brick()}{CreateBrick()}}
+{\footnotesize\ttfamily static \hyperlink{class_brick}{Brick}$\ast$ Brick\+::\+Create\+Brick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory that creates brick. 
+
+Checks that the number of bricks didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_brick}{Brick} you must use this method. In case the maximum amount of bricks has been reached it will return nullptr. Otherwise it will return a pointer to a brick.
+
+\begin{DoxyReturn}{Returns}
+Brick$\ast$ returns the brick created or nullptr if the maximum of bricks has been reached 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_brick_a7dfd26b24b96fe84b8c8da2094382e4c}\label{class_brick_a7dfd26b24b96fe84b8c8da2094382e4c}} 
+\index{Brick@{Brick}!init@{init}}
+\index{init@{init}!Brick@{Brick}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Brick\+::init (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{uint8\+\_\+t}]{sc\+\_\+r,  }\item[{uint8\+\_\+t}]{sc\+\_\+g,  }\item[{uint8\+\_\+t}]{sc\+\_\+b,  }\item[{uint8\+\_\+t}]{sc\+\_\+a,  }\item[{uint8\+\_\+t}]{fc\+\_\+r,  }\item[{uint8\+\_\+t}]{fc\+\_\+g,  }\item[{uint8\+\_\+t}]{fc\+\_\+b,  }\item[{uint8\+\_\+t}]{fc\+\_\+a,  }\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{rotation,  }\item[{float}]{scalex,  }\item[{float}]{scaley,  }\item[{uint8\+\_\+t}]{lives }\end{DoxyParamCaption})}
+
+
+
+Initializes the \hyperlink{class_brick}{Brick}. 
+
+Initializes the different values of a brick
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width dimension of the brick \\
+\hline
+{\em height} & height dimension of the brick \\
+\hline
+{\em sc\+\_\+r} & color red component of the inner color \\
+\hline
+{\em sc\+\_\+g} & color blue component of the inner color \\
+\hline
+{\em sc\+\_\+b} & color green component of the inner color \\
+\hline
+{\em sc\+\_\+a} & alpha channel of the inner color \\
+\hline
+{\em fc\+\_\+r} & color red component of the fill color \\
+\hline
+{\em fc\+\_\+g} & color blue component of the fill color \\
+\hline
+{\em fc\+\_\+b} & color green component of the fill color \\
+\hline
+{\em fc\+\_\+a} & alpha channel of the fill color \\
+\hline
+{\em px} & x position in the window \\
+\hline
+{\em py} & y position in the window \\
+\hline
+{\em rotation} & rotation in degrees \\
+\hline
+{\em scalex} & scale quantity at x axis \\
+\hline
+{\em scaley} & scale quantity at y axis \\
+\hline
+{\em lives} & lives of the brick \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_brick_a4debb742abe5d19442d910bb8ecf083e}\label{class_brick_a4debb742abe5d19442d910bb8ecf083e}} 
+\index{Brick@{Brick}!update@{update}}
+\index{update@{update}!Brick@{Brick}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Brick\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the brick in the loop. 
+
+Implementation of the update interface
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_drawable_entity_acbf8317de062a2e0e79f646dbe75249c}{Drawable\+Entity}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/brick.\+h\end{DoxyCompactItemize}

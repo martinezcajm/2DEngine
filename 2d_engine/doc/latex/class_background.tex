@@ -2,6 +2,11 @@
 \label{class_background}\index{Background@{Background}}
 
 
+Graphic entity \hyperlink{class_background}{Background}.  
+
+
+
+
 {\ttfamily \#include $<$background.\+h$>$}
 
 Inheritance diagram for Background\+:\begin{figure}[H]
@@ -13,21 +18,21 @@ Inheritance diagram for Background\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_background_a36754df1deb720393217ade59da41557}{$\sim$\+Background} ()
-\item 
+virtual \hyperlink{class_background_a8e03d13cc66a276ebd4ec1e6fc9e8c98}{$\sim$\+Background} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_background}{Background}. \end{DoxyCompactList}\item 
 uint8\+\_\+t \hyperlink{class_background_ae4ae960cd876ef4a2f9fb6e0a7e8bc73}{init} (const std\+::string \&file\+\_\+path, const uint32\+\_\+t width, const uint32\+\_\+t height)
-\item 
-void \hyperlink{class_background_acab58b65d4299d4bd51b8376e8c3e3d3}{update} ()
-\item 
-void \hyperlink{class_background_ae3d10fe0882df48b0e1e861a7e69f37f}{draw} (sf\+::\+Render\+Window \&window)
-\item 
-void \hyperlink{class_background_a544eaaa5b1b55c6adebe989633521ac3}{unuse} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initializes the backgorund using a texture. \end{DoxyCompactList}\item 
+void \hyperlink{class_background_af4a37c0ac474de5f65130cbef3d61379}{update} () override
+\begin{DoxyCompactList}\small\item\em Updates the background position. \end{DoxyCompactList}\item 
+void \hyperlink{class_background_a257183f6d077bbee005760813dbb0592}{draw} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Draws the graphic entity \hyperlink{class_background}{Background}. \end{DoxyCompactList}\item 
+void \hyperlink{class_background_ad3559e8684aca155ae68d53374f3540d}{unuse} () override
+\begin{DoxyCompactList}\small\item\em Resets the values of the background. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \hyperlink{class_background}{Background} $\ast$ \hyperlink{class_background_aafc5996195781b2d4bff7d170792425d}{Create\+Background} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Factory that creates backgrounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,18 +55,20 @@ sf\+::\+Vector2i {\bfseries background\+\_\+position\+\_\+}
 
 
 \subsection{Detailed Description}
-entity \hyperlink{class_background}{Background}.
+Graphic entity \hyperlink{class_background}{Background}. 
 
 Class used to represent backgrounds. Used to stablish continuous movement to a sprite. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_background_a36754df1deb720393217ade59da41557}\label{class_background_a36754df1deb720393217ade59da41557}} 
+\mbox{\Hypertarget{class_background_a8e03d13cc66a276ebd4ec1e6fc9e8c98}\label{class_background_a8e03d13cc66a276ebd4ec1e6fc9e8c98}} 
 \index{Background@{Background}!````~Background@{$\sim$\+Background}}
 \index{````~Background@{$\sim$\+Background}!Background@{Background}}
 \subsubsection{\texorpdfstring{$\sim$\+Background()}{~Background()}}
-{\footnotesize\ttfamily Background\+::$\sim$\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual Background\+::$\sim$\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-the \hyperlink{class_background}{Background}
+
+
+Destroys the \hyperlink{class_background}{Background}. 
 
 Destructor of the background
 
@@ -77,20 +84,24 @@ void
 \subsubsection{\texorpdfstring{Create\+Background()}{CreateBackground()}}
 {\footnotesize\ttfamily static \hyperlink{class_background}{Background}$\ast$ Background\+::\+Create\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-that creates backgrounds
+
+
+Factory that creates backgrounds. 
 
 Checks that the number of sprites didn\textquotesingle{}t pass the maxim amount established If you wish to create a \hyperlink{class_background}{Background} you must use this method. In case the maximum amount of sprites has been reached it will return nullptr. Otherwise it will return a pointer to a background. Note that it specifically uses the number of sprites as the background is by logic an sprite with movement.
 
 \begin{DoxyReturn}{Returns}
 Background$\ast$ returns the background created or nullptr if the maximum of sprites has been reached 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_background_ae3d10fe0882df48b0e1e861a7e69f37f}\label{class_background_ae3d10fe0882df48b0e1e861a7e69f37f}} 
+\mbox{\Hypertarget{class_background_a257183f6d077bbee005760813dbb0592}\label{class_background_a257183f6d077bbee005760813dbb0592}} 
 \index{Background@{Background}!draw@{draw}}
 \index{draw@{draw}!Background@{Background}}
 \subsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Background\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Background\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the graphic entity \hyperlink{class_background}{Background}
+
+
+Draws the graphic entity \hyperlink{class_background}{Background}. 
 
 Draws the background using S\+F\+ML to the window passed by reference, note that the background doesn\textquotesingle{}t use the transformationso of it\textquotesingle{}s parent, you can set them bou they won\textquotesingle{}t have any effect over the background.
 
@@ -102,13 +113,19 @@ void
 {\em window} & S\+F\+ML Render\+Window passed by reference \\
 \hline
 \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_sprite_a067dfc27f53ce4d983db29407be1c11e}{Sprite}.
+
 \mbox{\Hypertarget{class_background_ae4ae960cd876ef4a2f9fb6e0a7e8bc73}\label{class_background_ae4ae960cd876ef4a2f9fb6e0a7e8bc73}} 
 \index{Background@{Background}!init@{init}}
 \index{init@{init}!Background@{Background}}
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily uint8\+\_\+t Background\+::init (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const uint32\+\_\+t}]{width,  }\item[{const uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
 
-the backgorund using a texture
+
+
+Initializes the backgorund using a texture. 
 
 Initializes the width height and path of a background
 
@@ -124,34 +141,46 @@ uint8\+\_\+t indicates if there was an error in the execution error-\/$>$1 ok-\/
 {\em file\+\_\+path} & image that will be used for the texture \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_background_a544eaaa5b1b55c6adebe989633521ac3}\label{class_background_a544eaaa5b1b55c6adebe989633521ac3}} 
+\mbox{\Hypertarget{class_background_ad3559e8684aca155ae68d53374f3540d}\label{class_background_ad3559e8684aca155ae68d53374f3540d}} 
 \index{Background@{Background}!unuse@{unuse}}
 \index{unuse@{unuse}!Background@{Background}}
 \subsubsection{\texorpdfstring{unuse()}{unuse()}}
-{\footnotesize\ttfamily void Background\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Background\+::unuse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the values of the background
+
+
+Resets the values of the background. 
 
 Sets the attributes of the background to a default value to return it to a pool and being able to reuse it later.
 
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_background_acab58b65d4299d4bd51b8376e8c3e3d3}\label{class_background_acab58b65d4299d4bd51b8376e8c3e3d3}} 
+
+
+Reimplemented from \hyperlink{class_sprite_a26066db75daec637f436d4635418059a}{Sprite}.
+
+\mbox{\Hypertarget{class_background_af4a37c0ac474de5f65130cbef3d61379}\label{class_background_af4a37c0ac474de5f65130cbef3d61379}} 
 \index{Background@{Background}!update@{update}}
 \index{update@{update}!Background@{Background}}
 \subsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Background\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Background\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-the background position
 
-Updates the position of the background in the x,y axis if they are active
+
+Updates the background position. 
+
+Updates the position of the background in the x,y axis if they are active, implementation of the update interface
 
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
 
 
+Reimplemented from \hyperlink{class_sprite_a1070fccd6830382b72e3f3a8785afc8c}{Sprite}.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/background.\+h\end{DoxyCompactItemize}
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/include/background.\+h\end{DoxyCompactItemize}

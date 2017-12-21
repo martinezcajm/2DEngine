@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2D-Engine: GameManager Class Reference</title>
+<title>2D_game: GameManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">2D-Engine
+   <div id="projectname">2D_game
    </div>
   </td>
  </tr>
@@ -71,16 +71,14 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afa37ab23c040b5225d567d4c9ab854e1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_manager.html">GameManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#afa37ab23c040b5225d567d4c9ab854e1">instance</a> ()</td></tr>
+<tr class="memdesc:afa37ab23c040b5225d567d4c9ab854e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the instance of our <a class="el" href="class_game_manager.html">GameManager</a>.  <a href="#afa37ab23c040b5225d567d4c9ab854e1">More...</a><br /></td></tr>
 <tr class="separator:afa37ab23c040b5225d567d4c9ab854e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad396f4f48d604de789ac92784ef7f981"><td class="memItemLeft" align="right" valign="top"><a id="ad396f4f48d604de789ac92784ef7f981"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score_</b></td></tr>
-<tr class="separator:ad396f4f48d604de789ac92784ef7f981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81940880b045cfd42329e37b7cfa1a91"><td class="memItemLeft" align="right" valign="top"><a id="a81940880b045cfd42329e37b7cfa1a91"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>game_over_</b></td></tr>
-<tr class="separator:a81940880b045cfd42329e37b7cfa1a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad771037d720aa74e89014e014f7bdbf5"><td class="memItemLeft" align="right" valign="top"><a id="ad771037d720aa74e89014e014f7bdbf5"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>close_game_</b></td></tr>
+<tr class="separator:ad771037d720aa74e89014e014f7bdbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15c87fb0dc3bda2cbbda5dd336a57a2b"><td class="memItemLeft" align="right" valign="top"><a id="a15c87fb0dc3bda2cbbda5dd336a57a2b"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>is_editor_</b></td></tr>
 <tr class="separator:a15c87fb0dc3bda2cbbda5dd336a57a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,33 +88,12 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>is_editor_</b></td
 <tr class="memitem:a25947814a10e28bef0924528a93657c7"><td class="memItemLeft" align="right" valign="top"><a id="a25947814a10e28bef0924528a93657c7"></a>
 sf::Vector2u *&#160;</td><td class="memItemRight" valign="bottom"><b>window_size_</b></td></tr>
 <tr class="separator:a25947814a10e28bef0924528a93657c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a911f2466e518111f3ad4e2a6a4763280"><td class="memItemLeft" align="right" valign="top"><a id="a911f2466e518111f3ad4e2a6a4763280"></a>
-<a class="el" href="class_scene.html">Scene</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scene_</b></td></tr>
-<tr class="separator:a911f2466e518111f3ad4e2a6a4763280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56d62e457072c9147cc543216abf9595"><td class="memItemLeft" align="right" valign="top"><a id="a56d62e457072c9147cc543216abf9595"></a>
 <a class="el" href="class_native__dialogs.html">Native_dialogs</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>native_dialog_</b></td></tr>
 <tr class="separator:a56d62e457072c9147cc543216abf9595"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f7a8828ce4430012638d33057697473"><td class="memItemLeft" align="right" valign="top"><a id="a5f7a8828ce4430012638d33057697473"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ui_is_drawing_</b></td></tr>
-<tr class="separator:a5f7a8828ce4430012638d33057697473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a53a260fd5cca2b03cadb4b341f503f"><td class="memItemLeft" align="right" valign="top"><a id="a1a53a260fd5cca2b03cadb4b341f503f"></a>
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_position_</b></td></tr>
-<tr class="separator:a1a53a260fd5cca2b03cadb4b341f503f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3adcaa2c455b4858866d65e092166fcd"><td class="memItemLeft" align="right" valign="top"><a id="a3adcaa2c455b4858866d65e092166fcd"></a>
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>draw_origin_point_</b></td></tr>
-<tr class="separator:a3adcaa2c455b4858866d65e092166fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4b031b19c56f912a03c8949272a3f58"><td class="memItemLeft" align="right" valign="top"><a id="ac4b031b19c56f912a03c8949272a3f58"></a>
 sf::Clock&#160;</td><td class="memItemRight" valign="bottom"><b>deltaClock_</b></td></tr>
 <tr class="separator:ac4b031b19c56f912a03c8949272a3f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a997508d81087c8c43a582aee19bbaf00"><td class="memItemLeft" align="right" valign="top"><a id="a997508d81087c8c43a582aee19bbaf00"></a>
-<a class="el" href="class_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>drawing_rect_</b></td></tr>
-<tr class="separator:a997508d81087c8c43a582aee19bbaf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0698b68fc4f55194a68a4e4dbd2d8c5c"><td class="memItemLeft" align="right" valign="top"><a id="a0698b68fc4f55194a68a4e4dbd2d8c5c"></a>
-UiStatus&#160;</td><td class="memItemRight" valign="bottom"><b>status_ui_</b></td></tr>
-<tr class="separator:a0698b68fc4f55194a68a4e4dbd2d8c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a847f49a1b8ebfde618b1496dd73ac284"><td class="memItemLeft" align="right" valign="top"><a id="a847f49a1b8ebfde618b1496dd73ac284"></a>
-UiEditType&#160;</td><td class="memItemRight" valign="bottom"><b>edit_type_ui_</b></td></tr>
-<tr class="separator:a847f49a1b8ebfde618b1496dd73ac284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48121c2bb9a61473fc2f693d6db33bee"><td class="memItemLeft" align="right" valign="top"><a id="a48121c2bb9a61473fc2f693d6db33bee"></a>
 MouseStatus&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_status_</b></td></tr>
 <tr class="separator:a48121c2bb9a61473fc2f693d6db33bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,24 +103,39 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>selected_type_</b>
 <tr class="memitem:a4c9c1a365ad3f8db30406bffa65b2a8a"><td class="memItemLeft" align="right" valign="top"><a id="a4c9c1a365ad3f8db30406bffa65b2a8a"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>selected_id_</b></td></tr>
 <tr class="separator:a4c9c1a365ad3f8db30406bffa65b2a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5bd354afb80e72c06c337f429cea333"><td class="memItemLeft" align="right" valign="top"><a id="aa5bd354afb80e72c06c337f429cea333"></a>
-<a class="el" href="class_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>rect_selection_</b></td></tr>
-<tr class="separator:aa5bd354afb80e72c06c337f429cea333"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a261c6a163e135c248aed7805271b95b8"><td class="memItemLeft" align="right" valign="top"><a id="a261c6a163e135c248aed7805271b95b8"></a>
-<a class="el" href="class_label.html">Label</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>label_selection_</b></td></tr>
-<tr class="separator:a261c6a163e135c248aed7805271b95b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a003552c00376d99c1855e7d9dbff69de"><td class="memItemLeft" align="right" valign="top"><a id="a003552c00376d99c1855e7d9dbff69de"></a>
-<a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>sprite_selection_</b></td></tr>
-<tr class="separator:a003552c00376d99c1855e7d9dbff69de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9ea4edd8eac6039bf07364f1e6d5d73"><td class="memItemLeft" align="right" valign="top"><a id="af9ea4edd8eac6039bf07364f1e6d5d73"></a>
-<a class="el" href="class_background.html">Background</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>background_selection_</b></td></tr>
-<tr class="separator:af9ea4edd8eac6039bf07364f1e6d5d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a55c05c5133d56a9a5ba9ee1b2026e8"><td class="memItemLeft" align="right" valign="top"><a id="a1a55c05c5133d56a9a5ba9ee1b2026e8"></a>
 sf::Font&#160;</td><td class="memItemRight" valign="bottom"><b>arial_</b></td></tr>
 <tr class="separator:a1a55c05c5133d56a9a5ba9ee1b2026e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16df94d56453c106931bf9bb6189bb66"><td class="memItemLeft" align="right" valign="top"><a id="a16df94d56453c106931bf9bb6189bb66"></a>
 sf::Font&#160;</td><td class="memItemRight" valign="bottom"><b>verdana_</b></td></tr>
 <tr class="separator:a16df94d56453c106931bf9bb6189bb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add51e6810cc660aecebdf5cbf2d73b50"><td class="memItemLeft" align="right" valign="top"><a id="add51e6810cc660aecebdf5cbf2d73b50"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>player1Left_</b></td></tr>
+<tr class="separator:add51e6810cc660aecebdf5cbf2d73b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ec4169d82f25d4470d3f7215073280"><td class="memItemLeft" align="right" valign="top"><a id="a37ec4169d82f25d4470d3f7215073280"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>player1Right_</b></td></tr>
+<tr class="separator:a37ec4169d82f25d4470d3f7215073280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbf906aa02c7dd30955a6f71eed8038"><td class="memItemLeft" align="right" valign="top"><a id="a1cbf906aa02c7dd30955a6f71eed8038"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>new_game_</b></td></tr>
+<tr class="separator:a1cbf906aa02c7dd30955a6f71eed8038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81940880b045cfd42329e37b7cfa1a91"><td class="memItemLeft" align="right" valign="top"><a id="a81940880b045cfd42329e37b7cfa1a91"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>game_over_</b></td></tr>
+<tr class="separator:a81940880b045cfd42329e37b7cfa1a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2164107058cfce52b5e8799c09ab8145"><td class="memItemLeft" align="right" valign="top"><a id="a2164107058cfce52b5e8799c09ab8145"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>is_ball_in_movement_</b></td></tr>
+<tr class="separator:a2164107058cfce52b5e8799c09ab8145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204290801fd77870f8224dd4a70e5f65"><td class="memItemLeft" align="right" valign="top"><a id="a204290801fd77870f8224dd4a70e5f65"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>player_speed_</b></td></tr>
+<tr class="separator:a204290801fd77870f8224dd4a70e5f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f91050afcc4b728ecff51e4062557d9"><td class="memItemLeft" align="right" valign="top"><a id="a4f91050afcc4b728ecff51e4062557d9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>lives_</b></td></tr>
+<tr class="separator:a4f91050afcc4b728ecff51e4062557d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbbdc7dc829fb558eeddf8e7aae384e2"><td class="memItemLeft" align="right" valign="top"><a id="abbbdc7dc829fb558eeddf8e7aae384e2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>score_</b></td></tr>
+<tr class="separator:abbbdc7dc829fb558eeddf8e7aae384e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39199aac3993314cd076ed09e8cd4527"><td class="memItemLeft" align="right" valign="top"><a id="a39199aac3993314cd076ed09e8cd4527"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>highest_score_</b></td></tr>
+<tr class="separator:a39199aac3993314cd076ed09e8cd4527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -174,14 +166,15 @@ static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>sele
   </tr>
 </table>
 </div><div class="memdoc">
-<p>the instance of our <a class="el" href="class_game_manager.html">GameManager</a></p>
+
+<p>Gets the instance of our <a class="el" href="class_game_manager.html">GameManager</a>. </p>
 <p>In charge of creating our <a class="el" href="class_game_manager.html">GameManager</a> singleton in case it doesn't exist or return it's instance if it exists.</p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game_manager.html">GameManager</a>&amp; instance </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="game__manager_8h_source.html">game_manager.h</a></li>
+<li>C:/ESAT/2pa_ma_martinezcajm/2d_engine/include/<a class="el" href="game__manager_8h_source.html">game_manager.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,129 @@
+\hypertarget{struct_im_font_atlas}{}\section{Im\+Font\+Atlas Struct Reference}
+\label{struct_im_font_atlas}\index{Im\+Font\+Atlas@{Im\+Font\+Atlas}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_im_font_atlas_1_1_custom_rect}{Custom\+Rect}
+\item 
+struct \hyperlink{struct_im_font_atlas_1_1_glyph_ranges_builder}{Glyph\+Ranges\+Builder}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_ad01c0f19a95d37a9e5ebab1e54525625}\label{struct_im_font_atlas_ad01c0f19a95d37a9e5ebab1e54525625}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font} (const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a9d2b4a94579bf603a0d2662cd8348cbd}\label{struct_im_font_atlas_a9d2b4a94579bf603a0d2662cd8348cbd}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font\+Default} (const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a26d0333bae95222ca2c2fd2886eae562}\label{struct_im_font_atlas_a26d0333bae95222ca2c2fd2886eae562}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font\+From\+File\+T\+TF} (const char $\ast$filename, float size\+\_\+pixels, const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg=N\+U\+LL, const Im\+Wchar $\ast$glyph\+\_\+ranges=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_adb01397920998a18e25bd8fed3f791a7}\label{struct_im_font_atlas_adb01397920998a18e25bd8fed3f791a7}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font\+From\+Memory\+T\+TF} (void $\ast$font\+\_\+data, int font\+\_\+size, float size\+\_\+pixels, const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg=N\+U\+LL, const Im\+Wchar $\ast$glyph\+\_\+ranges=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a579bb434bd116ea9ac4f892652ccefdb}\label{struct_im_font_atlas_a579bb434bd116ea9ac4f892652ccefdb}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font\+From\+Memory\+Compressed\+T\+TF} (const void $\ast$compressed\+\_\+font\+\_\+data, int compressed\+\_\+font\+\_\+size, float size\+\_\+pixels, const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg=N\+U\+LL, const Im\+Wchar $\ast$glyph\+\_\+ranges=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_ab43b930beb57c0b998f42f4586677956}\label{struct_im_font_atlas_ab43b930beb57c0b998f42f4586677956}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI \hyperlink{struct_im_font}{Im\+Font} $\ast$ {\bfseries Add\+Font\+From\+Memory\+Compressed\+Base85\+T\+TF} (const char $\ast$compressed\+\_\+font\+\_\+data\+\_\+base85, float size\+\_\+pixels, const \hyperlink{struct_im_font_config}{Im\+Font\+Config} $\ast$font\+\_\+cfg=N\+U\+LL, const Im\+Wchar $\ast$glyph\+\_\+ranges=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a3ede4bd513bec044c77ac392ad9c6e86}\label{struct_im_font_atlas_a3ede4bd513bec044c77ac392ad9c6e86}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Clear\+Tex\+Data} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a3f5bcbb7a2683b1af106fcf4e1217662}\label{struct_im_font_atlas_a3f5bcbb7a2683b1af106fcf4e1217662}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Clear\+Input\+Data} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_ad5c2560d708bd0c389e9bd9da2d9b055}\label{struct_im_font_atlas_ad5c2560d708bd0c389e9bd9da2d9b055}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Clear\+Fonts} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a8f6d01c671d8670f991ba651bbaf7e77}\label{struct_im_font_atlas_a8f6d01c671d8670f991ba651bbaf7e77}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Clear} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a81e39e30dffa4dd7e458a53297451e27}\label{struct_im_font_atlas_a81e39e30dffa4dd7e458a53297451e27}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI bool {\bfseries Build} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_aeff1a1044a1ab68d8f27bb2819cd9f44}\label{struct_im_font_atlas_aeff1a1044a1ab68d8f27bb2819cd9f44}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Get\+Tex\+Data\+As\+Alpha8} (unsigned char $\ast$$\ast$out\+\_\+pixels, int $\ast$out\+\_\+width, int $\ast$out\+\_\+height, int $\ast$out\+\_\+bytes\+\_\+per\+\_\+pixel=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a8abb0c4e67ebb38249d4df71218c4eec}\label{struct_im_font_atlas_a8abb0c4e67ebb38249d4df71218c4eec}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Get\+Tex\+Data\+As\+R\+G\+B\+A32} (unsigned char $\ast$$\ast$out\+\_\+pixels, int $\ast$out\+\_\+width, int $\ast$out\+\_\+height, int $\ast$out\+\_\+bytes\+\_\+per\+\_\+pixel=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a96ffd1956c11dac4f79b43c095828445}\label{struct_im_font_atlas_a96ffd1956c11dac4f79b43c095828445}} 
+void {\bfseries Set\+Tex\+ID} (Im\+Texture\+ID id)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_adec0df140eb1dc01c2a22a5253d62820}\label{struct_im_font_atlas_adec0df140eb1dc01c2a22a5253d62820}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Default} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_ac70e07bd35913661c8fc50413b3bf969}\label{struct_im_font_atlas_ac70e07bd35913661c8fc50413b3bf969}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Korean} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a2654afbbf73835bf08278cdc6c181a96}\label{struct_im_font_atlas_a2654afbbf73835bf08278cdc6c181a96}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Japanese} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_afc5807dd42b3a644a9a1e0a95c13cb08}\label{struct_im_font_atlas_afc5807dd42b3a644a9a1e0a95c13cb08}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Chinese} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a5aaff3357d9ed401ce451c39942e869e}\label{struct_im_font_atlas_a5aaff3357d9ed401ce451c39942e869e}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Cyrillic} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a4985c51d8a5270ff027f13fa44a14371}\label{struct_im_font_atlas_a4985c51d8a5270ff027f13fa44a14371}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI const Im\+Wchar $\ast$ {\bfseries Get\+Glyph\+Ranges\+Thai} ()
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_ac51952803d2205f28ca9fc996c5f6243}\label{struct_im_font_atlas_ac51952803d2205f28ca9fc996c5f6243}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI int {\bfseries Add\+Custom\+Rect\+Regular} (unsigned int id, int width, int height)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a5643182be4e3f1a442cfa6cdc0321c7c}\label{struct_im_font_atlas_a5643182be4e3f1a442cfa6cdc0321c7c}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI int {\bfseries Add\+Custom\+Rect\+Font\+Glyph} (\hyperlink{struct_im_font}{Im\+Font} $\ast$font, Im\+Wchar id, int width, int height, float advance\+\_\+x, const \hyperlink{struct_im_vec2}{Im\+Vec2} \&offset=\hyperlink{struct_im_vec2}{Im\+Vec2}(0, 0))
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a70e062104b11a213eb3d177151c418e2}\label{struct_im_font_atlas_a70e062104b11a213eb3d177151c418e2}} 
+I\+M\+G\+U\+I\+\_\+\+A\+PI void {\bfseries Calc\+Custom\+Rect\+UV} (const \hyperlink{struct_im_font_atlas_1_1_custom_rect}{Custom\+Rect} $\ast$rect, \hyperlink{struct_im_vec2}{Im\+Vec2} $\ast$out\+\_\+uv\+\_\+min, \hyperlink{struct_im_vec2}{Im\+Vec2} $\ast$out\+\_\+uv\+\_\+max)
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a4d4403e920f1d93307936781050b52ee}\label{struct_im_font_atlas_a4d4403e920f1d93307936781050b52ee}} 
+const \hyperlink{struct_im_font_atlas_1_1_custom_rect}{Custom\+Rect} $\ast$ {\bfseries Get\+Custom\+Rect\+By\+Index} (int index) const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a1d7be9a6190c75706f80bda16c87f28e}\label{struct_im_font_atlas_a1d7be9a6190c75706f80bda16c87f28e}} 
+Im\+Texture\+ID {\bfseries Tex\+ID}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_aa1d62d7da5633f894dbe881547e9de7c}\label{struct_im_font_atlas_aa1d62d7da5633f894dbe881547e9de7c}} 
+int {\bfseries Tex\+Desired\+Width}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a32034b2aac4616d8c27ee666a1fd1b62}\label{struct_im_font_atlas_a32034b2aac4616d8c27ee666a1fd1b62}} 
+int {\bfseries Tex\+Glyph\+Padding}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a443ea9e7c4cf85ee791ffe891280eff3}\label{struct_im_font_atlas_a443ea9e7c4cf85ee791ffe891280eff3}} 
+unsigned char $\ast$ {\bfseries Tex\+Pixels\+Alpha8}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a41163489a5b8060f405c56e22590cba5}\label{struct_im_font_atlas_a41163489a5b8060f405c56e22590cba5}} 
+unsigned int $\ast$ {\bfseries Tex\+Pixels\+R\+G\+B\+A32}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a2d0662502433e7a87b3aa4681ba17aa3}\label{struct_im_font_atlas_a2d0662502433e7a87b3aa4681ba17aa3}} 
+int {\bfseries Tex\+Width}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a5ef74d37ec01d9e8aac5c57433296ce3}\label{struct_im_font_atlas_a5ef74d37ec01d9e8aac5c57433296ce3}} 
+int {\bfseries Tex\+Height}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_af1d05221e9a1607d7f625df92a4f9b7e}\label{struct_im_font_atlas_af1d05221e9a1607d7f625df92a4f9b7e}} 
+\hyperlink{struct_im_vec2}{Im\+Vec2} {\bfseries Tex\+Uv\+White\+Pixel}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a0198aeb17ef8bb810ccc8db103b93b1f}\label{struct_im_font_atlas_a0198aeb17ef8bb810ccc8db103b93b1f}} 
+\hyperlink{class_im_vector}{Im\+Vector}$<$ \hyperlink{struct_im_font}{Im\+Font} $\ast$ $>$ {\bfseries Fonts}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a6289931d958f734fdc2ac1fadec99577}\label{struct_im_font_atlas_a6289931d958f734fdc2ac1fadec99577}} 
+\hyperlink{class_im_vector}{Im\+Vector}$<$ \hyperlink{struct_im_font_atlas_1_1_custom_rect}{Custom\+Rect} $>$ {\bfseries Custom\+Rects}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_afa4f7459807763d032fe2d0022fc0823}\label{struct_im_font_atlas_afa4f7459807763d032fe2d0022fc0823}} 
+\hyperlink{class_im_vector}{Im\+Vector}$<$ \hyperlink{struct_im_font_config}{Im\+Font\+Config} $>$ {\bfseries Config\+Data}
+\item 
+\mbox{\Hypertarget{struct_im_font_atlas_a608ad12c2ccf1eed97b63454e52ccbe8}\label{struct_im_font_atlas_a608ad12c2ccf1eed97b63454e52ccbe8}} 
+int {\bfseries Custom\+Rect\+Ids} \mbox{[}1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/deps/imgui/imgui.\+h\item 
+C\+:/\+E\+S\+A\+T/2pa\+\_\+ma\+\_\+martinezcajm/2d\+\_\+engine/deps/imgui/imgui\+\_\+draw.\+cpp\end{DoxyCompactItemize}
