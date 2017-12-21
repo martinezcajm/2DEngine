@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __GAME_H__
 #define __GAME_H__ 1
 
@@ -12,14 +13,14 @@
   */
 class  Game{
  public:
-  /** @Contruct the game
+  /** @brief Contruct the game
   *
   * Constructor of the game
   *
   * @return void
   */
   Game();
-  /** @Destruct the game
+  /** @brief Destruct the game
   *
   * Destructor of the game
   *
@@ -27,64 +28,62 @@ class  Game{
   */
   ~Game();
 
-  /** @Initializes the game
+  /** @brief Initializes the game
   *
   * Initializes the necesary objects for the game.
   *
   * @return void
   */
   void init();
-  /** @Check the inputs
+  /** @brief Check the inputs
   *
   * Check the inputs and change the game stats for do the uptade.
   *
   * @return void
   */
   void processInput();
-  /** @Update the game
+  /** @brief Update the game
   *
   * Update entitites and the game state.
   *
   * @return void
   */
   void updateGame();
-  /** @Render the game entities
+  /** @brief Render the game entities
   *
   * Draw all the entities of the game
   *
   * @return void
   */
   void renderGame();
-  /** @Update the game
+  /** @brief Update the game
   *
   * Update entitites and the game state.
   *
   * @return void
   */
   void updateEditor();
-  /** @Render the game entities
+  /** @brief Render the game entities
   *
   * Draw all the entities of the game and the UI of the editor
   *
   * @return void
   */
   void renderEditor();
-  /** @Process the game loop
+  /** @brief Process the game loop
   *
   * Process the game loop.
   *
   * @return void
   */
   void mainLoop();
-  /** @Finis the game
+  /** @brief Finish the game
   *
   * Free the memoryof the elements of the game
   *
   * @return void
   */
   void finish();
-
-
   
   GameManager& GM = GameManager::instance();
   Pool& POOL = Pool::instance();

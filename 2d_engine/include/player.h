@@ -1,22 +1,23 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __PLAYER_H__
 #define __PLAYER_H__ 1
 
 #include "sprite.h"
 #include "game_manager.h"
 
-/** @Graphic entity Player
+/** @brief Graphic entity Player
 *
 * Class used to represent a player. 
 *
 */
 class Player : public Sprite{
  public:
-  /** @Deletes a player
+  /** @brief Deletes a player
   *
   * In case the player stored it's own texture in the hip it needs to free it.
   */
   virtual ~Player() {};
-  /** @Initializes the player using a texture
+  /** @brief Initializes the player using a texture
   *
   * Initializes the position and transformations of a player using an 
   * sf::Texture as texture.
@@ -36,7 +37,7 @@ class Player : public Sprite{
             const int32_t speed_x, const int32_t speed_y,
             const sf::Texture &texture, const std::string &texture_path);
   
-  /** @Initializes the player using a buffer from memory for the texture
+  /** @brief Initializes the player using a buffer from memory for the texture
   *
   * Initializes the position and transformations of a player using an 
   * sf::Texture as texture from memory.
@@ -59,7 +60,7 @@ class Player : public Sprite{
             const std::string &texture_path);
     
   
-  /** @Initializes the player using an image file for the texture
+  /** @brief Initializes the player using an image file for the texture
   *
   * Initializes the position and transformations of a player using an 
   * file as texture.
@@ -80,7 +81,7 @@ class Player : public Sprite{
                const std::string &file_path);
 
 
-  /** @Factory that creates players
+  /** @brief Factory that creates players
   *
   * Checks that the number of players didn't pass the maxim amount established
   * If you wish to create a Player you must use this method. In case the
@@ -104,14 +105,14 @@ class Player : public Sprite{
   sf::Vector2i speed_;
   GameManager& GM = GameManager::instance();
  protected:
-  /** @Player constructor
+  /** @brief Player constructor
   *
   * Player constructor used by the factory to create player
   *
   * @return *Player
   */
   Player();
-  /** @Player copy constructor
+  /** @brief Player copy constructor
   *
   * Player copy constructor without anything to disable it.
   *

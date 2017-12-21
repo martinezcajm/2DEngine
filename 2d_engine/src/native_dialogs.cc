@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #include "native_dialogs.h"
 
 void Native_dialogs::messageBox(const char *title, const char *message, 

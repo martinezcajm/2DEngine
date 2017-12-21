@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 // Comments can be found at the header
 #include "scene.h"
 #include "game_manager.h"
@@ -459,10 +460,10 @@ void Scene::saveScene(const std::string scene_path){
     Sprite* sprite_tmp = nullptr;
     Background* background_tmp = nullptr;
     
-    Wall* wall_tmp = nullptr;
-    Brick* brick_tmp = nullptr;
-    Ball* ball_tmp = nullptr;
-    Player* player_tmp = nullptr;
+    wall_tmp_ = nullptr;
+    brick_tmp_ = nullptr;
+    ball_tmp_ = nullptr;
+    player_tmp_ = nullptr;
 
     switch(it->second->type())
     {
@@ -565,97 +566,97 @@ void Scene::saveScene(const std::string scene_path){
         break;
         
       case Entity::kWall:
-        wall_tmp = static_cast<Wall*>(it->second);
+        wall_tmp_ = static_cast<Wall*>(it->second);
 
-        j_wall["tag_"] = wall_tmp->tag_;
-        j_wall["active_"] = wall_tmp->active_;
-        j_wall["z_order_"] = wall_tmp->z_order_;
-        j_wall["rotation_"] = wall_tmp->rotation_;
-        j_wall["position_"]["x"] = wall_tmp->position_.x;
-        j_wall["position_"]["y"] = wall_tmp->position_.y;
-        j_wall["scale_"]["x"] =wall_tmp->scale_.x;
-        j_wall["scale_"]["y"] = wall_tmp->scale_.y;
-        j_wall["color_"]["r"] = wall_tmp->color_.r;
-        j_wall["color_"]["g"] = wall_tmp->color_.g;
-        j_wall["color_"]["b"] = wall_tmp->color_.b;
-        j_wall["color_"]["a"] = wall_tmp->color_.a;
-        j_wall["is_solid_"] = wall_tmp->is_solid_;
-        j_wall["dimensions_"]["x"] = wall_tmp->dimensions_.x;
-        j_wall["dimensions_"]["y"] = wall_tmp->dimensions_.y;
-        j_wall["rgba_fill_"]["r"] = wall_tmp->rgba_fill_.r;
-        j_wall["rgba_fill_"]["g"] = wall_tmp->rgba_fill_.g;
-        j_wall["rgba_fill_"]["b"] = wall_tmp->rgba_fill_.b;
-        j_wall["rgba_fill_"]["a"] = wall_tmp->rgba_fill_.a;
+        j_wall["tag_"] = wall_tmp_->tag_;
+        j_wall["active_"] = wall_tmp_->active_;
+        j_wall["z_order_"] = wall_tmp_->z_order_;
+        j_wall["rotation_"] = wall_tmp_->rotation_;
+        j_wall["position_"]["x"] = wall_tmp_->position_.x;
+        j_wall["position_"]["y"] = wall_tmp_->position_.y;
+        j_wall["scale_"]["x"] =wall_tmp_->scale_.x;
+        j_wall["scale_"]["y"] = wall_tmp_->scale_.y;
+        j_wall["color_"]["r"] = wall_tmp_->color_.r;
+        j_wall["color_"]["g"] = wall_tmp_->color_.g;
+        j_wall["color_"]["b"] = wall_tmp_->color_.b;
+        j_wall["color_"]["a"] = wall_tmp_->color_.a;
+        j_wall["is_solid_"] = wall_tmp_->is_solid_;
+        j_wall["dimensions_"]["x"] = wall_tmp_->dimensions_.x;
+        j_wall["dimensions_"]["y"] = wall_tmp_->dimensions_.y;
+        j_wall["rgba_fill_"]["r"] = wall_tmp_->rgba_fill_.r;
+        j_wall["rgba_fill_"]["g"] = wall_tmp_->rgba_fill_.g;
+        j_wall["rgba_fill_"]["b"] = wall_tmp_->rgba_fill_.b;
+        j_wall["rgba_fill_"]["a"] = wall_tmp_->rgba_fill_.a;
 
         j_walls.push_back(j_wall);
         break;
       case Entity::kBrick:
-        brick_tmp = static_cast<Brick*>(it->second);
+        brick_tmp_ = static_cast<Brick*>(it->second);
 
-        j_brick["tag_"] = brick_tmp->tag_;
-        j_brick["active_"] = brick_tmp->active_;
-        j_brick["z_order_"] = brick_tmp->z_order_;
-        j_brick["rotation_"] = brick_tmp->rotation_;
-        j_brick["position_"]["x"] = brick_tmp->position_.x;
-        j_brick["position_"]["y"] = brick_tmp->position_.y;
-        j_brick["scale_"]["x"] =brick_tmp->scale_.x;
-        j_brick["scale_"]["y"] = brick_tmp->scale_.y;
-        j_brick["color_"]["r"] = brick_tmp->color_.r;
-        j_brick["color_"]["g"] = brick_tmp->color_.g;
-        j_brick["color_"]["b"] = brick_tmp->color_.b;
-        j_brick["color_"]["a"] = brick_tmp->color_.a;
-        j_brick["is_solid_"] = brick_tmp->is_solid_;
-        j_brick["dimensions_"]["x"] = brick_tmp->dimensions_.x;
-        j_brick["dimensions_"]["y"] = brick_tmp->dimensions_.y;
-        j_brick["rgba_fill_"]["r"] = brick_tmp->rgba_fill_.r;
-        j_brick["rgba_fill_"]["g"] = brick_tmp->rgba_fill_.g;
-        j_brick["rgba_fill_"]["b"] = brick_tmp->rgba_fill_.b;
-        j_brick["rgba_fill_"]["a"] = brick_tmp->rgba_fill_.a;
-        j_brick["lives_"] = brick_tmp->lives_;
+        j_brick["tag_"] = brick_tmp_->tag_;
+        j_brick["active_"] = brick_tmp_->active_;
+        j_brick["z_order_"] = brick_tmp_->z_order_;
+        j_brick["rotation_"] = brick_tmp_->rotation_;
+        j_brick["position_"]["x"] = brick_tmp_->position_.x;
+        j_brick["position_"]["y"] = brick_tmp_->position_.y;
+        j_brick["scale_"]["x"] =brick_tmp_->scale_.x;
+        j_brick["scale_"]["y"] = brick_tmp_->scale_.y;
+        j_brick["color_"]["r"] = brick_tmp_->color_.r;
+        j_brick["color_"]["g"] = brick_tmp_->color_.g;
+        j_brick["color_"]["b"] = brick_tmp_->color_.b;
+        j_brick["color_"]["a"] = brick_tmp_->color_.a;
+        j_brick["is_solid_"] = brick_tmp_->is_solid_;
+        j_brick["dimensions_"]["x"] = brick_tmp_->dimensions_.x;
+        j_brick["dimensions_"]["y"] = brick_tmp_->dimensions_.y;
+        j_brick["rgba_fill_"]["r"] = brick_tmp_->rgba_fill_.r;
+        j_brick["rgba_fill_"]["g"] = brick_tmp_->rgba_fill_.g;
+        j_brick["rgba_fill_"]["b"] = brick_tmp_->rgba_fill_.b;
+        j_brick["rgba_fill_"]["a"] = brick_tmp_->rgba_fill_.a;
+        j_brick["lives_"] = brick_tmp_->lives_;
 
         j_bricks.push_back(j_brick);
         break;
       case Entity::kBall:
-        ball_tmp = static_cast<Ball*>(it->second);
+        ball_tmp_ = static_cast<Ball*>(it->second);
 
-        j_ball["tag_"] = ball_tmp->tag_;    
-        j_ball["active_"] = ball_tmp->active_;
-        j_ball["z_order_"] = ball_tmp->z_order_;
-        j_ball["rotation_"] = ball_tmp->rotation_;
-        j_ball["position_"]["x"] = ball_tmp->position_.x;
-        j_ball["position_"]["y"] = ball_tmp->position_.y;
-        j_ball["scale_"]["x"] = ball_tmp->scale_.x;
-        j_ball["scale_"]["y"] = ball_tmp->scale_.y;
-        j_ball["color_"]["r"] = ball_tmp->color_.r;
-        j_ball["color_"]["g"] = ball_tmp->color_.g;
-        j_ball["color_"]["b"] = ball_tmp->color_.b;
-        j_ball["color_"]["a"] = ball_tmp->color_.a;
-        j_ball["texture_dir_"] = ball_tmp->texture_dir_;
-        j_ball["origin_"] = ball_tmp->origin();
-        j_ball["speed_"]["x"] = ball_tmp->speed_.x;
-        j_ball["speed_"]["y"] = ball_tmp->speed_.y;
+        j_ball["tag_"] = ball_tmp_->tag_;    
+        j_ball["active_"] = ball_tmp_->active_;
+        j_ball["z_order_"] = ball_tmp_->z_order_;
+        j_ball["rotation_"] = ball_tmp_->rotation_;
+        j_ball["position_"]["x"] = ball_tmp_->position_.x;
+        j_ball["position_"]["y"] = ball_tmp_->position_.y;
+        j_ball["scale_"]["x"] = ball_tmp_->scale_.x;
+        j_ball["scale_"]["y"] = ball_tmp_->scale_.y;
+        j_ball["color_"]["r"] = ball_tmp_->color_.r;
+        j_ball["color_"]["g"] = ball_tmp_->color_.g;
+        j_ball["color_"]["b"] = ball_tmp_->color_.b;
+        j_ball["color_"]["a"] = ball_tmp_->color_.a;
+        j_ball["texture_dir_"] = ball_tmp_->texture_dir_;
+        j_ball["origin_"] = ball_tmp_->origin();
+        j_ball["speed_"]["x"] = ball_tmp_->speed_.x;
+        j_ball["speed_"]["y"] = ball_tmp_->speed_.y;
     
         j_balls.push_back(j_ball);
         break;
       case Entity::kPlayer:
-        player_tmp = static_cast<Player*>(it->second);
+        player_tmp_ = static_cast<Player*>(it->second);
 
-        j_player["tag_"] = player_tmp->tag_;    
-        j_player["active_"] = player_tmp->active_;
-        j_player["z_order_"] = player_tmp->z_order_;
-        j_player["rotation_"] = player_tmp->rotation_;
-        j_player["position_"]["x"] = player_tmp->position_.x;
-        j_player["position_"]["y"] = player_tmp->position_.y;
-        j_player["scale_"]["x"] = player_tmp->scale_.x;
-        j_player["scale_"]["y"] = player_tmp->scale_.y;
-        j_player["color_"]["r"] = player_tmp->color_.r;
-        j_player["color_"]["g"] = player_tmp->color_.g;
-        j_player["color_"]["b"] = player_tmp->color_.b;
-        j_player["color_"]["a"] = player_tmp->color_.a;
-        j_player["texture_dir_"] = player_tmp->texture_dir_;
-        j_player["origin_"] = player_tmp->origin();
-        j_player["speed_"]["x"] = player_tmp->speed_.x;
-        j_player["speed_"]["y"] = player_tmp->speed_.y;
+        j_player["tag_"] = player_tmp_->tag_;    
+        j_player["active_"] = player_tmp_->active_;
+        j_player["z_order_"] = player_tmp_->z_order_;
+        j_player["rotation_"] = player_tmp_->rotation_;
+        j_player["position_"]["x"] = player_tmp_->position_.x;
+        j_player["position_"]["y"] = player_tmp_->position_.y;
+        j_player["scale_"]["x"] = player_tmp_->scale_.x;
+        j_player["scale_"]["y"] = player_tmp_->scale_.y;
+        j_player["color_"]["r"] = player_tmp_->color_.r;
+        j_player["color_"]["g"] = player_tmp_->color_.g;
+        j_player["color_"]["b"] = player_tmp_->color_.b;
+        j_player["color_"]["a"] = player_tmp_->color_.a;
+        j_player["texture_dir_"] = player_tmp_->texture_dir_;
+        j_player["origin_"] = player_tmp_->origin();
+        j_player["speed_"]["x"] = player_tmp_->speed_.x;
+        j_player["speed_"]["y"] = player_tmp_->speed_.y;
     
         j_players.push_back(j_player);
         break;
@@ -728,7 +729,7 @@ uint32_t Scene::checkCollision(sf::Vector2f& position){
   return 0;
 }
 
-std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
+std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(int tag){
   std::list<DrawableEntity*> return_list;
   
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
@@ -743,7 +744,7 @@ std::list<DrawableEntity*> Scene::getDrawableEntitiesByTag(uint32_t tag){
 }
 
 std::list<DrawableEntity*> Scene::getDrawableEntitiesBySelectionTag(
-  uint32_t selection_tag){
+  uint8_t selection_tag){
   std::list<DrawableEntity*> return_list;
   
   for (std::unordered_map<uint32_t, DrawableEntity*>::iterator it =
@@ -768,89 +769,89 @@ void Scene::update(){
       case Entity::kBrick:
         break;
       case Entity::kBall:
-        ball_tmp = static_cast<Ball*>(it->second);
+        ball_tmp_ = static_cast<Ball*>(it->second);
 
 
-        if(ball_tmp->position_.y > 750){
-          list_tmp = getDrawableEntitiesByTag(12);
+        if(ball_tmp_->position_.y > 750){
+          list_tmp_ = getDrawableEntitiesByTag(12);
           for (std::list<DrawableEntity*>::const_iterator it2 =
-            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+            list_tmp_.begin(); it2 != list_tmp_.end(); ++it2) {
 
             // Reset Player position
-            player_tmp = static_cast<Player*>(*it2);
-            player_tmp->position_.x = 275;
-            player_tmp->position_.y = 725;
+            player_tmp_ = static_cast<Player*>(*it2);
+            player_tmp_->position_.x = 275;
+            player_tmp_->position_.y = 725;
           }
         }
         else{
           // Check Collision with Walls
-          list_tmp = getDrawableEntitiesByTag(10);
+          list_tmp_ = getDrawableEntitiesByTag(10);
           for (std::list<DrawableEntity*>::const_iterator it2 =
-            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+            list_tmp_.begin(); it2 != list_tmp_.end(); ++it2) {
 
             if((*it2)->active_){
-              fRect =  it->second->getBoundaries();
-              posTop.x = fRect.left + (fRect.width / 2);
-              posTop.y = fRect.top;
+              f_rect =  it->second->getBoundaries();
+              pos_top_.x = f_rect.left + (f_rect.width / 2);
+              pos_top_.y = f_rect.top;
 
-              posDown.x = fRect.left + (fRect.width / 2);
-              posDown.y = fRect.top + fRect.height;
+              pos_down_.x = f_rect.left + (f_rect.width / 2);
+              pos_down_.y = f_rect.top + f_rect.height;
 
-              posLeft.x = fRect.left;
-              posLeft.y = fRect.top + (fRect.height / 2);
+              pos_left_.x = f_rect.left;
+              pos_left_.y = f_rect.top + (f_rect.height / 2);
 
-              posRight.x = fRect.left + fRect.width;
-              posRight.y = fRect.top + (fRect.height / 2);
+              pos_right_.x = f_rect.left + f_rect.width;
+              pos_right_.y = f_rect.top + (f_rect.height / 2);
 
-              if((*it2)->checkCollision(posTop)){
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posDown)){
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posLeft)){
-                ball_tmp->speed_.x *= -1;
-              }else if((*it2)->checkCollision(posRight)){
-                ball_tmp->speed_.x *= -1;
+              if((*it2)->checkCollision(pos_top_)){
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_down_)){
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_left_)){
+                ball_tmp_->speed_.x *= -1;
+              }else if((*it2)->checkCollision(pos_right_)){
+                ball_tmp_->speed_.x *= -1;
               }
             }
           }
 
           // Check Collision with Bricks
-          list_tmp = getDrawableEntitiesByTag(11);
+          list_tmp_ = getDrawableEntitiesByTag(11);
           count_bricks_ = 0;
           for (std::list<DrawableEntity*>::const_iterator it2 =
-            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+            list_tmp_.begin(); it2 != list_tmp_.end(); ++it2) {
 
             if((*it2)->active_){
               count_bricks_ += 1;
-              fRect =  it->second->getBoundaries();
-              posTop.x = fRect.left + (fRect.width / 2);
-              posTop.y = fRect.top;
+              f_rect =  it->second->getBoundaries();
+              pos_top_.x = f_rect.left + (f_rect.width / 2);
+              pos_top_.y = f_rect.top;
 
-              posDown.x = fRect.left + (fRect.width / 2);
-              posDown.y = fRect.top + fRect.height;
+              pos_down_.x = f_rect.left + (f_rect.width / 2);
+              pos_down_.y = f_rect.top + f_rect.height;
 
-              posLeft.x = fRect.left;
-              posLeft.y = fRect.top + (fRect.height / 2);
+              pos_left_.x = f_rect.left;
+              pos_left_.y = f_rect.top + (f_rect.height / 2);
 
-              posRight.x = fRect.left + fRect.width;
-              posRight.y = fRect.top + (fRect.height / 2);
+              pos_right_.x = f_rect.left + f_rect.width;
+              pos_right_.y = f_rect.top + (f_rect.height / 2);
 
-              if((*it2)->checkCollision(posTop)){
-                brick_tmp = static_cast<Brick*>(*it2);
-                brick_tmp->lives_ -= 1;
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posDown)){
-                brick_tmp = static_cast<Brick*>(*it2);
-                brick_tmp->lives_ -= 1;
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posLeft)){
-                brick_tmp = static_cast<Brick*>(*it2);
-                brick_tmp->lives_ -= 1;
-                ball_tmp->speed_.x *= -1;
-              }else if((*it2)->checkCollision(posRight)){
-                brick_tmp = static_cast<Brick*>(*it2);
-                brick_tmp->lives_ -= 1;
-                ball_tmp->speed_.x *= -1;
+              if((*it2)->checkCollision(pos_top_)){
+                brick_tmp_ = static_cast<Brick*>(*it2);
+                brick_tmp_->lives_ -= 1;
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_down_)){
+                brick_tmp_ = static_cast<Brick*>(*it2);
+                brick_tmp_->lives_ -= 1;
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_left_)){
+                brick_tmp_ = static_cast<Brick*>(*it2);
+                brick_tmp_->lives_ -= 1;
+                ball_tmp_->speed_.x *= -1;
+              }else if((*it2)->checkCollision(pos_right_)){
+                brick_tmp_ = static_cast<Brick*>(*it2);
+                brick_tmp_->lives_ -= 1;
+                ball_tmp_->speed_.x *= -1;
               }
             }
           }
@@ -859,52 +860,52 @@ void Scene::update(){
           }
 
           // Check Collision with Player
-          list_tmp = getDrawableEntitiesByTag(12);
+          list_tmp_ = getDrawableEntitiesByTag(12);
           for (std::list<DrawableEntity*>::const_iterator it2 =
-            list_tmp.begin(); it2 != list_tmp.end(); ++it2) {
+            list_tmp_.begin(); it2 != list_tmp_.end(); ++it2) {
 
             if((*it2)->active_){
-              fRect =  it->second->getBoundaries();
-              posTop.x = fRect.left + (fRect.width / 2);
-              posTop.y = fRect.top;
+              f_rect =  it->second->getBoundaries();
+              pos_top_.x = f_rect.left + (f_rect.width / 2);
+              pos_top_.y = f_rect.top;
 
-              posDown.x = fRect.left + (fRect.width / 2);
-              posDown.y = fRect.top + fRect.height;
+              pos_down_.x = f_rect.left + (f_rect.width / 2);
+              pos_down_.y = f_rect.top + f_rect.height;
 
-              posLeft.x = fRect.left;
-              posLeft.y = fRect.top + (fRect.height / 2);
+              pos_left_.x = f_rect.left;
+              pos_left_.y = f_rect.top + (f_rect.height / 2);
 
-              posRight.x = fRect.left + fRect.width;
-              posRight.y = fRect.top + (fRect.height / 2);
+              pos_right_.x = f_rect.left + f_rect.width;
+              pos_right_.y = f_rect.top + (f_rect.height / 2);
 
-              if((*it2)->checkCollision(posTop)){
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posDown)){
-                fRect =  (*it2)->getBoundaries();              
-                ball_tmp->speed_.y *= -1;
+              if((*it2)->checkCollision(pos_top_)){
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_down_)){
+                f_rect =  (*it2)->getBoundaries();              
+                ball_tmp_->speed_.y *= -1;
                 
-                if(posDown.x < fRect.left + (fRect.width / 6)){
-                  ball_tmp->speed_.x = -6;
-                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 2)){
-                  ball_tmp->speed_.x = -4;
-                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 3)){
-                  ball_tmp->speed_.x = -2;
-                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 4)){
-                  ball_tmp->speed_.x = 2;
-                }else if(posDown.x < fRect.left + ((fRect.width / 6) * 5)){
-                  ball_tmp->speed_.x = 4;
+                if(pos_down_.x < f_rect.left + (f_rect.width / 6)){
+                  ball_tmp_->speed_.x = -6;
+                }else if(pos_down_.x < f_rect.left + ((f_rect.width / 6) * 2)){
+                  ball_tmp_->speed_.x = -4;
+                }else if(pos_down_.x < f_rect.left + ((f_rect.width / 6) * 3)){
+                  ball_tmp_->speed_.x = -2;
+                }else if(pos_down_.x < f_rect.left + ((f_rect.width / 6) * 4)){
+                  ball_tmp_->speed_.x = 2;
+                }else if(pos_down_.x < f_rect.left + ((f_rect.width / 6) * 5)){
+                  ball_tmp_->speed_.x = 4;
                 }else{
-                  ball_tmp->speed_.x = 6;                
+                  ball_tmp_->speed_.x = 6;                
                 }              
 
-              }else if((*it2)->checkCollision(posLeft)){
-                player_tmp = static_cast<Player*>(*it2);
-                ball_tmp->speed_.x = -8;
-                ball_tmp->speed_.y *= -1;
-              }else if((*it2)->checkCollision(posRight)){
-                player_tmp = static_cast<Player*>(*it2);
-                ball_tmp->speed_.x = 8;
-                ball_tmp->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_left_)){
+                player_tmp_ = static_cast<Player*>(*it2);
+                ball_tmp_->speed_.x = -8;
+                ball_tmp_->speed_.y *= -1;
+              }else if((*it2)->checkCollision(pos_right_)){
+                player_tmp_ = static_cast<Player*>(*it2);
+                ball_tmp_->speed_.x = 8;
+                ball_tmp_->speed_.y *= -1;
               }
             }
           }

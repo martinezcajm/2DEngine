@@ -1,28 +1,10 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __GAME_MANAGER_H__
 #define __GAME_MANAGER_H__ 1
 
 #include "window.h"
-//#include "scene.h"
 #include "native_dialogs.h"
 
-/*typedef enum UiStatus
-{
-  kIdle,
-  kDraw,
-  kSelection,
-  kWrite,
-  kMultiselect
-} UiStatus;
-
-typedef enum UiEditType
-{
-  kNull,
-  kRect,
-  kLabel,
-  kSprite,
-  kBackground,
-  kMulti
-} UiEditType;*/
 
 typedef enum MouseStatus
 {
@@ -33,7 +15,7 @@ typedef enum MouseStatus
 
 class GameManager {
 private:
-  /** @Contruct the GameManager
+  /** @brief Contruct the GameManager
   *
   * Constructor of the GameManager
   *
@@ -41,7 +23,7 @@ private:
   */
   GameManager();
   GameManager(const GameManager& other){};
-  /** @Destruct the GameManager
+  /** @brief Destruct the GameManager
   *
   * Destructor of the GameManager
   *
@@ -50,7 +32,7 @@ private:
   ~GameManager(){};
 
 public:
-  /** @Gets the instance of our GameManager
+  /** @brief Gets the instance of our GameManager
   *
   * In charge of creating our GameManager singleton in case it doesn't exist
   * or return it's instance if it exists.

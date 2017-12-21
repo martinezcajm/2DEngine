@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __SCENE_H__
 #define __SCENE_H__ 1
 
@@ -22,7 +23,7 @@ class Scene{
   Scene();
   ~Scene();
 
-  /** @Clean the scene
+  /** @brief Clean the scene
   *
   *  Clean all maps of the scene and return the elements to the Pool
   *
@@ -30,7 +31,7 @@ class Scene{
   */
   void cleanScene();
   
-  /** @Load a scene
+  /** @brief Load a scene
   *
   *  Load a scene from a file with format json. Put to the labels the font of 
   *  the parameter.
@@ -41,7 +42,7 @@ class Scene{
   */
   void loadScene(const std::string scene_path, const sf::Font& font);
   
-  /** @Save a scene
+  /** @brief Save a scene
   *
   *  Save a scene in a file with format json.
   *
@@ -53,7 +54,7 @@ class Scene{
 
 
   //// DrawableEntity ////
-  /** @Add a DrawableEntity to the scene
+  /** @brief Add a DrawableEntity to the scene
   *
   *  Add a DrawableEntity in the mappings that form the scene
   *
@@ -61,7 +62,7 @@ class Scene{
   * @param drawable_entity Reference of the DrawableEntity to add
   */
   void addDrawableEntity(DrawableEntity& drawable_entity);
-  /** @Get a DrawableEntity from the scene
+  /** @brief Get a DrawableEntity from the scene
   *
   *  Returns the DrawableEntity with the specified id from the scene
   *
@@ -69,7 +70,7 @@ class Scene{
   * @param drawable_entity_id Id of the DrawableEntity to return
   */
   DrawableEntity* getDrawableEntity(const uint32_t drawable_entity_id);
-  /** @Remove a DrawableEntity of the scene
+  /** @brief Remove a DrawableEntity of the scene
   *
   *  Remove the DrawableEntity with the specified id of the scene
   *
@@ -77,7 +78,7 @@ class Scene{
   * @param drawable_entity_id Id of the DrawableEntity to remove
   */
   void removeDrawableEntity(const uint32_t drawable_entity_id);
-  /** @Change the z-order of a DrawableEntity of the scene
+  /** @brief Change the z-order of a DrawableEntity of the scene
   *
   *  Change the z-order of a DrawableEntity of the scene.
   *
@@ -88,10 +89,8 @@ class Scene{
   void changeZOrderDrawableEntity(const uint32_t drawable_entity_id, 
     const int32_t newZOrder);
 
-
-  
   /// Texture ///
-  /** @Add a Texture to the scene
+  /** @brief Add a Texture to the scene
   *
   *  Add a Texture in the mappings that form the scene
   *
@@ -100,7 +99,7 @@ class Scene{
   * @param texture_path Path where is the texture file
   */
   void addTexture(sf::Texture& texture, const std::string texture_path);
-  /** @Get a Texture from the scene
+  /** @brief Get a Texture from the scene
   *
   *  Returns the Texture with the specified path from the scene
   *
@@ -108,7 +107,7 @@ class Scene{
   * @param texture_path Path of the Texture to return
   */
   sf::Texture* getTexture(const std::string texture_path);
-  /** @Remove a Texture of the scene
+  /** @brief Remove a Texture of the scene
   *
   *  Remove the Texture with the specified path of the scene
   *
@@ -117,7 +116,7 @@ class Scene{
   */
   void removeTexture(const std::string texture_path);
 
-  /** @Check if some element collision with a point
+  /** @brief Check if some element collision with a point
   *
   *  Check if some element of the scene have a colision with a point specified
   *  in the parameters
@@ -127,15 +126,15 @@ class Scene{
   * @param position The point to check the collision
   */
   uint32_t checkCollision(sf::Vector2f& position);
-  /** @Get a list of entities with a specific tag
+  /** @brief Get a list of entities with a specific tag
   *
   *  Return the entities with the tag specified in params
   *
   * @return list<DrawableEntity*> Return the list of DrawableEntity
   * @param tag Tag to seach
   */
-  std::list<DrawableEntity*> getDrawableEntitiesByTag(const uint32_t tag);
-  /** @Get a list of entities with a specific tag
+  std::list<DrawableEntity*> getDrawableEntitiesByTag(const int tag);
+  /** @brief Get a list of entities with a specific tag
   *
   *  Return the entities with the tag specified in params
   *
@@ -143,15 +142,15 @@ class Scene{
   * @param selection_tag Tag to seach
   */
   std::list<DrawableEntity*> getDrawableEntitiesBySelectionTag(
-    uint32_t selection_tag);
-  /** @Draw all elemnts of the scene
+    uint8_t selection_tag);
+  /** @brief Draw all elemnts of the scene
   *
   *  Draw all elemnts of the scene
   *
   * @return void
   */
   void drawScene();
-  /** @Update the elements of the scene
+  /** @brief Update the elements of the scene
   *
   *  Call to Update of the all elements of the scene
   *
@@ -175,15 +174,16 @@ class Scene{
   Scene(const Scene& other){};
   
   // Variables used in update method
-  std::list<DrawableEntity*> list_tmp;
-  Ball* ball_tmp;
-  Brick* brick_tmp;
-  Player* player_tmp;
-  sf::Vector2f posTop;
-  sf::Vector2f posDown;
-  sf::Vector2f posLeft;
-  sf::Vector2f posRight;
-  sf::FloatRect fRect;
+  std::list<DrawableEntity*> list_tmp_;
+  Ball* ball_tmp_;
+  Brick* brick_tmp_;
+  Player* player_tmp_;
+  Wall* wall_tmp_;
+  sf::Vector2f pos_top_;
+  sf::Vector2f pos_down_;
+  sf::Vector2f pos_left_;
+  sf::Vector2f pos_right_;
+  sf::FloatRect f_rect;
   uint8_t count_bricks_;
 };
 

@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 // Comments can be found at the header
 #include "imgui.h"
 #include "imgui-SFML.h"
@@ -22,19 +23,6 @@ void Game::init(){
   ui_->init(*GM.window_->sfml_window_);
 
   scene_ = new Scene();
-  //TODO Right now the UI only allows to create sprite by image, but the 
-  //sprite has the capacity to be created through copy of an already existing
-  //texture (copying it in memory and having it's own reference) 
-  //or by a texture Test case to check it works, the first sprite loses it's
-  //texture after the scope and the last one doesn't as it stores a copy of it 
-  /*
-  sf::Texture texture;
-  texture.loadFromFile("../data/enemy.png");
-  scene_->addSprite(*sprite_test);
-  Sprite *sprite_test2 = POOL.getSprite();
-  uint8_t error;
-  sprite_test2->init(300,400,0,1,1,texture,error);
-  scene_->addSprite(*sprite_test2);*/
 }
 
 void Game::finish(){

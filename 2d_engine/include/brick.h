@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __BRICK_H__
 #define __BRICK_H__ 1
 
@@ -11,7 +12,7 @@
 */
 class Brick : public Rect{
  public:
-  /** @Destroys the Brick
+  /** @brief Destroys the Brick
   *
   * Destructor of the brick
   *
@@ -19,7 +20,7 @@ class Brick : public Rect{
   */
   virtual ~Brick(){};
   
-  /** @Factory that creates brick
+  /** @brief Factory that creates brick
   *
   * Checks that the number of bricks didn't pass the maxim amount established
   * If you wish to create a Brick you must use this method. In case the maximum
@@ -31,7 +32,7 @@ class Brick : public Rect{
   */
   static Brick* CreateBrick();
 
-  /** @Initializes the Brick
+  /** @brief Initializes the Brick
   *
   * Initializes the different values of a brick
   *
@@ -70,14 +71,14 @@ class Brick : public Rect{
   int score_;
   GameManager& GM = GameManager::instance();
  private:
-  /** @Brick constructor
+  /** @brief Brick constructor
   *
   * Brick constructor used by the factory to create bricks
   *
   * @return *Brick
   */
   Brick();
-  /** @Brick copy constructor
+  /** @brief Brick copy constructor
   *
   * Brick copy constructor without anything to disable it.
   *

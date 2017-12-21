@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 //Comments can be found at the header
 #include "brick.h"
 

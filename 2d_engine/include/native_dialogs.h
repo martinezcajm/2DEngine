@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __NATIVE_DIALOGS_H__
 #define __NATIVE_DIALOGS_H__ 1
 
@@ -7,7 +8,7 @@
 
 class Native_dialogs{
  public:
-  /** @Open a message box native
+  /** @brief Open a message box native
   *
   * Open a mesage box with the introduced message.
   *
@@ -24,7 +25,7 @@ class Native_dialogs{
   void messageBox(const char *title, const char *message, const char *type, 
     const char *icon, const int defaultButton);
   
-  /** @Open a save file dialog
+  /** @brief Open a save file dialog
   *
   * Open a native dialog for save a file
   *
@@ -41,7 +42,7 @@ class Native_dialogs{
     const int numOfFilterPatterns, const char **filterPatterns, 
     const char *singleFilterDescription);
 
-  /** @Open a open file dialog
+  /** @brief Open a open file dialog
   *
   * Open a native dialog for open a file
   *
@@ -58,7 +59,7 @@ class Native_dialogs{
     const int numOfFilterPatterns, const char **filterPatterns, 
     const char *singleFilterDescription);
   
-  /** @Open a select folder dialog
+  /** @brief Open a select folder dialog
   *
   * Open a native dialog for select a folder
   *

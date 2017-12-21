@@ -315,7 +315,7 @@ void UserInterface::renderUI(sf::RenderWindow &window, Scene &scene){
 
 void UserInterface::UiLoadCommonValuesEdit(DrawableEntity &d_entity){
   if (ImGui::TreeNode("Tag")){
-    ImGui::InputInt("tag", &d_entity.tag_, 1.0f, 1.0f);
+    ImGui::InputInt("tag", &d_entity.tag_, 1, 1);
     ImGui::TreePop();
   } 
   if (ImGui::TreeNode("Position")){

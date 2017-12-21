@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __WALL_H__
 #define __WALL_H__ 1
 
@@ -10,7 +11,7 @@
 */
 class Wall : public Rect{
  public:
-  /** @Destroys the Wall
+  /** @brief Destroys the Wall
   *
   * Destructor of the wall
   *
@@ -18,7 +19,7 @@ class Wall : public Rect{
   */
   virtual ~Wall(){};
   
-  /** @Factory that creates wall
+  /** @brief Factory that creates wall
   *
   * Checks that the number of walls didn't pass the maxim amount established
   * If you wish to create a Wall you must use this method. In case the maximum
@@ -30,7 +31,7 @@ class Wall : public Rect{
   */
   static Wall* CreateWall();
 
-  /** @Initializes the Wall
+  /** @brief Initializes the Wall
   *
   * Initializes the different values of a wall
   *
@@ -56,14 +57,14 @@ class Wall : public Rect{
             uint8_t fc_g, uint8_t fc_b, uint8_t fc_a, float px, float py,
             float rotation, float scalex, float scaley);
  private:
-  /** @Wall constructor
+  /** @brief Wall constructor
   *
   * Wall constructor used by the factory to create walls
   *
   * @return *Wall
   */
   Wall();
-  /** @Wall copy constructor
+  /** @brief Wall copy constructor
   *
   * Wall copy constructor without anything to disable it.
   *

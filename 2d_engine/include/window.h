@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __WINDOW_H__
 #define __WINDOW_H__ 1
 
@@ -14,7 +15,7 @@
 */
 class  Window{
  public:
-  /** @Factory that creates windows
+  /** @brief Factory that creates windows
   *
   * Checks that the number of window didn't pass the maxim established.
   * In case the maximum of window has been reached it will return nullptr. 
@@ -25,28 +26,28 @@ class  Window{
   static Window* CreateWindow(const sf::Vector2u size, const sf::String& title, 
                               unsigned int frameRateLimit = 60);
 
-  /** @Checks if the window is open
+  /** @brief Checks if the window is open
   *
   * Checks if the window is open.
   *
   * @return bool returns true if the window is open and false if not.
   */
   bool isOpen();
-  /** @Display the window
+  /** @brief Display the window
   *
   * Display on screen the elements that has been rendered to the window so far. 
   *
   * @return void.
   */
   void display();
-  /** @Close the window
+  /** @brief Close the window
   *
   * Close the window. 
   *
   * @return void.
   */
   void close();
-  /** @Clear the window
+  /** @brief Clear the window
   *
   * Clear the window and put it black.
   *
@@ -54,7 +55,7 @@ class  Window{
   */
   void clear();
   
-  /** @Draw a drawable object.
+  /** @brief Draw a drawable object.
   *
   * Draw a drawable object to the render-target.
   *

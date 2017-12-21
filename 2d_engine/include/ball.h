@@ -1,22 +1,23 @@
+// Author: Sebastián Adrover Pedrosa
 #ifndef __BALL_H__
 #define __BALL_H__ 1
 
 #include "sprite.h"
 #include "game_manager.h"
 
-/** @Graphic entity Ball
+/** @brief Graphic entity Ball
 *
 * Class used to represent a ball. 
 *
 */
 class Ball : public Sprite{
  public:
-  /** @Deletes a ball
+  /** @brief Deletes a ball
   *
   * In case the ball stored it's own texture in the hip it needs to free it.
   */
   virtual ~Ball() {};
-  /** @Initializes the ball using a texture
+  /** @brief Initializes the ball using a texture
   *
   * Initializes the position and transformations of a ball using an 
   * sf::Texture as texture.
@@ -36,7 +37,7 @@ class Ball : public Sprite{
             const int32_t speed_x, const int32_t speed_y,
             const sf::Texture &texture, const std::string &texture_path);
             
-  /** @Initializes the ball using a buffer from memory for the texture
+  /** @brief Initializes the ball using a buffer from memory for the texture
   *
   * Initializes the position and transformations of a ball using an 
   * sf::Texture as texture from memory.
@@ -58,7 +59,7 @@ class Ball : public Sprite{
             const sf::Texture &texture, uint8_t &error_ocurred, 
             const std::string &texture_path);
             
-  /** @Initializes the ball using an image file for the texture
+  /** @brief Initializes the ball using an image file for the texture
   *
   * Initializes the position and transformations of a ball using an 
   * file as texture.
@@ -102,14 +103,14 @@ class Ball : public Sprite{
   sf::Vector2i speed_;
   GameManager& GM = GameManager::instance();
  protected:
-  /** @Ball constructor
+  /** @brief Ball constructor
   *
   * Ball constructor used by the factory to create ball
   *
   * @return *Ball
   */
   Ball();
-  /** @Ball copy constructor
+  /** @brief Ball copy constructor
   *
   * Ball copy constructor without anything to disable it.
   *

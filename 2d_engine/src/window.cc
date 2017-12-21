@@ -1,3 +1,4 @@
+// Author: Sebastián Adrover Pedrosa
 // Comments can be found at the header
 #include "window.h"
 
@@ -36,7 +37,3 @@ void Window::clear(){
 void Window::draw(const sf::Drawable& drawable){
   sfml_window_->draw(drawable);
 }
-/*
-sf::RenderWindow getSfmlWindow(){
-  return *window;
-}*/
