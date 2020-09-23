@@ -1,3 +1,0 @@
-03/11/2017
-----------
-Please, move all the project .h files (entity.h , rect.h , etc...) to the "include" directory.
